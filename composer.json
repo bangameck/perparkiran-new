@@ -1,0 +1,10 @@
+{
+    "require": {
+        "owasp/csrf-protector-php": "^1.0",
+        "phpmailer/phpmailer": "^6.5",
+        "php-ffmpeg/php-ffmpeg": "^0.18.0"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.6"
+    }
+}

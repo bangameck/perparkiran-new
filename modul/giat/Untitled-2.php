@@ -1,0 +1,1 @@
+<div class="gallery my-gallery card-body row" itemscope="">

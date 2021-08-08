@@ -1,0 +1,97 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+RewriteRule ^tambah$ add.php [L]
+
+#verify_akun
+RewriteRule ^verifikasi-akun/([a-zA-Z0-9-z\-\_]+)$ .rest_page.php?m=verify&id=$1 [L]
+
+#dashboard
+RewriteRule ^dashboard$ .rest_page.php [L]
+
+#login
+RewriteRule ^khusus-admin-login$ .rest_api.php [L]
+
+#logout
+RewriteRule ^out$ .rest_page.php?m=out [L]
+
+#setting
+RewriteRule ^setting$ .rest_page.php?m=users&a=setting [L]
+
+#password
+RewriteRule ^password$ .rest_page.php?m=users&a=password [L]
+
+#profile
+RewriteRule ^profile/([a-zA-Z0-9_-]+)$ .rest_page.php?m=profile&id=$1 [L]
+RewriteRule ^profile/([a-zA-Z0-9_-]+)/page/([a-zA-Z0-9_-]+)$ .rest_page.php?m=profile&id=$1&page=$2 [L]
+
+
+#users
+RewriteRule ^users$ .rest_page.php?m=users [L]
+RewriteRule ^users-blok$ .rest_page.php?m=users&a=users-blok [L]
+RewriteRule ^users/aktif$ .rest_page.php?m=users&a=aktif [L]
+RewriteRule ^users/blokir$ .rest_page.php?m=users&a=blokir [L]
+RewriteRule ^check_users$ modul/users/c_users.php [L]
+RewriteRule ^check_email$ modul/users/c_email.php [L]
+RewriteRule ^users/add$ .rest_page.php?m=users&a=add [L]
+RewriteRule ^users/edit$ .rest_page.php?m=users&a=edit [L]
+RewriteRule ^users/edit/([a-zA-Z0-9_-]+)$ .rest_page.php?m=users&a=edit&id=$1 [L]
+RewriteRule ^users/delete$ .rest_page.php?m=users&a=delete [L]
+RewriteRule ^users/delete-temp$ .rest_page.php?m=users&a=delete-temp [L]
+#RewriteRule ^users/delete-temp/([a-zA-Z0-9_-]+)$ .rest_page.php?m=users&a=delete-temp&id=$1 [L]
+RewriteRule ^users/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?m=users&a=detail&id=$1 [L]
+
+#regu
+RewriteRule ^regu$ .rest_page.php?m=regu [L]
+RewriteRule ^check_bus$ modul/bus/c_bus.php [L]
+RewriteRule ^regu/add$ .rest_page.php?m=regu&a=add [L]
+RewriteRule ^regu/edit/([a-zA-Z0-9_-]+)$ .rest_page.php?m=regu&a=edit&id=$1 [L]
+RewriteRule ^regu/delete$ .rest_page.php?m=regu&a=delete [L]
+RewriteRule ^regu/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?m=regu&a=detail&id=$1 [L]
+RewriteRule ^regu/detail/([a-zA-Z0-9_-]+)/page/([a-zA-Z0-9_-]+)$ .rest_page.php?m=regu&a=detail&id=$1&page=$2 [L]
+
+#giat
+RewriteRule ^giat$ .rest_page.php?m=giat [L]
+RewriteRule ^giat/add$ .rest_page.php?m=giat&a=add [L]
+RewriteRule ^giat/delete/dokumentasi$ .rest_page.php?m=giat&a=delete-dokumentasi [L]
+RewriteRule ^giat/delete$ .rest_page.php?m=giat&a=delete [L]
+RewriteRule ^giat/edit/([a-zA-Z0-9_-]+)$ .rest_page.php?m=giat&a=edit&id=$1 [L]
+RewriteRule ^giat/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?m=dgiat&id=$1 [L]
+RewriteRule ^giat/print$ modul/dgiat/print.php [L]
+
+#pengaduan
+RewriteRule ^pengaduan$ .rest_page.php?m=pengaduan [L]
+RewriteRule ^pengaduan/add$ .rest_page.php?m=pengaduan&a=add [L]
+RewriteRule ^pengaduan/delete/dokumentasi$ .rest_page.php?m=pengaduan&a=delete-dokumentasi [L]
+RewriteRule ^pengaduan/delete$ .rest_page.php?m=pengaduan&a=delete [L]
+RewriteRule ^pengaduan/edit/([a-zA-Z0-9_-]+)$ .rest_page.php?m=pengaduan&a=edit&id=$1 [L]
+RewriteRule ^pengaduan/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?m=dpengaduan&id=$1 [L]
+RewriteRule ^pengaduan/print$ modul/dpengaduan/print.php [L]
+
+#layanan
+RewriteRule ^layanan$ .rest_page.php?m=layanan [L]
+RewriteRule ^check_tgl$ modul/layanan/c_tgl.php [L]
+RewriteRule ^layanan/add$ .rest_page.php?m=layanan&a=add [L]
+RewriteRule ^layanan/edit/([a-zA-Z0-9_-]+)$ .rest_page.php?m=layanan&a=edit&id=$1 [L]
+RewriteRule ^layanan/delete$ .rest_page.php?m=layanan&a=delete [L]
+RewriteRule ^layanan/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?m=layanan&a=detail&id=$1 [L]
+
+#Laporan
+RewriteRule ^laporan$ .rest_page.php?m=laporan [L]
+RewriteRule ^laporan/tanggal$ .rest_page.php?m=laporan&a=tanggal [L]
+RewriteRule ^laporan/pertanggal$ .rest_page.php?m=laporan&a=pertanggal [L]
+RewriteRule ^laporan/perbus$ .rest_page.php?m=laporan&a=perbus [L]
+RewriteRule ^laporan/bus$ .rest_page.php?m=laporan&a=bus [L]
+
+#----------------------Batas----------------------------#
+
+#error
+ErrorDocument 400 /400.php
+ErrorDocument 401 /401.php
+ErrorDocument 403 /403.php
+ErrorDocument 404 /404.php
+ErrorDocument 500 /500.php
+ErrorDocument 503 /503.php
+#enderror
+Options All -Indexes
+</IfModule>
