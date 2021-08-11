@@ -48,7 +48,7 @@ switch($a){
                 <div class="card-body">
                     <div class="dt-ext table-responsive">
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <a href="<?= base_url(); ?>giat/add" class="btn btn-primary-gradien" type="button">Tambah
+                            <a href="<?= base_url(); ?>giat/add" class="btn btn-primary-gradien" type="button" <?= $hide; ?>>Tambah
                                 Data</a>
                         </div>
                         <br>
@@ -234,13 +234,8 @@ switch($a){
                     <div class="row g-2">
                         <div class="col-lg-12 col-md-12">
                             <label">Keterangan Kegiatan :</label>
-                                <textarea name="editor1" id="editor1" rows="10" cols="20" class="form-control"
+                                <textarea name="editor1" rows="10" cols="20" class="form-control editor"
                                     required></textarea>
-                                <script>
-                                // Replace the <textarea id="editor1"> with a CKEditor 4
-                                // instance, using default configuration.
-                                CKEDITOR.replace('editor1');
-                                </script>
                                 <div class="valid-feedback">
                                 </div>
                                 <div class="invalid-feedback">
@@ -691,13 +686,13 @@ $d = $db->query("SELECT * FROM giat a, regu b,  users c WHERE a.regu=b.id_regu A
                                 <div class="row g-2">
                                     <div class="col-lg-12 col-md-12">
                                         <label">Keterangan Kegiatan :</label>
-                                            <textarea name="editor1" id="editor1" rows="10" cols="20"
-                                                class="form-control" required><?= $d['ket_giat']; ?></textarea>
-                                            <script>
+                                            <textarea name="editor1" rows="10" cols="20"
+                                                class="form-control editor" required><?= $d['ket_giat']; ?></textarea>
+                                            <!-- <script>
                                             // Replace the <textarea id="editor1"> with a CKEditor 4
                                             // instance, using default configuration.
                                             CKEDITOR.replace('editor1');
-                                            </script>
+                                            </script> -->
                                             <div class="valid-feedback">
                                             </div>
                                             <div class="invalid-feedback">

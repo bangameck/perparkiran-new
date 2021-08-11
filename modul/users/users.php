@@ -72,7 +72,7 @@ switch($a){
                                     } else {
                                         $ft = $u['f_usr'];
                                     }
-                                    $l = array('1' => 'Admin Super', '2' => 'Anggota', '3' => 'Karu' ,'4' => 'Pengawas', '5' => 'Bendahara', '6' => 'Pimpinan', '7' => 'Penerima Hak Akses');
+                                    $l = array('1' => 'Admin Super', '2' => 'Anggota', '3' => 'Karu' ,'4' => 'Pengawas', '5' => 'Admin', '6' => 'Pimpinan', '7' => 'Penerima Hak Akses');
                                     
                                 ?>
                                 <tr>
@@ -99,8 +99,6 @@ switch($a){
                                             </form> -->
                                             <form action="<?= base_url(); ?>users/blokir" method="POST">
                                                 <input type="hidden" name="id" value="<?= $u['id']; ?>">
-                                                <input type="hidden" name="username" value="<?= $u['username']; ?>">
-                                                <input type="hidden" name="foto" value="<?= $u['f_usr']; ?>">
                                                 <button class="btn btn-danger btn-sm" onclick="non()"
                                                     type="submit"><i class="fa fa-exclamation-circle"></i> Blokir</button>
                                             </form>
@@ -376,7 +374,7 @@ aut(array(1));
                             <option value="2">Anggota</option>
                             <!-- <option value="3">Karu</option> -->
                             <option value="4">Pengawas</option>
-                            <option value="5">Bendahara</option>
+                            <option value="5">Admin</option>
                             <option value="6">Kepala UPT</option>
                             <option value="7">Penerima Hak Akses</option>
                         </select>
@@ -454,15 +452,15 @@ aut(array(1));
                                     //Set PHPMailer to use SMTP.
                                     $mail->isSMTP();
                                     //Set SMTP host name
-                                    $mail->Host = 'smtp.gmail.com';
+                                    $mail->Host = $host;
                                     $mail->SMTPAuth = true;
                                     //Provide username and password
                                     $mail->Username = $email_;   //nama-email smtp
-                                    $mail->Password = $pmail;           //password email smtp
+                                    $mail->Password = $pmail;    //password email smtp
                                     //If SMTP requires TLS encryption then set it
-                                    $mail->SMTPSecure = 'tls';
+                                    $mail->SMTPSecure = $secure;
                                     //Set TCP port to connect to
-                                    $mail->Port = 587;
+                                    $mail->Port = $host;
 
                                     $mail->From = $email_; //email pengirim
                                     $mail->FromName = $title; //nama pengirim
@@ -981,7 +979,7 @@ if ($d['level']=='2') {
                                             <option value="2">Anggota</option>
                                             <option value="3">Karu</option>
                                             <option value="4">Pengawas</option>
-                                            <option value="5">Bendahara</option>
+                                            <option value="5">Admin</option>
                                             <option value="6">Pimpinan</option>
                                             <option value="7">Penerima Hak Akses</option>
                                         </select>

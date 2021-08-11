@@ -12,17 +12,16 @@ $site = "http://lapor.dishub.pekanbaru.go.id/perparkiran";
 // $develop = " bangameck.dev";
 // $fb = " http://facebook.com/dishubpku";
 $ig = " https://instagram.com/upt.perparkiranpku";
-// $tw = "";
-// $yt = "";
-// $desk = "";
-// $logo = "";
-// $aplikasi = "Sistem Informasi Aset";
-// $a_admin = ".:: DB | Halaman Admin ::.";
-// $website = "CV. xxxx Menawarkan xxxxx";
-// $signature = "ATCS Kota Pekanbaru";
-// $apl = "DB";
+
+
+//php mail config
+$host   = "smtp.gmail.com";
+$port   = 587;
+$secure = 'tls';
 $email_ = "rra.code@gmail.com";
-$pmail = "@m3ck1nd4h201220";
+$pmail  = "@m3ck1nd4h201220";
+
+
 // $tlp = "(0761)-88888";
 // $fax = "(0761)-88888";
 $hp = "+62-822-8844-5265";

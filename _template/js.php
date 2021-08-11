@@ -29,6 +29,10 @@
 <script src="<?= base_url(); ?>assets/js/timeline/timeline-v-2/timeline-v-2-custom.js"></script>
 <script src="<?= base_url(); ?>assets/js/scrollable/perfect-scrollbar.min.js"></script>
 <script src="<?= base_url(); ?>assets/js/scrollable/scrollable-custom.js"></script>
+<!-- <script src="<?= base_url(); ?>assets/js/editor/ckeditor/ckeditor.js"></script>
+<script src="<?= base_url(); ?>assets/js/editor/ckeditor/adapters/jquery.js"></script>
+<script src="<?= base_url(); ?>assets/js/editor/ckeditor/styles.js"></script>
+<script src="<?= base_url(); ?>assets/js/editor/ckeditor/ckeditor.custom.js"></script> -->
 <!-- <script src="<?= base_url(); ?>assets/js/editor/simple-mde/simplemde.min.js"></script>
 <script src="<?= base_url(); ?>assets/js/editor/simple-mde/simplemde.custom.js"></script> -->
 <script src="<?= base_url(); ?>assets/js/touchspin/vendors.min.js"></script>
@@ -105,7 +109,55 @@
 <script src="<?= base_url(); ?>assets/js/jquery-idle/src/jquery.idletimeout.js"></script>
 <script src="<?= base_url(); ?>assets/js/jquery-idle/src/jquery.idletimer.js"></script>
 <script src="https://cdn.rawgit.com/igorescobar/jQuery-Mask-Plugin/1ef022ab/dist/jquery.mask.min.js"></script>
-
+<!-- CKEditor5 -->
+<script src="<?= base_url(); ?>vendor/ckeditor5/build/ckeditor.js"></script>
+		<script>ClassicEditor
+				.create( document.querySelector( '.editor' ), {
+					
+				toolbar: {
+					items: [
+						'|',
+						'bold',
+						'italic',
+						'underline',
+						'link',
+						'fontFamily',
+						'fontSize',
+						'fontColor',
+						'heading',
+						'alignment',
+						'bulletedList',
+						'numberedList',
+						'|',
+						'outdent',
+						'indent',
+						'|',
+						'specialCharacters',
+						'blockQuote',
+						'undo',
+						'redo'
+					]
+				},
+				language: 'id',
+					licenseKey: '',
+					
+					
+					
+				} )
+				.then( editor => {
+					window.editor = editor;
+			
+					
+					
+					
+				} )
+				.catch( error => {
+					console.error( 'Oops, something went wrong!' );
+					console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+					console.warn( 'Build id: 4niq24h1ezm1-1jtyozutymab' );
+					console.error( error );
+				} );
+		</script>
 <script>
 //IdleTime
 $.idleTimeout("#idletimeout", "#idletimeout a", {

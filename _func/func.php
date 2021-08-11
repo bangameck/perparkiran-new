@@ -20,7 +20,7 @@ date_default_timezone_set('Asia/Jakarta');
 //compress image
 include 'compress_image.php';
 //compress video
-include 'compress_video.php';
+// include 'compress_video.php';
 //jumlah pengunjung
 include 'counter_visitor.php';
 //create Token CSRF

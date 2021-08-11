@@ -57,10 +57,37 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/responsive.css">
     <!-- afterglowplayer -->
     <script src="//cdn.jsdelivr.net/npm/afterglowplayer@1.x"></script>
+    <!-- CKEditor5 -->
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script> -->
+    <!-- <script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+    </script> -->
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/inline/ckeditor.js"></script> -->
+    <!-- <script>
+    InlineEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+    </script> -->
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/balloon/ckeditor.js"></script> -->
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/balloon-block/ckeditor.js"></script> -->
+    <!-- <script>
+    BalloonEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+    </script> -->
+    
     <!-- CKEditor -->
-    <script src="<?= base_url(); ?>vendor/ckeditor/ckeditor.js">
+    <!-- <script src="<?= base_url(); ?>vendor/ckeditor/ckeditor.js">
     var data = CKEDITOR.instances.editor1.getData();
-    </script>
+    </script> -->
     <style type="text/css">
     #idletimeout {
         background: #f6ba00;
