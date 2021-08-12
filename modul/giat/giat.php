@@ -888,7 +888,7 @@ $d = $db->query("SELECT * FROM giat a, regu b,  users c WHERE a.regu=b.id_regu A
 
     $doc=$db->query("SELECT * FROM d_giat WHERE id_giat='$id_giat'");
     while ($d=$doc->fetch_assoc()) {
-        if ($d['x_giat']!=='mp4') {
+        if ($d['x_giat']=='png' OR $d['x_giat']=='jpg' OR $d['x_giat']=='jpeg' OR $d['x_giat']=='jpe') {
             unlink('_uploads/f_giat/'.$d['n_d_giat']);
         } else  {
             unlink('_uploads/v_giat/'.$d['n_d_giat']);

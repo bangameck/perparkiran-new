@@ -366,6 +366,9 @@ aut(array(1));
                             <option value="W">Wanita</option>
                         </select>
                     </div>
+                    <div class="invalid-feedback">
+                        Jenis Kelamin tidak boleh kosong.
+                    </div>
                     <div class="col-lg-4 col-md-12">
                         <select class="form-select js-example-basic-single" name="level" id="floatingSelect"
                             aria-label="Pilih Level" required>
@@ -393,6 +396,9 @@ aut(array(1));
                             <option value="<?= $r['id_regu']; ?>"><?= $r['nm_regu']; ?></option>
                             <?php endwhile; ?>
                         </select>
+                        <div class="invalid-feedback">
+                            Regu tidak boleh kosong.
+                        </div>
                     </div>
                 </div>
                 <div class="row g-2">
@@ -460,11 +466,12 @@ aut(array(1));
                                     //If SMTP requires TLS encryption then set it
                                     $mail->SMTPSecure = $secure;
                                     //Set TCP port to connect to
-                                    $mail->Port = $host;
-
+                                    $mail->Port = $port;
+                                    
                                     $mail->From = $email_; //email pengirim
                                     $mail->FromName = $title; //nama pengirim
 
+                                    $mail->AddEmbeddedImage($logo, 'logo', 'icon.png');
                                     $mail->addAddress($email, $nama); //email penerima
 
                                     $mail->isHTML(true);
@@ -515,7 +522,7 @@ aut(array(1));
                                                                         <table style="width: 650px; margin: 0 auto; margin-bottom: 30px">
                                                                         <tbody>
                                                                             <tr>
-                                                                            <td><img src="'.$base_url.'assets/images/logo/logo-icon.png" alt=""></td>
+                                                                            <td><img src="cid:logo" alt=""></td>
                                                                             <td style="text-align: right; color:#999"><span>Email ini Resmi dari UPT Perparkiran Dinas Perhubungan Kota Pekanbaru</span></td>
                                                                             </tr>
                                                                         </tbody>
@@ -592,19 +599,19 @@ aut(array(1));
                                         //Set PHPMailer to use SMTP.
                                         $mail->isSMTP();
                                         //Set SMTP host name
-                                        $mail->Host = 'smtp.gmail.com';
+                                        $mail->Host = $host;
                                         $mail->SMTPAuth = true;
                                         //Provide username and password
                                         $mail->Username = $email_;   //nama-email smtp
-                                        $mail->Password = $pmail;           //password email smtp
+                                        $mail->Password = $pmail;    //password email smtp
                                         //If SMTP requires TLS encryption then set it
-                                        $mail->SMTPSecure = 'tls';
+                                        $mail->SMTPSecure = $secure;
                                         //Set TCP port to connect to
-                                        $mail->Port = 587;
-
+                                        $mail->Port = $port;
+    
                                         $mail->From = $email_; //email pengirim
                                         $mail->FromName = $title; //nama pengirim
-
+                                        $mail->AddEmbeddedImage($logo, 'logo', 'icon.png');
                                         $mail->addAddress($email, $nama); //email penerima
 
                                         $mail->isHTML(true);
@@ -655,7 +662,7 @@ aut(array(1));
                                                                             <table style="width: 650px; margin: 0 auto; margin-bottom: 30px">
                                                                             <tbody>
                                                                                 <tr>
-                                                                                <td><img src="'.$base_url.'assets/images/logo/logo-icon.png" alt=""></td>
+                                                                                <td><img src="cid:logo" alt=""></td>
                                                                                 <td style="text-align: right; color:#999"><span>Email ini Resmi dari UPT Perparkiran Dinas Perhubungan Kota Pekanbaru</span></td>
                                                                                 </tr>
                                                                             </tbody>

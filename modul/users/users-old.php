@@ -293,7 +293,7 @@ aut(array(1));
                     $jk         = $db->real_escape_string($_POST['jk']);
                     $level      = $db->real_escape_string($_POST['level']);
                     $regu       = $db->real_escape_string($_POST['regu']);
-                    $token      = codeha('75');
+                    $token      = hurufangka('75');
                     $now        = date('Y-m-d H:i:s');
                     $batas_waktu= date('Y-m-d H:i:s', strtotime('+7 days,', strtotime($now)));
                     //file gambar
