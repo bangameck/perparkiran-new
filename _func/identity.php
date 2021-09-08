@@ -20,7 +20,7 @@ $port   = 587;
 $secure = 'tls';
 $email_ = "rra.code@gmail.com";
 $pmail  = "@m3ck1nd4h201220";
-$logo   = 'assets/images/logo/logo.png';
+$logo   = 'assets/adm/images/logo/logo.png';
 
 
 // $tlp = "(0761)-88888";

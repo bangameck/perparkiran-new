@@ -274,7 +274,7 @@ switch($a){
                 </form>
                 <?php 
                 if (isset($_POST['simpan'])) {
-                    $id             = $db->real_escape_string('GIAT'.acakhba('10').'PARKIR');
+                    $id             = $db->real_escape_string(slug($_POST['kegiatan']).'-'.uid('2'));
                     $no_giat        = $db->real_escape_string($_POST['no_giat']);
                     $tgl            = $db->real_escape_string(date('Y-m-d', strtotime($_POST['tgl_giat'])));
                     $jam            = $db->real_escape_string(date('H:i:s', strtotime($_POST['jam_giat'])));

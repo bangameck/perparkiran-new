@@ -180,47 +180,6 @@ $.idleTimeout("#idletimeout", "#idletimeout a", {
             },
         });
 
-//progres bar
-function ambilId(file){
-		return document.getElementById(file);
-	}
- 
-	$(document).ready(function(){
-		$("#imgUpload").click(function(){
-			ambilId("progressBar").style.display = "block";
-			var file = ambilId("file").files[0];
- 
-			if (file!="") {
-				var formdata = new FormData();
-				formdata.append("file", file);
-				var ajax = new XMLHttpRequest();
-				ajax.upload.addEventListener("progress", progressHandler, false);
-				ajax.addEventListener("load", completeHandler, false);
-				ajax.addEventListener("error", errorHandler, false);
-				ajax.addEventListener("abort", abortHandler, false);
-				ajax.open("POST", "/_template/upload.php");
-				ajax.send(formdata);
-			}
-		});
-	});
- 
-	function progressHandler(event){
-		ambilId("loaded_n_total").innerHTML = "Uploaded "+event.loaded+" bytes of "+event.total;
-		var percent = (event.loaded / event.total) * 100;
-		ambilId("progressBar").value = Math.round(percent);
-		ambilId("status").innerHTML = Math.round(percent)+"% uploaded... please wait";
-	}
-	function completeHandler(event){
-		ambilId("status").innerHTML = event.target.responseText;
-		ambilId("progressBar").value = 0;
-	}
-	function errorHandler(event){
-		ambilId("status").innerHTML = "Upload Failed";
-	}
-	function abortHandler(event){
-		ambilId("status").innerHTML = "Upload Aborted";
-	}
-
 //hanya angka
 function hanyaAngka(evt) {
         var charCode = (evt.which) ? evt.which : event.keyCode
@@ -312,19 +271,6 @@ $(document).ready(function() {
 
 });
 
-
-//jumlah
-$(document).ready(function() {
-        $("#lk, #pr, #ln, #tv").keyup(function() {
-            var lk  = $("#lk").val();
-            var pr = $("#pr").val();
-            var ln = $("#ln").val();
-            var tv = $("#tv").val();
-            var total = parseInt(lk) + parseInt(pr) + parseInt(ln) - parseInt(tv);
-            $("#total").val(total);
-        });
-    });
-
 //Preview Gambar
 function readURL(input) {
     if (input.files && input.files[0]) {
@@ -339,14 +285,6 @@ $("#imgUpload").change(function() {
     readURL(this);
 });
 
-$(document).ready(function(){
-	    // Format nomor HP.
-	  $( '.no_hp' ).mask('0000-0000-0000');
-	})
-
-document.querySelector(".third").addEventListener('click', function(){
-  swal.fire("Our First Alert", "With some body text and success icon!", "success");
-});
 
 //
 function hapustemp() {

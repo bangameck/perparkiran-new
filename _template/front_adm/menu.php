@@ -34,6 +34,23 @@ if($_SESSION['level']=='1') {
 } else {
     $hid = '';
 };
+if($_SESSION['level']=='2' OR $_SESSION['level']=='3'){
+    $pl = '<li class="sidebar-list">
+            <a class="sidebar-link sidebar-title link-nav"
+                href="'.base_url().'pengaduan/proses"><i data-feather="message-square"> </i><span>Laporan Proses</span></a>
+            </li>';
+ } else {
+    $pl = '';
+ }
+
+if($_SESSION['level']=='1' OR $_SESSION['level']=='5' OR $_SESSION['level']=='6'){
+    $peng = '<li class="sidebar-list">
+            <a class="sidebar-link sidebar-title link-nav" href="'.base_url().'pengaduan"><i
+            data-feather="message-circle"> </i><span>Pengaduan</span></a>
+            </li>';
+} else {
+    $peng ='';
+}
 javascript('out','confirm');
 //  include_once '_func/func.php'
  ?>
@@ -55,10 +72,8 @@ javascript('out','confirm');
                         Profile</span></a>
             </li>
             <?= $hid; ?>
-            <li class="sidebar-list" <?= $hide; ?>>
-                <a class="sidebar-link sidebar-title link-nav" href="<?= base_url(); ?>pengaduan"><i
-                        data-feather="message-circle"> </i><span>Pengaduan</span></a>
-            </li>
+            <?= $peng; ?>
+            <?= $pl; ?>
             <li class="sidebar-list" <?= $hide; ?>>
                 <a class="sidebar-link sidebar-title link-nav" href="<?= base_url(); ?>giat"><i
                         data-feather="monitor"> </i><span>Giat</span></a>
