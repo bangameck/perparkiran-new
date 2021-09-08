@@ -14,8 +14,8 @@
     <meta name="keywords"
         content="Sistem Informasi Perparkiran Kota Pekanbaru, Parkir Pekanbaru, UPT Parkir Pekanbaru, UPT Perparkiran Pekanbaru, UPTD Parkir Pekanbaru, Dinas Perhubungan Kota Pekanbaru, Dishub Pku, Jumlah Jukir Pekanbaru, Jukir Pekanbaru">
     <meta name="author" content="uptperparkiranpekanbaru">
-    <link rel="icon" href="<?= base_url(); ?>assets/images/favicon.png" type="image/x-icon">
-    <link rel="shortcut icon" href="<?= base_url(); ?>assets/images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="<?= base_url(); ?>assets/adm/images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="<?= base_url(); ?>assets/adm/images/favicon.png" type="image/x-icon">
 
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap"
