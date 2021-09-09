@@ -175,7 +175,7 @@ aut(array(1));
                                     } else {
                                         $tgl = tgl_indo(date('Y-m-d', strtotime($u['deleted_at']))).' '.date('H:i:s', strtotime($u['deleted_at']));
                                     }
-                                    $l = array('1' => 'Admin Super', '2' => 'Anggota', '3' => 'Karu' ,'4' => 'Pengawas', '5' => 'Bendahara', '6' => 'Pimpinan', '7' => 'Penerima Hak Akses');
+                                    $l = array('1' => 'Admin Super', '2' => 'Anggota', '3' => 'Karu' ,'4' => 'Pengawas', '5' => 'Admin', '6' => 'Pimpinan', '7' => 'Penerima Hak Akses');
                                     
                                 ?>
                                 <tr>

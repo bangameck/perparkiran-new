@@ -19,7 +19,7 @@ if (empty($_SESSION['foto'])) {
 } else {
     $foto = $_SESSION['foto'];
 }
-$l = array('1' => 'Admin Super', '2' => 'Anggota', '3' => 'Karu', '4' => 'Pengawas', '5' => 'Bendahara', '6' => 'Pimpinan', '7' => 'Penerima Hak Akses');
+$l = array('1' => 'Admin Super', '2' => 'Anggota', '3' => 'Karu' ,'4' => 'Pengawas', '5' => 'Admin', '6' => 'Pimpinan', '7' => 'Penerima Hak Akses');
 if (empty($_SESSION['regu'])) {
     $r = $l[$_SESSION['level']];
 } else {

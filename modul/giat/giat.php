@@ -17,7 +17,7 @@ $a=$_GET['a'];
 switch($a){
     default:
     aut(array(1,2,3,4,5,6));
-    if ($_SESSION['level']=='1' OR $_SESSION['level']=='2' OR $_SESSION['level']=='3') {
+    if ($_SESSION['level']=='1' OR $_SESSION['level']=='2' OR $_SESSION['level']=='3' OR $_SESSION['level']=='5') {
         $hide = ''; 
     } else {
         $hide = 'hidden';
@@ -65,8 +65,10 @@ switch($a){
                             </thead>
                             <tbody>
                                 <?php 
-                                if ($_SESSION['level']=='1' OR $_SESSION['level']=='4' OR $_SESSION['level']=='5' OR $_SESSION['level']=='6') {
+                                if ($_SESSION['level']=='1' OR $_SESSION['level']=='4' OR $_SESSION['level']=='6') {
                                     $us=$db->query("SELECT * FROM giat a, regu b WHERE a.regu=b.id_regu ORDER BY a.tgl_giat ASC");
+                                } elseif ($_SESSION['level']=='5') {
+                                    $us=$db->query("SELECT * FROM giat a, regu b WHERE a.regu=b.id_regu AND a.regu='$_SESSION[regu]' ORDER BY a.tgl_giat ASC");
                                 } else {
                                     $us=$db->query("SELECT * FROM giat a, regu b WHERE a.regu=b.id_regu AND a.adm_giat='$_SESSION[id_usr]' ORDER BY a.tgl_giat ASC");
                                 }
@@ -108,7 +110,7 @@ switch($a){
 </div>
 <?php break; ?>
 <?php case 'add' :
-    aut(array(1,2,3));
+    aut(array(1,2,3,5));
     ?>
 <title>Input Kegiatan | <?= $title; ?></title>
 <div class="page-body">
@@ -274,7 +276,7 @@ switch($a){
                 </form>
                 <?php 
                 if (isset($_POST['simpan'])) {
-                    $id             = $db->real_escape_string(slug($_POST['kegiatan']).'-'.uid('2'));
+                    $id             = $db->real_escape_string(uid('2').'-'.slug($_POST['kegiatan']));
                     $no_giat        = $db->real_escape_string($_POST['no_giat']);
                     $tgl            = $db->real_escape_string(date('Y-m-d', strtotime($_POST['tgl_giat'])));
                     $jam            = $db->real_escape_string(date('H:i:s', strtotime($_POST['jam_giat'])));
@@ -544,7 +546,11 @@ switch($a){
 <?php case 'edit' : 
 $id = $_GET['id'];
 $d = $db->query("SELECT * FROM giat a, regu b,  users c WHERE a.regu=b.id_regu AND a.adm_giat=c.id AND a.id_giat='$id'")->fetch_assoc();
-?>
+if ($_SESSION['id_usr']==$d['adm_giat'] OR $_SESSION['level']=='1') {
+    if (empty($d)) {
+        sweetAlert('giat','error','Data tidak ditemukan.!','Maaf data dengan ulr ('.$id.') tidak ditemukan ');
+    } else {
+        ?>
 <title>Edit Kegiatan | <?= $title; ?></title>
 <div class="page-body">
     <div class="container-fluid">
@@ -590,7 +596,7 @@ $d = $db->query("SELECT * FROM giat a, regu b,  users c WHERE a.regu=b.id_regu A
                                     <div class="col-lg-6 col-md-12">
                                         <label">No Kegiatan :</label>
                                             <input type="text" class="form-control" name="no_giat"
-                                                value="<?= $d['no_giat'];?>" readonly>
+                                                value="<?= $d['no_giat']; ?>" readonly>
                                             <div class="valid-feedback">
                                             </div>
                                             <div class="invalid-feedback">
@@ -626,7 +632,7 @@ $d = $db->query("SELECT * FROM giat a, regu b,  users c WHERE a.regu=b.id_regu A
                                             <div class="input-group clockpicker pull-center" data-placement="bottom"
                                                 data-align="top" data-autoclose="true">
                                                 <input class="form-control" name="jam_giat" type="text"
-                                                    value="<?= date('H:i' ,strtotime($d['tgl_giat'])); ?>"
+                                                    value="<?= date('H:i', strtotime($d['tgl_giat'])); ?>"
                                                     required><span class="input-group-addon"><span
                                                         class="glyphicon glyphicon-time"></span></span>
                                             </div>
@@ -636,16 +642,16 @@ $d = $db->query("SELECT * FROM giat a, regu b,  users c WHERE a.regu=b.id_regu A
                                                 Jam tidak boleh kosong.
                                             </div>
                                     </div>
-                                    <?php 
+                                    <?php
                                     if ($_SESSION['level'] == '1') {?>
                                     <div class="col-lg-6 col-md-12">
                                         <label">Regu :</label>
                                             <select class="form-select js-example-basic-single" name="regu"
                                                 id="floatingSelect" aria-label="Pilih Regu" required>
                                                 <option value="<?= $d['id_regu']; ?>"><?= $d['nm_regu']; ?></option>
-                                                <?php 
+                                                <?php
                                                 $regu = $db->query("SELECT * FROM regu ORDER BY nm_regu ASC");
-                                                while($r=$regu->fetch_assoc()) :
+                                                while ($r=$regu->fetch_assoc()) :
                                                 ?>
                                                 <option value="<?= $r['id_regu']; ?>"><?= $r['nm_regu']; ?></option>
                                                 <?php endwhile; ?>
@@ -654,9 +660,8 @@ $d = $db->query("SELECT * FROM giat a, regu b,  users c WHERE a.regu=b.id_regu A
                                                 Regu tidak boleh kosong.
                                             </div>
                                     </div>
-                                    <?php } else { 
-                                        $rg = $db->query("SELECT * FROM regu WHERE id_regu='$_SESSION[regu]'")->fetch_assoc();
-                                    ?>
+                                    <?php } else {
+                                                    $rg = $db->query("SELECT * FROM regu WHERE id_regu='$_SESSION[regu]'")->fetch_assoc(); ?>
                                     <div class="col-lg-6 col-md-12">
                                         <label">Regu :</label>
                                             <input type="hidden" class="form-control" name="regu"
@@ -669,7 +674,8 @@ $d = $db->query("SELECT * FROM giat a, regu b,  users c WHERE a.regu=b.id_regu A
                                                 Regu tidak boleh kosong.
                                             </div>
                                     </div>
-                                    <?php } ?>
+                                    <?php
+                                                } ?>
                                 </div>
                                 <div class="row g-2">
                                     <div class="col-lg-12 col-md-12">
@@ -751,10 +757,10 @@ $d = $db->query("SELECT * FROM giat a, regu b,  users c WHERE a.regu=b.id_regu A
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php 
+                                        <?php
                                         $us=$db->query("SELECT * FROM d_giat WHERE id_giat='$id' ORDER BY n_d_giat ASC");
-                                        $no=1;
-                                        while ($u=$us->fetch_assoc()) :
+        $no=1;
+        while ($u=$us->fetch_assoc()) :
                                             if ($u['x_giat']=='mp4') {
                                                 $pic = '<div class="avatar"><a href="'.base_url().'_uploads/v_giat/'.$u['n_d_giat'].'" target="_blank"><img class="b-r-8 img-40" src="'.base_url().'_uploads/f_giat/play.png"
                                                                 alt="'.$u['n_d_giat'].'"></a>
@@ -763,8 +769,7 @@ $d = $db->query("SELECT * FROM giat a, regu b,  users c WHERE a.regu=b.id_regu A
                                                 $pic = '<div class="avatar"><a href="'.base_url().'_uploads/f_giat/'.$u['n_d_giat'].'" target="_blank"><img class="b-r-8 img-40" src="'.base_url().'_uploads/f_giat/'.$u['n_d_giat'].'"
                                                                 alt="'.$u['n_d_giat'].'"></a>
                                                         </div>';
-                                            }
-                                        ?>
+                                            } ?>
                                         <tr>
                                             <!-- <td><?= $no++; ?></td> -->
                                             <td><?= $u['n_d_giat']; ?></td>
@@ -792,7 +797,7 @@ $d = $db->query("SELECT * FROM giat a, regu b,  users c WHERE a.regu=b.id_regu A
                         </div>
                     </div>
                 </div>
-                <?php 
+                <?php
                 if (isset($_POST['simpan'])) {
                     // $id             = $db->real_escape_string('id');
                     $no_giat        = $db->real_escape_string($_POST['no_giat']);
@@ -808,50 +813,55 @@ $d = $db->query("SELECT * FROM giat a, regu b,  users c WHERE a.regu=b.id_regu A
                     $q = $db->query("UPDATE giat SET tgl_giat='$tgl $jam', regu='$regu', kegiatan='$kegiatan', ket_giat='$ket_giat',adm_giat='$adm_giat',updated_at=NOW() WHERE id_giat='$id'");
 
                     if ($q) {
-                        sweetAlert('giat/edit/'.$id,'sukses','Berhasil !','Data giat dengan (ID Giat : '.$id.') Berhasil diubah.');
+                        sweetAlert('giat/edit/'.$id, 'sukses', 'Berhasil !', 'Data giat dengan (ID Giat : '.$id.') Berhasil diubah.');
                     } else {
-                        javascript('','alert-error','Ups.. Sepertinya ada kesalahan..');
+                        javascript('', 'alert-error', 'Ups.. Sepertinya ada kesalahan..');
                     }
                 }
-                if (isset($_POST['dokumentasi'])) {
-                    $jumlah_foto    = count($_FILES['foto']['name']);
-                        if ($jumlah_foto > 0) {
-                            for ($f=0; $f < $jumlah_foto; $f++){
-                                // $file_tmp    = $_FILES['gambar']['tmp_name'][$i];
-                                $file_tmp_f  = $_FILES['foto']['tmp_name'][$f];
-                                $name_tmp_f  = $_FILES['foto']['name'][$f];
-                                $ext_valid_f = array('png','jpg','jpeg','jpe','3gp','mp4','mp4v','mpg4','mov','qt');
-                                $x_f         = explode('.', $name_tmp_f);
-                                $extend_f    = strtolower(end($x_f));
-                                $time        = date('dmYHis');
-                                $foto        = 'giat_'.$f.$time. '.' . $extend_f;
-                                // $name        = 'giat_'.$f.$time. '.';
-                                if ($extend_f=='png' OR $extend_f=='jpg' OR $extend_f=='jpeg' OR $extend_f=='jpe') {
-                                    $path_f      = '_uploads/f_giat/'.$foto;
-                                } else {
-                                    $path_v      = '_uploads/v_giat/'.$foto;
-                                }
+        if (isset($_POST['dokumentasi'])) {
+            $jumlah_foto    = count($_FILES['foto']['name']);
+            if ($jumlah_foto > 0) {
+                for ($f=0; $f < $jumlah_foto; $f++) {
+                    // $file_tmp    = $_FILES['gambar']['tmp_name'][$i];
+                    $file_tmp_f  = $_FILES['foto']['tmp_name'][$f];
+                    $name_tmp_f  = $_FILES['foto']['name'][$f];
+                    $ext_valid_f = array('png','jpg','jpeg','jpe','3gp','mp4','mp4v','mpg4','mov','qt');
+                    $x_f         = explode('.', $name_tmp_f);
+                    $extend_f    = strtolower(end($x_f));
+                    $time        = date('dmYHis');
+                    $foto        = 'giat_'.$f.$time. '.' . $extend_f;
+                    // $name        = 'giat_'.$f.$time. '.';
+                    if ($extend_f=='png' or $extend_f=='jpg' or $extend_f=='jpeg' or $extend_f=='jpe') {
+                        $path_f      = '_uploads/f_giat/'.$foto;
+                    } else {
+                        $path_v      = '_uploads/v_giat/'.$foto;
+                    }
                                 
-                                if (in_array($extend_f, $ext_valid_f)===true) {
-                                    if ($extend_f=='png' OR $extend_f=='jpg' OR $extend_f=='jpeg' OR $extend_f=='jpe') {
-                                        compressImage($file_tmp_f, $path_f, 30);
-                                    } else {
-                                        move_uploaded_file($file_tmp_f,$path_v);
-                                    }
-                                    $db->query("INSERT INTO d_giat VALUES ('','$id','$foto','$extend_f',NOW())");
-                                    $db->query("UPDATE giat SET updated_at=NOW() WHERE id_giat='$id'");
-                                } else {
-                                    javascript('','alert-error','Inputan hanya boleh jpg, png, jpeg, jpe, 3gp, mp4, mp4v, mpg4, mov, qt');
-                                }
-                            }
-                            sweetAlert('giat/edit/'.$id,'sukses','Berhasil !','Data Dokumentasi giat dengan (ID Giat : '.$id.') Berhasil diinput.');
+                    if (in_array($extend_f, $ext_valid_f)===true) {
+                        if ($extend_f=='png' or $extend_f=='jpg' or $extend_f=='jpeg' or $extend_f=='jpe') {
+                            compressImage($file_tmp_f, $path_f, 30);
+                        } else {
+                            move_uploaded_file($file_tmp_f, $path_v);
                         }
+                        $db->query("INSERT INTO d_giat VALUES ('','$id','$foto','$extend_f',NOW())");
+                        $db->query("UPDATE giat SET updated_at=NOW() WHERE id_giat='$id'");
+                    } else {
+                        javascript('', 'alert-error', 'Inputan hanya boleh jpg, png, jpeg, jpe, 3gp, mp4, mp4v, mpg4, mov, qt');
+                    }
                 }
-                ?>
+                sweetAlert('giat/edit/'.$id, 'sukses', 'Berhasil !', 'Data Dokumentasi giat dengan (ID Giat : '.$id.') Berhasil diinput.');
+            }
+        } ?>
             </div>
         </div>
     </div>
 </div>
+<?php
+    }
+} else {
+    sweetAlert('giat','error','Kesalahan Autentikasi..!','Maaf anda tidak dapat mengubah kegiatan ini...');
+}
+?>
 <?php break; ?>
 <?php case 'delete-dokumentasi' : 
     $id       = $_POST['id'];

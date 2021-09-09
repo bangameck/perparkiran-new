@@ -32,39 +32,39 @@ $id= $_GET['id'];
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/adm/css/font-awesome.css">
     <!-- ico-font-->
-    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/css/vendors/icofont.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/adm/css/vendors/icofont.css">
     <!-- Themify icon-->
-    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/css/vendors/themify.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/adm/css/vendors/themify.css">
     <!-- Flag icon-->
-    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/css/vendors/flag-icon.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/adm/css/vendors/flag-icon.css">
     <!-- Feather icon-->
-    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/css/vendors/feather-icon.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/adm/css/vendors/feather-icon.css">
     <!-- Plugins css start-->
-    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/css/vendors/scrollbar.css">
-    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/css/vendors/aos.css">
-    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/css/vendors/scrollable.css">
-    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/css/vendors/simple-mde.css">
-    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/css/vendors/select2.css">
-    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/css/vendors/animate.css">
-    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/css/vendors/chartist.css">
-    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/css/vendors/date-picker.css">
-    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/css/vendors/timepicker.css">
-    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/css/vendors/datatables.css">
-    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/css/vendors/datatable-extension.css">
-    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/css/vendors/sweetalert2.css">
-    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/css/vendors/photoswipe.css">
-    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/css/vendors/owlcarousel.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/adm/css/vendors/scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/adm/css/vendors/aos.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/adm/css/vendors/scrollable.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/adm/css/vendors/simple-mde.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/adm/css/vendors/select2.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/adm/css/vendors/animate.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/adm/css/vendors/chartist.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/adm/css/vendors/date-picker.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/adm/css/vendors/timepicker.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/adm/css/vendors/datatables.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/adm/css/vendors/datatable-extension.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/adm/css/vendors/sweetalert2.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/adm/css/vendors/photoswipe.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/adm/css/vendors/owlcarousel.css">
     <!-- <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/vendors/animate.css"> -->
     <!-- Plugins css Ends-->
     <!-- Bootstrap css-->
-    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/css/vendors/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/adm/css/vendors/bootstrap.css">
     <!-- App css-->
-    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/css/style.css">
-    <link id="color" rel="stylesheet" href="<?= base_url(); ?>../../assets/css/color-1.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/adm/css/style.css">
+    <link id="color" rel="stylesheet" href="<?= base_url(); ?>../../assets/adm/css/color-1.css" media="screen">
     <!-- Responsive css-->
-    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>../../assets/adm/css/responsive.css">
     <!-- Video.js -->
     <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
     <link href="https://unpkg.com/video.js@7/dist/video-js.min.css" rel="stylesheet" />
@@ -172,119 +172,119 @@ $id= $_GET['id'];
         </div>
     </div>
     <!-- latest jquery-->
-    <script src="<?= base_url(); ?>../../assets/js/jquery-3.5.1.min.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/jquery-3.5.1.min.js"></script>
     <!-- Bootstrap js-->
-    <script src="<?= base_url(); ?>../../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/bootstrap/bootstrap.bundle.min.js"></script>
     <!-- feather icon js-->
-    <script src="<?= base_url(); ?>../../assets/js/icons/feather-icon/feather.min.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/icons/feather-icon/feather-icon.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/icons/feather-icon/feather.min.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/icons/feather-icon/feather-icon.js"></script>
     <!-- scrollbar js-->
     <!-- <script src="<?= base_url(); ?>../../assets/js/scrollbar/simplebar.js"></script> -->
-    <script src="<?= base_url(); ?>../../assets/js/scrollbar/custom.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/scrollbar/custom.js"></script>
     <!-- Sidebar jquery-->
-    <script src="<?= base_url(); ?>../../assets/js/config.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/config.js"></script>
     <!-- Plugins JS start-->
     <!-- <script src="<?= base_url(); ?>/assets/js/height-equal.js"></script> -->
     <!-- <script src="<?= base_url(); ?>../../assets/js/sidebar-menu.js"></script> -->
-    <script src="<?= base_url(); ?>../../assets/js/isotope.pkgd.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/animation/aos/aos.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/animation/aos/aos-init.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/timeline/timeline-v-1/main.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/modernizr.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/timeline/timeline-v-2/jquery.timeliny.min.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/timeline/timeline-v-2/timeline-v-2-custom.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/scrollable/perfect-scrollbar.min.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/scrollable/scrollable-custom.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/isotope.pkgd.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/animation/aos/aos.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/animation/aos/aos-init.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/timeline/timeline-v-1/main.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/modernizr.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/timeline/timeline-v-2/jquery.timeliny.min.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/timeline/timeline-v-2/timeline-v-2-custom.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/scrollable/perfect-scrollbar.min.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/scrollable/scrollable-custom.js"></script>
     <!-- <script src="<?= base_url(); ?>assets/js/editor/simple-mde/simplemde.min.js"></script>
 <script src="<?= base_url(); ?>assets/js/editor/simple-mde/simplemde.custom.js"></script> -->
-    <script src="<?= base_url(); ?>../../assets/js/touchspin/vendors.min.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/touchspin/touchspin.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/touchspin/input-groups.min.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/form-validation-custom.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/select2/select2.full.min.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/select2/select2-custom.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/height-equal.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/chart/chartist/chartist.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/chart/chartist/chartist-plugin-tooltip.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/chart/knob/knob.min.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/chart/knob/knob-chart.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/chart/apex-chart/apex-chart.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/chart/apex-chart/stock-prices.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/notify/bootstrap-notify.min.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/dashboard/default.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/touchspin/vendors.min.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/touchspin/touchspin.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/touchspin/input-groups.min.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/form-validation-custom.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/select2/select2.full.min.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/select2/select2-custom.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/height-equal.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/chart/chartist/chartist.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/chart/chartist/chartist-plugin-tooltip.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/chart/knob/knob.min.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/chart/knob/knob-chart.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/chart/apex-chart/apex-chart.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/chart/apex-chart/stock-prices.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/notify/bootstrap-notify.min.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/dashboard/default.js"></script>
     <!-- <script src="<?= base_url(); ?>assets/js/notify/index.js"></script> -->
     <!-- <script src="<?= base_url(); ?>assets/js/sweet-alert/sweetalert.min.js"></script> -->
-    <script src="<?= base_url(); ?>assets/js/modal-animated.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/sweet-alert/sweetalert2.all.min.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/sweet-alert/app.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/tooltip-init.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/datepicker/date-picker/datepicker.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/datepicker/date-picker/datepicker.en.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/datepicker/date-picker/datepicker.custom.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/time-picker/jquery-clockpicker.min.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/time-picker/highlight.min.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/time-picker/clockpicker.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/typeahead/handlebars.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/typeahead/typeahead.bundle.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/typeahead/typeahead.custom.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/typeahead-search/handlebars.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/typeahead-search/typeahead-custom.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/counter/jquery.waypoints.min.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/counter/jquery.counterup.min.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/counter/counter-custom.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/photoswipe/photoswipe.min.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/photoswipe/photoswipe-ui-default.min.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/photoswipe/photoswipe.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/owlcarousel/owl.carousel.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/owlcarousel/owl-custom.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/animation/wow/wow.min.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/animation/wow/wow-init.js"></script>
+    <script src="<?= base_url(); ?>assets/adm/js/modal-animated.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/sweet-alert/sweetalert2.all.min.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/sweet-alert/app.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/tooltip-init.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/datepicker/date-picker/datepicker.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/datepicker/date-picker/datepicker.en.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/datepicker/date-picker/datepicker.custom.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/time-picker/jquery-clockpicker.min.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/time-picker/highlight.min.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/time-picker/clockpicker.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/typeahead/handlebars.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/typeahead/typeahead.bundle.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/typeahead/typeahead.custom.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/typeahead-search/handlebars.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/typeahead-search/typeahead-custom.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/counter/jquery.waypoints.min.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/counter/jquery.counterup.min.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/counter/counter-custom.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/photoswipe/photoswipe.min.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/photoswipe/photoswipe-ui-default.min.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/photoswipe/photoswipe.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/owlcarousel/owl.carousel.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/owlcarousel/owl-custom.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/animation/wow/wow.min.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/animation/wow/wow-init.js"></script>
     <!-- Plugins JS Ends-->
     <!-- Theme js-->
-    <script src="<?= base_url(); ?>../../assets/js/script.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/script.js"></script>
     <!-- <script src="<?= base_url(); ?>../../assets/js/theme-customizer/customizer.js"></script> -->
     <!-- login js-->
     <!-- Plugin used-->
     <!-- data tables  -->
-    <script src="<?= base_url(); ?>../../assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/datatable/datatable-extension/dataTables.buttons.min.js">
+    <script src="<?= base_url(); ?>../../assets/adm/js/datatable/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/datatable/datatable-extension/dataTables.buttons.min.js">
     </script>
-    <script src="<?= base_url(); ?>../../assets/js/datatable/datatable-extension/jszip.min.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/datatable/datatable-extension/buttons.colVis.min.js">
+    <script src="<?= base_url(); ?>../../assets/adm/js/datatable/datatable-extension/jszip.min.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/datatable/datatable-extension/buttons.colVis.min.js">
     </script>
-    <script src="<?= base_url(); ?>../../assets/js/datatable/datatable-extension/pdfmake.min.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/datatable/datatable-extension/vfs_fonts.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/datatable/datatable-extension/dataTables.autoFill.min.js">
+    <script src="<?= base_url(); ?>../../assets/adm/js/datatable/datatable-extension/pdfmake.min.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/datatable/datatable-extension/vfs_fonts.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/datatable/datatable-extension/dataTables.autoFill.min.js">
     </script>
-    <script src="<?= base_url(); ?>../../assets/js/datatable/datatable-extension/dataTables.select.min.js">
+    <script src="<?= base_url(); ?>../../assets/adm/js/datatable/datatable-extension/dataTables.select.min.js">
     </script>
-    <script src="<?= base_url(); ?>../../assets/js/datatable/datatable-extension/buttons.bootstrap4.min.js">
+    <script src="<?= base_url(); ?>../../assets/adm/js/datatable/datatable-extension/buttons.bootstrap4.min.js">
     </script>
-    <script src="<?= base_url(); ?>../../assets/js/datatable/datatable-extension/buttons.html5.min.js">
+    <script src="<?= base_url(); ?>../../assets/adm/js/datatable/datatable-extension/buttons.html5.min.js">
     </script>
-    <script src="<?= base_url(); ?>../../assets/js/datatable/datatable-extension/buttons.print.min.js">
+    <script src="<?= base_url(); ?>../../assets/adm/js/datatable/datatable-extension/buttons.print.min.js">
     </script>
-    <script src="<?= base_url(); ?>../../assets/js/datatable/datatable-extension/dataTables.bootstrap4.min.js">
+    <script src="<?= base_url(); ?>../../assets/adm/js/datatable/datatable-extension/dataTables.bootstrap4.min.js">
     </script>
-    <script src="<?= base_url(); ?>../../assets/js/datatable/datatable-extension/dataTables.responsive.min.js">
+    <script src="<?= base_url(); ?>../../assets/adm/js/datatable/datatable-extension/dataTables.responsive.min.js">
     </script>
-    <script src="<?= base_url(); ?>../../assets/js/datatable/datatable-extension/responsive.bootstrap4.min.js">
+    <script src="<?= base_url(); ?>../../assets/adm/js/datatable/datatable-extension/responsive.bootstrap4.min.js">
     </script>
-    <script src="<?= base_url(); ?>../../assets/js/datatable/datatable-extension/dataTables.keyTable.min.js">
+    <script src="<?= base_url(); ?>../../assets/adm/js/datatable/datatable-extension/dataTables.keyTable.min.js">
     </script>
-    <script src="<?= base_url(); ?>../../assets/js/datatable/datatable-extension/dataTables.colReorder.min.js">
+    <script src="<?= base_url(); ?>../../assets/adm/js/datatable/datatable-extension/dataTables.colReorder.min.js">
     </script>
-    <script src="<?= base_url(); ?>../../assets/js/datatable/datatable-extension/dataTables.fixedHeader.min.js">
+    <script src="<?= base_url(); ?>../../assets/adm/js/datatable/datatable-extension/dataTables.fixedHeader.min.js">
     </script>
-    <script src="<?= base_url(); ?>../../assets/js/datatable/datatable-extension/dataTables.rowReorder.min.js">
+    <script src="<?= base_url(); ?>../../assets/adm/js/datatable/datatable-extension/dataTables.rowReorder.min.js">
     </script>
-    <script src="<?= base_url(); ?>../../assets/js/datatable/datatable-extension/dataTables.scroller.min.js">
+    <script src="<?= base_url(); ?>../../assets/adm/js/datatable/datatable-extension/dataTables.scroller.min.js">
     </script>
-    <script src="<?= base_url(); ?>../../assets/js/datatable/datatable-extension/custom.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/idle-master/jquery.idle.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/idle-master/jquery.idle.min.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/jquery-idle/src/jquery.idletimeout.js"></script>
-    <script src="<?= base_url(); ?>../../assets/js/jquery-idle/src/jquery.idletimer.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/datatable/datatable-extension/custom.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/idle-master/jquery.idle.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/idle-master/jquery.idle.min.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/jquery-idle/src/jquery.idletimeout.js"></script>
+    <script src="<?= base_url(); ?>../../assets/adm/js/jquery-idle/src/jquery.idletimer.js"></script>
     <script src="https://cdn.rawgit.com/igorescobar/jQuery-Mask-Plugin/1ef022ab/dist/jquery.mask.min.js">
     </script>
     <!-- <script src="<?= base_url(); ?>assets/intel/build/js/intlTelInput.js"></script> -->
