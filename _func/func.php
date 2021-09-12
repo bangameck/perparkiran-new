@@ -1,12 +1,4 @@
 <?php
-/**
-* @author [bangameck.rra]
-* @email [rahmad.looker@gmail.com]
-* @create date 2021-06-11 14:32:29
-* @modify date 2021-06-11 14:34:09
-* @desc [description]
-*/
-
 //php csrf token
 // include 'php-csrf.php';
 
@@ -89,25 +81,4 @@ function modul($m)
     }
 }
 
-function modul_web($w)
-{
-    global $db;
-    global $base_url;
-    if (empty($w)) {
-        include "modul/adm_web/home/home.php";
-    } else {
-        return include "modul/adm_web/$w/$w.php";
-    }
-}
-
-// function modula($ma)
-// {
-//     global $db;
-//     global $base_url;
-//     if (empty($ma)) {
-//         include "modula/hm/hm.php";
-//     } else {
-//         return include "modula/$ma/$ma.php";
-//     }
-// }
 ?>

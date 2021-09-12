@@ -241,7 +241,7 @@ switch ($a) {
                             <label">Bukti Pengaduan : <small style="color: green;">Pilih beberapa gambar atau
                                     video</small></label>
                                 <input class="form-control" name="foto[]" type="file"
-                                    accept="image/jpeg, image/png, video/3gpp, video/mp4, video/x-m4v, video/quicktime"
+                                    accept="image/jpeg, image/png, video/mp4"
                                     multiple required>
                                 <small style="color: red;">Format File : jpg, png, jpeg, jpe, 3gp, mp4, mp4v, mpg4, mov,
                                     qt</small><br>

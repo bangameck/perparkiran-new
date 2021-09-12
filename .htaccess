@@ -81,13 +81,13 @@ RewriteRule ^pengaduan/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?m=dpengaduan&id=$
 RewriteRule ^pengaduan/print$ modul/dpengaduan/print.php [L]
 
 #giat
-RewriteRule ^blog$ .rest_page.php?m=blog [L]
-RewriteRule ^blog/add$ .rest_page.php?m=blog&a=add [L]
-RewriteRule ^blog/delete/dokumentasi$ .rest_page.php?m=blog&a=delete-dokumentasi [L]
-RewriteRule ^blog/delete$ .rest_page.php?m=blog&a=delete [L]
-RewriteRule ^blog/edit/([a-zA-Z0-9_-]+)$ .rest_page.php?m=blog&a=edit&id=$1 [L]
-RewriteRule ^blog/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?m=dblog&id=$1 [L]
-RewriteRule ^blog/print$ modul/dblog/print.php [L]
+RewriteRule ^blog/post$ .rest_page.php?m=blog [L]
+RewriteRule ^blog/post/add$ .rest_page.php?m=blog&a=add [L]
+RewriteRule ^blog/post/delete/dokumentasi$ .rest_page.php?m=blog&a=delete-dokumentasi [L]
+RewriteRule ^blog/post/delete$ .rest_page.php?m=blog&a=delete [L]
+RewriteRule ^blog/post/edit/([a-zA-Z0-9_-]+)$ .rest_page.php?m=blog&a=edit&id=$1 [L]
+RewriteRule ^blog/post/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?m=dblog&id=$1 [L]
+RewriteRule ^blog/post/print$ modul/dblog/print.php [L]
 
 #Laporan
 RewriteRule ^laporan$ .rest_page.php?m=laporan [L]

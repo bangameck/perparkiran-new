@@ -41,6 +41,7 @@ switch($a){
                         <div class="row g-2">
                             <div class="col-lg-12 col-md-12">
                                 <label">Nama Tags / Kategori :</label>
+                                <input type="file" name="gambar" class="dropify" accept="image/jpeg, image/png"  data-allowed-file-extensions="jpg jpeg jpe png"/>
                                 <input type="text" class="form-control" name="nm_tags" required>
                                 <div class="valid-feedback">
                                 </div>

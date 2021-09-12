@@ -79,7 +79,7 @@ javascript('out','confirm');
             </li> -->
             <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav"
                     href="<?= base_url(); ?>dashboard"><i data-feather="home"> </i><span>Dashboard</span></a></li>
-            <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav"
+            <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" <?= $hide; ?>
                     href="<?= base_url(); ?>profile/<?= $_SESSION['username']; ?>"><i data-feather="user"> </i><span>My
                         Profile</span></a>
             </li>
@@ -96,17 +96,17 @@ javascript('out','confirm');
                         data-feather="monitor"> </i><span>Giat</span></a>
             </li>
             <?= $peng; ?>
-            <li class="sidebar-main-title">
+            <li class="sidebar-main-title" <?= $hide; ?>>
                 <div>
                 <h6>Blog</h6>
                 <p>Berita & Perparkiran Care</p>
                 </div>
             </li>
-            <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i
+            <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#" <?= $hide; ?>><i
                         data-feather="file-text"></i><span>Blog</span></a>
                 <ul class="sidebar-submenu">
                     <li><a href="<?= base_url(); ?>tags">Tags / Kategori</a></li>
-                    <li><a href="<?= base_url(); ?>blog">Postingan</a></li>
+                    <li><a href="<?= base_url(); ?>blog/post">Postingan</a></li>
                     <!-- <li><a href="<?= base_url(); ?>laporan/perbus">Laporan Perbus</a></li> -->
                 </ul>
             </li>

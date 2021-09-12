@@ -55,9 +55,17 @@
     <link id="color" rel="stylesheet" href="<?= base_url(); ?>assets/adm/css/color-1.css" media="screen">
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/adm/css/responsive.css">
+    <!-- Dropify -->
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>vendor/dropify/dist/css/dropify.min.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>vendor/dropify/dist/css/dropify.css">
     <!-- afterglowplayer -->
     <script src="//cdn.jsdelivr.net/npm/afterglowplayer@1.x"></script>
     <!-- CKEditor5 -->
+    <style>
+        .ck-editor__editable {
+        min-height: 200px;
+        }
+    </style>
     <!-- <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script> -->
     <!-- <script>
     ClassicEditor

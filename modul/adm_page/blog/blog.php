@@ -16,28 +16,23 @@ $csrf     = $db->query("SELECT b.token FROM users a, session b WHERE a.token=b.t
 $a=$_GET['a'];
 switch ($a) {
     default:
-    aut(array(1,4,5,6));
-    if ($_SESSION['level']=='1' OR $_SESSION['level']=='5') {
-        $hide = '';
-    } else {
-        $hide = 'hidden';
-    }
-    
+    aut(array(1,2,3,4,5,6));
         ?>
-<title>Pengaduan | <?= $title; ?></title>
+<title>Postingan | <?= $title; ?></title>
 <div class="page-body">
     <div class="container-fluid">
         <div class="page-title">
             <div class="row">
                 <div class="col-6">
-                    <h3>Data Pengaduan</h3>
+                    <h3>Postingan</h3>
                 </div>
                 <div class="col-6">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="<?= base_url(); ?>"> <i
-                                    data-feather="git-pull-request"></i></a>
+                                    data-feather="file-text"></i></a>
                         </li>
-                        <li class="breadcrumb-item active">Pengaduan </li>
+                        <li class="breadcrumb-item">Blog</li>
+                        <li class="breadcrumb-item active">Postingan </li>
                     </ol>
                 </div>
             </div>
@@ -49,9 +44,8 @@ switch ($a) {
                 <div class="card-body">
                     <div class="dt-ext table-responsive">
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <a href="<?= base_url(); ?>pengaduan/add-adm" class="btn btn-primary-gradien"
-                                type="button">Tambah
-                                Data</a>
+                            <a href="<?= base_url(); ?>blog/post/add" class="btn btn-primary-gradien"
+                                type="button">Tambah Postingan</a>
                         </div>
                         <br>
                         <table class="display" id="export-button">
@@ -149,24 +143,24 @@ switch ($a) {
     </div>
 </div>
 <?php break; ?>
-<?php case 'add-adm':
+<?php case 'add':
     aut(array(1,5,6));
         ?>
-<title>Input Pengaduan | <?= $title; ?></title>
+<title>Postingan Baru | <?= $title; ?></title>
 <div class="page-body">
     <div class="container-fluid">
         <div class="page-title">
             <div class="row">
                 <div class="col-6">
-                    <h3>Input Pengaduan</h3>
+                    <h3>Postingan Baru</h3>
                 </div>
                 <div class="col-6">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="<?= base_url(); ?>"> <i
-                                    data-feather="message-circle"></i></a>
+                                    data-feather="file-text"></i></a>
                         </li>
-                        <li class="breadcrumb-item">Pengaduan </li>
-                        <li class="breadcrumb-item active">Input Pengaduan </li>
+                        <li class="breadcrumb-item">Blog </li>
+                        <li class="breadcrumb-item active">Postingan Baru </li>
                     </ol>
                 </div>
             </div>
@@ -178,250 +172,127 @@ switch ($a) {
                 <form class="row g-3 needs-validation form theme-form" novalidate="" action="" method="POST"
                     enctype="multipart/form-data">
                     <div class="row g-2">
-                        <div class="col-lg-4 col-md-12">
-                            <label">Nama :</label>
-                                <input type="text" class="form-control" name="nama_p" required>
+                        <div class="col-lg-12 col-md-12">
+                            <label">Judul Postingan :</label>
+                                <input type="text" name="j_blog" class="form-control" required>
                                 <div class="valid-feedback">
                                 </div>
                                 <div class="invalid-feedback">
-                                    Nama tidak boleh kosong.
-                                </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12">
-                            <label">Email :</label>
-                                <input type="email" class="form-control" name="email_p" required>
-                                <div class="valid-feedback">
-                                </div>
-                                <div class="invalid-feedback">
-                                    Email tidak boleh kosong.
-                                </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12">
-                            <label">Nomor HP :</label>
-                                <input type="text" class="form-control" name="no_hp_p"
-                                    onkeypress="return hanyaAngka(event)" required>
-                                <div class="valid-feedback">
-                                </div>
-                                <div class="invalid-feedback">
-                                    Nomor HP tidak boleh kosong.
+                                    Judul Postingan tidak boleh kosong.
                                 </div>
                         </div>
                     </div>
                     <div class="row g-2">
                         <div class="col-lg-12 col-md-12">
-                            <label">Judul Pengaduan :</label>
-                                <input type="text" name="j_peng" class="form-control" required>
+                            <label">Sampul :</label>
+                            <input type="file" name="sampul" class="form-control dropify" accept="image/jpeg, image/png"  data-allowed-file-extensions="jpg jpeg jpe png" required>
                                 <div class="valid-feedback">
                                 </div>
                                 <div class="invalid-feedback">
-                                    Judul Pengaduan tidak boleh kosong.
+                                    Sampul tidak boleh kosong.
                                 </div>
                         </div>
                     </div>
                     <div class="row g-2">
                         <div class="col-lg-12 col-md-12">
-                            <label">Isi Pengaduan :</label>
-                                <textarea name="peng" class="form-control editor" required></textarea>
+                            <label">Isi Postingan :</label>
+                                <textarea name="isi" class="form-control editor" required></textarea>
                                 <div class="valid-feedback">
                                 </div>
                                 <div class="invalid-feedback">
-                                    Isi Pengaduan tidak boleh kosong.
+                                    Isi Postingan tidak boleh kosong.
                                 </div>
                         </div>
                     </div>
-                    <!-- <div class="row g-2">
-                    <div class="col-lg-9 col-md-12">
-                        <label">Dokumentasi Video : <small style="color: green;">Pilih beberapa video</small></label>
-                        <input class="form-control" name="video[]" type="file" accept="video/*" multiple>
-                        <small style="color: red;">Format File : 3gp, mp4</small>
-                    </div>
-                </div> -->
                     <div class="row g-2">
                         <div class="col-lg-12 col-md-12">
-                            <label">Bukti Pengaduan : <small style="color: green;">Pilih beberapa gambar atau
+                            <hr>
+                            <label>Kategori :</label><br>
+                            <?php 
+                            $tags = $db->query("SELECT * FROM tags ORDER BY nm_tags ASC");
+                            while($t=$tags->fetch_assoc()) :
+                            ?>
+                            <input class="checkbox_animated"  type="checkbox" name="tags[]" value="<?= $t['id_tags']; ?>"> <?= $t['nm_tags']; ?>; &nbsp;&nbsp;&nbsp;&nbsp;
+                            <?php endwhile; ?>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row g-2">
+                        <div class="col-lg-12 col-md-12">
+                            <label">Galery Postingan : <small style="color: green;">Pilih beberapa gambar atau
                                     video</small></label>
                                 <input class="form-control" name="foto[]" type="file"
-                                    accept="image/jpeg, image/png, video/3gpp, video/mp4, video/x-m4v, video/quicktime"
+                                    accept="image/jpeg, image/png, video/mp4"
                                     multiple required>
-                                <small style="color: red;">Format File : jpg, png, jpeg, jpe, 3gp, mp4, mp4v, mpg4, mov,
-                                    qt</small><br>
+                                <small style="color: red;">Format File : jpg, png, jpeg, jpe, mp4</small><br>
                                 <small style="color: red;">Jika jumlah file banyak dan berukuran besar maka loading akan
                                     lebih lama.</small>
                                 <div class="invalid-feedback">
-                                    Bukti Pengaduan tidak boleh kosong.
+                                    Galery Postingan tidak boleh kosong.
                                 </div>
                         </div>
                     </div>
                     <hr>
                     <div class="d-grid gap-2 col-lg-3 col-md-12 mx-auto">
-                        <button class="btn btn-primary-gradien" name="simpan" type="submit">Ajukan Pengaduan</button>
+                        <button class="btn btn-primary-gradien" name="simpan" type="submit">Simpan</button>
                     </div>
                 </form>
                 <?php
                 if (isset($_POST['simpan'])) {
-                    $id             = $db->real_escape_string(acakhba('12'));
-                    $nama_p         = $db->real_escape_string($_POST['nama_p']);
-                    $email_p        = $db->real_escape_string($_POST['email_p']);
-                    $no_hp_p        = $db->real_escape_string($_POST['no_hp_p']);
-                    $j_peng         = $db->real_escape_string($_POST['j_peng']);
-                    $slug           = $db->real_escape_string(uid('2').'-'.slug($_POST['j_peng']));
-                    $peng           = $_POST['peng'];
-                    $ket_peng       = $db->real_escape_string('Sedang diverifikasi');
-                    $adm_peng       = $_SESSION['id_usr'];
-                    $jumlah_foto    = count($_FILES['foto']['name']);
+                    $id          = $db->real_escape_string(uid('20'));
+                    $j_blog      = $db->real_escape_string($_POST['j_blog']);
+                    $slug        = $db->real_escape_string(uid('3').'-'.slug($_POST['j_blog']));
+                    $isi         = $_POST['isi'];
+                    $adm_blog    = $_SESSION['id_usr'];
+                    $jumlah_tags = count($_POST['tags']);
+                    $jumlah_foto = count($_FILES['foto']['name']);
+                    $sampul = $_FILES['sampul']['name'];
                     // $file_tmp_foto  = $_FILES['foto']['tmp_name'];
-                    // var_dump($id,$nama_p,$email_p,$no_hp_p,$j_peng,$adm_peng,$jumlah_foto);
+                    // var_dump($id,$j_blog,$slug,$isi,$adm_blog,$jumlah_tags,$jumlah_foto,$sampul);
                     // die();
 
                     
-                    if ($jumlah_foto > 0) {
+                    if ($jumlah_tags > 0 OR empty($_FILES['sampul']['tmp_name'])) {
                         for ($f=0; $f < $jumlah_foto; $f++) {
                             // $file_tmp    = $_FILES['gambar']['tmp_name'][$i];
                             $file_tmp_f  = $_FILES['foto']['tmp_name'][$f];
+                            $file_tmp_s  = $_FILES['sampul']['tmp_name'];
                             $name_tmp_f  = $_FILES['foto']['name'][$f];
-                            $ext_valid_f = array('png','jpg','jpeg','jpe','3gp','mp4','mp4v','mpg4','mov','qt');
+                            $name_tmp_s  = $_FILES['sampul']['name'];
+                            $ext_valid = array('png','jpg','jpeg','jpe');
+                            // $ext_valid_s = array('png','jpg','jpeg','jpe');
                             $x_f         = explode('.', $name_tmp_f);
+                            $x_s         = explode('.', $name_tmp_s);
                             $extend_f    = strtolower(end($x_f));
+                            $extend_s    = strtolower(end($x_s));
                             $time        = date('dmYHis');
-                            $foto        = $id.'-'.$f.$time. '.' . $extend_f;
-                            // $name        = 'giat_'.$f.$time. '.';
-                            if ($extend_f=='png' or $extend_f=='jpg' or $extend_f=='jpeg' or $extend_f=='jpe') {
-                                $path_f      = '_uploads/f_peng/'.$foto;
-                            } else {
-                                $path_v      = '_uploads/v_peng/'.$foto;
-                            }
+                            $foto        = $id. '-' .$f .$time. '.' .$extend_f;
+                            $sampul      = $id. '-' .$time. '.' .$extend_s;
+                            $path_f      = '_uploads/blog/gallery/'.$foto;
+                            $path_s      = '_uploads/blog/sampul/'.$sampul;
+                            // else {
+                            //     $path_v      = '_uploads/v_peng/'.$foto;
+                            // }
                                 
-                            if (in_array($extend_f, $ext_valid_f)===true) {
-                                if ($extend_f=='png' or $extend_f=='jpg' or $extend_f=='jpeg' or $extend_f=='jpe') {
+                            if (in_array($extend_f, $ext_valid)===true or in_array($extend_s, $ext_valid)===true) {
+                                
                                     compressImage($file_tmp_f, $path_f, 30);
-                                } else {
-                                    move_uploaded_file($file_tmp_f, $path_v);
-                                }
-                                $db->query("INSERT INTO d_pengaduan VALUES ('','$id','$foto','$extend_f',NOW())");
+                                    compressImage($file_tmp_s, $path_s, 60);
+                                    // move_uploaded_file($file_tmp_s, $path_s);
+                                $q=$db->query("INSERT INTO d_blog VALUES ('','$id','$foto','$extend_f',NOW())");
+                                $db->query("INSERT INTO blog VALUES ('$id','$j_blog','$slug','$isi','$sampul','Y','N','N','$adm_blog',NOW(),NULL,NULL)");
                             } else {
-                                javascript('', 'alert-error', 'Inputan hanya boleh jpg, png, jpeg, jpe, 3gp, mp4, mp4v, mpg4, mov, qt');
+                                javascript('', 'alert-error', 'Inputan hanya boleh jpg, png, jpeg, jpe');
                             }
                         }
-                        //kirim email
-                        $mail = new  PHPMailer\PHPMailer\PHPMailer();
-                        // $body = 'Test email dulu bosque'
-                        //Enable SMTP debugging.
-                        //$mail->SMTPDebug = 3;
-                        //Set PHPMailer to use SMTP.
-                        $mail->isSMTP();
-                        //Set SMTP host name
-                        $mail->Host = $host;
-                        $mail->SMTPAuth = true;
-                        //Provide username and password
-                        $mail->Username = $email_;   //nama-email smtp
-                        $mail->Password = $pmail;    //password email smtp
-                        //If SMTP requires TLS encryption then set it
-                        $mail->SMTPSecure = $secure;
-                        //Set TCP port to connect to
-                        $mail->Port = $port;
-    
-                        $mail->From = $email_; //email pengirim
-                        $mail->FromName = $title; //nama pengirim
-
-                        $mail->AddEmbeddedImage($logo, 'logo', 'icon.png');
-                        $mail->addAddress($email_p, $nama_p); //email penerima
-
-                        $mail->isHTML(true);
-                        $mail->Subject = 'Layanan Pengaduan Perparkiran Kota Pekanbaru.'; //subject
-                        $body          = '<!DOCTYPE html>
-                                        <html lang="en">
-                                        <head>
-                                            <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-                                            <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-                                            <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-                                            <style type="text/css">
-                                            body{
-                                            width: 650px;
-                                            font-family: work-Sans, sans-serif;
-                                            background-color: #f6f7fb;
-                                            display: block;
-                                            }
-                                            a{
-                                            text-decoration: none;
-                                            }
-                                            span {
-                                            font-size: 14px;
-                                            }
-                                            p {
-                                                font-size: 13px;
-                                                line-height: 1.7;
-                                                letter-spacing: 0.7px;
-                                                margin-top: 0;
-                                            }
-                                            .text-center{
-                                            text-align: center
-                                            }
-                                            h6 {
-                                            font-size: 16px;
-                                            margin: 0 0 18px 0;
-                                            }
-                                            </style>
-                                        </head>
-                                        <body style="margin: 30px auto;">
-                                            <table style="width: 100%">
-                                            <tbody>
-                                                <tr>
-                                                <td>
-                                                    <table style="background-color: #f6f7fb; width: 100%">
-                                                    <tbody>
-                                                        <tr>
-                                                        <td>
-                                                            <table style="width: 650px; margin: 0 auto; margin-bottom: 30px">
-                                                            <tbody>
-                                                                <tr>
-                                                                <td><img src="cid:logo" alt=""></td>
-                                                                <td style="text-align: right; color:#999"><span>Email Resmi UPT Perparkiran Dinas Perhubungan Kota Pekanbaru</span></td>
-                                                                </tr>
-                                                            </tbody>
-                                                            </table>
-                                                        </td>
-                                                        </tr>
-                                                    </tbody>
-                                                    </table>
-                                                    <table style="width: 650px; margin: 0 auto; background-color: #fff; border-radius: 8px">
-                                                    <tbody>
-                                                        <tr>
-                                                        <td style="padding: 30px"> 
-                                                            <h6 style="font-weight: 600">Pengaduan Anda Sedang diverifikasi.</h6>
-                                                            <p>Halo '.$nama_p.',</p>
-                                                            <p>Pengaduan anda sedang kami verifikasi silahkan cek pengaduan anda secara berkala dengan mengklik ID pengaduan anda dibawah ini :</p>
-                                                            <p style="text-align: center"><a href="'.$base_url.'pengaduan/detail-pengaduan/'.$slug.'" style="padding: 10px; background-color: #7366ff; color: #fff; display: inline-block; border-radius: 4px">'.$id.'</a></p>
-                                                            <p>Jika pengaduan anda sudah selesai diverifikasi oleh Admin UPT Perparkiran, kami akan memberitahu melalui surat elektronik ini secara otomatis.</p>
-                                                            <p style="margin-bottom: 0">
-                                                            Regards,<br>Team IT UPT Perparkiran Dinas Perhubungan Kota Pekanbaru</p>
-                                                        </td>
-                                                        </tr>
-                                                    </tbody>
-                                                    </table>
-                                                    <table style="width: 650px; margin: 0 auto; margin-top: 30px">
-                                                    <tbody>       
-                                                        <tr style="text-align: center">
-                                                        <td> 
-                                                            <p style="color: #999; margin-bottom: 0">'.$alamat.'</p>
-                                                            <p style="color: #999; margin-bottom: 0">'.$instansi.'</a></p>
-                                                            <p style="color: #999; margin-bottom: 0">'.$footer.'</p></td>
-                                                        </tr>
-                                                    </tbody>
-                                                    </table>
-                                                </td>
-                                                </tr>
-                                            </tbody>
-                                            </table>
-                                        </body>
-                                        </html>';
-                        $mail->Body    = $body;
-
-                        if(!$mail->send()) {
-                            sweetAlert($m,'error','Mailer Error: ',$mail->ErrorInfo) ;
-                        } else {
-                            $db->query("INSERT INTO pengaduan VALUES ('$id','$nama_p','$email_p','$no_hp_p','$j_peng','$slug','$peng','P','NULL','$adm_peng',NOW(),'$ket_peng',NULL,NOW(),NOW(),NULL)");
-                            sweetAlert('pengaduan', 'sukses', 'Berhasil !', 'Data Pengaduan dengan (ID : '.$id.') Berhasil diinput.');
+                        for ($t=0; $t < $jumlah_tags; $t++) { 
+                            $tags = $db->real_escape_string($_POST['tags'][$t]);
+                            $db->query("INSERT INTO tags_blog VALUES ('','$id','$tags',NOW())");
                         }
+                        sweetAlert('blog/post', 'sukses', 'Berhasil !', 'Data Pengaduan dengan (ID : '.$id.') Berhasil diinput.');
+                        
+                    } else {
+                        javascript('','alert-error','Sampul dan Kategori tidak boleh kosong..');
                     }
                 } ?>
             </div>

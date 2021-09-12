@@ -1,12 +1,6 @@
-<!-- /**
-* @author [bangameck.rra]
-* @email [rahmad.looker@gmail.com]
-* @create date 2021-06-11 14:32:29
-* @modify date 2021-06-11 14:34:09
-* @desc [description]
-*/ -->
 <!-- latest jquery-->
-<script src="<?= base_url(); ?>assets/adm/js/jquery-3.5.1.min.js"></script>
+<!-- <script src="<?= base_url(); ?>assets/adm/js/jquery-3.5.1.min.js"></script> -->
+<script src="<?= base_url(); ?>assets/adm/js/jquery-3.6.0.min.js"></script>
 <!-- Bootstrap js-->
 <script src="<?= base_url(); ?>assets/adm/js/bootstrap/bootstrap.bundle.min.js"></script>
 <!-- feather icon js-->
@@ -35,8 +29,8 @@
 <script src="<?= base_url(); ?>assets/adm/js/editor/ckeditor/ckeditor.custom.js"></script> -->
 <!-- <script src="<?= base_url(); ?>assets/adm/js/editor/simple-mde/simplemde.min.js"></script>
 <script src="<?= base_url(); ?>assets/adm/js/editor/simple-mde/simplemde.custom.js"></script> -->
-<script src="<?= base_url(); ?>assets/adm/js/touchspin/vendors.min.js"></script>
-<script src="<?= base_url(); ?>assets/adm/js/touchspin/touchspin.js"></script>
+<!-- <script src="<?= base_url(); ?>assets/adm/js/touchspin/vendors.min.js"></script>
+<script src="<?= base_url(); ?>assets/adm/js/touchspin/touchspin.js"></script> -->
 <script src="<?= base_url(); ?>assets/adm/js/touchspin/input-groups.min.js"></script>
 <script src="<?= base_url(); ?>assets/adm/js/form-validation-custom.js"></script>
 <script src="<?= base_url(); ?>assets/adm/js/select2/select2.full.min.js"></script>
@@ -105,11 +99,14 @@
 <script src="<?= base_url(); ?>assets/adm/js/datatable/datatable-extension/dataTables.rowReorder.min.js"></script>
 <script src="<?= base_url(); ?>assets/adm/js/datatable/datatable-extension/dataTables.scroller.min.js"></script>
 <script src="<?= base_url(); ?>assets/adm/js/datatable/datatable-extension/custom.js"></script>
-<script src="<?= base_url(); ?>assets/adm/js/idle-master/jquery.idle.js"></script>
-<script src="<?= base_url(); ?>assets/adm/js/idle-master/jquery.idle.min.js"></script>
+<!-- <script src="<?= base_url(); ?>assets/adm/js/idle-master/jquery.idle.js"></script>
+<script src="<?= base_url(); ?>assets/adm/js/idle-master/jquery.idle.min.js"></script> -->
 <script src="<?= base_url(); ?>assets/adm/js/jquery-idle/src/jquery.idletimeout.js"></script>
 <script src="<?= base_url(); ?>assets/adm/js/jquery-idle/src/jquery.idletimer.js"></script>
 <script src="https://cdn.rawgit.com/igorescobar/jQuery-Mask-Plugin/1ef022ab/dist/jquery.mask.min.js"></script>
+<!-- Dropify -->
+<script src="<?= base_url(); ?>vendor/dropify/dist/js/dropify.min.js"></script>
+<script src="<?= base_url(); ?>vendor/dropify/dist/js/dropify.js"></script>
 <!-- CKEditor5 -->
 <script src="<?= base_url(); ?>vendor/ckeditor5/build/ckeditor.js"></script>
 		<script>ClassicEditor
@@ -141,22 +138,15 @@
 				},
 				language: 'id',
 					licenseKey: '',
-					
-					
-					
 				} )
 				.then( editor => {
 					window.editor = editor;
-			
-					
-					
-					
 				} )
 				.catch( error => {
-					console.error( 'Oops, something went wrong!' );
-					console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
-					console.warn( 'Build id: 4niq24h1ezm1-1jtyozutymab' );
-					console.error( error );
+					console.error('Oops, something went wrong!');
+					console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
+					console.warn('Build id: 4niq24h1ezm1-1jtyozutymab');
+					console.error(error);
 				} );
 		</script>
 <script>
@@ -267,10 +257,11 @@ $(document).ready(function() {
                 }
             }
         });
-
     });
-
 });
+
+//Dropify
+$('.dropify').dropify();
 
 //Preview Gambar
 function readURL(input) {
