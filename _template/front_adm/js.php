@@ -70,6 +70,7 @@
 <script src="<?= base_url(); ?>assets/adm/js/counter/jquery.waypoints.min.js"></script>
 <script src="<?= base_url(); ?>assets/adm/js/counter/jquery.counterup.min.js"></script>
 <script src="<?= base_url(); ?>assets/adm/js/counter/counter-custom.js"></script>
+<script src="<?= base_url(); ?>assets/adm/js/popover-custom.js"></script>
 <script src="<?= base_url(); ?>assets/adm/js/photoswipe/photoswipe.min.js"></script>
 <script src="<?= base_url(); ?>assets/adm/js/photoswipe/photoswipe-ui-default.min.js"></script>
 <script src="<?= base_url(); ?>assets/adm/js/photoswipe/photoswipe.js"></script>

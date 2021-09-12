@@ -11,7 +11,7 @@ if(empty($_SESSION['username']) && empty($_SESSION['password'])){
     $hide = 'hidden';
     $l = '<li class="sidebar-list">
                 <a class="sidebar-link sidebar-title link-nav"
-                    href="'.base_url().'khusus-admin-login"><i data-feather="log-in"> </i><span>Login</span></a>
+                    href="'.base_url().'login-for-users"><i data-feather="log-in"> </i><span>Login</span></a>
             </li>';
 } else {
     $hide = '';
@@ -19,7 +19,8 @@ if(empty($_SESSION['username']) && empty($_SESSION['password'])){
 }
 
 if($_SESSION['level']=='1') {
-    $hid = '<li class="sidebar-list" ><a class="sidebar-link sidebar-title" href="#"><i
+    $hid = '
+            <li class="sidebar-list" ><a class="sidebar-link sidebar-title" href="#"><i
                 data-feather="git-pull-request"></i><span>Data Master</span></a>
             <ul class="sidebar-submenu">
             <li><a class="submenu-title" href="#">Users<span class="sub-arrow"><i class="fa fa-angle-right"></i></span></a>
@@ -48,23 +49,34 @@ if($_SESSION['level']=='1' OR $_SESSION['level']=='5' OR $_SESSION['level']=='6'
             <a class="sidebar-link sidebar-title link-nav" href="'.base_url().'pengaduan"><i
             data-feather="message-circle"> </i><span>Pengaduan</span></a>
             </li>';
+    $pcare = '<li class="sidebar-list">
+                <a class="sidebar-link sidebar-title link-nav" href="'.base_url().'blog"><i
+                        data-feather="award"> </i><span>Perparkiran Care</span></a>
+            </li>';
 } else {
     $peng ='';
+    $pcare='';
 }
 javascript('out','confirm');
 //  include_once '_func/func.php'
  ?>
 <div class="logo-icon-wrapper"><a href="<?= base_url(); ?>"><img class="img-fluid"
-            src="<?= base_url(); ?>assets/images/logo/logo-icon.png" alt=""></a></div>
+            src="<?= base_url(); ?>assets/adm/images/logo/logo-icon.png" alt=""></a></div>
 <nav class="sidebar-main">
     <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
     <div id="sidebar-menu">
         <ul class="sidebar-links" id="simple-bar">
             <li class="back-btn"><a href="<?= base_url(); ?>dashboard"><img class="img-fluid"
-                        src="<?= base_url(); ?>assets/images/logo/logo-icon.png" alt=""></a>
+                        src="<?= base_url(); ?>assets/adm/images/logo/logo-icon.png" alt=""></a>
                 <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2"
                         aria-hidden="true"></i></div>
             </li>
+            <!-- <li class="sidebar-main-title">
+                <div>
+                <h6>Menu General</h6>
+                <p>Dashboard & Profil</p>
+                </div>
+            </li> -->
             <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav"
                     href="<?= base_url(); ?>dashboard"><i data-feather="home"> </i><span>Dashboard</span></a></li>
             <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav"
@@ -72,11 +84,38 @@ javascript('out','confirm');
                         Profile</span></a>
             </li>
             <?= $hid; ?>
-            <?= $peng; ?>
             <?= $pl; ?>
+            <li class="sidebar-main-title" <?= $hide; ?>>
+                <div>
+                <h6>Kegiatan</h6>
+                <p>Giat & Pengaduan</p>
+                </div>
+            </li>
             <li class="sidebar-list" <?= $hide; ?>>
                 <a class="sidebar-link sidebar-title link-nav" href="<?= base_url(); ?>giat"><i
                         data-feather="monitor"> </i><span>Giat</span></a>
+            </li>
+            <?= $peng; ?>
+            <li class="sidebar-main-title">
+                <div>
+                <h6>Blog</h6>
+                <p>Berita & Perparkiran Care</p>
+                </div>
+            </li>
+            <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i
+                        data-feather="file-text"></i><span>Blog</span></a>
+                <ul class="sidebar-submenu">
+                    <li><a href="<?= base_url(); ?>tags">Tags / Kategori</a></li>
+                    <li><a href="<?= base_url(); ?>blog">Postingan</a></li>
+                    <!-- <li><a href="<?= base_url(); ?>laporan/perbus">Laporan Perbus</a></li> -->
+                </ul>
+            </li>
+            <?= $pcare; ?>
+            <li class="sidebar-main-title">
+                <div>
+                <h6>Lainnya</h6>
+                <p>Laporan, Pengaturan Profile, dll.</p>
+                </div>
             </li>
             <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i
                         data-feather="mail"></i><span>Laporan</span></a>

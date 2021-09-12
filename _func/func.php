@@ -83,9 +83,20 @@ function modul($m)
     global $db;
     global $base_url;
     if (empty($m)) {
-        include "modul/home/home.php";
+        include "modul/adm_page/home/home.php";
     } else {
-        return include "modul/$m/$m.php";
+        return include "modul/adm_page/$m/$m.php";
+    }
+}
+
+function modul_web($w)
+{
+    global $db;
+    global $base_url;
+    if (empty($w)) {
+        include "modul/adm_web/home/home.php";
+    } else {
+        return include "modul/adm_web/$w/$w.php";
     }
 }
 

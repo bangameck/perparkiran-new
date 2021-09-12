@@ -221,6 +221,6 @@ if(empty($_SESSION['username']) && empty($_SESSION['password'])){
 </html>
 <?php 
 } else {
-    aut_lp(1,2,3);
+    aut_lp(1,2,3,4,5,6);
 }
 ?>

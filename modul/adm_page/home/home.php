@@ -7,7 +7,7 @@
 * @desc [description]
 */
 // include_once '../../_func/func.php'; 
-include '_func/identity.php'; 
+include '_func/identity.php';
 if (empty($_SESSION['username']) && empty($_SESSION['password'])){
     $hid = 'hidden';
 } else {

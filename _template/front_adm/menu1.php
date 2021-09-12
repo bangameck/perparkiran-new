@@ -11,7 +11,7 @@ if(empty($_SESSION['username']) && empty($_SESSION['password'])){
     $hide = 'hidden';
     $l = '<li class="sidebar-list">
                 <a class="sidebar-link sidebar-title link-nav"
-                    href="'.base_url().'khusus-admin-login"><i data-feather="log-in"> </i><span>Login</span></a>
+                    href="'.base_url().'login-for-users"><i data-feather="log-in"> </i><span>Login</span></a>
             </li>';
 } else {
     $hide = '';

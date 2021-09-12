@@ -1,18 +1,9 @@
 <?php
-/**
-* @author [bangameck.rra]
-* @email [rahmad.looker@gmai.com]
-* @create date 2021-06-11 14:30:17
-* @modify date 2021-06-11 14:30:46
-* @desc [description]
-*/
-
 include '_func/identity.php';
 $csrf     = $db->query("SELECT b.token FROM users a, session b WHERE a.token=b.token AND a.username='$_SESSION[username]' AND b.token='$_SESSION[token]'")->fetch_assoc();
 if ($csrf==false) {
     sweetAlert('out','error','Error Session !','Session telah berakhir, silahkan login ulang');
 } else {
-aut(array(1));
 $a=$_GET['a'];
 switch($a){
     default:
@@ -112,6 +103,7 @@ switch($a){
 </div>
 <?php break; ?>
 <?php case 'add' : 
+aut(array(1));
 ?>
 <title>Tambah Regu | <?= $title; ?></title>
 <div class="page-body">
@@ -224,6 +216,7 @@ switch($a){
 
 <?php break; ?>
 <?php case 'edit': 
+aut(array(1));
 // $us = $_POST['us'];
 $id=$_GET['id'];
 $cek = $db->query("SELECT * FROM regu WHERE id_regu='$id'")->fetch_assoc();
@@ -385,6 +378,7 @@ if ($data->num_rows==0) {
 <?php } ?>
 <?php break; ?>
 <?php case 'delete' : 
+aut(array(1));
         $id_regu = $_POST['id_regu'];
         $ft = $_POST['f_regu'];
         // $d = $db->query("SELECT * FROM users WHERE username='$us'")->fetch_assoc();
@@ -401,6 +395,7 @@ if ($data->num_rows==0) {
     ?>
 <?php break; ?>
 <?php case 'detail' :
+aut(array(1,2,3,4,5,6));
     $id = $_GET['id'];
     // $uss = $_SESSION[''];
     $data = $db->query("SELECT * FROM regu a, users b WHERE a.id_regu=b.regu AND a.id_regu='$id'");

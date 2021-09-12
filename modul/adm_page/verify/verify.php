@@ -9,7 +9,7 @@
     // die();
     if($v==true){
         if (date('Y-m-d H:i:s', strtotime($v['batas_waktu'])) > date('Y-m-d H:i:s')) {
-            sweetAlert('khusus-admin-login','sukses','Verifikasi Sukses !','Verifikasi Berhasil silahkan login dengan username dan password yang benar.');
+            sweetAlert('login-for-users','sukses','Verifikasi Sukses !','Verifikasi Berhasil silahkan login dengan username dan password yang benar.');
             $db->query("UPDATE users SET status='Y', updated_at=NOW() WHERE token='$_GET[id]'");
         } else {
             $db->query("DELETE FROM users WHERE token='$_GET[id]'");
