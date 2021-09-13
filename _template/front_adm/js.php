@@ -261,7 +261,21 @@ $(document).ready(function() {
 });
 
 //Dropify
-$('.dropify').dropify();
+$('.dropify').dropify({
+    messages: {
+        'default': 'Seret dan letakkan file atau klik disini',
+        'replace': 'Seret dan letakkan file atau klik untuk mengubah',
+        'error':   'Ooops, sesuatu yang salah terjadi.'
+    },
+	error: {
+        'fileSize': 'Ukuran file terlalu besar ({{ value }} max).',
+        'minWidth': 'The image width is too small ({{ value }}}px min).',
+        'maxWidth': 'The image width is too big ({{ value }}}px max).',
+        'minHeight': 'The image height is too small ({{ value }}}px min).',
+        'maxHeight': 'The image height is too big ({{ value }}px max).',
+        'imageFormat': 'Format gambar tidak sesuai ({{ value }} only).'
+    }
+});
 
 //Preview Gambar
 function readURL(input) {
