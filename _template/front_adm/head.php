@@ -22,6 +22,9 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap"
         rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/adm/css/font-awesome.css">
     <!-- ico-font-->
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/adm/css/vendors/icofont.css">
@@ -58,6 +61,7 @@
     <!-- Dropify -->
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>vendor/dropify/dist/css/dropify.min.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>vendor/dropify/dist/css/dropify.css">
+    <!-- google font -->
     <!-- afterglowplayer -->
     <script src="//cdn.jsdelivr.net/npm/afterglowplayer@1.x"></script>
     <!-- CKEditor5 -->
@@ -97,11 +101,20 @@
     var data = CKEDITOR.instances.editor1.getData();
     </script> -->
     <style type="text/css">
+    #merienda {
+        font-family: 'Merienda', cursive;
+    }
+    #pacifico{
+        font-family: 'Pacifico', cursive;
+    }
+    </style>
+    
+    <style type="text/css">
     #idletimeout {
         background: #f6ba00;
         border: 3px solid #ff6500;
         color: #000;
-        font-family: 'Rubik', sans-serif;
+        font-family: 'Merienda', cursive;
         text-align: center;
         font-size: 12px;
         padding: 10px;

@@ -28,6 +28,9 @@ if(empty($_SESSION['username']) && empty($_SESSION['password'])){
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap"
         rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/adm/css/font-awesome.css">
     <!-- ico-font-->
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/adm/css/vendors/icofont.css">
@@ -48,6 +51,14 @@ if(empty($_SESSION['username']) && empty($_SESSION['password'])){
     <link id="color" rel="stylesheet" href="<?= base_url(); ?>assets/adm/css/color-1.css" media="screen">
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/adm/css/responsive.css">
+    <style type="text/css">
+    #merienda {
+        font-family: 'Merienda', cursive;
+    }
+    #pacifico{
+        font-family: 'Pacifico', cursive;
+    }
+    </style>
 </head>
 
 <body>
