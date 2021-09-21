@@ -34,3 +34,22 @@ function template($folder)
         include "_template/front_adm/js.php";
     }
 }
+
+function template_apl($file)
+{
+    if ($file == 'head')  {
+        include "_template/front_web/head.php";
+    } else if ($file == 'top-bar')  {
+        include "_template/front_web/top-bar.php";
+    } else if ($file == 'js')  {
+        include "_template/front_web/js.php";
+    } else if ($file == 'head-logo')  {
+        include "_template/front_web/head-logo.php";
+    } else if ($file == 'top-search')  {
+        include "_template/front_web/top-search.php";
+    } else if ($file == 'primary-menu')  {
+        include "_template/front_web/primary-menu.php";
+    } else if ($file == 'form-search')  {
+        include "_template/front_web/form-search.php";
+    }
+}

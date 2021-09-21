@@ -8,6 +8,7 @@
 */
 // include_once '../../_func/func.php'; 
 include '_func/identity.php';
+aut(array(1,2,3,4,5,6));
 if (empty($_SESSION['username']) && empty($_SESSION['password'])){
     $hid = 'hidden';
 } else {

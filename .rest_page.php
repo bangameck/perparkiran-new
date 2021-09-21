@@ -115,7 +115,7 @@ require 'vendor/autoload.php';
                     <?= template('menu'); ?>
                 </div>
                 <!-- Page Sidebar Ends-->
-                <?php modul($_GET['m']); ?>
+                <?php modul('adm_page',$_GET['m']); ?>
                 <!-- footer start-->
                 <?= template('footer'); ?>
             </div>

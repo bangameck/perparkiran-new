@@ -8,93 +8,94 @@ RewriteRule ^verifikasi-akun/([a-zA-Z0-9-z\-\_]+)$ .rest_page.php?m=verify&id=$1
 
 #dashboard
 RewriteRule ^dashboard$ .rest_page.php [L]
+RewriteRule ^home$ .rest_apl.php [L]
 
 #login
 RewriteRule ^login-for-users$ .rest_api.php [L]
 
 #logout
-RewriteRule ^out$ .rest_page.php?m=out [L]
+RewriteRule ^out$ .rest_page.php?f=adm_page&m=out [L]
 
 #setting
-RewriteRule ^setting$ .rest_page.php?m=users&a=setting [L]
+RewriteRule ^setting$ .rest_page.php?f=adm_page&m=users&a=setting [L]
 
 #password
-RewriteRule ^password$ .rest_page.php?m=users&a=password [L]
+RewriteRule ^password$ .rest_page.php?f=adm_page&m=users&a=password [L]
 
 #profile
-RewriteRule ^profile/([a-zA-Z0-9_-]+)$ .rest_page.php?m=profile&id=$1 [L]
-RewriteRule ^profile/([a-zA-Z0-9_-]+)/page/([a-zA-Z0-9_-]+)$ .rest_page.php?m=profile&id=$1&page=$2 [L]
+RewriteRule ^profile/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=profile&id=$1 [L]
+RewriteRule ^profile/([a-zA-Z0-9_-]+)/page/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=profile&id=$1&page=$2 [L]
 
 
 #users
-RewriteRule ^users$ .rest_page.php?m=users [L]
-RewriteRule ^users-blok$ .rest_page.php?m=users&a=users-blok [L]
-RewriteRule ^users/aktif$ .rest_page.php?m=users&a=aktif [L]
-RewriteRule ^users/blokir$ .rest_page.php?m=users&a=blokir [L]
+RewriteRule ^users$ .rest_page.php?f=adm_page&m=users [L]
+RewriteRule ^users-blok$ .rest_page.php?f=adm_page&m=users&a=users-blok [L]
+RewriteRule ^users/aktif$ .rest_page.php?f=adm_page&m=users&a=aktif [L]
+RewriteRule ^users/blokir$ .rest_page.php?f=adm_page&m=users&a=blokir [L]
 RewriteRule ^check_users$ modul/users/c_users.php [L]
 RewriteRule ^check_email$ modul/users/c_email.php [L]
-RewriteRule ^users/add$ .rest_page.php?m=users&a=add [L]
-RewriteRule ^users/edit$ .rest_page.php?m=users&a=edit [L]
-RewriteRule ^users/edit/([a-zA-Z0-9_-]+)$ .rest_page.php?m=users&a=edit&id=$1 [L]
-RewriteRule ^users/delete$ .rest_page.php?m=users&a=delete [L]
-RewriteRule ^users/delete-temp$ .rest_page.php?m=users&a=delete-temp [L]
+RewriteRule ^users/add$ .rest_page.php?f=adm_page&m=users&a=add [L]
+RewriteRule ^users/edit$ .rest_page.php?f=adm_page&m=users&a=edit [L]
+RewriteRule ^users/edit/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=users&a=edit&id=$1 [L]
+RewriteRule ^users/delete$ .rest_page.php?f=adm_page&m=users&a=delete [L]
+RewriteRule ^users/delete-temp$ .rest_page.php?f=adm_page&m=users&a=delete-temp [L]
 #RewriteRule ^users/delete-temp/([a-zA-Z0-9_-]+)$ .rest_page.php?m=users&a=delete-temp&id=$1 [L]
-RewriteRule ^users/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?m=users&a=detail&id=$1 [L]
+RewriteRule ^users/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=users&a=detail&id=$1 [L]
 
 #regu
-RewriteRule ^tags$ .rest_page.php?m=tags [L]
-RewriteRule ^tags/add$ .rest_page.php?m=tags&a=add [L]
-RewriteRule ^tags/edit/([a-zA-Z0-9_-]+)$ .rest_page.php?m=tags&a=edit&id=$1 [L]
-RewriteRule ^tags/delete$ .rest_page.php?m=tags&a=delete [L]
-RewriteRule ^tags/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?m=tags&a=detail&id=$1 [L]
-RewriteRule ^tags/detail/([a-zA-Z0-9_-]+)/page/([a-zA-Z0-9_-]+)$ .rest_page.php?m=tags&a=detail&id=$1&page=$2 [L]
+RewriteRule ^tags$ .rest_page.php?f=adm_page&m=tags [L]
+RewriteRule ^tags/add$ .rest_page.php?f=adm_page&m=tags&a=add [L]
+RewriteRule ^tags/edit/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=tags&a=edit&id=$1 [L]
+RewriteRule ^tags/delete$ .rest_page.php?f=adm_page&m=tags&a=delete [L]
+RewriteRule ^tags/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=tags&a=detail&id=$1 [L]
+RewriteRule ^tags/detail/([a-zA-Z0-9_-]+)/page/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=tags&a=detail&id=$1&page=$2 [L]
 
 #regu
-RewriteRule ^regu$ .rest_page.php?m=regu [L]
-RewriteRule ^regu/add$ .rest_page.php?m=regu&a=add [L]
-RewriteRule ^regu/edit/([a-zA-Z0-9_-]+)$ .rest_page.php?m=regu&a=edit&id=$1 [L]
-RewriteRule ^regu/delete$ .rest_page.php?m=regu&a=delete [L]
-RewriteRule ^regu/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?m=regu&a=detail&id=$1 [L]
-RewriteRule ^regu/detail/([a-zA-Z0-9_-]+)/page/([a-zA-Z0-9_-]+)$ .rest_page.php?m=regu&a=detail&id=$1&page=$2 [L]
+RewriteRule ^regu$ .rest_page.php?f=adm_page&m=regu [L]
+RewriteRule ^regu/add$ .rest_page.php?f=adm_page&m=regu&a=add [L]
+RewriteRule ^regu/edit/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=regu&a=edit&id=$1 [L]
+RewriteRule ^regu/delete$ .rest_page.php?f=adm_page&m=regu&a=delete [L]
+RewriteRule ^regu/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=regu&a=detail&id=$1 [L]
+RewriteRule ^regu/detail/([a-zA-Z0-9_-]+)/page/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=regu&a=detail&id=$1&page=$2 [L]
 
 #giat
-RewriteRule ^giat$ .rest_page.php?m=giat [L]
-RewriteRule ^giat/add$ .rest_page.php?m=giat&a=add [L]
-RewriteRule ^giat/delete/dokumentasi$ .rest_page.php?m=giat&a=delete-dokumentasi [L]
-RewriteRule ^giat/delete$ .rest_page.php?m=giat&a=delete [L]
-RewriteRule ^giat/edit/([a-zA-Z0-9_-]+)$ .rest_page.php?m=giat&a=edit&id=$1 [L]
-RewriteRule ^giat/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?m=dgiat&id=$1 [L]
+RewriteRule ^giat$ .rest_page.php?f=adm_page&m=giat [L]
+RewriteRule ^giat/add$ .rest_page.php?f=adm_page&m=giat&a=add [L]
+RewriteRule ^giat/delete/dokumentasi$ .rest_page.php?f=adm_page&m=giat&a=delete-dokumentasi [L]
+RewriteRule ^giat/delete$ .rest_page.php?f=adm_page&m=giat&a=delete [L]
+RewriteRule ^giat/edit/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=giat&a=edit&id=$1 [L]
+RewriteRule ^giat/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=dgiat&id=$1 [L]
 RewriteRule ^giat/print$ modul/dgiat/print.php [L]
 
 #pengaduan
-RewriteRule ^pengaduan$ .rest_page.php?m=pengaduan [L]
-RewriteRule ^pengaduan/add$ .rest_page.php?m=pengaduan&a=add [L]
-RewriteRule ^pengaduan/add-adm$ .rest_page.php?m=pengaduan&a=add-adm [L]
-RewriteRule ^pengaduan/delete/bukti$ .rest_page.php?m=pengaduan&a=delete-bukti [L]
-RewriteRule ^pengaduan/delete$ .rest_page.php?m=pengaduan&a=delete [L]
-RewriteRule ^pengaduan/edit/([a-zA-Z0-9_-]+)$ .rest_page.php?m=pengaduan&a=edit&id=$1 [L]
-RewriteRule ^pengaduan/teruskan/([a-zA-Z0-9_-]+)$ .rest_page.php?m=pengaduan&a=teruskan&id=$1 [L]
-RewriteRule ^pengaduan/tolak/([a-zA-Z0-9_-]+)$ .rest_page.php?m=pengaduan&a=tolak&id=$1 [L]
-RewriteRule ^pengaduan/selesai/([a-zA-Z0-9_-]+)$ .rest_page.php?m=pengaduan&a=selesai&id=$1 [L]
-RewriteRule ^pengaduan/proses$ .rest_page.php?m=pengaduan&a=proses [L]
-RewriteRule ^pengaduan/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?m=dpengaduan&id=$1 [L]
+RewriteRule ^pengaduan$ .rest_page.php?f=adm_page&m=pengaduan [L]
+RewriteRule ^pengaduan/add$ .rest_page.php?f=adm_page&m=pengaduan&a=add [L]
+RewriteRule ^pengaduan/add-adm$ .rest_page.php?f=adm_page&m=pengaduan&a=add-adm [L]
+RewriteRule ^pengaduan/delete/bukti$ .rest_page.php?f=adm_page&m=pengaduan&a=delete-bukti [L]
+RewriteRule ^pengaduan/delete$ .rest_page.php?f=adm_page&m=pengaduan&a=delete [L]
+RewriteRule ^pengaduan/edit/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=pengaduan&a=edit&id=$1 [L]
+RewriteRule ^pengaduan/teruskan/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=pengaduan&a=teruskan&id=$1 [L]
+RewriteRule ^pengaduan/tolak/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=pengaduan&a=tolak&id=$1 [L]
+RewriteRule ^pengaduan/selesai/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=pengaduan&a=selesai&id=$1 [L]
+RewriteRule ^pengaduan/proses$ .rest_page.php?f=adm_page&m=pengaduan&a=proses [L]
+RewriteRule ^pengaduan/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=dpengaduan&id=$1 [L]
 RewriteRule ^pengaduan/print$ modul/dpengaduan/print.php [L]
 
 #giat
-RewriteRule ^blog/post$ .rest_page.php?m=blog [L]
-RewriteRule ^blog/post/add$ .rest_page.php?m=blog&a=add [L]
-RewriteRule ^blog/post/delete/gambar$ .rest_page.php?m=blog&a=delete-gambar [L]
-RewriteRule ^blog/post/delete$ .rest_page.php?m=blog&a=delete [L]
-RewriteRule ^blog/post/edit/([a-zA-Z0-9_-]+)$ .rest_page.php?m=blog&a=edit&id=$1 [L]
-RewriteRule ^blog/post/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?m=dblog&id=$1 [L]
+RewriteRule ^blog/post$ .rest_page.php?f=adm_page&m=blog [L]
+RewriteRule ^blog/post/add$ .rest_page.php?f=adm_page&m=blog&a=add [L]
+RewriteRule ^blog/post/delete/gambar$ .rest_page.php?f=adm_page&m=blog&a=delete-gambar [L]
+RewriteRule ^blog/post/delete$ .rest_page.php?f=adm_page&m=blog&a=delete [L]
+RewriteRule ^blog/post/edit/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=blog&a=edit&id=$1 [L]
+RewriteRule ^blog/post/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=dblog&id=$1 [L]
 RewriteRule ^blog/post/print$ modul/dblog/print.php [L]
 
 #Laporan
-RewriteRule ^laporan$ .rest_page.php?m=laporan [L]
-RewriteRule ^laporan/tanggal$ .rest_page.php?m=laporan&a=tanggal [L]
-RewriteRule ^laporan/pertanggal$ .rest_page.php?m=laporan&a=pertanggal [L]
-RewriteRule ^laporan/perbus$ .rest_page.php?m=laporan&a=perbus [L]
-RewriteRule ^laporan/bus$ .rest_page.php?m=laporan&a=bus [L]
+RewriteRule ^laporan$ .rest_page.php?f=adm_page&m=laporan [L]
+RewriteRule ^laporan/tanggal$ .rest_page.php?f=adm_page&m=laporan&a=tanggal [L]
+RewriteRule ^laporan/pertanggal$ .rest_page.php?f=adm_page&m=laporan&a=pertanggal [L]
+RewriteRule ^laporan/perbus$ .rest_page.php?f=adm_page&m=laporan&a=perbus [L]
+RewriteRule ^laporan/bus$ .rest_page.php?f=adm_page&m=laporan&a=bus [L]
 
 #----------------------Batas Admin Akses----------------------------#
 

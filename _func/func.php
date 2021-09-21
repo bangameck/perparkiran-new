@@ -70,14 +70,14 @@ function aut_lp($level = array())
 }
 
 //modul
-function modul($m)
+function modul($f,$m)
 {
     global $db;
     global $base_url;
     if (empty($m)) {
-        include "modul/adm_page/home/home.php";
+        include "modul/$f/home/home.php";
     } else {
-        return include "modul/adm_page/$m/$m.php";
+        return include "modul/$f/$m/$m.php";
     }
 }
 

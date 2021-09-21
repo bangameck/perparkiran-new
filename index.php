@@ -11,7 +11,7 @@
 
 
 // include '_func/func.php';
-include '.rest_page.php';
+include '.rest_apl.php';
 // include '.ad.php';
 //include '_temp/dash.php';
 // if (!empty($_SESSION['username']) AND !empty($_SESSION['password'])) {
