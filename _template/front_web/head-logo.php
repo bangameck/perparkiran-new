@@ -8,9 +8,9 @@
 
 					<div class="header-misc mb-4 mb-lg-0 d-none d-lg-flex">
 
-						<div class="top-advert">
+						<!-- <div class="top-advert">
 							<img src="<?= base_url() ?>assets/web/images/magazine/ad.jpg" alt="Ad">
-						</div>
+						</div> -->
 
 					</div>
 

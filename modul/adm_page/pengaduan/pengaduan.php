@@ -403,7 +403,7 @@ switch ($a) {
                                                         <tr style="text-align: center">
                                                         <td> 
                                                             <p style="color: #999; margin-bottom: 0">'.$alamat.'</p>
-                                                            <p style="color: #999; margin-bottom: 0">'.$instansi.'</a></p>
+                                                            <p style="color: #999; margin-bottom: 0">'.$nm_upt.' '.$instansi.'</a></p>
                                                             <p style="color: #999; margin-bottom: 0">'.$footer.'</p></td>
                                                         </tr>
                                                     </tbody>
@@ -629,7 +629,7 @@ switch ($a) {
                                                     <tr style="text-align: center">
                                                     <td> 
                                                         <p style="color: #999; margin-bottom: 0">'.$alamat.'</p>
-                                                        <p style="color: #999; margin-bottom: 0">'.$instansi.'</a></p>
+                                                        <p style="color: #999; margin-bottom: 0">'.$nm_upt.' '.$instansi.'</a></p>
                                                         <p style="color: #999; margin-bottom: 0">'.$footer.'</p></td>
                                                     </tr>
                                                 </tbody>
@@ -1017,7 +1017,7 @@ switch ($a) {
                                                         <tr style="text-align: center">
                                                         <td> 
                                                             <p style="color: #999; margin-bottom: 0">'.$alamat.'</p>
-                                                            <p style="color: #999; margin-bottom: 0">'.$instansi.'</a></p>
+                                                            <p style="color: #999; margin-bottom: 0">'.$nm_upt.' '.$instansi.'</a></p>
                                                             <p style="color: #999; margin-bottom: 0">'.$footer.'</p></td>
                                                         </tr>
                                                     </tbody>
@@ -1260,7 +1260,7 @@ if ($_SESSION['id_usr']==$d['adm_peng'] OR $_SESSION['level']=='1') {
                                                     <tr style="text-align: center">
                                                     <td> 
                                                         <p style="color: #999; margin-bottom: 0">'.$alamat.'</p>
-                                                        <p style="color: #999; margin-bottom: 0">'.$instansi.'</a></p>
+                                                        <p style="color: #999; margin-bottom: 0">'.$nm_upt.' '.$instansi.'</a></p>
                                                         <p style="color: #999; margin-bottom: 0">'.$footer.'</p></td>
                                                     </tr>
                                                 </tbody>

@@ -1,18 +1,44 @@
 <?php 
-/**
-* @author [bangameck.rra]
-* @email [rahmad.looker@gmail.com]
-* @create date 2021-06-11 14:32:29
-* @modify date 2021-06-11 14:34:09
-* @desc [description]
-*/
+include 'database.php';
 
-$title = "Sistem Informasi Perparkiran";
-$site = "http://lapor.dishub.pekanbaru.go.id/perparkiran";
-// $develop = " bangameck.dev";
-// $fb = " http://facebook.com/dishubpku";
-$ig = " https://instagram.com/upt.perparkiranpku";
+//ambil data profil
+$id = $db->query("SELECT * FROM profile")->fetch_assoc();
 
+//identitas
+$title       = $id['nm_apl'];
+$site        = 'https://' . $id['web'];
+$instansi    = $id['nm_instansi'];
+$nm_upt      = $id['nm_upt'];
+$alamat      = $id['alamat'];
+$no_hp       = $id['no_hp'];
+$no_hp_add   = 'tel:' . $id['no_hp'];
+$no_telp     = $id['no_telp'];
+$no_telp_add = 'tel:' . $id['no_telp'];
+$no_wa       = $id['no_wa'];
+$no_wa_add   = 'https://api.whatsapp.com/send?phone=' . $id['no_wa']; //Whatsapp
+$no_fax      = $id['no_fax'];
+$no_fax_add  = 'fax:' . $id['no_fax'];
+$emails      = $id['email'];
+$emails_add  = 'mailto:' . $id['email'];
+$deskripsi   = $id['deskripsi'];
+
+//medsos
+$fb  = 'https://facebook.com/' . $id['fb']; //Facebook
+$tw  = 'https://twitter.com/' . $id['tw']; //Twitter
+$yt  = 'https://youtube.com/channel/' . $id['yt']; //Youtube
+$ig  = 'https://instagram.com/' . $id['ig']; //Instagram
+$pin = '' . $id['pin']; //Pintrest
+$vim = '' . $id['vim']; //Vimeo
+$yah = '' . $id['yah']; //Yahoo Mail
+$lin = '' . $id['lin']; //Linkedin
+$git = '' . $id['git']; //Github
+
+//LogoIcon
+$logo = $id['logo'];
+$icon = $id['icon'];
+
+//maps
+$maps = $id['maps'];
 
 //php mail config
 $host   = "smtp.gmail.com";
@@ -22,46 +48,6 @@ $email_ = "rra.code@gmail.com";
 $pmail  = "@m3ck1nd4h201220";
 $logo   = 'assets/adm/images/logo/logo.png';
 
+// footer;
+$footer = "Copyright " . date('Y') . " ©  <a href='" . $ig . "' target='_blank'>Dikembangakan Oleh Team IT " . $upt . "</a>"; 
 
-// $tlp = "(0761)-88888";
-// $fax = "(0761)-88888";
-$hp = "+62-822-8844-5265";
-$wa = "+62-822-8844-5265";
-$alamat = "Jl. Dr. Soetomo No. 88, Kel. Rintis, Kec. Lima Puluh, Pekanbaru, Riau";
-// $pemerintah = "Pemerintah Kota Pekanbaru";
-$instansi = "Dinas Perhubungan Kota Pekanbaru";
-$upt = "UPT Perparkiran";
-$fb_ins = "dishubkotapku";
-$ig_ins = "upt.perparkiran";
-$twit_ins = "atcs.kotapekanbaru";
-// $yt_ins = "UCWY_DxbuSOFiut1uB4tl2Sg";
-$footer = "Copyright " . date('Y') . " ©  <a href='" . $ig . "' target='_blank'>Dikembangakn Oleh Team IT " . $upt . "</a>"; 
-
-// include 'database.php';
-//ambil data profil
-// $id = $db->query("SELECT * FROM profil_cv")->fetch_assoc();
-
-//identitas
-// $namaPerusahaan = strtoupper($id['nama_perusahaan']);
-// $alamat         = $id['alamat'];
-// $no_hp          = $id['no_hp'];
-// // $no_telp        = $id['no_telp'];
-// $no_wa          = $id['no_wa'];
-// $emails         = $id['email'];
-// $deskripsi      = $id['deskripsi'];
-// $d_footer       = $id['d_footer'];
-
-// //medsos
-// $fb             = $id['fb'];
-// $tw             = $id['tw'];
-// $yt             = $id['yt'];
-// $ig             = $id['ig'];
-
-// //GambarProfil
-// $logo           = $id['logo'];
-// $icon           = $id['icon'];
-// $bg_web         = $id['bg_web'];
-// $bg_blog        = $id['bg_blog'];
-
-// //maps
-// $maps           = $id['maps'];

@@ -552,7 +552,7 @@ aut(array(1));
                                                                     <tr style="text-align: center">
                                                                     <td> 
                                                                         <p style="color: #999; margin-bottom: 0">'.$alamat.'</p>
-                                                                        <p style="color: #999; margin-bottom: 0">'.$instansi.'</a></p>
+                                                                        <p style="color: #999; margin-bottom: 0">'.$nm_upt.' '.$instansi.'</a></p>
                                                                         <p style="color: #999; margin-bottom: 0">'.$footer.'</p></td>
                                                                     </tr>
                                                                 </tbody>

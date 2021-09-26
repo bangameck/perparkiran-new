@@ -51,5 +51,9 @@ function template_apl($file)
         include "_template/front_web/primary-menu.php";
     } else if ($file == 'form-search')  {
         include "_template/front_web/form-search.php";
+    } else if ($file == 'footer-widget')  {
+        include "_template/front_web/footer-widget.php";
+    } else if ($file == 'footer-cr')  {
+        include "_template/front_web/footer-cr.php";
     }
 }
