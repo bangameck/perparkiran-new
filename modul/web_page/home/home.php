@@ -67,7 +67,7 @@
 										<?php 
 										$t_one = $db->query("SELECT * FROM hal_utama a, tags b WHERE a.id_tags=b.id_tags AND id_hal='1'")->fetch_assoc();
 										?>
-										<h3><?= $t_one['nm_tags']; ?></h3>
+										<h3><i class="icon-tags1"></i> <?= $t_one['nm_tags']; ?></h3>
 									</div>
 									<?php 
 									$news_one = $db->query("SELECT *, a.created_at as tgl FROM blog a, tags_blog b WHERE a.id_blog=b.id_blog AND b.id_tags='$t_one[id_tags]' AND a.publish='Y'")->fetch_assoc();
@@ -77,32 +77,35 @@
                                         ?>
 									<div class="posts-md">
 										<div class="entry row mb-5">
-											<div class="col-md-6">
-												<div class="entry-image">
-													<a href="#"><img src="<?= base_url() ?>_uploads/blog/sampul/<?= $news_one['id_blog']; ?>/<?= $news_one['sampul']; ?>" alt="<?= $news_one['sampul']; ?>"></a>
-												</div>
-											</div>
-											<div class="col-md-6 mt-3 mt-md-0">
-												<div class="entry-title title-sm nott">
-													<h3><a href="blog-single.html"><?= $news_one['j_blog']; ?></a></h3>
-												</div>
-												<div class="entry-meta">
-													<ul>
-														<li><i class="icon-calendar3"></i> <?= tgl_indo_singkat(date('Y-m-d', strtotime($news_one['tgl']))); ?></li>
-														<li><a href="blog-single.html#comments"><i class="icon-eye"></i> 21</a></li>
-														<li><a href="#"><i class="icon-camera-retro"></i></a></li>
-													</ul>
-												</div>
-												<div class="entry-content">
-													<p class="mb-0"><?= judul($news_one['isi'], '180'); ?> <a href="">Selengkapnya >></a></p>
+											<div class="col-md-12">
+												<div class="flip-card text-center">
+													<div class="flip-card-front dark" style="background-image: url('<?= base_url() ?>_uploads/blog/sampul/<?= $news_one['id_blog']; ?>/<?= $news_one['sampul']; ?>" alt="<?= $news_one['sampul']; ?>')">
+														<div class="flip-card-inner">
+															<div class="card bg-transparent border-0 text-center">
+																<div class="card-body">
+																	<i class="icon-news h1"></i> 
+																	<h3 class="card-title"><?= $news_one['j_blog']; ?></h3>
+																	<p class="card-text fw-normal"><i class="icon-calendar3"></i>&nbsp; <?= tgl_indo(date('Y-m-d', strtotime($news_one['tgl']))) .' | '.date('H:i:s', strtotime($news_one['tgl'])); ?> WIB</p>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="flip-card-back dark" style="background-image: url('<?= base_url() ?>_uploads/blog/sampul/<?= $news_one['id_blog']; ?>/<?= $news_one['sampul']; ?>" alt="<?= $news_one['sampul']; ?>')">
+														<div class="flip-card-inner">
+															<p class="mb-2 text-white"><?= judul($news_one['isi'], '250'); ?> </p>
+															<a href="" type="button" class="btn btn-outline-light mt-2">Selengkapnya <i class="icon-line-arrow-right"></i></a>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
 									<div class="posts-sm row col-mb-30">
 										<?php
+										$n=2;
                                         $n_one = $db->query("SELECT *, a.created_at as tgl FROM blog a, tags_blog b WHERE a.id_blog=b.id_blog AND a.id_blog!='$news_one[id_blog]' AND b.id_tags='$t_one[id_tags]' AND a.publish='Y' ORDER BY tgl DESC LIMIT 4");
                                         while ($n_o=$n_one->fetch_assoc()) :
+											$n++;
                                         ?>
 										<div class="entry col-md-6">
 											<div class="grid-inner row g-0">
@@ -113,7 +116,7 @@
 												</div>
 												<div class="col ps-3">
 													<div class="entry-title">
-														<h4><a href="#"><?= $n_o['j_blog']; ?></a></h4>
+														<h4><a href="#"><span class="h5" style><em><?= $n++; ?>. </em></span><?= $n_o['j_blog']; ?></a></h4>
 													</div>
 													<div class="entry-meta">
 														<ul>
@@ -140,7 +143,7 @@
 										<?php 
 										$t_two = $db->query("SELECT * FROM hal_utama a, tags b WHERE a.id_tags=b.id_tags AND id_hal='2'")->fetch_assoc();
 										?>
-										<h3><?= $t_two['nm_tags']; ?></h3>
+										<h3><i class="icon-tags1"></i> <?= $t_two['nm_tags']; ?></h3>
 									</div>
 									<?php 
 									$news_two = $db->query("SELECT *, a.created_at as tgl FROM blog a, tags_blog b WHERE a.id_blog=b.id_blog AND b.id_tags='$t_two[id_tags]' AND a.publish='Y'")->fetch_assoc();
@@ -150,30 +153,32 @@
                                         ?>
 									<div class="posts-md">
 										<div class="entry row mb-5">
-											<div class="col-md-6">
-												<div class="entry-image">
-													<a href="#"><img src="<?= base_url() ?>_uploads/blog/sampul/<?= $news_two['id_blog']; ?>/<?= $news_two['sampul']; ?>" alt="<?= $news_two['sampul']; ?>"></a>
-												</div>
-											</div>
-											<div class="col-md-6 mt-3 mt-md-0">
-												<div class="entry-title title-sm nott">
-													<h3><a href="blog-single.html"><?= $news_two['j_blog']; ?></a></h3>
-												</div>
-												<div class="entry-meta">
-													<ul>
-														<li><i class="icon-calendar3"></i> <?= tgl_indo_singkat(date('Y-m-d', strtotime($news_two['tgl']))); ?></li>
-														<li><a href="blog-single.html#comments"><i class="icon-eye"></i> 21</a></li>
-														<li><a href="#"><i class="icon-camera-retro"></i></a></li>
-													</ul>
-												</div>
-												<div class="entry-content">
-													<p class="mb-0"><?= judul($news_two['isi'], '180'); ?> <a href="">Selengkapnya >></a></p>
+											<div class="col-md-12">
+												<div class="flip-card text-center top-to-bottom">
+													<div class="flip-card-front dark" style="background-image: url('<?= base_url() ?>_uploads/blog/sampul/<?= $news_two['id_blog']; ?>/<?= $news_two['sampul']; ?>" alt="<?= $news_two['sampul']; ?>')">
+														<div class="flip-card-inner">
+															<div class="card bg-transparent border-0 text-center">
+																<div class="card-body">
+																	<i class="icon-news h1"></i> 
+																	<h3 class="card-title"><?= $news_two['j_blog']; ?></h3>
+																	<p class="card-text fw-normal"><i class="icon-calendar3"></i>&nbsp; <?= tgl_indo(date('Y-m-d', strtotime($news_two['tgl']))) .' | '.date('H:i:s', strtotime($news_two['tgl'])); ?> WIB</p>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="flip-card-back dark" style="background-image: url('<?= base_url() ?>_uploads/blog/sampul/<?= $news_two['id_blog']; ?>/<?= $news_two['sampul']; ?>" alt="<?= $news_two['sampul']; ?>')">
+														<div class="flip-card-inner">
+															<p class="mb-2 text-white"><?= judul($news_two['isi'], '250'); ?> </p>
+															<a href="" type="button" class="btn btn-outline-light mt-2">Selengkapnya <i class="icon-line-arrow-right"></i></a>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
 									<div class="posts-sm row col-mb-30">
 										<?php
+										$n=2;
                                         $n_two = $db->query("SELECT *, a.created_at as tgl FROM blog a, tags_blog b WHERE a.id_blog=b.id_blog AND a.id_blog!='$news_two[id_blog]' AND b.id_tags='$t_two[id_tags]' AND a.publish='Y' ORDER BY tgl DESC LIMIT 4");
                                         while ($n_t=$n_two->fetch_assoc()) :
                                         ?>
@@ -186,7 +191,7 @@
 												</div>
 												<div class="col ps-3">
 													<div class="entry-title">
-														<h4><a href="#"><?= $n_t['j_blog']; ?></a></h4>
+														<h4><a href="#"> <span class="h5" style><em><?= $n++; ?>. </em></span> <?=$n_t['j_blog']; ?></a></h4>
 													</div>
 													<div class="entry-meta">
 														<ul>
@@ -205,15 +210,26 @@
 
 								<div class="col-12">
 									<div class="fancy-title title-border">
-										<h3>Galeri Kegiatan</h3>
+										<h3><i class="icon-camera3"></i> Galeri Kegiatan</h3>
 									</div>
 
 									<div class="masonry-thumbs grid-container grid-6" data-big="5" data-lightbox="gallery">
+									
 										<?php 
 										$gal = $db->query("SELECT * FROM d_giat WHERE x_giat!='mp4' ORDER BY RAND() LIMIT 20");
 										while ($g=$gal->fetch_assoc()) :
 										?>
-										<a class="grid-item" href="<?= base_url() ?>_uploads/f_giat/<?= $g['n_d_giat']; ?>" data-lightbox="gallery-item"><img src="<?= base_url() ?>_uploads/f_giat/<?= $g['n_d_giat']; ?>" alt="<?= $g['n_d_giat']; ?>"></a>
+										<a class="grid-item" href="<?= base_url() ?>_uploads/f_giat/<?= $g['n_d_giat']; ?>" data-lightbox="gallery-item">
+											<div class="grid-inner">
+											<img src="<?= base_url() ?>_uploads/f_giat/<?= $g['n_d_giat']; ?>" alt="<?= $g['n_d_giat']; ?>">
+												<div class="bg-overlay">
+													<div class="bg-overlay-content dark">
+														<i class="icon-camera h4 mb-0" data-hover-animate="fadeIn"></i>
+													</div>
+													<div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
+												</div>
+											</div>
+										</a>
 										<?php endwhile; ?>
 									</div>
 								</div>
@@ -221,132 +237,33 @@
 								<div class="col-12">
 
 									<div class="fancy-title title-border">
-										<h3>Other News</h3>
+										<h3><i class="icon-newspaper3"></i> Pengaduan</h3>
 									</div>
-
-									<div class="row posts-md col-mb-30">
-										<div class="entry col-sm-6 col-xl-4">
-											<div class="grid-inner">
-												<div class="entry-image">
-													<a href="#"><img src="<?= base_url() ?>assets/web/images/magazine/thumb/11.jpg" alt="Image"></a>
+									<div class="fslider testimonial" data-animation="fade" data-arrows="false">
+										<div class="flexslider">
+											<div class="slider-wrap">
+												<?php 
+												$peng = $db->query("SELECT * FROM pengaduan WHERE status='S' ORDER BY RAND() LIMIT 5");
+												while($p=$peng->fetch_assoc()) :
+												?>
+												<div class="slide">
+													<div class="testi-image">
+														<a href="#"><img src="<?= base_url(); ?>_uploads/f_usr/default.png" alt="Customer Testimonails"></a>
+													</div>
+													<div class="testi-content">
+														<p><?= $p['j_peng']; ?></p>
+														<div class="testi-meta">
+															<?= r_nama($p['nama_p']); ?>
+															<span><?= r_email($p['email_p']); ?></span>
+														</div>
+													</div>
 												</div>
-												<div class="entry-title title-xs nott">
-													<h3><a href="blog-single.html">Yum, McDonald's apologize as new China food scandal brews</a></h3>
-												</div>
-												<div class="entry-meta">
-													<ul>
-														<li><i class="icon-calendar3"></i> 9th Sep 2021</li>
-														<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 23</a></li>
-													</ul>
-												</div>
-												<div class="entry-content">
-													<p>Neque nesciunt molestias soluta esse debitis. Magni impedit quae consectetur consequuntur.</p>
-												</div>
-											</div>
-										</div>
-
-										<div class="entry col-sm-6 col-xl-4">
-											<div class="grid-inner">
-												<div class="entry-image">
-													<a href="#"><img src="<?= base_url() ?>assets/web/images/magazine/thumb/16.jpg" alt="Image"></a>
-												</div>
-												<div class="entry-title title-xs nott">
-													<h3><a href="blog-single.html">Halliburton gets boost from rebound in North America drilling</a></h3>
-												</div>
-												<div class="entry-meta">
-													<ul>
-														<li><i class="icon-calendar3"></i> 23rd Aug 2021</li>
-														<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 33</a></li>
-													</ul>
-												</div>
-												<div class="entry-content">
-													<p>Eaque iusto quod assumenda beatae, nesciunt aliquid. Vel, eos eligendi?</p>
-												</div>
-											</div>
-										</div>
-
-										<div class="entry col-sm-6 col-xl-4">
-											<div class="grid-inner">
-												<div class="entry-image">
-													<a href="#"><img src="<?= base_url() ?>assets/web/images/magazine/thumb/13.jpg" alt="Image"></a>
-												</div>
-												<div class="entry-title title-xs nott">
-													<h3><a href="blog-single.html">China sends spy ship off Hawaii during U.S.-led drills brews</a></h3>
-												</div>
-												<div class="entry-meta">
-													<ul>
-														<li><i class="icon-calendar3"></i> 11th Feb 2021</li>
-														<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
-													</ul>
-												</div>
-												<div class="entry-content">
-													<p>Magni impedit quae consectetur consequuntur adipisci veritatis modi a, officia cum.</p>
-												</div>
-											</div>
-										</div>
-
-										<div class="entry col-sm-6 col-xl-4">
-											<div class="grid-inner">
-												<div class="entry-image">
-													<a href="#"><img src="<?= base_url() ?>assets/web/images/magazine/thumb/10.jpg" alt="Image"></a>
-												</div>
-												<div class="entry-title title-xs nott">
-													<h3><a href="blog-single.html">Wobbly stocks underpin yen and Swiss franc; dollar subdued</a></h3>
-												</div>
-												<div class="entry-meta">
-													<ul>
-														<li><i class="icon-calendar3"></i> 17th Jan 2021</li>
-														<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 50</a></li>
-													</ul>
-												</div>
-												<div class="entry-content">
-													<p>Neque nesciunt molestias soluta esse debitis. Magni impedit quae consectetur consequuntur.</p>
-												</div>
-											</div>
-										</div>
-
-										<div class="entry col-sm-6 col-xl-4">
-											<div class="grid-inner">
-												<div class="entry-image">
-													<a href="#"><img src="<?= base_url() ?>assets/web/images/magazine/thumb/15.jpg" alt="Image"></a>
-												</div>
-												<div class="entry-title title-xs nott">
-													<h3><a href="blog-single.html">BlackBerry names ex-Sybase executive as chief operating officer</a></h3>
-												</div>
-												<div class="entry-meta">
-													<ul>
-														<li><i class="icon-calendar3"></i> 20th Nov 2021</li>
-														<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
-													</ul>
-												</div>
-												<div class="entry-content">
-													<p>Eaque iusto quod assumenda beatae, nesciunt aliquid. Vel, eos eligendi?</p>
-												</div>
-											</div>
-										</div>
-
-										<div class="entry col-sm-6 col-xl-4">
-											<div class="grid-inner">
-												<div class="entry-image">
-													<a href="#"><img src="<?= base_url() ?>assets/web/images/magazine/thumb/6.jpg" alt="Image"></a>
-												</div>
-												<div class="entry-title title-xs nott">
-													<h3><a href="blog-single.html">Georgian prime minister fires seven ministers in first reshuffle</a></h3>
-												</div>
-												<div class="entry-meta">
-													<ul>
-														<li><i class="icon-calendar3"></i> 10th Dec 2013</li>
-														<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
-													</ul>
-												</div>
-												<div class="entry-content">
-													<p>Magni impedit quae consectetur consequuntur adipisci veritatis modi a, officia cum.</p>
-												</div>
+												<?php endwhile; ?>
 											</div>
 										</div>
 									</div>
-
 								</div>
+								
 							</div>
 
 						</div>
@@ -360,7 +277,7 @@
 								<div class="widget clearfix">
 									<div class="row gutter-20 col-mb-30">
 										<div class="col-4">
-											<a href="#" class="social-icon si-dark si-colored si-facebook mb-0" style="margin-right: 10px;">
+											<a href="#" class="social-icon si-dark si-colored si-facebook mb-0" style="margin: right 10px;">
 												<i class="icon-facebook"></i>
 												<i class="icon-facebook"></i>
 											</a>
@@ -391,44 +308,20 @@
 
 								<div class="widget widget_links clearfix">
 
-									<h4>Categories</h4>
+									<h4>Tags</h4>
 
 									<div class="row col-mb-30">
 										<div class="col-sm-6">
 											<ul>
-												<li><a href="#">World</a></li>
-												<li><a href="#">Technology</a></li>
-												<li><a href="#">Entertainment</a></li>
-												<li><a href="#">Sports</a></li>
-												<li><a href="#">Media</a></li>
-												<li><a href="#">Politics</a></li>
-												<li><a href="#">Business</a></li>
+												<?php 
+												$tags = $db->query("SELECT * FROM tags ORDER BY nm_tags ASC");
+												while($t=$tags->fetch_assoc()) :
+													$tgsnum = $db->query("SELECT * FROM tags_blog WHERE id_tags='$t[id_tags]'");
+													$tn= $tgsnum->num_rows;
+												?>
+												<li><a href="#"><?= $t['nm_tags'].' ('.$tn.')'; ?></a></li>
+												<?php endwhile; ?>
 											</ul>
-										</div>
-										<div class="col-sm-6">
-											<ul>
-												<li><a href="#">Lifestyle</a></li>
-												<li><a href="#">Travel</a></li>
-												<li><a href="#">Cricket</a></li>
-												<li><a href="#">Football</a></li>
-												<li><a href="#">Education</a></li>
-												<li><a href="#">Photography</a></li>
-												<li><a href="#">Nature</a></li>
-											</ul>
-										</div>
-									</div>
-
-								</div>
-
-								<div class="widget clearfix">
-
-									<h4>Twitter Feed Scroller</h4>
-									<div class="fslider customjs testimonial twitter-scroll twitter-feed" data-username="bangameck" data-count="2" data-animation="slide" data-arrows="false">
-										<i class="i-plain color icon-twitter mb-0" style="margin-right: 15px;"></i>
-										<div class="flexslider" style="width: auto;">
-											<div class="slider-wrap">
-												<div class="slide"></div>
-											</div>
 										</div>
 									</div>
 
@@ -448,177 +341,64 @@
 										<ul class="tab-nav clearfix">
 											<li><a href="#tabs-1">Popular</a></li>
 											<li><a href="#tabs-2">Recent</a></li>
-											<li><a href="#tabs-3"><i class="icon-comments-alt me-0"></i></a></li>
 										</ul>
 
 										<div class="tab-container">
 
 											<div class="tab-content clearfix" id="tabs-1">
 												<div class="posts-sm row col-mb-30" id="popular-post-list-sidebar">
+													<?php 
+													$baru = $db->query("SELECT * FROM blog WHERE publish='Y' ORDER BY created_at DESC LIMIT 5");
+													while($b=$baru->fetch_assoc()) :
+													?>
 													<div class="entry col-12">
 														<div class="grid-inner row g-0">
 															<div class="col-auto">
 																<div class="entry-image">
-																	<a href="#"><img class="rounded-circle" src="<?= base_url() ?>assets/web/images/magazine/small/3.jpg" alt="Image"></a>
+																	<a href="#"><img src="<?= base_url() ?>_uploads/blog/sampul/<?= $b['id_blog']; ?>/<?= $b['sampul']; ?>" alt="<?= $b['sampul']; ?>"></a>
 																</div>
 															</div>
 															<div class="col ps-3">
 																<div class="entry-title">
-																	<h4><a href="#">Lorem ipsum dolor sit amet, consectetur</a></h4>
+																	<h4><a href="#"><?= $b['j_blog']; ?></a></h4>
 																</div>
 																<div class="entry-meta">
 																	<ul>
-																		<li><i class="icon-comments-alt"></i> 35 Comments</li>
+																		<li><i class="icon-eye"></i> 35 Views</li>
 																	</ul>
 																</div>
 															</div>
 														</div>
 													</div>
-
-													<div class="entry col-12">
-														<div class="grid-inner row g-0">
-															<div class="col-auto">
-																<div class="entry-image">
-																	<a href="#"><img class="rounded-circle" src="<?= base_url() ?>assets/web/images/magazine/small/2.jpg" alt="Image"></a>
-																</div>
-															</div>
-															<div class="col ps-3">
-																<div class="entry-title">
-																	<h4><a href="#">Elit Assumenda vel amet dolorum quasi</a></h4>
-																</div>
-																<div class="entry-meta">
-																	<ul>
-																		<li><i class="icon-comments-alt"></i> 24 Comments</li>
-																	</ul>
-																</div>
-															</div>
-														</div>
-													</div>
-
-													<div class="entry col-12">
-														<div class="grid-inner row g-0">
-															<div class="col-auto">
-																<div class="entry-image">
-																	<a href="#"><img class="rounded-circle" src="<?= base_url() ?>assets/web/images/magazine/small/1.jpg" alt="Image"></a>
-																</div>
-															</div>
-															<div class="col ps-3">
-																<div class="entry-title">
-																	<h4><a href="#">Debitis nihil placeat, illum est nisi</a></h4>
-																</div>
-																<div class="entry-meta">
-																	<ul>
-																		<li><i class="icon-comments-alt"></i> 19 Comments</li>
-																	</ul>
-																</div>
-															</div>
-														</div>
-													</div>
+													<?php endwhile; ?>
 												</div>
 											</div>
 											<div class="tab-content clearfix" id="tabs-2">
 												<div class="posts-sm row col-mb-30" id="recent-post-list-sidebar">
+												<?php 
+													$baru = $db->query("SELECT * FROM blog WHERE publish='Y' ORDER BY created_at DESC LIMIT 5");
+													while($b=$baru->fetch_assoc()) :
+													?>
 													<div class="entry col-12">
 														<div class="grid-inner row g-0">
 															<div class="col-auto">
 																<div class="entry-image">
-																	<a href="#"><img class="rounded-circle" src="<?= base_url() ?>assets/web/images/magazine/small/1.jpg" alt="Image"></a>
+																	<a href="#"><img src="<?= base_url() ?>_uploads/blog/sampul/<?= $b['id_blog']; ?>/<?= $b['sampul']; ?>" alt="Image"></a>
 																</div>
 															</div>
 															<div class="col ps-3">
 																<div class="entry-title">
-																	<h4><a href="#">Lorem ipsum dolor sit amet, consectetur</a></h4>
+																	<h4><a href="#"><?= $b['j_blog']; ?></a></h4>
 																</div>
 																<div class="entry-meta">
 																	<ul>
-																		<li>10th July 2021</li>
+																		<li><i class="icon-eye"></i> 35 Views</li>
 																	</ul>
 																</div>
 															</div>
 														</div>
 													</div>
-
-													<div class="entry col-12">
-														<div class="grid-inner row g-0">
-															<div class="col-auto">
-																<div class="entry-image">
-																	<a href="#"><img class="rounded-circle" src="<?= base_url() ?>assets/web/images/magazine/small/2.jpg" alt="Image"></a>
-																</div>
-															</div>
-															<div class="col ps-3">
-																<div class="entry-title">
-																	<h4><a href="#">Elit Assumenda vel amet dolorum quasi</a></h4>
-																</div>
-																<div class="entry-meta">
-																	<ul>
-																		<li>10th July 2021</li>
-																	</ul>
-																</div>
-															</div>
-														</div>
-													</div>
-
-													<div class="entry col-12">
-														<div class="grid-inner row g-0">
-															<div class="col-auto">
-																<div class="entry-image">
-																	<a href="#"><img class="rounded-circle" src="<?= base_url() ?>assets/web/images/magazine/small/3.jpg" alt="Image"></a>
-																</div>
-															</div>
-															<div class="col ps-3">
-																<div class="entry-title">
-																	<h4><a href="#">Debitis nihil placeat, illum est nisi</a></h4>
-																</div>
-																<div class="entry-meta">
-																	<ul>
-																		<li>10th July 2021</li>
-																	</ul>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="tab-content clearfix" id="tabs-3">
-												<div class="posts-sm row col-mb-30" id="recent-comments-list-sidebar">
-													<div class="entry col-12">
-														<div class="grid-inner row g-0">
-															<div class="col-auto">
-																<div class="entry-image">
-																	<a href="#"><img class="rounded-circle" src="<?= base_url() ?>assets/web/images/icons/avatar.jpg" alt="User Avatar"></a>
-																</div>
-															</div>
-															<div class="col ps-3">
-																<strong>John Doe:</strong> Veritatis recusandae sunt repellat distinctio...
-															</div>
-														</div>
-													</div>
-
-													<div class="entry col-12">
-														<div class="grid-inner row g-0">
-															<div class="col-auto">
-																<div class="entry-image">
-																	<a href="#"><img class="rounded-circle" src="<?= base_url() ?>assets/web/images/icons/avatar.jpg" alt="User Avatar"></a>
-																</div>
-															</div>
-															<div class="col ps-3">
-																<strong>Mary Jane:</strong> Possimus libero, earum officia architecto maiores....
-															</div>
-														</div>
-													</div>
-
-													<div class="entry col-12">
-														<div class="grid-inner row g-0">
-															<div class="col-auto">
-																<div class="entry-image">
-																	<a href="#"><img class="rounded-circle" src="<?= base_url() ?>assets/web/images/icons/avatar.jpg" alt="User Avatar"></a>
-																</div>
-															</div>
-															<div class="col ps-3">
-																<strong>Site Admin:</strong> Deleniti magni labore laboriosam odio...
-															</div>
-														</div>
-													</div>
+													<?php endwhile; ?>
 												</div>
 											</div>
 
@@ -629,13 +409,19 @@
 								</div>
 
 								<div class="widget clearfix">
-									<iframe src="https://player.vimeo.com/video/100299651" width="500" height="264" allow="autoplay; fullscreen" allowfullscreen></iframe>
+								<iframe width="853" height="480" src="https://www.youtube.com/embed/BNPSCcx637E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 								</div>
 
 								<div class="widget clearfix">
 									<img class="aligncenter" src="<?= base_url() ?>assets/web/images/magazine/ad.png" alt="Image">
 								</div>
+								<div id="instagram" class="widget">
 
+								<h4 class="highlight-me">Instagram Photos</h4>
+								<div id="instagram-photos" class="instagram-photos masonry-thumbs grid-container grid-4 customjs" data-user="upt.perparkiranpku"></div>
+
+							</div>
+								
 								<div class="widget clearfix">
 									<iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2FEnvato&amp;width=350&amp;height=240&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=true&amp;appId=499481203443583" style="border:none; overflow:hidden; width:350px; height:240px; max-width: 100% !important;"></iframe>
 								</div>
@@ -647,3 +433,65 @@
 
 				</div>
 			</div>
+			<div class="container clearfix">
+									<div class="fancy-title title-border">
+										<h3><i class="icon-newspaper3"></i> Berita Lainnya</h3>
+									</div>
+									
+									<div class="row posts-md col-mb-30">
+										<?php 
+										$onews = $db->query("SELECT *, a.created_at as tgl FROM blog a, tags_blog b WHERE a.id_blog=b.id_blog AND a.publish='Y' GROUP BY a.id_blog ORDER BY tgl DESC LIMIT 6");
+                                        while ($o_n=$onews->fetch_assoc()) :
+										?>
+										<div class="entry col-sm-6 col-xl-4">
+											<div class="flip-card">
+												<div class="flip-card-front dark" style="background-image: url('<?= base_url() ?>_uploads/blog/sampul/<?= $o_n['id_blog']; ?>/<?= $o_n['sampul']; ?>')">
+													<div class="flip-card-inner">
+														<div class="card bg-transparent border-0">
+															<div class="card-body">
+																<h3 class="card-title mb-0"><?= $o_n['j_blog']; ?></h3>
+																<span class="fst-italic">- <?= tgl_indo_singkat(date('Y-m-d', strtotime($o_n['tgl']))) .' | '.date('H:i:s', strtotime($o_n['tgl'])); ?> WIB</span>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="flip-card-back dark" style="background-image: url('<?= base_url() ?>_uploads/blog/sampul/<?= $o_n['id_blog']; ?>/<?= $o_n['sampul']; ?>')">
+													<div class="flip-card-inner">
+														<p class="mb-2 text-white"><?= judul($o_n['isi'],'180'); ?></p>
+														<button type="button" class="btn btn-outline-light mt-2" style="float:right;">Selengkapnya <i class="icon-line-arrow-right"></i></button>
+													</div>
+												</div>
+											</div>
+										</div>
+										<?php endwhile; ?>
+									</div>
+									<!-- <div class="clear"></div> -->
+									<br>
+									<center><a href="#" class="button button-rounded button-reveal button-large button-border text-end"><i class="icon-arrow-circle-right"></i><span>Tampilkan Seluruh Berita</span></a></center>
+
+								</div>
+								<div class="container clearfix">
+									<div class="fancy-title title-border text-center">
+										<h3>Partner</h3>
+									</div>				
+			<div id="oc-clients-full" class="owl-carousel owl-carousel-full image-carousel carousel-widget" data-margin="30" data-nav="true" data-pagi="false" data-autoplay="5000" data-items-xs="3" data-items-sm="3" data-items-md="5" data-items-lg="6" data-items-xl="7">
+
+						<div class="oc-item"><a href="#"><img src="<?= base_url(); ?>assets/web/images/clients/1.png" alt="Brands"></a></div>
+						<div class="oc-item"><a href="#"><img src="<?= base_url(); ?>assets/web/images/clients/2.png" alt="Brands"></a></div>
+						<div class="oc-item"><a href="#"><img src="<?= base_url(); ?>assets/web/images/clients/3.png" alt="Brands"></a></div>
+						<div class="oc-item"><a href="#"><img src="<?= base_url(); ?>assets/web/images/clients/4.png" alt="Brands"></a></div>
+						<div class="oc-item"><a href="#"><img src="<?= base_url(); ?>assets/web/images/clients/5.png" alt="Brands"></a></div>
+						<div class="oc-item"><a href="#"><img src="<?= base_url(); ?>assets/web/images/clients/6.png" alt="Brands"></a></div>
+						<div class="oc-item"><a href="#"><img src="<?= base_url(); ?>assets/web/images/clients/7.png" alt="Brands"></a></div>
+						<div class="oc-item"><a href="#"><img src="<?= base_url(); ?>assets/web/images/clients/8.png" alt="Brands"></a></div>
+						<div class="oc-item"><a href="#"><img src="<?= base_url(); ?>assets/web/images/clients/9.png" alt="Brands"></a></div>
+						<div class="oc-item"><a href="#"><img src="<?= base_url(); ?>assets/web/images/clients/10.png" alt="Brands"></a></div>
+						<div class="oc-item"><a href="#"><img src="<?= base_url(); ?>assets/web/images/clients/11.png" alt="Brands"></a></div>
+						<div class="oc-item"><a href="#"><img src="<?= base_url(); ?>assets/web/images/clients/12.png" alt="Brands"></a></div>
+
+					</div>
+								</div>
+
+				<div class="section lazy mt-5 mb-0 p-0 min-vh-75" data-bg="https://source.unsplash.com/sLoiQitblLs/1920x1080" style="background-position: center center; background-repeat: no-repeat; background-size: cover;">
+					<div class="shape-divider" data-shape="cliff" data-height="150" data-flip-vertical="true"></div>
+				</div>

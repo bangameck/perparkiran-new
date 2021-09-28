@@ -76,6 +76,7 @@ require 'vendor/autoload.php';
 		<!-- Footer
 		============================================= -->
 		<footer id="footer" class="dark">
+			<div class="shape-divider" data-shape="cliff" data-height="150" data-outside="true" data-fill="#282828"></div>
 			<div class="container">
 
 				<!-- Footer Widgets
