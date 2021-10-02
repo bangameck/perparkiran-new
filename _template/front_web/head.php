@@ -18,6 +18,9 @@
 	<link rel="stylesheet" href="<?= base_url(); ?>assets/web/css/animate.css" type="text/css" />
 	<link rel="stylesheet" href="<?= base_url(); ?>assets/web/css/magnific-popup.css" type="text/css" />
 
+	<!-- Star Rating CSS -->
+	<link rel="stylesheet" href="<?= base_url(); ?>assets/web/css/components/bs-rating.css" type="text/css" />
+
 	<link rel="stylesheet" href="<?= base_url(); ?>assets/web/css/custom.css" type="text/css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 

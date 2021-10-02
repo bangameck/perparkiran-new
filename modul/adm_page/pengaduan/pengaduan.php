@@ -1591,6 +1591,7 @@ if ($_SESSION['id_usr']==$d['adm_peng'] OR $_SESSION['level']=='1') {
     }
     $db->query("DELETE FROM d_pengaduan WHERE id_peng='$id_peng'");
     $db->query("DELETE FROM pengaduan WHERE id_peng='$id_peng'");
+    $db->query("DELETE FROM rate_pengaduan WHERE id_peng='$id_peng'");
     sweetAlert('pengaduan', 'sukses', 'Berhasil !', ' Data Pengaduan Dengan ID: '.$id_peng.' Berhasil dihapus..!');
 ?>
 <?php break; ?>

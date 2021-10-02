@@ -28,8 +28,7 @@ switch ($a) {
                 </div>
                 <div class="col-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?= base_url(); ?>"> <i
-                                    data-feather="file-text"></i></a>
+                        <li class="breadcrumb-item"><a href="<?= base_url(); ?>"> <i data-feather="file-text"></i></a>
                         </li>
                         <li class="breadcrumb-item">Blog</li>
                         <li class="breadcrumb-item active">Postingan </li>
@@ -71,29 +70,41 @@ switch ($a) {
                                     } else {
                                         $pub = 'Draft . ';
                                     }
+                                    if ($b['bn']=='Y') {
+                                        $bn = '| <span class="badge badge-danger"><i class="fa fa-hashtag"></i> Breaking News</span>';
+                                    } else {
+                                        $bn ='';
+                                    }
+                                    if ($b['hn']=='Y') {
+                                        $hn = '| <span class="badge badge-dark"><i class="fa fa-hashtag"></i> Headline News</span>';
+                                    } else {
+                                        $hn ='';
+                                    }
                                     ?>
                                 <tr>
                                     <td valign="top" class="avatar-showcase" style="text-align: left;">
                                         <div class="row">
-                                            <div class="col-2 avatars">
-                                                <div class="avatar ratio"><img class="b-r-8 img-100" src="<?= base_url(); ?>_uploads/blog/sampul/<?= $b['id_blog']; ?>/<?= $b['sampul']; ?>" alt="<?= $b['c_sampul']; ?>"></div> 
+                                            <div class="col-lg-2 col-sm-4 avatars">
+                                                <div class="avatar ratio"><img class="b-r-8 img-100"
+                                                        src="<?= base_url(); ?>_uploads/blog/sampul/<?= $b['id_blog']; ?>/<?= $b['sampul']; ?>"
+                                                        alt="<?= $b['c_sampul']; ?>"></div>
                                             </div>
-                                            <div class="col-1"></div>
-                                            <div class="col-9">
+                                            <div class="col-lg-10 col-sm-8">
                                                 <h6><b><?= $b['j_blog']; ?></b></h6>
                                                 <small>
                                                     <?= $pub. hari(date('D', strtotime($b['tgl']))).', '.tgl_indo(date('Y-m-d', strtotime($b['tgl']))).' '.date('H:i:s', strtotime($b['tgl'])) ; ?>
                                                     <br>
-                                                    Penulis . <?= $b['nama']; ?>
+                                                    Penulis . <?= $b['nama']; ?> <?= $bn; ?> <?= $hn; ?>
                                                 </small>
                                                 <p>
-                                                <?php 
+                                                    <?php 
                                                 $tags = $db->query("SELECT * FROM tags_blog a, tags b WHERE a.id_tags=b.id_tags AND id_blog='$b[id_blog]'");
                                                 while ($t=$tags->fetch_assoc()) : ?>
-                                                    <span class="badge badge-primary"><i class="fa fa-tags"></i> <?= $t['nm_tags']; ?></span>
-                                                <?php endwhile; ?>
-                                            
-                                            </p>
+                                                    <span class="badge badge-primary"><i class="fa fa-tags"></i>
+                                                        <?= $t['nm_tags']; ?></span>
+                                                    <?php endwhile; ?>
+
+                                                </p>
                                             </div>
 
                                         </div>
@@ -101,24 +112,25 @@ switch ($a) {
                                     <td valign="top">
                                         <div class="btn-group">
                                             <a href="<?= base_url(); ?>blog/post/edit/<?= $b['id_blog']; ?>"
-                                                class="btn btn-info-gradien <?= $diss; ?> <?= $disab; ?>" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                title="Edit Pengaduan" <?= $hide; ?>><i class="fa fa-pencil"></i></a>
-                                            <a href="<?= base_url(); ?>pengaduan/teruskan/<?= $u['slug']; ?>"
-                                                class="btn btn-warning-gradien <?= $dist; ?>" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                title="Teruskan Pengaduan" <?= $hide; ?>><i class="fa fa-mail-forward"></i></a>
-                                            <a href="<?= base_url(); ?>pengaduan/tolak/<?= $u['slug']; ?>"
-                                                class="btn btn-danger-gradien <?= $dist; ?>" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                title="Tolak Pengaduan" <?= $hide; ?>><i class="fa fa-times-circle"></i></a>
-                                            <a href="<?= base_url(); ?>pengaduan/detail/<?= $u['slug']; ?>"
-                                                class="btn btn-primary-gradien" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                title="Detail Pengaduan"><i class="fa fa-info-circle"></i></a>
+                                                class="btn btn-info-gradien <?= $diss; ?> <?= $disab; ?>"
+                                                data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                                title="Edit Postingan" <?= $hide; ?>><i class="fa fa-pencil"></i></a>
+                                            <a href="<?= base_url(); ?>blog/post/settings/<?= $b['id_blog']; ?>"
+                                                class="btn btn-dark-gradien <?= $dist; ?>" data-bs-toggle="tooltip"
+                                                data-bs-placement="bottom" title="Seting Postingan" <?= $hide; ?>><i
+                                                    class="fa fa-cog"></i></a>
+                                            <a href="<?= base_url(); ?>pengaduan/detail/<?= $b['slug']; ?>"
+                                                class="btn btn-primary-gradien" data-bs-toggle="tooltip"
+                                                data-bs-placement="bottom" title="Detail Pengaduan"><i
+                                                    class="fa fa-info-circle"></i></a>
 
-                                            <form action="<?= base_url(); ?>pengaduan/delete" method="POST" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                title="Hapus Pengaduan"
-                                                <?= $hide; ?>>
-                                                <input type="hidden" name="id_peng" value="<?= $u['id_peng']; ?>">
-                                                <button class="btn btn-danger-gradien <?= $disab; ?>" onclick="return hapus()"><i
-                                                        class="fa fa-trash"></i></button>
+                                            <form action="<?= base_url(); ?>blog/post/delete" method="POST"
+                                                data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                                title="Hapus Postingan Secara Permanen" <?= $hide; ?>>
+                                                <input type="hidden" name="id_blog" value="<?= $b['id_blog']; ?>">
+                                                <input type="hidden" name="sampul" value="<?= $b['sampul']; ?>">
+                                                <button class="btn btn-danger-gradien <?= $disab; ?>"
+                                                    onclick="return hapus()"><i class="fa fa-trash"></i></button>
                                             </form>
                                         </div>
                                     </td>
@@ -146,8 +158,7 @@ switch ($a) {
                 </div>
                 <div class="col-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?= base_url(); ?>"> <i
-                                    data-feather="file-text"></i></a>
+                        <li class="breadcrumb-item"><a href="<?= base_url(); ?>"> <i data-feather="file-text"></i></a>
                         </li>
                         <li class="breadcrumb-item">Blog </li>
                         <li class="breadcrumb-item active">Postingan Baru </li>
@@ -175,7 +186,9 @@ switch ($a) {
                     <div class="row g-2">
                         <div class="col-lg-12 col-md-12">
                             <label">Sampul :</label>
-                            <input type="file" name="sampul" class="form-control dropify" accept="image/jpeg, image/png"  data-allowed-file-extensions="jpg jpeg jpe png" required>
+                                <input type="file" name="sampul" class="form-control dropify"
+                                    accept="image/jpeg, image/png" data-allowed-file-extensions="jpg jpeg jpe png"
+                                    required>
                                 <div class="valid-feedback">
                                 </div>
                                 <div class="invalid-feedback">
@@ -183,13 +196,14 @@ switch ($a) {
                                 </div>
                         </div>
                         <div class="col-lg-12 col-md-12">
-                            <label><small>Cretid Sampul (Ex : Kepala Dishub Kota Pekanbaru Yuliarso, STTP, M.Si)</small></label>
-                                <input type="text" name="c_sampul" class="form-control" required>
-                                <div class="valid-feedback">
-                                </div>
-                                <div class="invalid-feedback">
-                                    Judul Postingan tidak boleh kosong.
-                                </div>
+                            <label><small>Cretid Sampul (Ex : Kepala Dishub Kota Pekanbaru Yuliarso, STTP,
+                                    M.Si)</small></label>
+                            <input type="text" name="c_sampul" class="form-control" required>
+                            <div class="valid-feedback">
+                            </div>
+                            <div class="invalid-feedback">
+                                Judul Postingan tidak boleh kosong.
+                            </div>
                         </div>
                     </div>
                     <div class="row g-2">
@@ -211,7 +225,9 @@ switch ($a) {
                             $tags = $db->query("SELECT * FROM tags ORDER BY nm_tags ASC");
                             while($t=$tags->fetch_assoc()) :
                             ?>
-                            <input class="checkbox_animated"  type="checkbox" name="tags[]" value="<?= $t['id_tags']; ?>"><i class="fa fa-tags"></i> <?= $t['nm_tags']; ?>; &nbsp;&nbsp;&nbsp;&nbsp;
+                            <input class="checkbox_animated" type="checkbox" name="tags[]"
+                                value="<?= $t['id_tags']; ?>"><i class="fa fa-tags"></i> <?= $t['nm_tags']; ?>;
+                            &nbsp;&nbsp;&nbsp;&nbsp;
                             <?php endwhile; ?>
                             <hr>
                         </div>
@@ -220,8 +236,7 @@ switch ($a) {
                         <div class="col-lg-12 col-md-12">
                             <label">Galery Postingan : <small style="color: green;">Pilih beberapa gambar atau
                                     video</small></label>
-                                <input class="form-control" name="foto[]" type="file"
-                                    accept="image/jpeg, image/png"
+                                <input class="form-control" name="foto[]" type="file" accept="image/jpeg, image/png"
                                     multiple>
                                 <small style="color: red;">Format File : jpg, png, jpeg, jpe</small><br>
                                 <small style="color: red;">Jika jumlah file banyak dan berukuran besar maka loading akan
@@ -326,8 +341,7 @@ if ($_SESSION['id_usr']==$d['adm_peng'] OR $_SESSION['level']=='1') {
                 </div>
                 <div class="col-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?= base_url(); ?>"> <i
-                                    data-feather="file-text"></i></a>
+                        <li class="breadcrumb-item"><a href="<?= base_url(); ?>"> <i data-feather="file-text"></i></a>
                         </li>
                         <li class="breadcrumb-item">Postingan </li>
                         <li class="breadcrumb-item active">Edit Postingan </li>
@@ -340,67 +354,75 @@ if ($_SESSION['id_usr']==$d['adm_peng'] OR $_SESSION['level']=='1') {
         <div class="card">
             <div class="card-body">
                 <ul class="nav nav-tabs nav-primary" id="pills-warningtab" role="tablist">
-                    <li class="nav-item"><a class="nav-link active" id="pills-warninghome-tab" data-bs-toggle="pill"
-                            href="#pills-warninghome" role="tab" aria-controls="pills-warninghome"
-                            aria-selected="true"><i class="icofont icofont-architecture-alt"></i></i>Postingan</a></li>
-                    <li class="nav-item"><a class="nav-link" id="pills-warningprofile-tab" data-bs-toggle="pill"
-                            href="#pills-warningprofile" role="tab" aria-controls="pills-warningprofile"
-                            aria-selected="false"><i class="icofont icofont-picture"></i>Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link active" id="postingan-tab" data-bs-toggle="pill"
+                            href="#postingan" role="tab" aria-controls="postingan" aria-selected="true"><i
+                                class="icofont icofont-architecture-alt"></i></i>Postingan</a></li>
+                    <li class="nav-item"><a class="nav-link" id="gallery-tab" data-bs-toggle="pill" href="#gallery"
+                            role="tab" aria-controls="gallery" aria-selected="false"><i
+                                class="icofont icofont-picture"></i>Gallery</a></li>
                 </ul>
                 <div class="tab-content" id="pills-warningtabContent">
-                    <div class="tab-pane fade show active" id="pills-warninghome" role="tabpanel"
-                        aria-labelledby="pills-warninghome-tab">
+                    <div class="tab-pane fade show active" id="postingan" role="tabpanel"
+                        aria-labelledby="postingan-tab">
                         <div class="card-body">
-                        <form class="row g-3 needs-validation form theme-form" novalidate="" action="" method="POST"
-                            enctype="multipart/form-data">
-                            <div class="row g-2">
-                                <div class="col-lg-12 col-md-12">
-                                    <label">Judul Postingan :</label>
-                                        <input type="text" name="j_blog" class="form-control" value="<?= $d['j_blog']; ?>" required>
+                            <form class="row g-3 needs-validation form theme-form" novalidate="" action="" method="POST"
+                                enctype="multipart/form-data">
+                                <div class="row g-2">
+                                    <div class="col-lg-12 col-md-12">
+                                        <label">Judul Postingan :</label>
+                                            <input type="text" name="j_blog" class="form-control"
+                                                value="<?= $d['j_blog']; ?>" required>
+                                            <div class="valid-feedback">
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Judul Postingan tidak boleh kosong.
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="row g-2">
+                                    <div class="col-lg-12 col-md-12">
+                                        <label">Sampul :</label>
+                                            <input type="file" name="sampul" class="form-control dropify"
+                                                accept="image/jpeg, image/png"
+                                                data-allowed-file-extensions="jpg jpeg jpe png"
+                                                data-default-file="<?= base_url(); ?>_uploads/blog/sampul/<?= $id; ?>/<?= $d['sampul']; ?>"
+                                                data-show-remove="false">
+                                            <input type="hidden" name="sampul_old" value="<?= $d['sampul']; ?>">
+                                            <div class="valid-feedback">
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Sampul tidak boleh kosong.
+                                            </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <label><small>Cretid Sampul (Ex : Kepala Dishub Kota Pekanbaru Yuliarso, STTP,
+                                                M.Si)</small></label>
+                                        <input type="text" name="c_sampul" class="form-control"
+                                            value="<?= $d['c_sampul']; ?>" required>
                                         <div class="valid-feedback">
                                         </div>
                                         <div class="invalid-feedback">
                                             Judul Postingan tidak boleh kosong.
                                         </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row g-2">
-                                <div class="col-lg-12 col-md-12">
-                                    <label">Sampul :</label>
-                                    <input type="file" name="sampul" class="form-control dropify" accept="image/jpeg, image/png"  data-allowed-file-extensions="jpg jpeg jpe png" data-default-file="<?= base_url(); ?>_uploads/blog/sampul/<?= $id; ?>/<?= $d['sampul']; ?>" data-show-remove="false">
-                                    <input type="hidden" name="sampul_old" value="<?= $d['sampul']; ?>">
-                                        <div class="valid-feedback">
-                                        </div>
-                                        <div class="invalid-feedback">
-                                            Sampul tidak boleh kosong.
-                                        </div>
+                                <div class="row g-2">
+                                    <div class="col-lg-12 col-md-12">
+                                        <label">Isi Postingan :</label>
+                                            <textarea name="isi" class="form-control editor"
+                                                required><?= $d['isi']; ?></textarea>
+                                            <div class="valid-feedback">
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Isi Postingan tidak boleh kosong.
+                                            </div>
+                                    </div>
                                 </div>
-                                <div class="col-lg-12 col-md-12">
-                                    <label><small>Cretid Sampul (Ex : Kepala Dishub Kota Pekanbaru Yuliarso, STTP, M.Si)</small></label>
-                                        <input type="text" name="c_sampul" class="form-control" value="<?= $d['c_sampul']; ?>" required>
-                                        <div class="valid-feedback">
-                                        </div>
-                                        <div class="invalid-feedback">
-                                            Judul Postingan tidak boleh kosong.
-                                        </div>
-                                </div>
-                            </div>
-                            <div class="row g-2">
-                                <div class="col-lg-12 col-md-12">
-                                    <label">Isi Postingan :</label>
-                                        <textarea name="isi" class="form-control editor" required><?= $d['isi']; ?></textarea>
-                                        <div class="valid-feedback">
-                                        </div>
-                                        <div class="invalid-feedback">
-                                            Isi Postingan tidak boleh kosong.
-                                        </div>
-                                </div>
-                            </div>
-                            <div class="row g-2">
-                                <div class="col-lg-12 col-md-12">
-                                    <hr>
-                                    <label>Kategori :</label><br>
-                                    <?php 
+                                <div class="row g-2">
+                                    <div class="col-lg-12 col-md-12">
+                                        <hr>
+                                        <label>Kategori :</label><br>
+                                        <?php 
                                     // $n=1;
                                     $tags = $db->query("SELECT * FROM tags ORDER BY nm_tags ASC");
                                     while($t=$tags->fetch_assoc()) :
@@ -412,12 +434,14 @@ if ($_SESSION['id_usr']==$d['adm_peng'] OR $_SESSION['level']=='1') {
                                             $checked = '';
                                         }
                                     ?>
-                                    <input class="checkbox_animated"  type="checkbox" name="tags[]" value="<?= $t['id_tags']; ?>" <?= $checked; ?> ><i class="fa fa-tags"></i> <?= $t['nm_tags']; ?>; &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <?php endwhile; ?>
-                                    <hr>
+                                        <input class="checkbox_animated" type="checkbox" name="tags[]"
+                                            value="<?= $t['id_tags']; ?>" <?= $checked; ?>><i class="fa fa-tags"></i>
+                                        <?= $t['nm_tags']; ?>; &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <?php endwhile; ?>
+                                        <hr>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- <div class="row g-2">
+                                <!-- <div class="row g-2">
                                 <div class="col-lg-12 col-md-12">
                                     <label">Galery Postingan : <small style="color: green;">Pilih beberapa gambar atau
                                             video</small></label>
@@ -433,28 +457,28 @@ if ($_SESSION['id_usr']==$d['adm_peng'] OR $_SESSION['level']=='1') {
                                 </div>
                             </div>
                             <hr> -->
-                            <div class="d-grid gap-2 col-lg-3 col-md-12 mx-auto">
-                                <button class="btn btn-primary-gradien" name="simpan" type="submit">Simpan</button>
-                            </div>
-                        </form>
+                                <div class="d-grid gap-2 col-lg-3 col-md-12 mx-auto">
+                                    <button class="btn btn-primary-gradien" name="simpan" type="submit">Simpan</button>
+                                </div>
+                            </form>
 
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="pills-warningprofile" role="tabpanel"
-                        aria-labelledby="pills-warningprofile-tab">
+                    <div class="tab-pane fade" id="gallery" role="tabpanel" aria-labelledby="gallery-tab">
                         <div class="card-body">
                             <form class="row g-3 needs-validation form theme-form" novalidate="" action="" method="POST"
                                 enctype="multipart/form-data">
                                 <div class="row g-2">
                                     <div class="row g-2">
                                         <div class="col-lg-12 col-md-12">
-                                            <label">Galery Postingan : <small style="color: green;">Pilih beberapa gambar atau
+                                            <label">Galery Postingan : <small style="color: green;">Pilih beberapa
+                                                    gambar atau
                                                     video</small></label>
                                                 <input class="form-control" name="foto[]" type="file"
-                                                    accept="image/jpeg, image/png" required
-                                                    multiple>
+                                                    accept="image/jpeg, image/png" required multiple>
                                                 <small style="color: red;">Format File : jpg, png, jpeg, jpe</small><br>
-                                                <small style="color: red;">Jika jumlah file banyak dan berukuran besar maka loading akan
+                                                <small style="color: red;">Jika jumlah file banyak dan berukuran besar
+                                                    maka loading akan
                                                     lebih lama.</small>
                                                 <div class="invalid-feedback">
                                                     Galery Postingan tidak boleh kosong.
@@ -464,7 +488,8 @@ if ($_SESSION['id_usr']==$d['adm_peng'] OR $_SESSION['level']=='1') {
                                     <hr>
                                 </div>
                                 <div class="d-grid gap-2 col-lg-3 col-md-12 mx-auto">
-                                    <button class="btn btn-success-gradien" name="gambar" type="submit">Tambah Gambar</button>
+                                    <button class="btn btn-success-gradien" name="gambar" type="submit">Tambah
+                                        Gambar</button>
                                 </div>
                             </form>
                             <hr>
@@ -496,8 +521,9 @@ if ($_SESSION['id_usr']==$d['adm_peng'] OR $_SESSION['level']=='1') {
                                             </td>
                                             <td style="text-align: center;">
                                                 <div class="btn-group">
-                                                <form action="<?= base_url(); ?>blog/post/delete/gambar" method="POST" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                title="Hapus Gambar">
+                                                    <form action="<?= base_url(); ?>blog/post/delete/gambar"
+                                                        method="POST" data-bs-toggle="tooltip"
+                                                        data-bs-placement="bottom" title="Hapus Gambar">
                                                         <input type="hidden" name="nama" value="<?= $u['n_d_blog']; ?>">
                                                         <input type="hidden" name="id" value="<?= $u['id_d_blog']; ?>">
                                                         <input type="hidden" name="id_blog" value="<?= $id; ?>">
@@ -585,7 +611,7 @@ if ($_SESSION['id_usr']==$d['adm_peng'] OR $_SESSION['level']=='1') {
                                 javascript('', 'alert-error', 'Inputan hanya boleh jpg, png, jpeg, jpe');
                             }
                         }
-                        sweetAlert('blog/post/edit/'.$id, 'sukses', 'Berhasil !', 'Data Postingan dengan (ID : '.$id.') Berhasil diupdate.');
+                        sweetAlert('blog/post/edit/'.$id.'#gallery', 'sukses', 'Berhasil !', 'Data Postingan dengan (ID : '.$id.') Berhasil diupdate.');
                     }
                 }
                 ?>
@@ -601,6 +627,7 @@ if ($_SESSION['id_usr']==$d['adm_peng'] OR $_SESSION['level']=='1') {
 ?>
 <?php break; ?>
 <?php case 'delete-gambar':
+    aut(array(1,2,3,4,5,6));
     $id       = $_POST['id'];
     $id_blog  = $_POST['id_blog'];
     $nama     = $_POST['nama'];
@@ -608,29 +635,288 @@ if ($_SESSION['id_usr']==$d['adm_peng'] OR $_SESSION['level']=='1') {
     unlink('_uploads/blog/gallery/'.$id_blog.'/' .$nama);
     $q = $db->query("DELETE FROM d_blog WHERE id_d_blog='$id'");
     if ($q) {
-        sweetAlert('blog/post/edit/'.$id_blog, 'sukses', 'Berhasil..!', 'Gambar Galeri Postingan Berhasil dihapus.');
+        sweetAlert('blog/post/edit/'.$id_blog.'#gallery', 'sukses', 'Berhasil..!', 'Gambar Galeri Postingan Berhasil dihapus.');
     } else {
-        sweetAlert('blog/post/edit/'.$id_blog, 'error', 'Error !', 'Ups... Sepertinya Ada Kesalahan...');
+        sweetAlert('blog/post/edit/'.$id_blog.'#gallery', 'error', 'Error !', 'Ups... Sepertinya Ada Kesalahan...');
     }
     
 ?>
 <?php break; ?>
-<?php case 'delete':
-    $id_peng  = $_POST['id_peng'];
-    // $nama     = $_POST['nama'];
-    // $ekstensi = $_POST['ekstensi'];
+<?php case 'settings' :
+    aut(array(1,5)); 
+    $id = $_GET['id'];
+    $d = $db->query("SELECT *, a.created_at as tgl, a.updated_at as updated FROM blog a, users b WHERE a.adm_blog=b.id AND id_blog='$id'")->fetch_assoc();
+    $ar=array('Y'=>'Ya','N'=>'Tidak');
+    ?>
+<title>Setting Postingan | <?= $title; ?></title>
+<div class="page-body">
+    <div class="container-fluid">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-6">
+                    <h3>Setting Postingan</h3>
+                </div>
+                <div class="col-6">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="<?= base_url(); ?>blog/post"> <i data-feather="file-text"></i></a>
+                        </li>
+                        <li class="breadcrumb-item">Postingan</li>
+                        <li class="breadcrumb-item active">Settings </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <br>
+                                    <img class="img-fluid w-100"
+                                        src="<?= base_url(); ?>_uploads/blog/sampul/<?= $d['id_blog']; ?>/<?= $d['sampul']; ?>"
+                                        alt="<?= $d['sampul']; ?>">
+                                </div>
+                                <div class="col-lg-6">
+                                    <br>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th width="130px"></th>
+                                                <th width="15px"></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td valign="top"><b>Judul</b> </td>
+                                                <td valign="top"><b>:</b></td>
+                                                <td><?= $d['j_blog']; ?>.</td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top"><b>Waktu</b></td>
+                                                <td valign="top"><b>:</b></td>
+                                                <td> <?= hari(date('D', strtotime($d['tgl']))).', '.tgl_indo(date('Y-m-d', strtotime($d['tgl']))).' '.date('H:i:s', strtotime($d['tgl'])).' WIB'; ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top"><b>Penulis</b></td>
+                                                <td valign="top"><b>:</b></td>
+                                                <td> <?= $d['nama']; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top"><b>Tags/Kategori</b></td>
+                                                <td valign="top"><b>:</b></td>
+                                                <td>
+                                                    <?php 
+                                                $tags = $db->query("SELECT * FROM tags a, tags_blog b WHERE a.id_tags=b.id_tags AND b.id_blog='$id'");
+                                                while($t=$tags->fetch_assoc()):
+                                                ?>
+                                                    <span class="badge badge-primary"><i class="fa fa-tags"></i>
+                                                        <?= $t['nm_tags']; ?></span>
+                                                    <?php endwhile; ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top"><b>Publish</b></td>
+                                                <td valign="top"><b>:</b></td>
+                                                <td> <?= $ar[$d['publish']]; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top"><b>Breaking News</b></td>
+                                                <td valign="top"><b>:</b></td>
+                                                <td><?= $ar[$d['bn']]; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top"><b>Headline News</b></td>
+                                                <td valign="top"><b>:</b></td>
+                                                <td><?= $ar[$d['hn']]; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top"><b>di Update Pada</b></td>
+                                                <td valign="top"><b>:</b></td>
+                                                <td> <?= hari(date('D', strtotime($d['updated']))).', '.tgl_indo(date('Y-m-d', strtotime($d['updated']))).' '.date('H:i:s', strtotime($d['updated'])).' WIB'; ?>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
 
-    $doc=$db->query("SELECT * FROM d_pengaduan WHERE id_peng='$id_peng'");
+                                    <!-- Root element of PhotoSwipe. Must have class pswp.-->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 xl-30 chart_data_right box-col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form class="row g-3 needs-validation form theme-form" novalidate="" action=""
+                                method="POST">
+                                <div class="col-lg-12 col-md-12">
+                                    <label">Publish :</label>
+                                        <select class="form-select js-example-basic-single" name="publish"
+                                            id="floatingSelect" aria-label="Pilih Publish" required>
+                                            <option value="<?= $d['publish']; ?>"><?= $ar[$d['publish']]; ?></option>
+                                            <option value="Y">Ya</option>
+                                            <option value="N">Tidak</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Pilihan tidak boleh kosong.
+                                        </div>
+                                </div>
+                                <div class="d-grid gap-2 col-lg-12 col-md-12 mx-auto">
+                                    <button class="btn btn-primary-gradien" name="publish_btn"
+                                        type="submit">Simpan</button>
+                                </div>
+                            </form>
+                            <?php 
+                        if (isset($_POST['publish_btn'])) {
+                            $publish = $db->real_escape_string($_POST['publish']);
+                            // var_dump($publish);
+                            // die();
+                            $q=$db->query("UPDATE blog SET publish='$publish', updated_at=NOW() WHERE id_blog='$id'");
+                            if ($q) {
+                                sweetAlert('blog/post/settings/'.$id,'sukses','Berhasil..!','Status publish berhasil diubah');
+                            } else {
+                                javascript('','alert-error','Ups.. Sepertinya ada yang salah...');
+                            }
+                        }
+                        ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 xl-30 chart_data_right box-col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form class="row g-3 needs-validation form theme-form" novalidate="" action=""
+                                method="POST">
+                                <div class="col-lg-12 col-md-12">
+                                    <label">Breaking News :</label>
+                                        <select class="form-select js-example-basic-single" name="bn"
+                                            id="floatingSelect" aria-label="Pilih Breaking" required>
+                                            <option value="<?= $d['bn']; ?>"><?= $ar[$d['bn']]; ?></option>
+                                            <option value="Y">Ya</option>
+                                            <option value="N">Tidak</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Pilihan tidak boleh kosong.
+                                        </div>
+                                </div>
+                                <div class="d-grid gap-2 col-lg-12 col-md-12 mx-auto">
+                                    <button class="btn btn-primary-gradien" name="bn_btn" type="submit">Simpan</button>
+                                </div>
+                            </form>
+                            <?php 
+                        if (isset($_POST['bn_btn'])) {
+                            $bn = $db->real_escape_string($_POST['bn']);
+                            // var_dump($publish);
+                            // die();
+                            $breaking = $db->query("SELECT * FROM blog WHERE bn='Y'");
+                            if ($bn=='Y') {
+                                if ($breaking->num_rows < '5') {
+                                    $q=$db->query("UPDATE blog SET bn='$bn', updated_at=NOW() WHERE id_blog='$id'");
+                                    if ($q) {
+                                        sweetAlert('blog/post/settings/'.$id,'sukses','Berhasil..!','Status Breaking News berhasil diubah');
+                                    } else {
+                                        javascript('','alert-error','Ups.. Sepertinya ada yang salah...');
+                                    }
+                                    # code...
+                                } else {
+                                    sweetAlert('blog/post/settings/'.$id,'error','Error !','Breaking News maksimal hanya 5 berita');
+                                }
+                            } else {
+                                $q=$db->query("UPDATE blog SET bn='$bn', updated_at=NOW() WHERE id_blog='$id'");
+                                    if ($q) {
+                                        sweetAlert('blog/post/settings/'.$id,'sukses','Berhasil..!','Status Breaking News berhasil diubah');
+                                    } else {
+                                        javascript('','alert-error','Ups.. Sepertinya ada yang salah...');
+                                    }
+                            }
+                        }
+                        ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 xl-30 chart_data_right box-col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form class="row g-3 needs-validation form theme-form" novalidate="" action=""
+                                method="POST">
+                                <div class="col-lg-12 col-md-12">
+                                    <label">Headline News :</label>
+                                        <select class="form-select js-example-basic-single" name="hn"
+                                            id="floatingSelect" aria-label="Pilih Headline" required>
+                                            <option value="<?= $d['hn']; ?>"><?= $ar[$d['hn']]; ?></option>
+                                            <option value="Y">Ya</option>
+                                            <option value="N">Tidak</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Pilihan tidak boleh kosong.
+                                        </div>
+                                </div>
+                                <div class="d-grid gap-2 col-lg-12 col-md-12 mx-auto">
+                                    <button class="btn btn-primary-gradien" name="hn_btn" type="submit">Simpan</button>
+                                </div>
+                            </form>
+                            <?php 
+                        if (isset($_POST['hn_btn'])) {
+                            $hn = $db->real_escape_string($_POST['hn']);
+                            // var_dump($publish);
+                            // die();
+                            $headline = $db->query("SELECT * FROM blog WHERE hn='Y'");
+                            if ($hn == 'Y') {
+                                if ($headline->num_rows < '6') {
+                                    $q=$db->query("UPDATE blog SET hn='$hn', updated_at=NOW() WHERE id_blog='$id'");
+                                    if ($q) {
+                                        sweetAlert('blog/post/settings/'.$id,'sukses','Berhasil..!','Status Headline News berhasil diubah');
+                                    } else {
+                                        javascript('','alert-error','Ups.. Sepertinya ada yang salah...');
+                                    }
+                                } else {
+                                    sweetAlert('blog/post/settings/'.$id,'error','Error !','Headline News maksimal hanya 6 berita');
+                                }
+                            } else {
+                                $q=$db->query("UPDATE blog SET hn='$hn', updated_at=NOW() WHERE id_blog='$id'");
+                                    if ($q) {
+                                        sweetAlert('blog/post/settings/'.$id,'sukses','Berhasil..!','Status Headline News berhasil diubah');
+                                    } else {
+                                        javascript('','alert-error','Ups.. Sepertinya ada yang salah...');
+                                    }
+                            }
+                        }
+                        ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php break; ?>
+<?php case 'delete':
+    $id_blog  = $_POST['id_blog'];
+    $sampul   = $_POST['sampul'];
+    // $s = $db->query("SELECT * FROM blog WHERE id_blog='$id_blog'")->fetch_assoc();
+    $doc = $db->query("SELECT * FROM d_blog WHERE id_blog='$id_blog'");
+    // var_dump($id_blog,$sampul);
+    // die();
     while ($d=$doc->fetch_assoc()) {
-        if ($d['x_peng']!=='mp4') {
-            unlink('_uploads/f_peng/'.$d['n_d_peng']);
-        } else {
-            unlink('_uploads/v_peng/'.$d['n_d_peng']);
-        }
+        unlink('_uploads/blog/gallery/'.$id_blog.'/'.$d['n_d_blog']);
     }
-    $db->query("DELETE FROM d_pengaduan WHERE id_peng='$id_peng'");
-    $db->query("DELETE FROM pengaduan WHERE id_peng='$id_peng'");
-    sweetAlert('pengaduan', 'sukses', 'Berhasil !', ' Data Pengaduan Dengan ID: '.$id_peng.' Berhasil dihapus..!');
+    unlink('_uploads/blog/sampul/' .$id_blog. '/' .$sampul);
+    rmdir('_uploads/blog/sampul/' .$id_blog);
+    rmdir('_uploads/blog/gallery/' .$id_blog);
+    // $ft=glob('_upload/blog/gallery/'.$id_blog.'/*');
+    // foreach ($ft as $f){
+    //     if(is_file($f)) 
+    //     unlink($f);
+    // }
+
+    $db->query("DELETE FROM d_blog WHERE id_blog='$id_blog'");
+    $db->query("DELETE FROM blog WHERE id_blog='$id_blog'");
+    sweetAlert('blog/post', 'sukses', 'Berhasil !', ' Data Postingan Dengan ID: '.$id_blog.' Berhasil dihapus secara permanen..!');
 ?>
 <?php break; ?>
 <?php }

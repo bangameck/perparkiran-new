@@ -1,12 +1,4 @@
 <?php 
-/**
- * @author [bangameck.dev]
- * @email [rahmad.looker@mail.com]
- * @create date 2021-07-08 23:44:47
- * @modify date 2021-07-08 23:44:47
- * @desc [description]
- */
-
 function r_nohp($nohp) {
     $phone=$nohp;
     $jumlah_sensor=8;
@@ -27,7 +19,7 @@ function r_nohp($nohp) {
 function r_nama($nama_inp) {
     $ninp=$nama_inp;
     $jumlah_sensor=100;
-    $setelah_angka_ke=2;
+    $setelah_angka_ke=3;
     
     //ambil 4 angka di tengah yan akan disensor
     $censored = mb_substr($ninp, $setelah_angka_ke, $jumlah_sensor);

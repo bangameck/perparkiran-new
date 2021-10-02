@@ -38,6 +38,7 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/adm/css/vendors/scrollbar.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/adm/css/vendors/aos.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/adm/css/vendors/scrollable.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/adm/assets/css/vendors/rating.css">
     <!-- <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/vendors/simple-mde.css"> -->
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/adm/css/vendors/select2.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/adm/css/vendors/animate.css">

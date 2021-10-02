@@ -72,6 +72,8 @@
 <script src="<?= base_url(); ?>assets/adm/js/owlcarousel/owl-custom.js"></script>
 <script src="<?= base_url(); ?>assets/adm/js/animation/wow/wow.min.js"></script>
 <script src="<?= base_url(); ?>assets/adm/js/animation/wow/wow-init.js"></script>
+<script src="<?= base_url(); ?>assets/adm/js/rating/jquery.barrating.js"></script>
+<script src="<?= base_url(); ?>assets/adm/js/rating/rating-script.js"></script>
 <!-- Plugins JS Ends-->
 <!-- Theme js-->
 <script src="<?= base_url(); ?>assets/adm/js/script.js"></script>
@@ -422,4 +424,11 @@ function non() {
 				}
 			  })
 }
+$("#pubBtn").on('change', function() {
+                            if ($(this).attr('checked')) {
+                            $(this).val('Y');
+                            }
+                            else {
+                            $(this).val('N');
+                            }});
 </script>

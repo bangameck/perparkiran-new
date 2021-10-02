@@ -30,7 +30,8 @@ if(empty($_SESSION['username']) && empty($_SESSION['password'])){
         rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&family=Pacifico&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/adm/css/font-awesome.css">
     <!-- ico-font-->
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/adm/css/vendors/icofont.css">
@@ -55,7 +56,8 @@ if(empty($_SESSION['username']) && empty($_SESSION['password'])){
     #merienda {
         font-family: 'Merienda', cursive;
     }
-    #pacifico{
+
+    #pacifico {
         font-family: 'Pacifico', cursive;
     }
     </style>
@@ -65,15 +67,16 @@ if(empty($_SESSION['username']) && empty($_SESSION['password'])){
     <!-- login page start-->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xl-7"><img class="bg-img-cover bg-center" src="<?= base_url(); ?>assets/adm/images/login/2.jpg"
-                    alt="looginpage"></div>
+            <div class="col-xl-7"><img class="bg-img-cover bg-center"
+                    src="<?= base_url(); ?>assets/adm/images/login/2.jpg" alt="looginpage"></div>
             <div class="col-xl-5 p-0">
                 <div class="login-card">
                     <div>
                         <div><a class="logo text-start" href="index.html"><img class="img-fluid for-light"
                                     src="<?= base_url(); ?>assets/adm/images/logo/login.png" alt="looginpage"><img
-                                    class="img-fluid for-dark" src="<?= base_url(); ?>assets/adm/images/logo/logo_dark.png"
-                                    alt="looginpage"></a></div>
+                                    class="img-fluid for-dark"
+                                    src="<?= base_url(); ?>assets/adm/images/logo/logo_dark.png" alt="looginpage"></a>
+                        </div>
                         <div class="login-main">
                             <form class="theme-form" action="" method="POST">
                                 <h4>Halaman Login</h4>

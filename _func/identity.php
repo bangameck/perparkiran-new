@@ -49,5 +49,5 @@ $pmail  = "@m3ck1nd4h201220";
 $logo   = 'assets/adm/images/logo/logo.png';
 
 // footer;
-$footer = "Copyright " . date('Y') . " ©  <a href='" . $ig . "' target='_blank'>Dikembangakan Oleh Team IT " . $upt . "</a>"; 
+$footer = "Copyright " . date('Y') . " ©  <a href='" . $ig . "' target='_blank'>Dikembangakan Oleh Team IT " . $nm_upt . "</a>"; 
 
