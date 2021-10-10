@@ -7,6 +7,7 @@
 * @desc [description]
 */
 include_once '_func/func.php';
+include_once '_func/identity.php';
 if(empty($_SESSION['username']) && empty($_SESSION['password'])){
 ?>
 <!DOCTYPE html>
@@ -135,6 +136,7 @@ if(empty($_SESSION['username']) && empty($_SESSION['password'])){
                                 // die();
                                 $db->query("UPDATE users SET token='$t' WHERE username='$u'");
                                 $db->query("INSERT INTO session VALUES('$u','$ip','$os','$br','$t',NOW())");
+                                $db->query("INSERT INTO session_log VALUES('$u','$ip','$os','$br',NOW())");
     
                                 $c=$db->query("SELECT * FROM session WHERE username='$u'")->fetch_assoc();
                                 session_start();
@@ -147,7 +149,7 @@ if(empty($_SESSION['username']) && empty($_SESSION['password'])){
                                 $_SESSION['regu']  	      = $r['regu'];
                                 $_SESSION['token']        = $c['token'];
                                 // # code...
-                                sweetAlert('dashboard','sukses','Login Sukses...','Selamat datang disistem informasi perparkiran');
+                                sweetAlert('dashboard','sukses','Login Sukses...','Selamat datang di '.$title.'');
                             } else {
                                 sweetAlert('khusus-admin-login','error','Login Error !','Maaf akun anda sudah tidak mendapat akses (diblokir) atau belum terverifikasi silahkan cek email anda untuk memverifikasi akun. <br> silahkan menghubungi admin untuk info lebih lanjut.');
                             }

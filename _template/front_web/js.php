@@ -3,7 +3,9 @@
 <script src="<?= base_url(); ?>assets/web/js/jquery.js"></script>
 <script src="<?= base_url(); ?>assets/web/js/plugins.min.js"></script>
 <!-- Star Rating Plugin -->
-<script src="assets/web/js/components/star-rating.js"></script>
+<script src="<?= base_url(); ?>assets/web/js/components/star-rating.js"></script>
+<script src="<?= base_url(); ?>assets/adm/js/sweet-alert/sweetalert2.all.min.js"></script>
+<script src="<?= base_url(); ?>assets/adm/js/sweet-alert/app.js"></script>
 <!-- Footer Scripts
 ============================================= -->
 <script src="<?= base_url(); ?>assets/web/js/functions.js"></script>

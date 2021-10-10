@@ -58,8 +58,10 @@ switch ($a) {
                                 <?php
                                 if ($_SESSION['level']=='1') {
                                     $blog=$db->query("SELECT *, a.created_at as tgl FROM blog a, users b WHERE a.adm_blog=b.id ORDER BY tgl DESC");
+                                    $hide='';
                                 } else {
                                     $blog=$db->query("SELECT *, a.created_at as tgl FROM blog a, users b WHERE a.adm_blog=b.id AND a.adm_blog='$_SESSION[id_usr]' ORDER BY tgl DESC");
+                                    $hide='hidden';
                                 }
                                 
         // $us=$db->query("SELECT * FROM giat a, regu b WHERE a.regu=b.id_regu ORDER BY a.tgl_giat ASC");
@@ -71,12 +73,12 @@ switch ($a) {
                                         $pub = 'Draft . ';
                                     }
                                     if ($b['bn']=='Y') {
-                                        $bn = '| <span class="badge badge-danger"><i class="fa fa-hashtag"></i> Breaking News</span>';
+                                        $bn = '<span class="badge badge-danger"><i class="fa fa-hashtag"></i> Breaking News</span>';
                                     } else {
                                         $bn ='';
                                     }
                                     if ($b['hn']=='Y') {
-                                        $hn = '| <span class="badge badge-dark"><i class="fa fa-hashtag"></i> Headline News</span>';
+                                        $hn = '<span class="badge badge-dark"><i class="fa fa-hashtag"></i> Headline News</span>';
                                     } else {
                                         $hn ='';
                                     }
@@ -94,12 +96,13 @@ switch ($a) {
                                                 <small>
                                                     <?= $pub. hari(date('D', strtotime($b['tgl']))).', '.tgl_indo(date('Y-m-d', strtotime($b['tgl']))).' '.date('H:i:s', strtotime($b['tgl'])) ; ?>
                                                     <br>
-                                                    Penulis . <?= $b['nama']; ?> <?= $bn; ?> <?= $hn; ?>
+                                                    Penulis . <?= $b['nama']; ?>
                                                 </small>
                                                 <p>
-                                                    <?php 
+                                                    <?php echo $bn; echo $hn;
                                                 $tags = $db->query("SELECT * FROM tags_blog a, tags b WHERE a.id_tags=b.id_tags AND id_blog='$b[id_blog]'");
-                                                while ($t=$tags->fetch_assoc()) : ?>
+                                                while ($t=$tags->fetch_assoc()) : 
+                                                ?>
                                                     <span class="badge badge-primary"><i class="fa fa-tags"></i>
                                                         <?= $t['nm_tags']; ?></span>
                                                     <?php endwhile; ?>
@@ -114,7 +117,7 @@ switch ($a) {
                                             <a href="<?= base_url(); ?>blog/post/edit/<?= $b['id_blog']; ?>"
                                                 class="btn btn-info-gradien <?= $diss; ?> <?= $disab; ?>"
                                                 data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                title="Edit Postingan" <?= $hide; ?>><i class="fa fa-pencil"></i></a>
+                                                title="Edit Postingan"><i class="fa fa-pencil"></i></a>
                                             <a href="<?= base_url(); ?>blog/post/settings/<?= $b['id_blog']; ?>"
                                                 class="btn btn-dark-gradien <?= $dist; ?>" data-bs-toggle="tooltip"
                                                 data-bs-placement="bottom" title="Seting Postingan" <?= $hide; ?>><i
@@ -545,7 +548,11 @@ if ($_SESSION['id_usr']==$d['adm_peng'] OR $_SESSION['level']=='1') {
                 if (isset($_POST['simpan'])) {
                     // $id          = $db->real_escape_string(uid('20'));
                     $j_blog      = $db->real_escape_string($_POST['j_blog']);
-                    $slug        = $db->real_escape_string(uid('3').'-'.slug($_POST['j_blog']));
+                    if ($j_blog == $d['j_blog']) {
+                        $slug    = $d['slug'];
+                    } else {
+                        $slug    = $db->real_escape_string(uid('3').'-'.slug($_POST['j_blog']));
+                    }
                     $isi         = $_POST['isi'];
                     $sampul_new  = $_FILES['sampul']['name'];
                     $sampul_old  = $db->real_escape_string($_POST['sampul_old']);

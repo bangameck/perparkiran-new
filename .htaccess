@@ -102,6 +102,7 @@ RewriteRule ^laporan/bus$ .rest_page.php?f=adm_page&m=laporan&a=bus [L]
 
 #----------------------User Akses----------------------------#
 
+RewriteRule ^p/berita/([a-zA-Z0-9_-]+)$ .rest_apl.php?f=web_page&m=berita&id=$1 [L]
 
 #----------------------Batas User Akses----------------------------#
 

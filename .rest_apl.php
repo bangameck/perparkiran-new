@@ -6,6 +6,14 @@ require 'vendor/PHPMailer/src/PHPMailer.php';
 require 'vendor/PHPMailer/src/POP3.php';
 require 'vendor/PHPMailer/src/SMTP.php';
 require 'vendor/autoload.php';
+$time = date('Y-m-d');
+$cek = $db->query("SELECT * FROM views_site WHERE time='$time'");
+$jml = $cek->num_rows;
+if ($jml == '0') {
+    $db->query("INSERT INTO views_site VALUES ('$time','1')");
+} else {
+    $db->query("UPDATE views_site SET jumlah=jumlah+1 WHERE time='$time'");
+}
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
@@ -24,22 +32,22 @@ require 'vendor/autoload.php';
 
         <!-- Top Bar
 		============================================= -->
-        <!-- <div id="top-bar">
-			<?php //template_apl('top-bar') ?>
-		</div> -->
+        <div id="top-bar">
+			<?php template_apl('top-bar') ?>
+		</div>
         <!-- #top-bar end -->
 
         <!-- Header
 		============================================= -->
-        <header id="header" class="header-size-sm" data-sticky-shrink="false">
+        <header id="header" class="floating-header">
             <div class="container">
-                <?php template_apl('head-logo') ?>
+                <?php template_apl('head-ads') ?>
             </div>
 
             <div id="header-wrap" class="border-top border-f5">
                 <div class="container">
                     <div class="header-row justify-content-between">
-
+                            <?php template_apl('head-logo') ?>
                         <div class="header-misc">
 
                             <!-- Top Search
@@ -63,7 +71,7 @@ require 'vendor/autoload.php';
 
                         <!-- Primary Navigation
 						============================================= -->
-                        <nav class="primary-menu">
+                        <nav class="primary-menu style-3 menu-spacing-margin">
                             <?php template_apl('primary-menu') ?>
                         </nav><!-- #primary-menu end -->
 
@@ -81,7 +89,10 @@ require 'vendor/autoload.php';
         <section id="content">
             <?php modul('web_page',$_GET['m']) ?>
         </section><!-- #content end -->
-
+        <div class="section lazy mt-5 mb-0 p-0 min-vh-75" data-bg="https://source.unsplash.com/sLoiQitblLs/1920x1080"
+            style="background-position: center center; background-repeat: no-repeat; background-size: cover;">
+            <div class="shape-divider" data-shape="cliff" data-height="150" data-flip-vertical="true"></div>
+        </div>
         <!-- Footer
 		============================================= -->
         <footer id="footer" class="dark">

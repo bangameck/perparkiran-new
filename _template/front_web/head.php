@@ -27,3 +27,35 @@
 	<!-- Document Title
 	============================================= -->
 	<!-- <title>Home - Magazine Layout | Canvas</title> -->
+	<style>
+		@media (min-width: 992px) {
+
+			#top-bar.transparent-topbar {
+				z-index: 399;
+				border-bottom: 0;
+				margin-top: 15px;
+			}
+
+			#top-bar.transparent-topbar {
+				background: transparent !important;
+			}
+
+			#top-bar + #header.transparent-header.floating-header {
+				margin-top: 15px;
+			}
+
+		}
+
+		.dark .top-links li > a,
+		.dark #top-social li a { color: #FFF; }
+
+		.dark .top-links li:hover { background-color: rgba(255,255,255,0.15); }
+
+		.dark #top-social li { border-left: 0; }
+
+		.teksgambar p{
+		padding: 430px 20px 30px;
+		color: #000000;
+		font: bold italic 20px sans-serif;
+		}
+	</style>

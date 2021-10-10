@@ -1,4 +1,5 @@
-<title>SiParkir Kota Pekanbaru</title>
+<?php include '_func/identity.php'; ?>
+<title><?= $title; ?></title>
 <div class="content-wrap">
 
     <div class="section header-stick bottommargin-lg py-3">
@@ -16,10 +17,10 @@
                         <div class="flexslider">
                             <div class="slider-wrap">
                                 <?php 
-											$bnews = $db->query("SELECT * FROM blog WHERE bn='Y' ORDER BY created_at DESC LIMIT 5");
+											$bnews = $db->query("SELECT * FROM blog WHERE bn='Y' ORDER BY RAND() DESC LIMIT 5");
 											while($bn=$bnews->fetch_assoc()):
 											?>
-                                <div class="slide"><a href="#"><strong><?= $bn['j_blog']; ?>..</strong></a></div>
+                                <div class="slide"><a href="<?= base_url(); ?>p/berita/<?= $bn['slug']; ?>"><strong><?= $bn['j_blog']; ?>..</strong></a></div>
                                 <?php endwhile; ?>
                             </div>
                         </div>
@@ -41,7 +42,7 @@
                             <div class="flexslider">
                                 <div class="slider-wrap">
                                     <?php 
-												$hnews = $db->query("SELECT * FROM blog a, users b WHERE a.adm_blog=b.id AND a.publish='Y' AND a.hn='Y' ORDER BY a.created_at DESC LIMIT 6");
+												$hnews = $db->query("SELECT * FROM blog a, users b WHERE a.adm_blog=b.id AND a.publish='Y' AND a.hn='Y' ORDER BY RAND() DESC LIMIT 6");
 												while($hn=$hnews->fetch_assoc()) :
 												?>
                                     <div class="slide"
@@ -53,7 +54,7 @@
                                                 <div
                                                     class="bg-overlay-content text-overlay-mask dark align-items-end justify-content-start">
                                                     <div class="portfolio-desc py-0">
-                                                        <h3><?= $hn['j_blog']; ?></h3>
+                                                        <h3><a href="<?= base_url(); ?>p/berita/<?= $hn['slug']; ?>"><?= $hn['j_blog']; ?></a></h3>
                                                         <span>Gambar : <?= $hn['c_sampul']; ?></span>
                                                     </div>
                                                 </div>
@@ -105,7 +106,7 @@
                                             alt="<?= $news_one['sampul']; ?>')">
                                             <div class="flip-card-inner">
                                                 <p class="mb-2 text-white"><?= judul($news_one['isi'], '250'); ?> </p>
-                                                <a href="" type="button" class="btn btn-outline-light mt-2">Selengkapnya
+                                                <a href="<?= base_url(); ?>p/berita/<?= $news_one['slug']; ?>" type="button" class="btn btn-outline-light mt-2">Selengkapnya
                                                     <i class="icon-line-arrow-right"></i></a>
                                             </div>
                                         </div>
@@ -116,7 +117,7 @@
                         <div class="posts-sm row col-mb-30">
                             <?php
 										$n=2;
-                                        $n_one = $db->query("SELECT *, a.created_at as tgl FROM blog a, tags_blog b WHERE a.id_blog=b.id_blog AND a.id_blog!='$news_one[id_blog]' AND b.id_tags='$t_one[id_tags]' AND a.publish='Y' ORDER BY tgl DESC LIMIT 4");
+                                        $n_one = $db->query("SELECT *, a.created_at as tgl FROM blog a, tags_blog b WHERE a.id_blog=b.id_blog AND a.id_blog!='$news_one[id_blog]' AND b.id_tags='$t_one[id_tags]' AND a.publish='Y' ORDER BY tgl DESC LIMIT 6");
                                         while ($n_o=$n_one->fetch_assoc()) :
 											
                                         ?>
@@ -124,14 +125,14 @@
                                 <div class="grid-inner row g-0">
                                     <div class="col-auto">
                                         <div class="entry-image">
-                                            <a href="#"><img
+                                            <a href="<?= base_url(); ?>p/berita/<?= $n_o['slug']; ?>"><img
                                                     src="<?= base_url() ?>_uploads/blog/sampul/<?= $n_o['id_blog']; ?>/<?= $n_o['sampul']; ?>"
                                                     alt="<?= $n_o['sampul']; ?>"></a>
                                         </div>
                                     </div>
                                     <div class="col ps-3">
                                         <div class="entry-title">
-                                            <h4><a href="#"><span class="h5" style><em><?= $n++; ?>.
+                                            <h4><a href="<?= base_url(); ?>p/berita/<?= $n_o['slug']; ?>"><span class="h5" style><em><?= $n++; ?>.
                                                         </em></span><?= $n_o['j_blog']; ?></a></h4>
                                         </div>
                                         <div class="entry-meta">
@@ -193,7 +194,7 @@
                                             alt="<?= $news_two['sampul']; ?>')">
                                             <div class="flip-card-inner">
                                                 <p class="mb-2 text-white"><?= judul($news_two['isi'], '250'); ?> </p>
-                                                <a href="" type="button" class="btn btn-outline-light mt-2">Selengkapnya
+                                                <a href="<?= base_url(); ?>p/berita/<?= $news_two['slug']; ?>" type="button" class="btn btn-outline-light mt-2">Selengkapnya
                                                     <i class="icon-line-arrow-right"></i></a>
                                             </div>
                                         </div>
@@ -204,21 +205,21 @@
                         <div class="posts-sm row col-mb-30">
                             <?php
 										$n=2;
-                                        $n_two = $db->query("SELECT *, a.created_at as tgl FROM blog a, tags_blog b WHERE a.id_blog=b.id_blog AND a.id_blog!='$news_two[id_blog]' AND b.id_tags='$t_two[id_tags]' AND a.publish='Y' ORDER BY tgl DESC LIMIT 4");
+                                        $n_two = $db->query("SELECT *, a.created_at as tgl FROM blog a, tags_blog b WHERE a.id_blog=b.id_blog AND a.id_blog!='$news_two[id_blog]' AND b.id_tags='$t_two[id_tags]' AND a.publish='Y' ORDER BY tgl DESC LIMIT 6");
                                         while ($n_t=$n_two->fetch_assoc()) :
                                         ?>
                             <div class="entry col-md-6">
                                 <div class="grid-inner row g-0">
                                     <div class="col-auto">
                                         <div class="entry-image">
-                                            <a href="#"><img
+                                            <a href="<?= base_url(); ?>p/berita/<?= $n_t['slug']; ?>"><img
                                                     src="<?= base_url() ?>_uploads/blog/sampul/<?= $n_t['id_blog']; ?>/<?= $n_t['sampul']; ?>"
                                                     alt="<?= $n_t['sampul']; ?>"></a>
                                         </div>
                                     </div>
                                     <div class="col ps-3">
                                         <div class="entry-title">
-                                            <h4><a href="#"> <span class="h5" style><em><?= $n++; ?>. </em></span>
+                                            <h4><a href="<?= base_url(); ?>p/berita/<?= $n_t['slug']; ?>"> <span class="h5" style><em><?= $n++; ?>. </em></span>
                                                     <?=$n_t['j_blog']; ?></a></h4>
                                         </div>
                                         <div class="entry-meta">
@@ -283,7 +284,7 @@
                                             <a href="#"><img src="<?= base_url(); ?>_uploads/f_usr/default.png" alt="Users Picture"></a>
                                         </div>
                                         <div class="testi-content">
-                                            <p><a href=""><?= $p['j_peng']; ?></a></p>
+                                            <p><a href="<?= base_url(); ?>p/pengaduan/<?= $p['id_peng']; ?>"><?= $p['j_peng']; ?></a></p>
                                             <div class="testi-meta">
                                                 <?= r_nama($p['nama_p']); ?>
                                                 <span><?= r_email($p['email_p']); ?></span>
@@ -307,7 +308,7 @@
 
                 <div class="sidebar-widgets-wrap clearfix">
 
-                    <div class="widget clearfix">
+                    <!-- <div class="widget clearfix">
                         <div class="row gutter-20 col-mb-30">
                             <div class="col-4">
                                 <a href="#" class="social-icon si-dark si-colored si-facebook mb-0"
@@ -345,7 +346,7 @@
                                         data-comma="true"></span><small>Readers</small></div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="widget clearfix">
                         <img class="aligncenter" src="<?= base_url() ?>assets/web/images/magazine/ad.png" alt="Image">
@@ -364,7 +365,7 @@
 													$tgsnum = $db->query("SELECT * FROM tags_blog WHERE id_tags='$t[id_tags]'");
 													$tn= $tgsnum->num_rows;
 												?>
-                                    <li><a href="#"><?= $t['nm_tags'].' ('.$tn.')'; ?></a></li>
+                                    <li><a href="<?= base_url(); ?>p/tags/<?= $t['url']; ?>"><?= $t['nm_tags'].' ('.$tn.')'; ?></a></li>
                                     <?php endwhile; ?>
                                 </ul>
                             </div>
@@ -401,14 +402,14 @@
                                             <div class="grid-inner row g-0">
                                                 <div class="col-auto">
                                                     <div class="entry-image">
-                                                        <a href="#"><img
+                                                        <a href="<?= base_url(); ?>p/berita/<?= $b['slug']; ?>"><img
                                                                 src="<?= base_url() ?>_uploads/blog/sampul/<?= $b['id_blog']; ?>/<?= $b['sampul']; ?>"
                                                                 alt="<?= $b['sampul']; ?>"></a>
                                                     </div>
                                                 </div>
                                                 <div class="col ps-3">
                                                     <div class="entry-title">
-                                                        <h4><a href="#"><?= $b['j_blog']; ?></a></h4>
+                                                        <h4><a href="<?= base_url(); ?>p/berita/<?= $b['slug']; ?>"><?= $b['j_blog']; ?></a></h4>
                                                     </div>
                                                     <div class="entry-meta">
                                                         <ul>
@@ -431,14 +432,14 @@
                                             <div class="grid-inner row g-0">
                                                 <div class="col-auto">
                                                     <div class="entry-image">
-                                                        <a href="#"><img
+                                                        <a href="<?= base_url(); ?>p/berita/<?= $b['slug']; ?>"><img
                                                                 src="<?= base_url() ?>_uploads/blog/sampul/<?= $b['id_blog']; ?>/<?= $b['sampul']; ?>"
                                                                 alt="Image"></a>
                                                     </div>
                                                 </div>
                                                 <div class="col ps-3">
                                                     <div class="entry-title">
-                                                        <h4><a href="#"><?= $b['j_blog']; ?></a></h4>
+                                                        <h4><a href="<?= base_url(); ?>p/berita/<?= $b['slug']; ?>"><?= $b['j_blog']; ?></a></h4>
                                                     </div>
                                                     <div class="entry-meta">
                                                         <ul>
@@ -519,8 +520,8 @@
                     style="background-image: url('<?= base_url() ?>_uploads/blog/sampul/<?= $o_n['id_blog']; ?>/<?= $o_n['sampul']; ?>')">
                     <div class="flip-card-inner">
                         <p class="mb-2 text-white"><?= judul($o_n['isi'],'180'); ?></p>
-                        <button type="button" class="btn btn-outline-light mt-2" style="float:right;">Selengkapnya <i
-                                class="icon-line-arrow-right"></i></button>
+                        <a href="<?= base_url(); ?>p/berita/<?= $o_n['slug']; ?>" type="button" class="btn btn-outline-light mt-2" style="float:right;">Selengkapnya <i
+                                class="icon-line-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -529,7 +530,7 @@
     </div>
     <!-- <div class="clear"></div> -->
     <br>
-    <center><a href="#" class="button button-rounded button-reveal button-large button-border text-end"><i
+    <center><a href="<?= base_url(); ?>p/berita" class="button button-rounded button-reveal button-large button-border text-end"><i
                 class="icon-arrow-circle-right"></i><span>Tampilkan Seluruh Berita</span></a></center>
 
 </div>
@@ -567,9 +568,4 @@
         </div>
 
     </div>
-</div>
-
-<div class="section lazy mt-5 mb-0 p-0 min-vh-75" data-bg="https://source.unsplash.com/sLoiQitblLs/1920x1080"
-    style="background-position: center center; background-repeat: no-repeat; background-size: cover;">
-    <div class="shape-divider" data-shape="cliff" data-height="150" data-flip-vertical="true"></div>
 </div>

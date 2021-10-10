@@ -55,5 +55,7 @@ function template_apl($file)
         include "_template/front_web/footer-widget.php";
     } else if ($file == 'footer-cr')  {
         include "_template/front_web/footer-cr.php";
+    } else if ($file == 'head-ads')  {
+        include "_template/front_web/head-ads.php";
     }
 }
