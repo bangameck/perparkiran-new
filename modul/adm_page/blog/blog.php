@@ -10,7 +10,7 @@
 include '_func/identity.php';
 $csrf     = $db->query("SELECT b.token FROM users a, session b WHERE a.token=b.token AND a.username='$_SESSION[username]' AND b.token='$_SESSION[token]'")->fetch_assoc();
     if ($csrf==false) {
-        sweetAlert('out', 'error', 'Error Session !', 'Session telah berakhir, silahkan login ulang');
+        sweetAlert('out', 'error', 'Error Session !', 'Session telah berakhir atau akun anda sudah login diperangkat lain, silahkan login ulang');
     } else {
 // aut(array(1));
 $a=$_GET['a'];
@@ -665,7 +665,8 @@ if ($_SESSION['id_usr']==$d['adm_peng'] OR $_SESSION['level']=='1') {
                 </div>
                 <div class="col-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?= base_url(); ?>blog/post"> <i data-feather="file-text"></i></a>
+                        <li class="breadcrumb-item"><a href="<?= base_url(); ?>blog/post"> <i
+                                    data-feather="file-text"></i></a>
                         </li>
                         <li class="breadcrumb-item">Postingan</li>
                         <li class="breadcrumb-item active">Settings </li>
@@ -923,6 +924,8 @@ if ($_SESSION['id_usr']==$d['adm_peng'] OR $_SESSION['level']=='1') {
 
     $db->query("DELETE FROM d_blog WHERE id_blog='$id_blog'");
     $db->query("DELETE FROM blog WHERE id_blog='$id_blog'");
+    $db->query("DELETE FROM session_view_blog WHERE id_blog='$id_blog'");
+    $db->query("DELETE FROM views_blog WHERE id_blog='$id_blog'");
     sweetAlert('blog/post', 'sukses', 'Berhasil !', ' Data Postingan Dengan ID: '.$id_blog.' Berhasil dihapus secara permanen..!');
 ?>
 <?php break; ?>

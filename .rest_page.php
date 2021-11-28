@@ -32,13 +32,50 @@ require 'vendor/autoload.php';
     }
     ?>
     <!-- preloader -->
-    <!-- <div class="preloader">
+    <div class="preloader">
         <div class="loading">
-            <img src="<?= base_url(); ?>assets/images/logoparkir.gif" width="80">
-            <p>Memuat Halaman...</p>
+            <img src="<?= base_url(); ?>assets/adm/images/logoparkir.gif" width="80">
+            <script language="JavaScript">
+            var text = "Please Wait...";
+            var delay = 100;
+            var currentChar = 1;
+            var destination = "[none]";
+
+            function type() {
+                //if (document.all)
+                {
+                    var dest = document.getElementById(destination);
+                    if (dest) // && dest.innerHTML)
+                    {
+                        dest.innerHTML = text.substr(0, currentChar) + "<blink>_</blink>";
+                        currentChar++;
+                        if (currentChar > text.length) {
+                            currentChar = 1;
+                            setTimeout("type()", 500);
+                        } else {
+                            setTimeout("type()", delay);
+                        }
+                    }
+                }
+            }
+
+            function startTyping(textParam, delayParam, destinationParam) {
+                text = textParam;
+                delay = delayParam;
+                currentChar = 1;
+                destination = destinationParam;
+                type();
+            }
+            </script> <b>
+                <div 0px="" 12px="" arial="" color:="" ff0000="" font:="" id="textDestination" margin:=""
+                    style="background-color: none;"></div>
+            </b>
+            <script language="JavaScript">
+            javascript: startTyping(text, 10, "textDestination");
+            </script>
         </div>
-    </div> -->
-    <div class="loader-wrapper">
+    </div>
+    <!-- <div class="loader-wrapper">
         <div class="loader-index"><span></span></div>
         <svg>
             <defs></defs>
@@ -48,7 +85,7 @@ require 'vendor/autoload.php';
                 </fecolormatrix>
             </filter>
         </svg>
-    </div>
+    </div> -->
     <!-- tap on top starts-->
     <div class="tap-top"><i data-feather="chevrons-up"></i></div>
     <!-- tap on tap ends-->
@@ -78,6 +115,9 @@ require 'vendor/autoload.php';
                         <!-- notif 2  -->
                         <li>
                             <div class="mode"><i class="fa fa-moon-o"></i></div>
+                        </li>
+                        <li>
+                          <a href="<?= base_url(); ?>"><i data-feather="globe"></i></a>
                         </li>
                         <!-- notif 3  -->
                         <!-- notif 4  -->

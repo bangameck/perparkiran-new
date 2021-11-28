@@ -27,11 +27,11 @@ $fb  = 'https://facebook.com/' . $id['fb']; //Facebook
 $tw  = 'https://twitter.com/' . $id['tw']; //Twitter
 $yt  = 'https://youtube.com/channel/' . $id['yt']; //Youtube
 $ig  = 'https://instagram.com/' . $id['ig']; //Instagram
-$pin = '' . $id['pin']; //Pintrest
-$vim = '' . $id['vim']; //Vimeo
-$yah = '' . $id['yah']; //Yahoo Mail
-$lin = '' . $id['lin']; //Linkedin
-$git = '' . $id['git']; //Github
+$pin = 'https://pinterest.com/' . $id['pin']; //Pintrest
+$vim = 'https://vimeo.com/' . $id['vim']; //Vimeo
+$yah = 'mailto:' . $id['yah']; //Yahoo Mail
+$lin = 'https://www.linkedin.com/in/' . $id['lin']; //Linkedin
+$git = 'https://github.com/' . $id['git']; //Github
 
 //LogoIcon
 $logo = $id['logo'];
@@ -41,11 +41,12 @@ $icon = $id['icon'];
 $maps = $id['maps'];
 
 //php mail config
-$host   = "smtp.gmail.com";
+$host   = 'smtp.gmail.com';
+// $host   = gethostbyname('smtp.gmail.com');
 $port   = 587;
 $secure = 'tls';
-$email_ = "rra.code@gmail.com";
-$pmail  = "@m3ck1nd4h201220";
+$email_ = 'rra.code@gmail.com';
+$pmail  = '@m3ck1nd4h20122020';
 $logo   = 'assets/adm/images/logo/logo.png';
 
 // footer;

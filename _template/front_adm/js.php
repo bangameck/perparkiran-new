@@ -111,76 +111,79 @@
 <script src="<?= base_url(); ?>vendor/dropify/dist/js/dropify.js"></script>
 <!-- CKEditor5 -->
 <script src="<?= base_url(); ?>vendor/ckeditor5/build/ckeditor.js"></script>
-		<script>ClassicEditor
-				.create( document.querySelector( '.editor' ), {
-					
-				toolbar: {
-					items: [
-						'|',
-						'bold',
-						'italic',
-						'underline',
-						'link',
-						'fontFamily',
-						'fontSize',
-						'fontColor',
-						'heading',
-						'alignment',
-						'bulletedList',
-						'numberedList',
-						'|',
-						'outdent',
-						'indent',
-						'|',
-						'specialCharacters',
-						'blockQuote',
-						'undo',
-						'redo'
-					]
-				},
-				language: 'id',
-					licenseKey: '',
-				} )
-				.then( editor => {
-					window.editor = editor;
-				} )
-				.catch( error => {
-					console.error('Oops, something went wrong!');
-					console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
-					console.warn('Build id: 4niq24h1ezm1-1jtyozutymab');
-					console.error(error);
-				} );
-		</script>
+<script>
+ClassicEditor
+    .create(document.querySelector('.editor'), {
+
+        toolbar: {
+            items: [
+                '|',
+                'bold',
+                'italic',
+                'underline',
+                'link',
+                'fontFamily',
+                'fontSize',
+                'fontColor',
+                'heading',
+                'alignment',
+                'bulletedList',
+                'numberedList',
+                '|',
+                'outdent',
+                'indent',
+                '|',
+                'specialCharacters',
+                'blockQuote',
+                'undo',
+                'redo'
+            ]
+        },
+        language: 'id',
+        licenseKey: '',
+    })
+    .then(editor => {
+        window.editor = editor;
+    })
+    .catch(error => {
+        console.error('Oops, something went wrong!');
+        console.error(
+            'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:'
+            );
+        console.warn('Build id: 4niq24h1ezm1-1jtyozutymab');
+        console.error(error);
+    });
+</script>
 <script>
 //IdleTime
 $.idleTimeout("#idletimeout", "#idletimeout a", {
-            idleAfter: 600,
-            pollingInterval: 2,
-            keepAliveURL: "<?= base_url(); ?>",
-            serverResponseEquals: "OK",
-            onTimeout: function() {
-                $(this).slideUp();
-                window.location = "<?= base_url(); ?>out";
-            },
-            onIdle: function() {
-                $(this).slideDown(); // show the warning bar
-            },
-            onCountdown: function(counter) {
-                $(this).find("span").html(counter); // update the counter
-            },
-            onResume: function() {
-                $(this).slideUp(); // hide the warning bar
-            },
-        });
+    idleAfter: 1200,
+    pollingInterval: 2,
+    keepAliveURL: "<?= base_url(); ?>",
+    serverResponseEquals: "OK",
+    onTimeout: function() {
+        $(this).slideUp();
+        window.location = "<?= base_url(); ?>out";
+    },
+    onIdle: function() {
+        $(this).slideDown(); // show the warning bar
+    },
+    onCountdown: function(counter) {
+        $(this).find("span").html(counter); // update the counter
+    },
+    onResume: function() {
+        $(this).slideUp(); // hide the warning bar
+    },
+});
 
 //hanya angka
 function hanyaAngka(evt) {
-        var charCode = (evt.which) ? evt.which : event.keyCode
-        if (charCode > 31 && (charCode < 48 || charCode > 57))
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
 
-            return false;
-        return true;
-    }
+        return false;
+    return true;
+}
 
 //username huruf kecil tanpa space
 $("#username").on({
@@ -267,9 +270,9 @@ $('.dropify').dropify({
     messages: {
         'default': 'Seret dan letakkan file atau klik disini',
         'replace': 'Seret dan letakkan file atau klik untuk mengubah',
-        'error':   'Ooops, sesuatu yang salah terjadi.'
+        'error': 'Ooops, sesuatu yang salah terjadi.'
     },
-	error: {
+    error: {
         'fileSize': 'Ukuran file terlalu besar ({{ value }} max).',
         'minWidth': 'The image width is too small ({{ value }}}px min).',
         'maxWidth': 'The image width is too big ({{ value }}}px max).',
@@ -296,139 +299,148 @@ $("#imgUpload").change(function() {
 
 //
 function hapustemp() {
-    event.preventDefault(); 
-    var form = event.target.form; 
+    event.preventDefault();
+    var form = event.target.form;
     Swal.fire({
-				title: 'Apakah kamu yakin?',
-				text: 'Data yang sudah blokir tidak akan  bisa login kembali.!',
-				icon: 'warning',
-				showCancelButton: true,
-				confirmButtonColor: '#3085d6',
-				cancelButtonColor: '#d33',
-				confirmButtonText: 'Ya',
-				cancelButtonText: 'Tidak',
-			  }).then((result) => {
-				if (result.isConfirmed) {
-				  Swal.fire(
-					'Berhasil diblokir!',
-					'Data Berhasil diblokir. hanya admin yang dapat mengubah status pemblokiran.',
-					'success'
-				  );
-				  window.setTimeout(function() {
-					form.submit();
-				 }, 2000)
-				}
-			  });
+        title: 'Apakah kamu yakin?',
+        text: 'Data yang sudah blokir tidak akan  bisa login kembali.!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya',
+        cancelButtonText: 'Tidak',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Berhasil diblokir!',
+                'Data Berhasil diblokir. hanya admin yang dapat mengubah status pemblokiran.',
+                'success'
+            );
+            window.setTimeout(function() {
+                form.submit();
+            }, 2000)
+        }
+    });
 }
 
 function hapus() {
-	event.preventDefault(); 
-    var form = event.target.form; 
-	Swal.fire({
-				title: 'Apakah kamu yakin?',
-				text: 'Menghapus data secara permanent berarti menghapus seluruh data ini, dan data tidak akan pernah kembali !',
-				icon: 'warning',
-				showCancelButton: true,
-				confirmButtonColor: '#3085d6',
-				cancelButtonColor: '#d33',
-				confirmButtonText: 'Ya',
-				cancelButtonText: 'Tidak',
-			  }).then((result) => {
-				if (result.isConfirmed) {
-				  Swal.fire(
-					'Terhapus!',
-					'Data Berhasil dihapus.!',
-					'success'
-				  );
-				  window.setTimeout(function() {
-					form.submit();
-				 }, 2000)
-				}
-			  })
+    event.preventDefault();
+    var form = event.target.form;
+    Swal.fire({
+        title: 'Apakah kamu yakin?',
+        text: 'Menghapus data secara permanent berarti menghapus seluruh data ini, dan data tidak akan pernah kembali !',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya',
+        cancelButtonText: 'Tidak',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Terhapus!',
+                'Data Berhasil dihapus.!',
+                'success'
+            );
+            window.setTimeout(function() {
+                form.submit();
+            }, 2000)
+        }
+    })
 }
 
 function hapus_dokumentasi() {
-	event.preventDefault(); 
-    var form = event.target.form; 
-	Swal.fire({
-				title: 'Apakah kamu yakin?',
-				text: 'Jika Dokumentasi dihapus, dokumentasi ini tidak akan perah dapat dilihat lagi, dan terhapus secara permanent.',
-				icon: 'warning',
-				showCancelButton: true,
-				confirmButtonColor: '#3085d6',
-				cancelButtonColor: '#d33',
-				confirmButtonText: 'Ya',
-				cancelButtonText: 'Tidak',
-			  }).then((result) => {
-				if (result.isConfirmed) {
-				  Swal.fire(
-					'Terhapus!',
-					'Dokumentasi Berhasil dihapus.!',
-					'success'
-				  );
-				  window.setTimeout(function() {
-					form.submit();
-				 }, 2000)
-				}
-			  })
+    event.preventDefault();
+    var form = event.target.form;
+    Swal.fire({
+        title: 'Apakah kamu yakin?',
+        text: 'Jika Dokumentasi dihapus, dokumentasi ini tidak akan perah dapat dilihat lagi, dan terhapus secara permanent.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya',
+        cancelButtonText: 'Tidak',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Terhapus!',
+                'Dokumentasi Berhasil dihapus.!',
+                'success'
+            );
+            window.setTimeout(function() {
+                form.submit();
+            }, 2000)
+        }
+    })
 }
 
 function aktif() {
-	event.preventDefault(); 
-    var form = event.target.form; 
-	Swal.fire({
-				title: 'Apakah kamu yakin?',
-				text: 'Apakah anda yakin untuk mengaktifkan akun ini kembali ?',
-				icon: 'warning',
-				showCancelButton: true,
-				confirmButtonColor: '#3085d6',
-				cancelButtonColor: '#d33',
-				confirmButtonText: 'Ya',
-				cancelButtonText: 'Tidak',
-			  }).then((result) => {
-				if (result.isConfirmed) {
-				  Swal.fire(
-					'Berhasil!',
-					'User kembali aktif dan dapat mengakses aplikasi.',
-					'success'
-				  );
-				  window.setTimeout(function() {
-					form.submit();
-				 }, 2000)
-				}
-			  })
+    event.preventDefault();
+    var form = event.target.form;
+    Swal.fire({
+        title: 'Apakah kamu yakin?',
+        text: 'Apakah anda yakin untuk mengaktifkan akun ini kembali ?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya',
+        cancelButtonText: 'Tidak',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Berhasil!',
+                'User kembali aktif dan dapat mengakses aplikasi.',
+                'success'
+            );
+            window.setTimeout(function() {
+                form.submit();
+            }, 2000)
+        }
+    })
 }
 
 function non() {
-	event.preventDefault(); 
-    var form = event.target.form; 
-	Swal.fire({
-				title: 'Apakah kamu yakin?',
-				text: 'Apakah anda yakin untuk memblokir akun ini ? jika akun ini di blokir, ia tidak akan dapat mengkases aplikasi.!',
-				icon: 'warning',
-				showCancelButton: true,
-				confirmButtonColor: '#3085d6',
-				cancelButtonColor: '#d33',
-				confirmButtonText: 'Ya',
-				cancelButtonText: 'Tidak',
-			  }).then((result) => {
-				if (result.isConfirmed) {
-				  Swal.fire(
-					'Berhasil!',
-					'User berhasil diblokir, kamu dapat membuka blokir kapan saja, selama akun tidak dihapus permanen.',
-					'success'
-				  );
-				  window.setTimeout(function() {
-					form.submit();
-				 }, 2000)
-				}
-			  })
+    event.preventDefault();
+    var form = event.target.form;
+    Swal.fire({
+        title: 'Apakah kamu yakin?',
+        text: 'Apakah anda yakin untuk memblokir akun ini ? jika akun ini di blokir, ia tidak akan dapat mengkases aplikasi.!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya',
+        cancelButtonText: 'Tidak',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Berhasil!',
+                'User berhasil diblokir, kamu dapat membuka blokir kapan saja, selama akun tidak dihapus permanen.',
+                'success'
+            );
+            window.setTimeout(function() {
+                form.submit();
+            }, 2000)
+        }
+    })
 }
-$("#pubBtn").on('change', function() {
-                            if ($(this).attr('checked')) {
-                            $(this).val('Y');
-                            }
-                            else {
-                            $(this).val('N');
-                            }});
+
+$('#checkbox1_terms_and_conditions').click(function() {
+    //If the checkbox is checked.
+    if ($(this).is(':checked')) {
+        //Enable the submit button.
+        $('#submit_button').attr("disabled", false);
+    } else {
+        //If it is not checked, disable the button.
+        $('#submit_button').attr("disabled", true);
+    }
+});
+</script>
+<script>
+$(document).ready(function() {
+    $(".preloader").fadeOut('slow');
+})
 </script>

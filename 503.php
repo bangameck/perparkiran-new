@@ -51,7 +51,7 @@ include '_func/func.php';
           <div class="col-md-8 offset-md-2">
             <p class="sub-content"><b>SERVICE UNAVAILABLE</b><br>"Maaf permintaan anda tidak bisa diproses saat ini. silahkan coba kembali nanti" <br><b><i>UPT Perparkiran Dinas Perhubungan Kota Pekanbaru</i></b></p>
           </div>
-          <div><a class="btn btn-secondary-gradien btn-lg" href="<?= base_url(); ?>">BACK TO HOME PAGE</a></div>
+          <div><a class="btn btn-secondary-gradien btn-lg" onclick="history.back()">KEMBALI</a></div>
         </div>
       </div>
       <!-- error-503 end-->

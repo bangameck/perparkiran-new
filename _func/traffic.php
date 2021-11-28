@@ -8,4 +8,4 @@
 */
 
 $tr = $db->query('SELECT username FROM sess');
-$traf = mysqli_num_rows($tr);
+$traf = $tr->num_rows;

@@ -10,7 +10,7 @@
 include '_func/identity.php';
 $csrf     = $db->query("SELECT b.token FROM users a, session b WHERE a.token=b.token AND a.username='$_SESSION[username]' AND b.token='$_SESSION[token]'")->fetch_assoc();
 if ($csrf==false) {
-    sweetAlert('out','error','Error Session !','Session telah berakhir, silahkan login ulang');
+    sweetAlert('out','error','Error Session !','Session telah berakhir atau akun anda sudah login diperangkat lain, silahkan login ulang');
 } else {
 // aut(array(1));
 $a=$_GET['a'];
@@ -48,7 +48,8 @@ switch($a){
                 <div class="card-body">
                     <div class="dt-ext table-responsive">
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <a href="<?= base_url(); ?>giat/add" class="btn btn-primary-gradien" type="button" <?= $hide; ?>>Tambah
+                            <a href="<?= base_url(); ?>giat/add" class="btn btn-primary-gradien" type="button"
+                                <?= $hide; ?>>Tambah
                                 Data</a>
                         </div>
                         <br>
@@ -575,9 +576,10 @@ if ($_SESSION['id_usr']==$d['adm_giat'] OR $_SESSION['level']=='1') {
         <div class="card">
             <div class="card-body">
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <a href="<?= base_url(); ?>giat/detail/<?= $id; ?>" class="btn btn-primary-gradien" type="button"><i class="fa fa-info-circle"></i> Pratinjau
+                    <a href="<?= base_url(); ?>giat/detail/<?= $id; ?>" class="btn btn-primary-gradien" type="button"><i
+                            class="fa fa-info-circle"></i> Pratinjau
                         Kegiatan</a>
-                    </div>
+                </div>
                 <ul class="nav nav-tabs nav-primary" id="pills-warningtab" role="tablist">
                     <li class="nav-item"><a class="nav-link active" id="pills-warninghome-tab" data-bs-toggle="pill"
                             href="#pills-warninghome" role="tab" aria-controls="pills-warninghome"
@@ -692,8 +694,8 @@ if ($_SESSION['id_usr']==$d['adm_giat'] OR $_SESSION['level']=='1') {
                                 <div class="row g-2">
                                     <div class="col-lg-12 col-md-12">
                                         <label">Keterangan Kegiatan :</label>
-                                            <textarea name="editor1" rows="10" cols="20"
-                                                class="form-control editor" required><?= $d['ket_giat']; ?></textarea>
+                                            <textarea name="editor1" rows="10" cols="20" class="form-control editor"
+                                                required><?= $d['ket_giat']; ?></textarea>
                                             <!-- <script>
                                             // Replace the <textarea id="editor1"> with a CKEditor 4
                                             // instance, using default configuration.
@@ -778,11 +780,13 @@ if ($_SESSION['id_usr']==$d['adm_giat'] OR $_SESSION['level']=='1') {
                                             </td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <form action="<?= base_url(); ?>giat/delete/dokumentasi" method="POST">
+                                                    <form action="<?= base_url(); ?>giat/delete/dokumentasi"
+                                                        method="POST">
                                                         <input type="hidden" name="nama" value="<?= $u['n_d_giat']; ?>">
                                                         <input type="hidden" name="id" value="<?= $u['id_d_giat']; ?>">
                                                         <input type="hidden" name="id_giat" value="<?= $id; ?>">
-                                                        <input type="hidden" name="ekstensi" value="<?= $u['x_giat']; ?>">
+                                                        <input type="hidden" name="ekstensi"
+                                                            value="<?= $u['x_giat']; ?>">
                                                         <button class="btn btn-danger"
                                                             onclick="return hapus_dokumentasi()"><i
                                                                 class="fa fa-trash"></i></button>

@@ -1,12 +1,4 @@
 <?php 
-/**
-* @author [bangameck.rra]
-* @email [rahmad.looker@gmail.com]
-* @create date 2021-06-11 14:32:29
-* @modify date 2021-06-11 14:34:09
-* @desc [description]
-*/
-
 if(empty($_SESSION['username']) && empty($_SESSION['password'])){
     $hide = 'hidden';
     $l = '<li class="sidebar-list">
@@ -87,19 +79,19 @@ javascript('out','confirm');
             <?= $pl; ?>
             <li class="sidebar-main-title" <?= $hide; ?>>
                 <div>
-                <h6>Kegiatan</h6>
-                <p>Giat & Pengaduan</p>
+                    <h6>Kegiatan</h6>
+                    <p>Giat & Pengaduan</p>
                 </div>
             </li>
             <li class="sidebar-list" <?= $hide; ?>>
-                <a class="sidebar-link sidebar-title link-nav" href="<?= base_url(); ?>giat"><i
-                        data-feather="monitor"> </i><span>Giat</span></a>
+                <a class="sidebar-link sidebar-title link-nav" href="<?= base_url(); ?>giat"><i data-feather="monitor">
+                    </i><span>Giat</span></a>
             </li>
             <?= $peng; ?>
             <li class="sidebar-main-title" <?= $hide; ?>>
                 <div>
-                <h6>Blog</h6>
-                <p>Berita & Perparkiran Care</p>
+                    <h6>Blog</h6>
+                    <p>Berita & Perparkiran Care</p>
                 </div>
             </li>
             <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#" <?= $hide; ?>><i
@@ -113,8 +105,8 @@ javascript('out','confirm');
             <?= $pcare; ?>
             <li class="sidebar-main-title">
                 <div>
-                <h6>Lainnya</h6>
-                <p>Laporan, Pengaturan Profile, dll.</p>
+                    <h6>Lainnya</h6>
+                    <p>Laporan, Pengaturan Profile, dll.</p>
                 </div>
             </li>
             <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i

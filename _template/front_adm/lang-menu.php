@@ -1,4 +1,3 @@
-
 <li class="language-nav">
     <div class="translate_wrapper">
         <div class="current_lang">

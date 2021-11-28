@@ -52,8 +52,8 @@ if($_SESSION['level']=='1') {
                     href="<?= base_url(); ?>dashboard"><i data-feather="home"> </i><span>Dashboard</span></a></li>
             <?= $hid; ?>
             <li class="sidebar-list" <?= $hide; ?>>
-                <a class="sidebar-link sidebar-title link-nav"
-                    href="<?= base_url(); ?>layanan"><i data-feather="monitor"> </i><span>Layanan</span></a>
+                <a class="sidebar-link sidebar-title link-nav" href="<?= base_url(); ?>layanan"><i
+                        data-feather="monitor"> </i><span>Layanan</span></a>
             </li>
             <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i
                         data-feather="mail"></i><span>Laporan</span></a>
@@ -73,10 +73,11 @@ if($_SESSION['level']=='1') {
             </li>
             <?= $l; ?>
             <li class="sidebar-list" <?= $hide; ?>>
-            <a class="sidebar-link sidebar-title link-nav"
-                href="<?= base_url(); ?>out" onclick="return confirm('Apakah anda yakin keluar ?')"><i data-feather="log-out"> </i><span>Logout</span></a>
-        </li>
-            
+                <a class="sidebar-link sidebar-title link-nav" href="<?= base_url(); ?>out"
+                    onclick="return confirm('Apakah anda yakin keluar ?')"><i data-feather="log-out">
+                    </i><span>Logout</span></a>
+            </li>
+
         </ul>
     </div>
     <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>

@@ -10,7 +10,7 @@
 //koneksi
 $srvName = "localhost";
 $dbUser = "root";
-$dbPass = "";
+$dbPass = "201220";
 $dbName = "perparkiran";
 $db = new mysqli($srvName, $dbUser, $dbPass, $dbName);
 if ($db->connect_error) {

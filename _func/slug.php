@@ -17,3 +17,8 @@ function slug($text = '')
     $text = preg_replace('/\-{2,}/', '-', $text);
     return $text;
 }
+
+function nospace($text = '') {
+    $text = str_replace(' ', '', $text);
+    return $text;
+}

@@ -109,74 +109,77 @@
 <script>
 //IdleTime
 $.idleTimeout("#idletimeout", "#idletimeout a", {
-            idleAfter: 600,
-            pollingInterval: 2,
-            keepAliveURL: "<?= base_url(); ?>",
-            serverResponseEquals: "OK",
-            onTimeout: function() {
-                $(this).slideUp();
-                window.location = "<?= base_url(); ?>out";
-            },
-            onIdle: function() {
-                $(this).slideDown(); // show the warning bar
-            },
-            onCountdown: function(counter) {
-                $(this).find("span").html(counter); // update the counter
-            },
-            onResume: function() {
-                $(this).slideUp(); // hide the warning bar
-            },
-        });
+    idleAfter: 600,
+    pollingInterval: 2,
+    keepAliveURL: "<?= base_url(); ?>",
+    serverResponseEquals: "OK",
+    onTimeout: function() {
+        $(this).slideUp();
+        window.location = "<?= base_url(); ?>out";
+    },
+    onIdle: function() {
+        $(this).slideDown(); // show the warning bar
+    },
+    onCountdown: function(counter) {
+        $(this).find("span").html(counter); // update the counter
+    },
+    onResume: function() {
+        $(this).slideUp(); // hide the warning bar
+    },
+});
 
 //progres bar
-function ambilId(file){
-		return document.getElementById(file);
-	}
- 
-	$(document).ready(function(){
-		$("#imgUpload").click(function(){
-			ambilId("progressBar").style.display = "block";
-			var file = ambilId("file").files[0];
- 
-			if (file!="") {
-				var formdata = new FormData();
-				formdata.append("file", file);
-				var ajax = new XMLHttpRequest();
-				ajax.upload.addEventListener("progress", progressHandler, false);
-				ajax.addEventListener("load", completeHandler, false);
-				ajax.addEventListener("error", errorHandler, false);
-				ajax.addEventListener("abort", abortHandler, false);
-				ajax.open("POST", "/_template/upload.php");
-				ajax.send(formdata);
-			}
-		});
-	});
- 
-	function progressHandler(event){
-		ambilId("loaded_n_total").innerHTML = "Uploaded "+event.loaded+" bytes of "+event.total;
-		var percent = (event.loaded / event.total) * 100;
-		ambilId("progressBar").value = Math.round(percent);
-		ambilId("status").innerHTML = Math.round(percent)+"% uploaded... please wait";
-	}
-	function completeHandler(event){
-		ambilId("status").innerHTML = event.target.responseText;
-		ambilId("progressBar").value = 0;
-	}
-	function errorHandler(event){
-		ambilId("status").innerHTML = "Upload Failed";
-	}
-	function abortHandler(event){
-		ambilId("status").innerHTML = "Upload Aborted";
-	}
+function ambilId(file) {
+    return document.getElementById(file);
+}
+
+$(document).ready(function() {
+    $("#imgUpload").click(function() {
+        ambilId("progressBar").style.display = "block";
+        var file = ambilId("file").files[0];
+
+        if (file != "") {
+            var formdata = new FormData();
+            formdata.append("file", file);
+            var ajax = new XMLHttpRequest();
+            ajax.upload.addEventListener("progress", progressHandler, false);
+            ajax.addEventListener("load", completeHandler, false);
+            ajax.addEventListener("error", errorHandler, false);
+            ajax.addEventListener("abort", abortHandler, false);
+            ajax.open("POST", "/_template/upload.php");
+            ajax.send(formdata);
+        }
+    });
+});
+
+function progressHandler(event) {
+    ambilId("loaded_n_total").innerHTML = "Uploaded " + event.loaded + " bytes of " + event.total;
+    var percent = (event.loaded / event.total) * 100;
+    ambilId("progressBar").value = Math.round(percent);
+    ambilId("status").innerHTML = Math.round(percent) + "% uploaded... please wait";
+}
+
+function completeHandler(event) {
+    ambilId("status").innerHTML = event.target.responseText;
+    ambilId("progressBar").value = 0;
+}
+
+function errorHandler(event) {
+    ambilId("status").innerHTML = "Upload Failed";
+}
+
+function abortHandler(event) {
+    ambilId("status").innerHTML = "Upload Aborted";
+}
 
 //hanya angka
 function hanyaAngka(evt) {
-        var charCode = (evt.which) ? evt.which : event.keyCode
-        if (charCode > 31 && (charCode < 48 || charCode > 57))
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
 
-            return false;
-        return true;
-    }
+        return false;
+    return true;
+}
 
 //username huruf kecil tanpa space
 $("#username").on({
@@ -263,15 +266,15 @@ $(document).ready(function() {
 
 //jumlah
 $(document).ready(function() {
-        $("#lk, #pr, #ln, #tv").keyup(function() {
-            var lk  = $("#lk").val();
-            var pr = $("#pr").val();
-            var ln = $("#ln").val();
-            var tv = $("#tv").val();
-            var total = parseInt(lk) + parseInt(pr) + parseInt(ln) - parseInt(tv);
-            $("#total").val(total);
-        });
+    $("#lk, #pr, #ln, #tv").keyup(function() {
+        var lk = $("#lk").val();
+        var pr = $("#pr").val();
+        var ln = $("#ln").val();
+        var tv = $("#tv").val();
+        var total = parseInt(lk) + parseInt(pr) + parseInt(ln) - parseInt(tv);
+        $("#total").val(total);
     });
+});
 
 //Preview Gambar
 function readURL(input) {
@@ -287,143 +290,143 @@ $("#imgUpload").change(function() {
     readURL(this);
 });
 
-$(document).ready(function(){
-	    // Format nomor HP.
-	  $( '.no_hp' ).mask('0000-0000-0000');
-	})
+$(document).ready(function() {
+    // Format nomor HP.
+    $('.no_hp').mask('0000-0000-0000');
+})
 
-document.querySelector(".third").addEventListener('click', function(){
-  swal.fire("Our First Alert", "With some body text and success icon!", "success");
+document.querySelector(".third").addEventListener('click', function() {
+    swal.fire("Our First Alert", "With some body text and success icon!", "success");
 });
 
 //
 function hapustemp() {
-    event.preventDefault(); 
-    var form = event.target.form; 
+    event.preventDefault();
+    var form = event.target.form;
     Swal.fire({
-				title: 'Apakah kamu yakin?',
-				text: 'Data yang sudah blokir tidak akan  bisa login kembali.!',
-				icon: 'warning',
-				showCancelButton: true,
-				confirmButtonColor: '#3085d6',
-				cancelButtonColor: '#d33',
-				confirmButtonText: 'Ya',
-				cancelButtonText: 'Tidak',
-			  }).then((result) => {
-				if (result.isConfirmed) {
-				  Swal.fire(
-					'Berhasil diblokir!',
-					'Data Berhasil diblokir. hanya admin yang dapat mengubah status pemblokiran.',
-					'success'
-				  );
-				  window.setTimeout(function() {
-					form.submit();
-				 }, 2000)
-				}
-			  });
+        title: 'Apakah kamu yakin?',
+        text: 'Data yang sudah blokir tidak akan  bisa login kembali.!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya',
+        cancelButtonText: 'Tidak',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Berhasil diblokir!',
+                'Data Berhasil diblokir. hanya admin yang dapat mengubah status pemblokiran.',
+                'success'
+            );
+            window.setTimeout(function() {
+                form.submit();
+            }, 2000)
+        }
+    });
 }
 
 function hapus() {
-	event.preventDefault(); 
-    var form = event.target.form; 
-	Swal.fire({
-				title: 'Apakah kamu yakin?',
-				text: 'Menghapus data secara permanent berarti menghapus seluruh data ini, dan data tidak akan pernah kembali !',
-				icon: 'warning',
-				showCancelButton: true,
-				confirmButtonColor: '#3085d6',
-				cancelButtonColor: '#d33',
-				confirmButtonText: 'Ya',
-				cancelButtonText: 'Tidak',
-			  }).then((result) => {
-				if (result.isConfirmed) {
-				  Swal.fire(
-					'Terhapus!',
-					'Data Berhasil dihapus.!',
-					'success'
-				  );
-				  window.setTimeout(function() {
-					form.submit();
-				 }, 2000)
-				}
-			  })
+    event.preventDefault();
+    var form = event.target.form;
+    Swal.fire({
+        title: 'Apakah kamu yakin?',
+        text: 'Menghapus data secara permanent berarti menghapus seluruh data ini, dan data tidak akan pernah kembali !',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya',
+        cancelButtonText: 'Tidak',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Terhapus!',
+                'Data Berhasil dihapus.!',
+                'success'
+            );
+            window.setTimeout(function() {
+                form.submit();
+            }, 2000)
+        }
+    })
 }
 
 function hapus_dokumentasi() {
-	event.preventDefault(); 
-    var form = event.target.form; 
-	Swal.fire({
-				title: 'Apakah kamu yakin?',
-				text: 'Jika Dokumentasi dihapus, dokumentasi ini tidak akan perah dapat dilihat lagi, dan terhapus secara permanent.',
-				icon: 'warning',
-				showCancelButton: true,
-				confirmButtonColor: '#3085d6',
-				cancelButtonColor: '#d33',
-				confirmButtonText: 'Ya',
-				cancelButtonText: 'Tidak',
-			  }).then((result) => {
-				if (result.isConfirmed) {
-				  Swal.fire(
-					'Terhapus!',
-					'Dokumentasi Berhasil dihapus.!',
-					'success'
-				  );
-				  window.setTimeout(function() {
-					form.submit();
-				 }, 2000)
-				}
-			  })
+    event.preventDefault();
+    var form = event.target.form;
+    Swal.fire({
+        title: 'Apakah kamu yakin?',
+        text: 'Jika Dokumentasi dihapus, dokumentasi ini tidak akan perah dapat dilihat lagi, dan terhapus secara permanent.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya',
+        cancelButtonText: 'Tidak',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Terhapus!',
+                'Dokumentasi Berhasil dihapus.!',
+                'success'
+            );
+            window.setTimeout(function() {
+                form.submit();
+            }, 2000)
+        }
+    })
 }
 
 function aktif() {
-	event.preventDefault(); 
-    var form = event.target.form; 
-	Swal.fire({
-				title: 'Apakah kamu yakin?',
-				text: 'Apakah anda yakin untuk mengaktifkan akun ini kembali ?',
-				icon: 'warning',
-				showCancelButton: true,
-				confirmButtonColor: '#3085d6',
-				cancelButtonColor: '#d33',
-				confirmButtonText: 'Ya',
-				cancelButtonText: 'Tidak',
-			  }).then((result) => {
-				if (result.isConfirmed) {
-				  Swal.fire(
-					'Berhasil!',
-					'User kembali aktif dan dapat mengakses aplikasi.',
-					'success'
-				  );
-				  window.setTimeout(function() {
-					form.submit();
-				 }, 2000)
-				}
-			  })
+    event.preventDefault();
+    var form = event.target.form;
+    Swal.fire({
+        title: 'Apakah kamu yakin?',
+        text: 'Apakah anda yakin untuk mengaktifkan akun ini kembali ?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya',
+        cancelButtonText: 'Tidak',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Berhasil!',
+                'User kembali aktif dan dapat mengakses aplikasi.',
+                'success'
+            );
+            window.setTimeout(function() {
+                form.submit();
+            }, 2000)
+        }
+    })
 }
 
 function non() {
-	event.preventDefault(); 
-    var form = event.target.form; 
-	Swal.fire({
-				title: 'Apakah kamu yakin?',
-				text: 'Apakah anda yakin untuk memblokir akun ini ? jika akun ini di blokir, ia tidak akan dapat mengkases aplikasi.!',
-				icon: 'warning',
-				showCancelButton: true,
-				confirmButtonColor: '#3085d6',
-				cancelButtonColor: '#d33',
-				confirmButtonText: 'Ya',
-				cancelButtonText: 'Tidak',
-			  }).then((result) => {
-				if (result.isConfirmed) {
-				  Swal.fire(
-					'Berhasil!',
-					'User berhasil diblokir, kamu dapat membuka blokir kapan saja, selama akun tidak dihapus permanen.',
-					'success'
-				  );
-				  window.setTimeout(function() {
-					form.submit();
-				 }, 2000)
-				}
-			  })
+    event.preventDefault();
+    var form = event.target.form;
+    Swal.fire({
+        title: 'Apakah kamu yakin?',
+        text: 'Apakah anda yakin untuk memblokir akun ini ? jika akun ini di blokir, ia tidak akan dapat mengkases aplikasi.!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya',
+        cancelButtonText: 'Tidak',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Berhasil!',
+                'User berhasil diblokir, kamu dapat membuka blokir kapan saja, selama akun tidak dihapus permanen.',
+                'success'
+            );
+            window.setTimeout(function() {
+                form.submit();
+            }, 2000)
+        }
+    })
 }
 </script>

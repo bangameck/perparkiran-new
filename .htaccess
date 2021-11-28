@@ -1,10 +1,13 @@
 <IfModule mod_rewrite.c>
 RewriteEngine on
 
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
 #----------------------Admin Akses----------------------------#
 
 #verify_akun
-RewriteRule ^verifikasi-akun/([a-zA-Z0-9-z\-\_]+)$ .rest_page.php?m=verify&id=$1 [L]
+RewriteRule ^verifikasi-akun/([a-zA-Z0-9-z\-\_]+)$ .rest_apl.php?f=web_page&m=verify&id=$1 [L]
 
 #dashboard
 RewriteRule ^dashboard$ .rest_page.php [L]
@@ -12,6 +15,9 @@ RewriteRule ^home$ .rest_apl.php [L]
 
 #login
 RewriteRule ^login-for-users$ .rest_api.php [L]
+
+#register
+RewriteRule ^register-for-new-users$ .rest_up.php [L]
 
 #logout
 RewriteRule ^out$ .rest_page.php?f=adm_page&m=out [L]
@@ -32,8 +38,8 @@ RewriteRule ^users$ .rest_page.php?f=adm_page&m=users [L]
 RewriteRule ^users-blok$ .rest_page.php?f=adm_page&m=users&a=users-blok [L]
 RewriteRule ^users/aktif$ .rest_page.php?f=adm_page&m=users&a=aktif [L]
 RewriteRule ^users/blokir$ .rest_page.php?f=adm_page&m=users&a=blokir [L]
-RewriteRule ^check_users$ modul/users/c_users.php [L]
-RewriteRule ^check_email$ modul/users/c_email.php [L]
+RewriteRule ^check_users$ modul/adm_page/users/c_users.php [L]
+RewriteRule ^check_email$ modul/adm_page/users/c_email.php [L]
 RewriteRule ^users/add$ .rest_page.php?f=adm_page&m=users&a=add [L]
 RewriteRule ^users/edit$ .rest_page.php?f=adm_page&m=users&a=edit [L]
 RewriteRule ^users/edit/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=users&a=edit&id=$1 [L]
@@ -65,7 +71,7 @@ RewriteRule ^giat/delete/dokumentasi$ .rest_page.php?f=adm_page&m=giat&a=delete-
 RewriteRule ^giat/delete$ .rest_page.php?f=adm_page&m=giat&a=delete [L]
 RewriteRule ^giat/edit/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=giat&a=edit&id=$1 [L]
 RewriteRule ^giat/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=dgiat&id=$1 [L]
-RewriteRule ^giat/print$ modul/dgiat/print.php [L]
+RewriteRule ^giat/print$ modul/adm_page/dgiat/print.php [L]
 
 #pengaduan
 RewriteRule ^pengaduan$ .rest_page.php?f=adm_page&m=pengaduan [L]
@@ -102,7 +108,41 @@ RewriteRule ^laporan/bus$ .rest_page.php?f=adm_page&m=laporan&a=bus [L]
 
 #----------------------User Akses----------------------------#
 
-RewriteRule ^p/berita/([a-zA-Z0-9_-]+)$ .rest_apl.php?f=web_page&m=berita&id=$1 [L]
+#privacyPolicy
+RewriteRule ^privacy-policy$ .rest_apl.php?f=web_page&m=privacy [L]
+
+#termsConditions
+RewriteRule ^terms-conditions$ .rest_apl.php?f=web_page&m=trems [L]
+
+#Berita
+RewriteRule ^p/berita$ .rest_apl.php?f=web_page&m=berita [L]
+RewriteRule ^p/berita/page/([a-zA-Z0-9_-]+)$ .rest_apl.php?f=web_page&m=berita&page=$1 [L]
+RewriteRule ^p/berita/([a-zA-Z0-9_-]+)$ .rest_apl.php?f=web_page&m=berita&a=details-berita&id=$1 [L]
+RewriteRule ^p/cari$ .rest_apl.php?f=web_page&m=berita&a=cari&key=$1 [L]
+RewriteRule ^p/cari/page/([a-zA-Z0-9_-]+)$ .rest_apl.php?f=web_page&m=berita&a=cari&key=$1&page=$2 [L]
+
+#daftarTags
+RewriteRule ^p/tags/([a-zA-Z0-9_-]+)$ .rest_apl.php?f=web_page&m=tags&id=$1 [L]
+RewriteRule ^p/tags/([a-zA-Z0-9_-]+)/page/([a-zA-Z0-9_-]+)$ .rest_apl.php?f=web_page&m=tags&id=$1&page=$2 [L]
+
+
+#pengaduan
+RewriteRule ^p/pengaduan$ .rest_apl.php?f=web_page&m=pengaduan [L]
+RewriteRule ^p/pengaduan/all$ .rest_apl.php?f=web_page&m=pengaduan&a=all [L]
+RewriteRule ^p/pengaduan/all/page/([a-zA-Z0-9_-]+)$ .rest_apl.php?f=web_page&m=pengaduan&a=all&page=$1 [L]
+RewriteRule ^p/pengaduan/([a-zA-Z0-9_-]+)$ .rest_apl.php?f=web_page&m=pengaduan&a=details-pengaduan&id=$1 [L]
+RewriteRule ^p/pengaduan/cari$ .rest_apl.php?f=web_page&m=pengaduan&a=cari-pengaduan [L]
+
+#profile
+RewriteRule ^p/users/profile$ .rest_apl.php?f=web_page&m=profile [L]
+
+
+#logout
+RewriteRule ^p/out$ .rest_apl.php?f=web_page&m=out [L]
+
+#error 403
+RewriteRule ^authenticationError$ 403.php [L]
+
 
 #----------------------Batas User Akses----------------------------#
 

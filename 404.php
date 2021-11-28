@@ -55,7 +55,7 @@
                     <p class="sub-content"><b>NOT FOUND</b><br>"Halaman yang anda cari tidak ditemukan" <br> <b><i>UPT
                                 Perparkiran Dinas Perhubungan Kota Pekanbaru</i></b></p>
                 </div>
-                <div><a class="btn btn-danger-gradien btn-lg" href="<?= base_url(); ?>">BACK TO HOME PAGE</a></div>
+                <div><a class="btn btn-danger-gradien btn-lg" onclick="history.back()">KEMBALI</a></div>
             </div>
         </div>
         <!-- error-404 end      -->

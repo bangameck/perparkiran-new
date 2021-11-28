@@ -5,7 +5,7 @@ require 'vendor/PHPMailer/src/OAuth.php';
 require 'vendor/PHPMailer/src/PHPMailer.php';
 require 'vendor/PHPMailer/src/POP3.php';
 require 'vendor/PHPMailer/src/SMTP.php';
-require 'vendor/autoload.php';
+// require 'vendor/autoload.php';
 $time = date('Y-m-d');
 $cek = $db->query("SELECT * FROM views_site WHERE time='$time'");
 $jml = $cek->num_rows;
@@ -19,27 +19,78 @@ if ($jml == '0') {
 <html dir="ltr" lang="en-US">
 
 <head>
-
     <?php template_apl('head') ?>
-
 </head>
 
 <body class="stretched">
+    <?php 
+    if (isset($_SESSION['username'])) {
+        echo '<div id="idletimeout">
+        Kami memantau tidak adanya aktifitas dalam 20 menit, anda akan otomatis logout dalam
+        <span><!-- countdown place holder --></span>&nbsp;detik.
+        <a id="idletimeout-resume" href="">klik disini untuk memperpanjang waktu session</a
+      >.
+    </div>' ;
+    }
+    ?>
+    <!-- loader -->
+    <div class="preloader">
+        <div class="loading">
+            <img src="<?= base_url(); ?>assets/adm/images/logoparkir.gif" width="80">
+            <script language="JavaScript">
+            var text = "Please Wait...";
+            var delay = 100;
+            var currentChar = 1;
+            var destination = "[none]";
 
+            function type() {
+                //if (document.all)
+                {
+                    var dest = document.getElementById(destination);
+                    if (dest) // && dest.innerHTML)
+                    {
+                        dest.innerHTML = text.substr(0, currentChar) + "<blink>_</blink>";
+                        currentChar++;
+                        if (currentChar > text.length) {
+                            currentChar = 1;
+                            setTimeout("type()", 500);
+                        } else {
+                            setTimeout("type()", delay);
+                        }
+                    }
+                }
+            }
+
+            function startTyping(textParam, delayParam, destinationParam) {
+                text = textParam;
+                delay = delayParam;
+                currentChar = 1;
+                destination = destinationParam;
+                type();
+            }
+            </script> <b>
+                <div 0px="" 12px="" arial="" color:="" ff0000="" font:="" id="textDestination" margin:=""
+                    style="background-color: none;"></div>
+            </b>
+            <script language="JavaScript">
+            javascript: startTyping(text, 10, "textDestination");
+            </script>
+        </div>
+    </div>
     <!-- Document Wrapper
 	============================================= -->
     <div id="wrapper" class="clearfix">
 
         <!-- Top Bar
 		============================================= -->
-        <div id="top-bar">
-			<?php template_apl('top-bar') ?>
-		</div>
+        <div id="top-bar" class="transparent-topbar">
+            <?php template_apl('top-bar') ?>
+        </div>
         <!-- #top-bar end -->
 
         <!-- Header
 		============================================= -->
-        <header id="header" class="floating-header">
+        <header id="header" class="transparent-header header-size-md">
             <div class="container">
                 <?php template_apl('head-ads') ?>
             </div>
@@ -47,7 +98,7 @@ if ($jml == '0') {
             <div id="header-wrap" class="border-top border-f5">
                 <div class="container">
                     <div class="header-row justify-content-between">
-                            <?php template_apl('head-logo') ?>
+                        <?php template_apl('head-logo') ?>
                         <div class="header-misc">
 
                             <!-- Top Search
@@ -86,10 +137,10 @@ if ($jml == '0') {
 
         <!-- Content
 		============================================= -->
-        <section id="content">
-            <?php modul('web_page',$_GET['m']) ?>
-        </section><!-- #content end -->
-        <div class="section lazy mt-5 mb-0 p-0 min-vh-75" data-bg="https://source.unsplash.com/sLoiQitblLs/1920x1080"
+
+        <?php modul('web_page',$_GET['m']) ?>
+        <!-- #content end -->
+        <div class="section lazy mt-5 mb-0 p-0 min-vh-75" data-bg="https://lh4.googleusercontent.com/trZiteGgCBkaNY0_LRuDtWnGujIhJsDbITYPBongJhXpWwSEFqHtvTWszqn0FbAEwpZ_gCptKDsXxsvphaagzBE=w16383"
             style="background-position: center center; background-repeat: no-repeat; background-size: cover;">
             <div class="shape-divider" data-shape="cliff" data-height="150" data-flip-vertical="true"></div>
         </div>

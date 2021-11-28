@@ -205,6 +205,32 @@ function javascript($m, $t, $pesan = '')
 			if (tanya == true) return true;
 			else return false;
 			}
+			function logoutweb()
+			{
+			tanya =  Swal.fire({
+				title: 'Apakah kamu yakin?',
+				text: 'Jika anda keluar, Data session akan terhapus.',
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Ya',
+				cancelButtonText: 'Tidak',
+			  }).then((result) => {
+				if (result.isConfirmed) {
+				  Swal.fire(
+					'Berhasil!',
+					'Anda berhasil keluar dari sistem.',
+					'success'
+				  );
+				  window.setTimeout(function() {
+					window.location.replace('" . $base_url . "p/out');
+				 }, 3000)
+				}
+			  });
+			if (tanya == true) return true;
+			else return false;
+			}
 			</script>";
     }
 }

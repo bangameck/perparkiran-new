@@ -87,16 +87,20 @@ switch($a){
                                     </td>
                                     <td class="text-end">
                                         <div class="btn-group">
-                                            <a class="btn btn-primary btn-sm" href="<?= base_url(); ?>profile/<?= $u['username']; ?>"><i class="fa fa-info"></i> Detail</a>
+                                            <a class="btn btn-primary btn-sm"
+                                                href="<?= base_url(); ?>profile/<?= $u['username']; ?>"><i
+                                                    class="fa fa-info"></i> Detail</a>
                                             <form action="<?= base_url(); ?>users/edit" method="POST">
-                                                    <input type="hidden" name="id" value="<?= $u['id']; ?>">
-                                                    <button class="btn btn-warning btn-sm" type="submit"><i class="fa fa-pencil"></i> Edit</button>
+                                                <input type="hidden" name="id" value="<?= $u['id']; ?>">
+                                                <button class="btn btn-warning btn-sm" type="submit"><i
+                                                        class="fa fa-pencil"></i> Edit</button>
                                             </form>
                                             <form action="<?= base_url(); ?>users/delete-temp" method="POST">
-                                                    <input type="hidden" name="id" value="<?= $u['id']; ?>">
-                                                    <input type="hidden" name="username" value="<?= $u['username']; ?>">
-                                                    <input type="hidden" name="foto" value="<?= $u['f_usr']; ?>">
-                                                    <button class="btn btn-danger btn-sm" onclick="hapustemp()" type="submit"><i class="fa fa-trash"></i> Delete</button>
+                                                <input type="hidden" name="id" value="<?= $u['id']; ?>">
+                                                <input type="hidden" name="username" value="<?= $u['username']; ?>">
+                                                <input type="hidden" name="foto" value="<?= $u['f_usr']; ?>">
+                                                <button class="btn btn-danger btn-sm" onclick="hapustemp()"
+                                                    type="submit"><i class="fa fa-trash"></i> Delete</button>
                                             </form>
                                         </div>
                                     </td>
@@ -142,18 +146,18 @@ aut(array(1));
                 enctype="multipart/form-data">
                 <div class="row g-2">
                     <div class="col-lg-12 col-md-12">
-                    <label">Username :</label>
-                        <input type="text" class="form-control" name="username" id="username" required>
-                        <div class="media">
-                            <div class="text-end">
-                                <label id="message"></label>
+                        <label">Username :</label>
+                            <input type="text" class="form-control" name="username" id="username" required>
+                            <div class="media">
+                                <div class="text-end">
+                                    <label id="message"></label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="valid-feedback">
-                        </div>
-                        <div class="invalid-feedback">
-                            Username tidak boleh kosong.
-                        </div>
+                            <div class="valid-feedback">
+                            </div>
+                            <div class="invalid-feedback">
+                                Username tidak boleh kosong.
+                            </div>
                     </div>
                     <!-- <div class="col-lg-6 col-md-12">
                     <label>Password :</label>
@@ -175,7 +179,7 @@ aut(array(1));
                 </div>
                 <div class="row g-2">
                     <div class="col-lg-6 col-md-12">
-                    <label>Email :</label>
+                        <label>Email :</label>
                         <input type="email" class="form-control" name="email" id="email" required>
                         <div class="media">
                             <div class="text-end">
@@ -192,7 +196,7 @@ aut(array(1));
                         <label>Nomor Handphone</label>
                         <input type="text" class="form-control" onkeypress="return hanyaAngka(event)" name="no_hp"
                             required>
-                        
+
                         <!-- <div class="show-hide"><span id="view_pass"></span></div> -->
                         <div class="invalid-feedback">
                             Nomor Handphone tidak boleh kosong.
@@ -203,7 +207,7 @@ aut(array(1));
                     <div class="col-lg-6 col-md-12">
                         <label>Nama :</label>
                         <input type="text" class="form-control" name="nama" required>
-                        
+
                         <div class="invalid-feedback">
                             Nama tidak boleh kosong.
                         </div>
@@ -219,8 +223,10 @@ aut(array(1));
                         <input type="text" class="form-control" name="t_lahir">
                     </div>
                     <div class="col-lg-6 col-md-12">
-                        <label for="floatingInput">Tanggal Lahir : Tanggal Lahir :</label><small style="color: orange;"> Format : bulan/tanggal/tahun</small></label>
-                        <input type="text" class="datepicker-here form-control digits" data-language="en" name="tgl_lahir">
+                        <label for="floatingInput">Tanggal Lahir : Tanggal Lahir :</label><small style="color: orange;">
+                            Format : bulan/tanggal/tahun</small></label>
+                        <input type="text" class="datepicker-here form-control digits" data-language="en"
+                            name="tgl_lahir">
                     </div>
                 </div>
                 <div class="row g-2">
@@ -624,7 +630,8 @@ if (empty($d)) {
                 <div class="row g-2">
                     <div class="col-lg-12 col-md-12 form-floating">
                         <input type="hidden" name="id" value="<?= $_POST['id']; ?>">
-                        <input type="text" class="form-control" name="username" value="<?= $d['username']; ?>" id="username" required>
+                        <input type="text" class="form-control" name="username" value="<?= $d['username']; ?>"
+                            id="username" required>
                         <label for="floatingInput">Username</label>
                         <div class="media">
                             <div class="text-end">
@@ -656,7 +663,8 @@ if (empty($d)) {
                 </div>
                 <div class="row g-2">
                     <div class="col-lg-6 col-md-12 form-floating">
-                        <input type="email" class="form-control" name="email" value="<?= $d['email']; ?>" id="email" required>
+                        <input type="email" class="form-control" name="email" value="<?= $d['email']; ?>" id="email"
+                            required>
                         <label for="floatingInput">Email</label>
                         <div class="media">
                             <div class="text-end">
@@ -670,8 +678,8 @@ if (empty($d)) {
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12 form-floating position-relative">
-                        <input type="text" class="form-control" value="<?= $d['no_hp']; ?>" onkeypress="return hanyaAngka(event)" name="no_hp"
-                            required>
+                        <input type="text" class="form-control" value="<?= $d['no_hp']; ?>"
+                            onkeypress="return hanyaAngka(event)" name="no_hp" required>
                         <label for="floatingInput">Nomor Handphone</label>
                         <!-- <div class="show-hide"><span id="view_pass"></span></div> -->
                         <div class="invalid-feedback">
@@ -692,16 +700,19 @@ if (empty($d)) {
                         <label for="floatingInput">Pendidikan Terakhir</label>
 
                     </div>
-                <div class="row g-2">
-                    <div class="col-lg-6 col-md-12">
-                        <label>Tempat Lahir :</label>
-                        <input type="text" class="form-control" value="<?= $d['t_lahir']; ?>" name="t_lahir">
+                    <div class="row g-2">
+                        <div class="col-lg-6 col-md-12">
+                            <label>Tempat Lahir :</label>
+                            <input type="text" class="form-control" value="<?= $d['t_lahir']; ?>" name="t_lahir">
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            <label for="floatingInput">Tanggal Lahir :</label><small style="color: orange;"> Format :
+                                bulan/tanggal/tahun</small>
+                            <input type="text" class="datepicker-here form-control digits"
+                                value="<?= date('m/d/Y' ,strtotime($d['tgl_lahir'])); ?>" data-language="en"
+                                name="tgl_lahir">
+                        </div>
                     </div>
-                    <div class="col-lg-6 col-md-12">
-                        <label for="floatingInput">Tanggal Lahir :</label><small style="color: orange;"> Format : bulan/tanggal/tahun</small>
-                        <input type="text" class="datepicker-here form-control digits" value="<?= date('m/d/Y' ,strtotime($d['tgl_lahir'])); ?>" data-language="en" name="tgl_lahir">
-                    </div>
-                </div>
                     <!-- <div class="col-lg-6 col-md-12">
                         <select class="form-select js-example-basic-single" name="level" id="floatingSelect"
                             aria-label="Pilih Level" required>
@@ -761,7 +772,7 @@ if (empty($d)) {
                 </div>
                 <div class="row g-2">
                     <div class="col-lg-3 col-md-6">
-                    <?php 
+                        <?php 
                     if (empty($d['f_usr'])) {
                         $foto = 'default.png';
                     } else {
@@ -770,14 +781,15 @@ if (empty($d)) {
                     ?>
                         <!-- gambar  -->
                         <div class="avatar"><img class="img-100 rounded-circle"
-                                src="<?= base_url(); ?>_uploads/f_usr/<?= $foto; ?>" id="imgPreview" alt="Image Preview">
+                                src="<?= base_url(); ?>_uploads/f_usr/<?= $foto; ?>" id="imgPreview"
+                                alt="Image Preview">
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-12">
                         <input class="form-control" id="imgUpload" name="foto" type="file">
                         <small style="color: red;">Format File : png, jpg, jpeg</small>
                     </div>
-                    
+
                 </div>
                 <!-- <hr> -->
                 <div class="d-grid gap-2 col-lg-3 col-md-12 col-xs-12 mx-auto">

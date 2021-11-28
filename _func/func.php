@@ -48,26 +48,47 @@ include '/vendor/owasp/csrf-protector-php/libs/csrf/csrfprotector.php';
 
 
 //aut
+// function aut($level = array())
+// {
+//     //aut(array(1,4));penggunaan
+//     global $base_url;
+//     if (!in_array($_SESSION['level'], $level)) {
+//         echo "<script>alert('Anda tidak dapat mengakses halaman ini.');
+// 				window.location='" . $base_url . "';</script>";
+//         exit;
+//     }
+// }
+
 function aut($level = array())
 {
     //aut(array(1,4));penggunaan
     global $base_url;
     if (!in_array($_SESSION['level'], $level)) {
-        echo "<script>alert('Anda tidak dapat mengakses halaman ini.');
-				window.location='" . $base_url . "';</script>";
+        echo "<script>
+				window.location='" . $base_url . "authenticationError';</script>";
         exit;
     }
 }
 
-function aut_lp($level = array())
-{
-    //aut(array(1,4));penggunaan
-    global $base_url;
-    if (!in_array($_SESSION['level'], $level)) {
-        echo "<script>
-				window.location='" . $base_url . "dashboard';</script>";
-    } 
-}
+// function aut_lp($level = array())
+// {
+//     //aut(array(1,4));penggunaan
+//     global $base_url;
+//     if (!in_array($_SESSION['level'], $level)) {
+//         echo "<script>
+// 				window.location='" . $base_url . "dashboard';</script>";
+//     } 
+// }
+
+// function aut_usr($level = array())
+// {
+//     //aut(array(1,4));penggunaan
+//     global $base_url;
+//     if (!in_array($_SESSION['level'], $level)) {
+//         echo "<script>
+// 				window.location='" . $base_url . "';</script>";
+//     } 
+// }
 
 //modul
 function modul($f,$m)

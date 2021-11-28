@@ -6,10 +6,10 @@
 * @modify date 2021-06-11 14:31:00
 * @desc [description]
 */
-include_once '../../_func/func.php';
+include_once '../../../_func/func.php';
 $username = $_POST['username'];
-$query = mysqli_query($db, "SELECT * from users where username='$username' ");
+$query = $db->query("SELECT * FROM users WHERE username='$username'");
 
-$find = mysqli_num_rows($query);
+$find = $query->num_rows;
 
 echo $find;

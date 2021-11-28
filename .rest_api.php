@@ -22,7 +22,7 @@ if(empty($_SESSION['username']) && empty($_SESSION['password'])){
         content="Sistem Informasi Perparkiran Kota Pekanbaru, Parkir Pekanbaru, UPT Parkir Pekanbaru, UPT Perparkiran Pekanbaru, UPTD Parkir Pekanbaru, Dinas Perhubungan Kota Pekanbaru, Dishub Pku, Jumlah Jukir Pekanbaru, Jukir Pekanbaru">
     <meta name="author" content="uptperparkiranpekanbaru">
     <link rel="icon" href="<?= base_url(); ?>assets/adm/images/favicon.png" type="image/x-icon">
-    <link rel="shortcut icon" href="<?= base_url(); ?>/assets/images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="<?= base_url(); ?>assets/adm/images/favicon.png" type="image/x-icon">
     <title>Login Page | <?= $title; ?></title>
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap"
@@ -61,10 +61,72 @@ if(empty($_SESSION['username']) && empty($_SESSION['password'])){
     #pacifico {
         font-family: 'Pacifico', cursive;
     }
+
+    .preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-color: #FFF;
+}
+
+.preloader .loading {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Pacifico', cursive;
+}
     </style>
 </head>
 
 <body>
+    <!-- preloader -->
+    <div class="preloader">
+        <div class="loading">
+            <img src="<?= base_url(); ?>assets/adm/images/logoparkir.gif" width="80">
+            <script language="JavaScript">
+            var text = "Please Wait...";
+            var delay = 100;
+            var currentChar = 1;
+            var destination = "[none]";
+
+            function type() {
+                //if (document.all)
+                {
+                    var dest = document.getElementById(destination);
+                    if (dest) // && dest.innerHTML)
+                    {
+                        dest.innerHTML = text.substr(0, currentChar) + "<blink>_</blink>";
+                        currentChar++;
+                        if (currentChar > text.length) {
+                            currentChar = 1;
+                            setTimeout("type()", 500);
+                        } else {
+                            setTimeout("type()", delay);
+                        }
+                    }
+                }
+            }
+
+            function startTyping(textParam, delayParam, destinationParam) {
+                text = textParam;
+                delay = delayParam;
+                currentChar = 1;
+                destination = destinationParam;
+                type();
+            }
+            </script> <b>
+                <div 0px="" 12px="" arial="" color:="" ff0000="" font:="" id="textDestination" margin:=""
+                    style="background-color: none;"></div>
+            </b>
+            <script language="JavaScript">
+            javascript: startTyping(text, 10, "textDestination");
+            </script>
+        </div>
+    </div>
     <!-- login page start-->
     <div class="container-fluid">
         <div class="row">
@@ -73,14 +135,14 @@ if(empty($_SESSION['username']) && empty($_SESSION['password'])){
             <div class="col-xl-5 p-0">
                 <div class="login-card">
                     <div>
-                        <div><a class="logo text-start" href="index.html"><img class="img-fluid for-light"
+                        <div><a class="logo text-start" href="<?= base_url(); ?>"><img class="img-fluid for-light"
                                     src="<?= base_url(); ?>assets/adm/images/logo/login.png" alt="looginpage"><img
                                     class="img-fluid for-dark"
                                     src="<?= base_url(); ?>assets/adm/images/logo/logo_dark.png" alt="looginpage"></a>
                         </div>
                         <div class="login-main">
                             <form class="theme-form" action="" method="POST">
-                                <h4>Halaman Login</h4>
+                                <h4 id="pacifico">Halaman Login</h4>
                                 <p>Masukkan username & password kamu untuk login</p>
                                 <div class="form-group">
                                     <label class="col-form-label">Username</label>
@@ -107,8 +169,10 @@ if(empty($_SESSION['username']) && empty($_SESSION['password'])){
                   <div class="social mt-4">
                     <div class="btn-showcase"><a class="btn btn-light" href="https://www.linkedin.com/login" target="_blank"><i class="txt-linkedin" data-feather="linkedin"></i> LinkedIn </a><a class="btn btn-light" href="https://twitter.com/login?lang=en" target="_blank"><i class="txt-twitter" data-feather="twitter"></i>twitter</a><a class="btn btn-light" href="https://www.facebook.com/" target="_blank"><i class="txt-fb" data-feather="facebook"></i>facebook</a></div>
                   </div> -->
-                                <p class="mt-4 mb-0 text-center"><a class="ms-2" href="<?= base_url(); ?>dashboard">Klik
-                                        disini untuk kembali ke-Dashboard</a></p>
+                                <p class="mt-4 mb-0 text-center">Don't have account?<a class="ms-2"
+                                        href="<?= base_url(); ?>register-for-new-users">Create Account</a></p>
+                                <p class="mt-4 mb-0 text-center"><a class="ms-2" href="<?= base_url(); ?>">Back to
+                                        Dashboard</a></p>
                             </form>
                             <?php 
                 if (isset($_POST['login'])) {
@@ -148,18 +212,22 @@ if(empty($_SESSION['username']) && empty($_SESSION['password'])){
                                 $_SESSION['foto']  	      = $r['f_usr'];
                                 $_SESSION['regu']  	      = $r['regu'];
                                 $_SESSION['token']        = $c['token'];
-                                // # code...
-                                sweetAlert('dashboard','sukses','Login Sukses...','Selamat datang di '.$title.'');
+                                
+                                if ($_SESSION['level']!='7') {
+                                    sweetAlert('dashboard','sukses','Login Sukses...','Halo '.$_SESSION['nama'].', Selamat datang di '.$title.'');
+                                } else {
+                                    sweetAlert('','sukses','Login Sukses...','Halo '.$_SESSION['nama'].', Selamat datang di '.$title.'');
+                                }
                             } else {
-                                sweetAlert('khusus-admin-login','error','Login Error !','Maaf akun anda sudah tidak mendapat akses (diblokir) atau belum terverifikasi silahkan cek email anda untuk memverifikasi akun. <br> silahkan menghubungi admin untuk info lebih lanjut.');
+                                sweetAlert('login-for-users','error','Login Error !','Maaf akun anda sudah tidak mendapat akses (diblokir) atau belum terverifikasi silahkan cek email anda untuk memverifikasi akun. <br> silahkan menghubungi admin untuk info lebih lanjut.');
                             }
                             
                         } else {
-                            sweetAlert('khusus-admin-login','error','Login Error !','Password Salah...');
+                            sweetAlert('login-for-users','error','Login Error !','Password Salah...');
                         }
                         
                     }else{
-                        sweetAlert('khusus-admin-login','error','Login Error !','Username tidak terdaftar...');
+                        sweetAlert('login-for-users','error','Login Error !','Username tidak terdaftar...');
                     }
                 }
                 // javascript($m,'confirm');
@@ -231,12 +299,21 @@ if(empty($_SESSION['username']) && empty($_SESSION['password'])){
         //     }
         // });
         </script>
+        <script>
+$(document).ready(function() {
+    $(".preloader").fadeOut('slow');
+})
+</script>
     </div>
 </body>
 
 </html>
 <?php 
 } else {
-    aut_lp(1,2,3,4,5,6);
+    if ($_SESSION['level']!='7') {
+        echo"<script>window.location='".base_url()."dashboard'</script>";
+    } else {
+        echo"<script>window.location='".base_url()."'</script>";
+    }
 }
 ?>

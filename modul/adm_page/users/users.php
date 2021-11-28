@@ -14,7 +14,7 @@ include '_func/identity.php';
 $a=$_GET['a'];
 $csrf     = $db->query("SELECT b.token FROM users a, session b WHERE a.token=b.token AND a.username='$_SESSION[username]' AND b.token='$_SESSION[token]'")->fetch_assoc();
 if ($csrf==false) {
-    sweetAlert('out','error','Error Session !','Session telah berakhir, silahkan login ulang');
+    sweetAlert('out','error','Error Session !','Session telah berakhir atau akun anda sudah login diperangkat lain, silahkan login ulang');
 } else {
 switch($a){
     default:
@@ -99,8 +99,8 @@ switch($a){
                                             </form> -->
                                             <form action="<?= base_url(); ?>users/blokir" method="POST">
                                                 <input type="hidden" name="id" value="<?= $u['id']; ?>">
-                                                <button class="btn btn-danger btn-sm" onclick="non()"
-                                                    type="submit"><i class="fa fa-exclamation-circle"></i> Blokir</button>
+                                                <button class="btn btn-danger btn-sm" onclick="non()" type="submit"><i
+                                                        class="fa fa-exclamation-circle"></i> Blokir</button>
                                             </form>
                                         </div>
                                     </td>
@@ -221,8 +221,8 @@ aut(array(1));
                                                 <input type="hidden" name="id" value="<?= $u['id']; ?>">
                                                 <input type="hidden" name="username" value="<?= $u['username']; ?>">
                                                 <input type="hidden" name="foto" value="<?= $u['f_usr']; ?>">
-                                                <button class="btn btn-danger btn-sm" onclick="hapus()"
-                                                    type="submit"><i class="fa fa-trash"></i> Delete Permanent</button>
+                                                <button class="btn btn-danger btn-sm" onclick="hapus()" type="submit"><i
+                                                        class="fa fa-trash"></i> Delete Permanent</button>
                                             </form>
                                         </div>
                                     </td>
@@ -264,8 +264,7 @@ aut(array(1));
     </div>
     <div class="card">
         <div class="card-body">
-            <form class="needs-validation" novalidate="" action="" method="POST"
-                enctype="multipart/form-data">
+            <form class="needs-validation" novalidate="" action="" method="POST" enctype="multipart/form-data">
                 <div class="row g-2">
                     <div class="col-md-12">
                         <label">Username :</label>
@@ -570,7 +569,7 @@ aut(array(1));
                                     }
                                     else {
                                         // echo "Message has been sent successfully";
-                                        $db->query("INSERT INTO users VALUES ('$id','$username','$password','$email','$no_hp','$nama','$pendidikan','$alamat','$t_lahir','$tgl_lahir','$jk','$level','$regu','','$token','$batas_waktu','N',NOW(),NOW(),NULL)");
+                                        $db->query("INSERT INTO users VALUES ('$id','$username','$password','$email','$no_hp','$nama','$pendidikan','$alamat','$t_lahir','$tgl_lahir','$jk','$level','$regu','','','$token','$batas_waktu','N',NOW(),NOW(),NULL)");
                                         sweetAlert('users','sukses','Sukses !','Data dengan username ('.$username.') berhasil diinput');
                                     }
                                     // if ($q) {
@@ -817,7 +816,8 @@ if ($d['level']=='2') {
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <!-- <label class="form-label">Nama</label> -->
-                                            <input class="form-control" id="imgUpload" name="foto" type="file" accept="image/*" required>
+                                            <input class="form-control" id="imgUpload" name="foto" type="file"
+                                                accept="image/*" required>
                                             <small style="color: red;">Format File : png, jpg, jpeg</small>
                                         </div>
                                     </div>
@@ -1256,7 +1256,8 @@ if ($d['level']=='2') {
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <!-- <label class="form-label">Nama</label> -->
-                                            <input class="form-control" id="imgUpload" name="foto" type="file" accept="image/*" required>
+                                            <input class="form-control" id="imgUpload" name="foto" type="file"
+                                                accept="image/*" required>
                                             <small style="color: red;">Format File : png, jpg, jpeg</small>
                                         </div>
                                     </div>

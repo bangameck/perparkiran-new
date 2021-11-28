@@ -54,11 +54,11 @@ include '_func/func.php';
                     <h2 class="headline font-success">403</h2>
                 </div>
                 <div class="col-md-8 offset-md-2">
-                    <p class="sub-content"><b>FORBIDDEN</b> <br> "Silahkan login terlebih dahulu. Atau silahkan
+                    <p class="sub-content"><b><?= strtoupper(' Access to that resource is forbidden'); ?></b> <br> "Anda tidak memiliki akses untuk halaman ini. Silahkan
                         menghubungi admin jika ada pertanyaan" <br> <b><i>UPT Perparkiran Dinas Perhubungan Kota
                                 Pekanbaru</i></b></p>
                 </div>
-                <div><a class="btn btn-success-gradien btn-lg" href="<?= base_url(); ?>">BACK TO HOME PAGE</a></div>
+                <div><a class="btn btn-success-gradien btn-lg" onclick="history.back()">KEMBALI</a></div>
             </div>
         </div>
         <!-- error-403 end-->

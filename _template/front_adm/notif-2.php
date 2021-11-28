@@ -1,10 +1,3 @@
-<!-- /**
-* @author [bangameck.rra]
-* @email [rahmad.looker@gmail.com]
-* @create date 2021-06-11 14:32:29
-* @modify date 2021-06-11 14:34:09
-* @desc [description]
-*/ -->
 <li class="onhover-dropdown">
     <div class="notification-box"><i data-feather="star"></i></div>
     <div class="onhover-show-div bookmark-flip">

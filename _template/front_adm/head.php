@@ -24,7 +24,8 @@
         rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&family=Pacifico&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/adm/css/font-awesome.css">
     <!-- ico-font-->
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/adm/css/vendors/icofont.css">
@@ -67,9 +68,9 @@
     <script src="//cdn.jsdelivr.net/npm/afterglowplayer@1.x"></script>
     <!-- CKEditor5 -->
     <style>
-        .ck-editor__editable {
+    .ck-editor__editable {
         min-height: 200px;
-        }
+    }
     </style>
     <!-- <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script> -->
     <!-- <script>
@@ -96,7 +97,7 @@
             console.error( error );
         } );
     </script> -->
-    
+
     <!-- CKEditor -->
     <!-- <script src="<?= base_url(); ?>vendor/ckeditor/ckeditor.js">
     var data = CKEDITOR.instances.editor1.getData();
@@ -105,11 +106,12 @@
     #merienda {
         font-family: 'Merienda', cursive;
     }
-    #pacifico{
+
+    #pacifico {
         font-family: 'Pacifico', cursive;
     }
     </style>
-    
+
     <style type="text/css">
     #idletimeout {
         background: #f6ba00;
@@ -156,36 +158,37 @@
     }
     </style>
     <style type="text/css">
-        .preloader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 9999;
-        background-color: #fff;
-        }
-        .preloader .loading {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%,-50%);
-        font: 14px arial;
-        }
+    .preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-color: #FFF;
+}
+
+.preloader .loading {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Pacifico', cursive;
+}
     </style>
     <script type="text/javascript">
     //script preloader
-    (function( $ ) {   
-        $(window).on('load', function(){
-        $('#preloader').fadeOut('2000',function(){
+    (function($) {
+        $(window).on('load', function() {
+            $('#preloader').fadeOut('2000', function() {
                 $(this).hide();
             });
         });
 
-        })(jQuery);
+    })(jQuery);
 
     //slow bisa diganti dengan angka misal 2000 
-  </script>
+    </script>
 
     <!-- <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/examples.css" /> -->
 </head>

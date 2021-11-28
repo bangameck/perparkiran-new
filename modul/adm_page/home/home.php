@@ -104,18 +104,22 @@ if (empty($_SESSION['foto'])) {
             </div> -->
             <div class="col-sm-12">
                 <div class="card">
-                  <div class="card-header">
-                    <h5>Alert State</h5>
-                  </div>
-                  <div class="card-body btn-showcase">
-                    <button class="btn btn-success sweet-8" type="button" onclick="_gaq.push(['_trackEvent', 'example', 'try', 'sweet-8']);">Success</button>
-                    <button class="btn btn-danger sweet-7" type="button" onclick="_gaq.push(['_trackEvent', 'example', 'try', 'sweet-7']);">Danger</button>
-                    <button class="btn btn-info sweet-9" type="button" onclick="_gaq.push(['_trackEvent', 'example', 'try', 'sweet-9']);">Information</button>
-                    <button class="btn btn-warning sweet-6" type="button" onclick="_gaq.push(['_trackEvent', 'example', 'try', 'sweet-6']);">Warning</button>
-                    <button class="third">Title, Text and Icon</button>
-                  </div>
+                    <div class="card-header">
+                        <h5>Alert State</h5>
+                    </div>
+                    <div class="card-body btn-showcase">
+                        <button class="btn btn-success sweet-8" type="button"
+                            onclick="_gaq.push(['_trackEvent', 'example', 'try', 'sweet-8']);">Success</button>
+                        <button class="btn btn-danger sweet-7" type="button"
+                            onclick="_gaq.push(['_trackEvent', 'example', 'try', 'sweet-7']);">Danger</button>
+                        <button class="btn btn-info sweet-9" type="button"
+                            onclick="_gaq.push(['_trackEvent', 'example', 'try', 'sweet-9']);">Information</button>
+                        <button class="btn btn-warning sweet-6" type="button"
+                            onclick="_gaq.push(['_trackEvent', 'example', 'try', 'sweet-6']);">Warning</button>
+                        <button class="third">Title, Text and Icon</button>
+                    </div>
                 </div>
-              </div>
+            </div>
         </div>
     </div>
     <!-- Container-fluid Ends-->

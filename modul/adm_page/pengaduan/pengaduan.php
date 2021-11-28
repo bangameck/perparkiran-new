@@ -10,7 +10,7 @@
 include '_func/identity.php';
 $csrf     = $db->query("SELECT b.token FROM users a, session b WHERE a.token=b.token AND a.username='$_SESSION[username]' AND b.token='$_SESSION[token]'")->fetch_assoc();
     if ($csrf==false) {
-        sweetAlert('out', 'error', 'Error Session !', 'Session telah berakhir, silahkan login ulang');
+        sweetAlert('out', 'error', 'Error Session !', 'Session telah berakhir atau akun anda sudah login diperangkat lain, silahkan login ulang');
     } else {
 // aut(array(1));
 $a=$_GET['a'];
@@ -117,24 +117,28 @@ switch ($a) {
                                     <td valign="top">
                                         <div class="btn-group">
                                             <a href="<?= base_url(); ?>pengaduan/edit/<?= $u['slug']; ?>"
-                                                class="btn btn-info-gradien <?= $diss; ?> <?= $disab; ?>" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                                class="btn btn-info-gradien <?= $diss; ?> <?= $disab; ?>"
+                                                data-bs-toggle="tooltip" data-bs-placement="bottom"
                                                 title="Edit Pengaduan" <?= $hide; ?>><i class="fa fa-pencil"></i></a>
                                             <a href="<?= base_url(); ?>pengaduan/teruskan/<?= $u['slug']; ?>"
-                                                class="btn btn-warning-gradien <?= $dist; ?>" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                title="Teruskan Pengaduan" <?= $hide; ?>><i class="fa fa-mail-forward"></i></a>
+                                                class="btn btn-warning-gradien <?= $dist; ?>" data-bs-toggle="tooltip"
+                                                data-bs-placement="bottom" title="Teruskan Pengaduan" <?= $hide; ?>><i
+                                                    class="fa fa-mail-forward"></i></a>
                                             <a href="<?= base_url(); ?>pengaduan/tolak/<?= $u['slug']; ?>"
-                                                class="btn btn-danger-gradien <?= $dist; ?>" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                title="Tolak Pengaduan" <?= $hide; ?>><i class="fa fa-times-circle"></i></a>
-                                            <a href="<?= base_url(); ?>pengaduan/detail/<?= $u['slug']; ?>"
-                                                class="btn btn-primary-gradien" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                title="Detail Pengaduan"><i class="fa fa-info-circle"></i></a>
+                                                class="btn btn-danger-gradien <?= $dist; ?>" data-bs-toggle="tooltip"
+                                                data-bs-placement="bottom" title="Tolak Pengaduan" <?= $hide; ?>><i
+                                                    class="fa fa-times-circle"></i></a>
+                                            <a href="<?= base_url(); ?>p/pengaduan/<?= $u['slug']; ?>" target="_blank"
+                                                class="btn btn-primary-gradien" data-bs-toggle="tooltip"
+                                                data-bs-placement="bottom" title="Detail Pengaduan"><i
+                                                    class="fa fa-info-circle"></i></a>
 
-                                            <form action="<?= base_url(); ?>pengaduan/delete" method="POST" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                title="Hapus Pengaduan"
-                                                <?= $hide; ?>>
+                                            <form action="<?= base_url(); ?>pengaduan/delete" method="POST"
+                                                data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                                title="Hapus Pengaduan" <?= $hide; ?>>
                                                 <input type="hidden" name="id_peng" value="<?= $u['id_peng']; ?>">
-                                                <button class="btn btn-danger-gradien <?= $disab; ?>" onclick="return hapus()"><i
-                                                        class="fa fa-trash"></i></button>
+                                                <button class="btn btn-danger-gradien <?= $disab; ?>"
+                                                    onclick="return hapus()"><i class="fa fa-trash"></i></button>
                                             </form>
                                         </div>
                                     </td>
@@ -241,8 +245,7 @@ switch ($a) {
                             <label">Bukti Pengaduan : <small style="color: green;">Pilih beberapa gambar atau
                                     video</small></label>
                                 <input class="form-control" name="foto[]" type="file"
-                                    accept="image/jpeg, image/png, video/mp4"
-                                    multiple required>
+                                    accept="image/jpeg, image/png, video/mp4" multiple required>
                                 <small style="color: red;">Format File : jpg, png, jpeg, jpe, 3gp, mp4, mp4v, mpg4, mov,
                                     qt</small><br>
                                 <small style="color: red;">Jika jumlah file banyak dan berukuran besar maka loading akan
@@ -390,7 +393,7 @@ switch ($a) {
                                                             <h6 style="font-weight: 600">Pengaduan Anda Sedang diverifikasi.</h6>
                                                             <p>Halo '.$nama_p.',</p>
                                                             <p>Pengaduan anda sedang kami verifikasi silahkan cek pengaduan anda secara berkala dengan mengklik ID pengaduan anda dibawah ini :</p>
-                                                            <p style="text-align: center"><a href="'.$base_url.'pengaduan/detail-pengaduan/'.$slug.'" style="padding: 10px; background-color: #7366ff; color: #fff; display: inline-block; border-radius: 4px">'.$id.'</a></p>
+                                                            <p style="text-align: center"><a href="'.$base_url.'p/pengaduan/'.$slug.'" style="padding: 10px; background-color: #7366ff; color: #fff; display: inline-block; border-radius: 4px">'.$id.'</a></p>
                                                             <p>Jika pengaduan anda sudah selesai diverifikasi oleh Admin UPT Perparkiran, kami akan memberitahu melalui surat elektronik ini secara otomatis.</p>
                                                             <p style="margin-bottom: 0">
                                                             Regards,<br>Team IT UPT Perparkiran Dinas Perhubungan Kota Pekanbaru</p>
@@ -419,7 +422,7 @@ switch ($a) {
                         if(!$mail->send()) {
                             sweetAlert($m,'error','Mailer Error: ',$mail->ErrorInfo) ;
                         } else {
-                            $db->query("INSERT INTO pengaduan VALUES ('$id','$nama_p','$email_p','$no_hp_p','$j_peng','$slug','$peng','P','NULL','$adm_peng',NOW(),'$ket_peng',NULL,NOW(),NOW(),NULL)");
+                            $db->query("INSERT INTO pengaduan VALUES ('$id','$nama_p','$email_p','$no_hp_p','$j_peng','$slug','$peng','P','TR','NULL','$adm_peng',NOW(),'$ket_peng',NULL,NOW(),NOW(),NULL)");
                             sweetAlert('pengaduan', 'sukses', 'Berhasil !', 'Data Pengaduan dengan (ID : '.$id.') Berhasil diinput.');
                         }
                     }
@@ -460,63 +463,64 @@ switch ($a) {
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
-            <table>
-                                    <thead>
-                                        <tr>
-                                            <th width="150px"></th>
-                                            <th width="20px"></th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td valign="top"><b>Judul Pengaduan</b> </td>
-                                            <td valign="top"><b>:</b></td>
-                                            <td valign="top"><a href="<?= base_url(); ?>"><?= $d['j_peng']; ?></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td valign="top"><b>Nama Pelapor</b></td>
-                                            <td valign="top"><b>:</b></td>
-                                            <td> <?= r_nama($d['nama_p']); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td valign="top"><b>Email Pelapor</b></td>
-                                            <td valign="top"><b>:</b></td>
-                                            <td> <?= r_email($d['email_p']); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td valign="top"><b>Waktu Pengaduan</b></td>
-                                            <td valign="top"><b>:</b></td>
-                                            <td> <?= hari(date('D', strtotime($d['tgl_peng']))).', '.tgl_indo(date('Y-m-d', strtotime($d['tgl_peng']))).' '.date('H:i:s', strtotime($d['tgl_peng'])); ?>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <br>
-                                <hr>
+                <table>
+                    <thead>
+                        <tr>
+                            <th width="150px"></th>
+                            <th width="20px"></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td valign="top"><b>Judul Pengaduan</b> </td>
+                            <td valign="top"><b>:</b></td>
+                            <td valign="top"><a href="<?= base_url(); ?>"><?= $d['j_peng']; ?></a></td>
+                        </tr>
+                        <tr>
+                            <td valign="top"><b>Nama Pelapor</b></td>
+                            <td valign="top"><b>:</b></td>
+                            <td> <?= r_nama($d['nama_p']); ?></td>
+                        </tr>
+                        <tr>
+                            <td valign="top"><b>Email Pelapor</b></td>
+                            <td valign="top"><b>:</b></td>
+                            <td> <?= r_email($d['email_p']); ?></td>
+                        </tr>
+                        <tr>
+                            <td valign="top"><b>Waktu Pengaduan</b></td>
+                            <td valign="top"><b>:</b></td>
+                            <td> <?= hari(date('D', strtotime($d['tgl_peng']))).', '.tgl_indo(date('Y-m-d', strtotime($d['tgl_peng']))).' '.date('H:i:s', strtotime($d['tgl_peng'])); ?>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <hr>
                 <form class="row g-3 needs-validation form theme-form" novalidate="" action="" method="POST"
                     enctype="multipart/form-data">
                     <div class="row g-2">
-                    <div class="col-lg-12">
-                        <label>Teruskan ke Regu :</label>
-                                <select class="form-select js-example-basic-single" name="regu" id="floatingSelect"
-                                    aria-label="Pilih Regu" required>
-                                    <option value="">Pilih Regu</option>
-                                    <?php
+                        <div class="col-lg-12">
+                            <label>Teruskan ke Regu :</label>
+                            <select class="form-select js-example-basic-single" name="regu" id="floatingSelect"
+                                aria-label="Pilih Regu" required>
+                                <option value="">Pilih Regu</option>
+                                <?php
                                         $regu = $db->query("SELECT * FROM regu ORDER BY nm_regu ASC");
         while ($r=$regu->fetch_assoc()) :
                                         ?>
-                                    <option value="<?= $r['id_regu']; ?>"><?= $r['nm_regu']; ?></option>
-                                    <?php endwhile; ?>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Regu tidak boleh kosong.
-                                </div>
+                                <option value="<?= $r['id_regu']; ?>"><?= $r['nm_regu']; ?></option>
+                                <?php endwhile; ?>
+                            </select>
+                            <div class="invalid-feedback">
+                                Regu tidak boleh kosong.
+                            </div>
                         </div>
                     </div>
                     <hr>
                     <div class="d-grid gap-2 col-lg-12 col-md-12 mx-auto">
-                        <button class="btn btn-info-gradien" name="simpan" type="submit">Teruskan Laporan Pengaduan</button>
+                        <button class="btn btn-info-gradien" name="simpan" type="submit">Teruskan Laporan
+                            Pengaduan</button>
                     </div>
                 </form>
                 <?php
@@ -732,11 +736,13 @@ switch ($a) {
                                     <td valign="top">
                                         <div class="btn-group">
                                             <a href="<?= base_url(); ?>pengaduan/selesai/<?= $u['slug']; ?>"
-                                                class="btn btn-success-gradien <?= $dis; ?>" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                title="Input Penyelesaian" <?= $hide; ?>><i class="fa fa-check-circle"></i></a>
-                                            <a href="<?= base_url(); ?>pengaduan/detail/<?= $u['slug']; ?>"
-                                                class="btn btn-primary-gradien" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                title="Detail Pengaduan"><i class="fa fa-info-circle"></i></a>
+                                                class="btn btn-success-gradien <?= $dis; ?>" data-bs-toggle="tooltip"
+                                                data-bs-placement="bottom" title="Input Penyelesaian" <?= $hide; ?>><i
+                                                    class="fa fa-check-circle"></i></a>
+                                            <a href="<?= base_url(); ?>p/pengaduan/<?= $u['slug']; ?>" target="_blank"
+                                                class="btn btn-primary-gradien" data-bs-toggle="tooltip"
+                                                data-bs-placement="bottom" title="Detail Pengaduan"><i
+                                                    class="fa fa-info-circle"></i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -781,56 +787,57 @@ switch ($a) {
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
-            <table>
-                                    <thead>
-                                        <tr>
-                                            <th width="150px"></th>
-                                            <th width="20px"></th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td valign="top"><b>ID Laporan</b> </td>
-                                            <td valign="top"><b>:</b></td>
-                                            <td valign="top"><?= $d['id_peng']; ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td valign="top"><b>Nama Pelapor</b></td>
-                                            <td valign="top"><b>:</b></td>
-                                            <td valign="top"> <?= r_nama($d['nama_p']); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td valign="top"><b>Email Pelapor</b></td>
-                                            <td valign="top"><b>:</b></td>
-                                            <td valign="top"> <?= r_email($d['email_p']); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td valign="top"><b>Judul Laporan</b> </td>
-                                            <td valign="top"><b>:</b></td>
-                                            <td valign="top"><?= $d['j_peng']; ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td valign="top"><b>Isi Laporan</b> </td>
-                                            <td valign="top"><b>:</b></td>
-                                            <td valign="top"><?= judul($d['peng'], 100); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td valign="top"><b>Bukti Laporan</b> </td>
-                                            <td valign="top"><b>:</b></td>
-                                            <td valign="top"> <a href="" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                title="Klik untuk melihat detail laporan">Terlampir</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td valign="top"><b>Waktu Pelaporan</b></td>
-                                            <td valign="top"><b>:</b></td>
-                                            <td valign="top"> <?= hari(date('D', strtotime($d['tgl_peng']))).', '.tgl_indo(date('Y-m-d', strtotime($d['tgl_peng']))).' '.date('H:i:s', strtotime($d['tgl_peng'])); ?>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <br>
-                                <hr>
+                <table>
+                    <thead>
+                        <tr>
+                            <th width="150px"></th>
+                            <th width="20px"></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td valign="top"><b>ID Laporan</b> </td>
+                            <td valign="top"><b>:</b></td>
+                            <td valign="top"><?= $d['id_peng']; ?></td>
+                        </tr>
+                        <tr>
+                            <td valign="top"><b>Nama Pelapor</b></td>
+                            <td valign="top"><b>:</b></td>
+                            <td valign="top"> <?= r_nama($d['nama_p']); ?></td>
+                        </tr>
+                        <tr>
+                            <td valign="top"><b>Email Pelapor</b></td>
+                            <td valign="top"><b>:</b></td>
+                            <td valign="top"> <?= r_email($d['email_p']); ?></td>
+                        </tr>
+                        <tr>
+                            <td valign="top"><b>Judul Laporan</b> </td>
+                            <td valign="top"><b>:</b></td>
+                            <td valign="top"><?= $d['j_peng']; ?></td>
+                        </tr>
+                        <tr>
+                            <td valign="top"><b>Isi Laporan</b> </td>
+                            <td valign="top"><b>:</b></td>
+                            <td valign="top"><?= judul($d['peng'], 100); ?></td>
+                        </tr>
+                        <tr>
+                            <td valign="top"><b>Bukti Laporan</b> </td>
+                            <td valign="top"><b>:</b></td>
+                            <td valign="top"> <a href="" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                    title="Klik untuk melihat detail laporan">Terlampir</a></td>
+                        </tr>
+                        <tr>
+                            <td valign="top"><b>Waktu Pelaporan</b></td>
+                            <td valign="top"><b>:</b></td>
+                            <td valign="top">
+                                <?= hari(date('D', strtotime($d['tgl_peng']))).', '.tgl_indo(date('Y-m-d', strtotime($d['tgl_peng']))).' '.date('H:i:s', strtotime($d['tgl_peng'])); ?>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <hr>
                 <form class="row g-3 needs-validation form theme-form" novalidate="" action="" method="POST"
                     enctype="multipart/form-data">
                     <div class="row g-2">
@@ -840,7 +847,7 @@ switch ($a) {
                                 <div class="valid-feedback">
                                 </div>
                                 <div class="invalid-feedback">
-                                Keterangan Penyelesaian tidak boleh kosong.
+                                    Keterangan Penyelesaian tidak boleh kosong.
                                 </div>
                         </div>
                     </div>
@@ -856,8 +863,7 @@ switch ($a) {
                             <label">Dokumentasi : <small style="color: green;">Pilih beberapa gambar atau
                                     video</small></label>
                                 <input class="form-control" name="foto[]" type="file"
-                                    accept="image/jpeg, image/png, video/3gpp, video/mp4"
-                                    multiple required>
+                                    accept="image/jpeg, image/png, video/3gpp, video/mp4" multiple required>
                                 <small style="color: red;">Format File : jpg, png, jpeg, jpe, mp4</small><br>
                                 <small style="color: red;">Jika jumlah file banyak dan berukuran besar maka loading akan
                                     lebih lama.</small>
@@ -868,7 +874,8 @@ switch ($a) {
                     </div>
                     <hr>
                     <div class="d-grid gap-2 col-lg-3 col-md-12 mx-auto">
-                        <button class="btn btn-primary-gradien" name="simpan" type="submit">Pengaduan Terselesaikan</button>
+                        <button class="btn btn-primary-gradien" name="simpan" type="submit">Pengaduan
+                            Terselesaikan</button>
                     </div>
                 </form>
                 <?php
@@ -911,7 +918,7 @@ switch ($a) {
                                 } else {
                                     move_uploaded_file($file_tmp_f, $path_v);
                                 }
-                                $db->query("INSERT INTO d_selesai VALUES ('','$id','$foto','$extend_f',NOW())");
+                                $db->query("INSERT INTO d_selesai VALUES ('','$id_sel','$foto','$extend_f',NOW())");
                             } else {
                                 javascript('', 'alert-error', 'Inputan hanya boleh jpg, png, jpeg, jpe, mp4');
                             }
@@ -1001,10 +1008,10 @@ switch ($a) {
                                                     <tbody>
                                                         <tr>
                                                         <td style="padding: 30px"> 
-                                                            <h6 style="font-weight: 600">Pengaduan anda sudah selesai ditindak lanjuti.</h6>
+                                                            <h6 style="font-weight: 600">Pengaduan anda sudah selesai ditindaklanjuti.</h6>
                                                             <p>Halo '.$nama_p.',</p>
-                                                            <p>Pengaduan anda sudah selesai ditindak lanjuti oleh <b>Regu '.$nm_regu.'</b>, silahkan cek pengaduan anda dan mohon beri penilaian untuk UPT Perparkiran dengan mengklik ID pengaduan anda dibawah ini :</p>
-                                                            <p style="text-align: center"><a href="'.$base_url.'pengaduan/detail-pengaduan/'.$id_peng.'" style="padding: 10px; background-color: #7366ff; color: #fff; display: inline-block; border-radius: 4px">'.$id.'</a></p>
+                                                            <p>Pengaduan anda sudah selesai ditindaklanjuti oleh <b>Regu '.$nm_regu.'</b>, silahkan cek pengaduan anda dan mohon beri penilaian untuk UPT Perparkiran dengan mengklik ID pengaduan anda dibawah ini :</p>
+                                                            <p style="text-align: center"><a href="'.$base_url.'p/pengaduan/'.$id.'" style="padding: 10px; background-color: #7366ff; color: #fff; display: inline-block; border-radius: 4px">'.$id_peng.'</a></p>
                                                             <p>Terimakasih atas laporan anda, semoga perparkiran kota pekanbaru lebih baik lagi kedapannya.</p>
                                                             <p style="margin-bottom: 0">
                                                             Regards,<br>Team IT UPT Perparkiran Dinas Perhubungan Kota Pekanbaru</p>
@@ -1081,56 +1088,57 @@ if ($_SESSION['id_usr']==$d['adm_peng'] OR $_SESSION['level']=='1') {
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
-            <table>
-                                    <thead>
-                                        <tr>
-                                            <th width="150px"></th>
-                                            <th width="20px"></th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td valign="top"><b>ID Laporan</b> </td>
-                                            <td valign="top"><b>:</b></td>
-                                            <td valign="top"><?= $d['id_peng']; ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td valign="top"><b>Nama Pelapor</b></td>
-                                            <td valign="top"><b>:</b></td>
-                                            <td valign="top"> <?= r_nama($d['nama_p']); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td valign="top"><b>Email Pelapor</b></td>
-                                            <td valign="top"><b>:</b></td>
-                                            <td valign="top"> <?= r_email($d['email_p']); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td valign="top"><b>Judul Laporan</b> </td>
-                                            <td valign="top"><b>:</b></td>
-                                            <td valign="top"><?= $d['j_peng']; ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td valign="top"><b>Isi Laporan</b> </td>
-                                            <td valign="top"><b>:</b></td>
-                                            <td valign="top"><?= judul($d['peng'], 100); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td valign="top"><b>Bukti Laporan</b> </td>
-                                            <td valign="top"><b>:</b></td>
-                                            <td valign="top"> <a href="" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                title="Klik untuk melihat detail laporan">Terlampir</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td valign="top"><b>Waktu Pelaporan</b></td>
-                                            <td valign="top"><b>:</b></td>
-                                            <td valign="top"> <?= hari(date('D', strtotime($d['tgl_peng']))).', '.tgl_indo(date('Y-m-d', strtotime($d['tgl_peng']))).' '.date('H:i:s', strtotime($d['tgl_peng'])); ?>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <br>
-                                <hr>
+                <table>
+                    <thead>
+                        <tr>
+                            <th width="150px"></th>
+                            <th width="20px"></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td valign="top"><b>ID Laporan</b> </td>
+                            <td valign="top"><b>:</b></td>
+                            <td valign="top"><?= $d['id_peng']; ?></td>
+                        </tr>
+                        <tr>
+                            <td valign="top"><b>Nama Pelapor</b></td>
+                            <td valign="top"><b>:</b></td>
+                            <td valign="top"> <?= r_nama($d['nama_p']); ?></td>
+                        </tr>
+                        <tr>
+                            <td valign="top"><b>Email Pelapor</b></td>
+                            <td valign="top"><b>:</b></td>
+                            <td valign="top"> <?= r_email($d['email_p']); ?></td>
+                        </tr>
+                        <tr>
+                            <td valign="top"><b>Judul Laporan</b> </td>
+                            <td valign="top"><b>:</b></td>
+                            <td valign="top"><?= $d['j_peng']; ?></td>
+                        </tr>
+                        <tr>
+                            <td valign="top"><b>Isi Laporan</b> </td>
+                            <td valign="top"><b>:</b></td>
+                            <td valign="top"><?= judul($d['peng'], 100); ?></td>
+                        </tr>
+                        <tr>
+                            <td valign="top"><b>Bukti Laporan</b> </td>
+                            <td valign="top"><b>:</b></td>
+                            <td valign="top"> <a href="" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                    title="Klik untuk melihat detail laporan">Terlampir</a></td>
+                        </tr>
+                        <tr>
+                            <td valign="top"><b>Waktu Pelaporan</b></td>
+                            <td valign="top"><b>:</b></td>
+                            <td valign="top">
+                                <?= hari(date('D', strtotime($d['tgl_peng']))).', '.tgl_indo(date('Y-m-d', strtotime($d['tgl_peng']))).' '.date('H:i:s', strtotime($d['tgl_peng'])); ?>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <hr>
                 <form class="row g-3 needs-validation form theme-form" novalidate="" action="" method="POST"
                     enctype="multipart/form-data">
                     <div class="row g-2">
@@ -1140,7 +1148,7 @@ if ($_SESSION['id_usr']==$d['adm_peng'] OR $_SESSION['level']=='1') {
                                 <div class="valid-feedback">
                                 </div>
                                 <div class="invalid-feedback">
-                                Keterangan Penolakkan tidak boleh kosong.
+                                    Keterangan Penolakkan tidak boleh kosong.
                                 </div>
                         </div>
                     </div>
@@ -1338,12 +1346,13 @@ if ($_SESSION['id_usr']==$d['adm_peng'] OR $_SESSION['level']=='1') {
                     <div class="tab-pane fade show active" id="pills-warninghome" role="tabpanel"
                         aria-labelledby="pills-warninghome-tab">
                         <div class="card-body">
-                        <form class="row g-3 needs-validation form theme-form" novalidate="" action="" method="POST"
+                            <form class="row g-3 needs-validation form theme-form" novalidate="" action="" method="POST"
                                 enctype="multipart/form-data">
                                 <div class="row g-2">
                                     <div class="col-lg-4 col-md-12">
                                         <label">Nama :</label>
-                                            <input type="text" class="form-control" name="nama_p" value="<?= $d['nama_p']; ?>" required>
+                                            <input type="text" class="form-control" name="nama_p"
+                                                value="<?= $d['nama_p']; ?>" required>
                                             <div class="valid-feedback">
                                             </div>
                                             <div class="invalid-feedback">
@@ -1352,7 +1361,8 @@ if ($_SESSION['id_usr']==$d['adm_peng'] OR $_SESSION['level']=='1') {
                                     </div>
                                     <div class="col-lg-4 col-md-12">
                                         <label">Email :</label>
-                                            <input type="email" class="form-control" name="email_p" value="<?= $d['email_p']; ?>" required>
+                                            <input type="email" class="form-control" name="email_p"
+                                                value="<?= $d['email_p']; ?>" required>
                                             <div class="valid-feedback">
                                             </div>
                                             <div class="invalid-feedback">
@@ -1361,8 +1371,9 @@ if ($_SESSION['id_usr']==$d['adm_peng'] OR $_SESSION['level']=='1') {
                                     </div>
                                     <div class="col-lg-4 col-md-12">
                                         <label">Nomor HP :</label>
-                                            <input type="text" class="form-control" name="no_hp_p" value="<?= $d['no_hp_p']; ?>"
-                                                onkeypress="return hanyaAngka(event)" required>
+                                            <input type="text" class="form-control" name="no_hp_p"
+                                                value="<?= $d['no_hp_p']; ?>" onkeypress="return hanyaAngka(event)"
+                                                required>
                                             <div class="valid-feedback">
                                             </div>
                                             <div class="invalid-feedback">
@@ -1373,7 +1384,8 @@ if ($_SESSION['id_usr']==$d['adm_peng'] OR $_SESSION['level']=='1') {
                                 <div class="row g-2">
                                     <div class="col-lg-12 col-md-12">
                                         <label">Judul Pengaduan :</label>
-                                            <input type="text" name="j_peng" class="form-control" value="<?= $d['j_peng']; ?>" required>
+                                            <input type="text" name="j_peng" class="form-control"
+                                                value="<?= $d['j_peng']; ?>" required>
                                             <div class="valid-feedback">
                                             </div>
                                             <div class="invalid-feedback">
@@ -1384,7 +1396,8 @@ if ($_SESSION['id_usr']==$d['adm_peng'] OR $_SESSION['level']=='1') {
                                 <div class="row g-2">
                                     <div class="col-lg-12 col-md-12">
                                         <label">Isi Pengaduan :</label>
-                                            <textarea name="peng" class="form-control editor" required><?= $d['peng']; ?></textarea>
+                                            <textarea name="peng" class="form-control editor"
+                                                required><?= $d['peng']; ?></textarea>
                                             <div class="valid-feedback">
                                             </div>
                                             <div class="invalid-feedback">
@@ -1394,7 +1407,8 @@ if ($_SESSION['id_usr']==$d['adm_peng'] OR $_SESSION['level']=='1') {
                                 </div>
                                 <hr>
                                 <div class="d-grid gap-2 col-lg-4 col-md-12 mx-auto">
-                                    <button class="btn btn-primary-gradien" name="simpan" type="submit">Simpan Perubahan Data</button>
+                                    <button class="btn btn-primary-gradien" name="simpan" type="submit">Simpan Perubahan
+                                        Data</button>
                                 </div>
                             </form>
 
@@ -1410,8 +1424,7 @@ if ($_SESSION['id_usr']==$d['adm_peng'] OR $_SESSION['level']=='1') {
                                         <label">Bukti Laporan : <small style="color: green;">Pilih beberapa gambar atau
                                                 video</small></label>
                                             <input class="form-control" name="foto[]" type="file"
-                                                accept="image/jpeg, image/png, video/3gpp, video/mp4"
-                                                multiple required>
+                                                accept="image/jpeg, image/png, video/3gpp, video/mp4" multiple required>
                                             <small style="color: red;">Format File : jpg, png, jpeg, jpe, mp4
                                                 qt</small><br>
                                             <small style="color: red;">Jika jumlah file banyak dan berukuran besar maka
@@ -1466,7 +1479,8 @@ if ($_SESSION['id_usr']==$d['adm_peng'] OR $_SESSION['level']=='1') {
                                                         method="POST">
                                                         <input type="hidden" name="nama" value="<?= $u['n_d_peng']; ?>">
                                                         <input type="hidden" name="id" value="<?= $u['id_d_peng']; ?>">
-                                                        <input type="hidden" name="id_peng" value="<?= $d['id_peng']; ?>">
+                                                        <input type="hidden" name="id_peng"
+                                                            value="<?= $d['id_peng']; ?>">
                                                         <input type="hidden" name="slug" value="<?= $id; ?>">
                                                         <input type="hidden" name="ekstensi"
                                                             value="<?= $u['x_peng']; ?>">

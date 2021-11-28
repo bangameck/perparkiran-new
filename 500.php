@@ -58,7 +58,7 @@ include '_func/func.php';
                         hapus cookie, dan mulai ulang browser."<br><b><i>UPT Perparkiran Dinas Perhubungan Kota
                                 Pekanbaru</i></b></p>
                 </div>
-                <div><a class="btn btn-primary-gradien btn-lg" href="<?= base_url(); ?>">BACK TO HOME PAGE</a></div>
+                <div><a class="btn btn-primary-gradien btn-lg" onclick="history.back()">KEMBALI</a></div>
             </div>
         </div>
         <!-- error-500 end-->

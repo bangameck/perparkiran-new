@@ -180,38 +180,38 @@ if ($data->num_rows==0) {
                             }
                             ?>
                             <div class="col-xl-4 box-col-6" <?= $hden; ?><?= $hidk; ?>>
-                                    <div class="card custom-card">
-                                        <div class="card-header"><img class="img-fluid"
-                                                src="<?= base_url(); ?>_uploads/f_regu/<?= $ftrk; ?>" alt=""></div>
-                                        <div class="card-profile"><img class="rounded-circle"
-                                                src="<?= base_url(); ?>_uploads/f_usr/<?= $ftk; ?>" alt=""></div>
-                                        <!-- <ul class="card-social">
+                                <div class="card custom-card">
+                                    <div class="card-header"><img class="img-fluid"
+                                            src="<?= base_url(); ?>_uploads/f_regu/<?= $ftrk; ?>" alt=""></div>
+                                    <div class="card-profile"><img class="rounded-circle"
+                                            src="<?= base_url(); ?>_uploads/f_usr/<?= $ftk; ?>" alt=""></div>
+                                    <!-- <ul class="card-social">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                 <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                                 <li><a href="#"><i class="fa fa-rss"></i></a></li>
                             </ul> -->
-                                        <div class="text-center profile-details">
-                                            <h4 data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                title="Klik untuk melihat profile"><a target="_blank"
-                                                    href="<?= base_url(); ?>profile/<?= $k['username']; ?>"><?= $k['nama']; ?></a>
-                                            </h4>
-                                            <h6><?= $k['email']; ?></h6>
-                                            <h6><?= $desck; ?></h6>
+                                    <div class="text-center profile-details">
+                                        <h4 data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                            title="Klik untuk melihat profile"><a target="_blank"
+                                                href="<?= base_url(); ?>profile/<?= $k['username']; ?>"><?= $k['nama']; ?></a>
+                                        </h4>
+                                        <h6><?= $k['email']; ?></h6>
+                                        <h6><?= $desck; ?></h6>
+                                    </div>
+                                    <div class="card-footer row">
+                                        <div class="col-6 col-sm-6">
+                                            <h6>Usia</h6>
+                                            <h6><?= usia(date('Y-m-d', strtotime($k['tgl_lahir']))); ?></h6>
                                         </div>
-                                        <div class="card-footer row">
-                                            <div class="col-6 col-sm-6">
-                                                <h6>Usia</h6>
-                                                <h6><?= usia(date('Y-m-d', strtotime($k['tgl_lahir']))); ?></h6>
-                                            </div>
-                                            <div class="col-6 col-sm-6">
-                                                <h6>Nomor HP</h6>
-                                                <h6><?= $hpk; ?></h6>
-                                            </div>
+                                        <div class="col-6 col-sm-6">
+                                            <h6>Nomor HP</h6>
+                                            <h6><?= $hpk; ?></h6>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                             <hr <?= $hden; ?><?= $hidk; ?>>
                             <h3 <?= $hden; ?>>Anggota Tim <?= $d['nm_regu']; ?> Lainnya.</h3>
                             <hr <?= $hden; ?>>
@@ -228,7 +228,7 @@ if ($data->num_rows==0) {
                       <div class="item"><img src="../assets/images/slider/10.jpg" alt=""></div>
                       <div class="item"><img src="../assets/images/slider/11.jpg" alt=""></div> -->
                             <div class="row g-2">
-                            
+
                                 <?php 
                       $batas = 3    ;
                       $halaman = isset($_GET['page'])?(int)$_GET['page'] : 1;

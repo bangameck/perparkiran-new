@@ -47,17 +47,19 @@ include '_func/identity.php';
                     <div class="card-body">
                         <div class="row">
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <a href="<?= base_url(); ?>giat/edit/<?= $id; ?>" class="btn btn-warning-gradien" <?= $hide; ?>><i class="fa fa-pencil"></i>
-                                        Edit
+                                <a href="<?= base_url(); ?>giat/edit/<?= $id; ?>" class="btn btn-warning-gradien"
+                                    <?= $hide; ?>><i class="fa fa-pencil"></i>
+                                    Edit
                                 </a>
-                                <form action="<?= base_url(); ?>giat/print" method="GET" >
+                                <form action="<?= base_url(); ?>giat/print" method="GET">
                                     <input type="hidden" value="<?= $id; ?>" name="id">
                                     <button class="btn btn-primary-gradien" type="submit"><i class="fa fa-print"></i>
                                         Print</button>
                                 </form>
                                 <form action="<?= base_url(); ?>giat/delete" method="POST" <?= $hide; ?>>
                                     <input type="hidden" name="id_giat" value="<?= $id; ?>">
-                                    <button class="btn btn-danger-gradien" type="submit" onclick="return hapus()"><i class="fa fa-trash"></i>
+                                    <button class="btn btn-danger-gradien" type="submit" onclick="return hapus()"><i
+                                            class="fa fa-trash"></i>
                                         Hapus</button>
                                 </form>
                                 <!-- <a href="<?= base_url(); ?>giat/detail/print" class="btn btn-primary-gradien" type="button"><i class="fa fa-print"></i> Print</a> -->
@@ -102,7 +104,9 @@ include '_func/identity.php';
                                         <tr>
                                             <td valign="top"><b>Penginput</b></td>
                                             <td valign="top"><b>:</b></td>
-                                            <td><a href="<?= base_url(); ?>profile/<?= $d['username']; ?>"><?= $d['nama']; ?></a></td>
+                                            <td><a
+                                                    href="<?= base_url(); ?>profile/<?= $d['username']; ?>"><?= $d['nama']; ?></a>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td valign="top"><b>di Update Pada</b></td>
@@ -201,9 +205,12 @@ include '_func/identity.php';
                                 <div class="card-body">
                                     <h6>Dokumentasi Video <?= $no++; ?></h6><small>(<?= $dd['n_d_giat']; ?>)</small>
                                     <div class="video-container">
-                                    <video class="afterglow" id="myvideo" width="640" height="360" poster="<?= base_url(); ?>_uploads/f_giat/default.jpg">
-                                        <source type="video/mp4" src="<?= base_url(); ?>_uploads/v_giat/<?= $dd['n_d_giat']; ?>" data-quality="sd"/>
-                                    </video>
+                                        <video class="afterglow" id="myvideo" width="640" height="360"
+                                            poster="<?= base_url(); ?>_uploads/f_giat/default.jpg">
+                                            <source type="video/mp4"
+                                                src="<?= base_url(); ?>_uploads/v_giat/<?= $dd['n_d_giat']; ?>"
+                                                data-quality="sd" />
+                                        </video>
                                         <!-- <video id="my-video" class="video-js vjs-theme-forest" controls preload="auto"
                                             width="250"
                                             poster="<?= base_url(); ?>_uploads/f_giat/<?= $dd['n_d_giat']; ?>"
