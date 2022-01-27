@@ -30,22 +30,22 @@ javascript('out','confirm');
 <ul class="menu-container">
     <li class="menu-item">
         <a class="menu-link" href="<?= base_url(); ?>">
-            <div id="ptserif"><b>HOME</b></div>
+            <div><b>Home</b></div>
         </a>
     </li>
     <li class="menu-item">
         <a class="menu-link" href="#">
-            <div id="ptserif"><b>BERITA</b></div>
+            <div><b>Berita</b></div>
         </a>
         <ul class="sub-menu-container">
             <li class="menu-item">
                 <a class="menu-link" href="<?= base_url(); ?>p/berita">
-                    <div id="ptserif"><i class="icon-newspaper1"></i>SELURUH BERITA</div>
+                    <div><i class="icon-newspaper1"></i>Seluruh Berita</div>
                 </a>
             </li>
             <li class="menu-item">
                 <a class="menu-link" href="#">
-                    <div id="ptserif"><i class="icon-newspaper3"></i>TAGS BERITA</div>
+                    <div><i class="icon-newspaper3"></i>Tags Berita</div>
                 </a>
                 <ul class="sub-menu-container">
                     <?php 
@@ -54,7 +54,7 @@ javascript('out','confirm');
 					?>
                     <li class="menu-item">
                         <a class="menu-link" href="<?= base_url(); ?>p/tags/<?= $t['url']; ?>">
-                            <div id="ptserif"><?= strtoupper($t['nm_tags']); ?></div>
+                            <div><?= $t['nm_tags']; ?></div>
                         </a>
                     </li>
                     <?php endwhile; ?>
@@ -64,24 +64,24 @@ javascript('out','confirm');
     </li>
     <li class="menu-item">
         <a class="menu-link" href="<?= base_url(); ?>p/pengaduan">
-            <div id="ptserif"><b>PENGADUAN</b></div>
+            <div><b>Pengaduan</b></div>
         </a>
         <ul class="sub-menu-container">
             <li class="menu-item">
                 <a class="menu-link" href="<?= base_url(); ?>p/pengaduan#tahapan">
-                    <div id="ptserif"><i class="icon-laptop1"></i>INPUT PENGADUAN</div>
+                    <div><i class="icon-laptop1"></i>Input Pengaduan</div>
                 </a>
             </li>
             <li class="menu-item">
                 <a class="menu-link" href="<?= base_url(); ?>p/pengaduan/all">
-                    <div id="ptserif"><i class="icon-line-monitor"></i>SELURUH PENGADUAN</div>
+                    <div><i class="icon-line-monitor"></i>Seluruh Pengaduan</div>
                 </a>
             </li>
         </ul>
     </li>
     <li class="menu-item">
         <a class="menu-link" href="<?= base_url(); ?>p/pcare">
-            <div id="ptserif"><b>P-CARE</b></div>
+            <div><b>P-CARE</b></div>
         </a>
     </li>
     <!-- <li class="menu-item" <?= $hid; ?>>

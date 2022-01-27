@@ -14,6 +14,8 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+
+
 -- membuang struktur untuk table perparkiran.blog
 CREATE TABLE IF NOT EXISTS `blog` (
   `id_blog` varchar(255) NOT NULL,
@@ -115,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `d_giat` (
   PRIMARY KEY (`id_d_giat`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
 
--- Membuang data untuk tabel perparkiran.d_giat: ~16 rows (lebih kurang)
+-- Membuang data untuk tabel perparkiran.d_giat: ~15 rows (lebih kurang)
 INSERT INTO `d_giat` (`id_d_giat`, `id_giat`, `n_d_giat`, `x_giat`, `created_at`) VALUES
 	(1, 'GIATIWV7GPPDX0PARKIR', 'giat_007092021131051.jpg', 'jpg', '2021-09-07 06:10:52'),
 	(2, 'GIATIWV7GPPDX0PARKIR', 'giat_107092021131052.jpg', 'jpg', '2021-09-07 06:10:53'),
@@ -142,9 +144,9 @@ CREATE TABLE IF NOT EXISTS `d_pengaduan` (
   `x_peng` char(10) DEFAULT NULL,
   `created_at` char(10) DEFAULT NULL,
   PRIMARY KEY (`id_d_peng`)
-) ENGINE=InnoDB AUTO_INCREMENT=148 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=156 DEFAULT CHARSET=latin1;
 
--- Membuang data untuk tabel perparkiran.d_pengaduan: ~58 rows (lebih kurang)
+-- Membuang data untuk tabel perparkiran.d_pengaduan: ~52 rows (lebih kurang)
 INSERT INTO `d_pengaduan` (`id_d_peng`, `id_peng`, `n_d_peng`, `x_peng`, `created_at`) VALUES
 	(6, '0Q68HF9Z62M7', '0Q68HF9Z62M7-008092021141637.jpg', 'jpg', '2021-09-08'),
 	(7, '0Q68HF9Z62M7', '0Q68HF9Z62M7-108092021141637.jpg', 'jpg', '2021-09-08'),
@@ -197,7 +199,15 @@ INSERT INTO `d_pengaduan` (`id_d_peng`, `id_peng`, `n_d_peng`, `x_peng`, `create
 	(144, 'HVAYNKAIMFG6', 'HVAYNKAIMFG6-121112021165651.jpg', 'jpg', '2021-11-21'),
 	(145, 'HVAYNKAIMFG6', 'HVAYNKAIMFG6-221112021165652.jpg', 'jpg', '2021-11-21'),
 	(146, 'HVAYNKAIMFG6', 'HVAYNKAIMFG6-321112021165652.jpg', 'jpg', '2021-11-21'),
-	(147, 'FKO06S0GIANC', 'FKO06S0GIANC-022112021121204.jpg', 'jpg', '2021-11-22');
+	(147, 'FKO06S0GIANC', 'FKO06S0GIANC-022112021121204.jpg', 'jpg', '2021-11-22'),
+	(148, '0U9UIBREMM0K', '0U9UIBREMM0K-028112021121442.png', 'png', '2021-11-28'),
+	(149, '0U9UIBREMM0K', '0U9UIBREMM0K-128112021121442.png', 'png', '2021-11-28'),
+	(150, '0U9UIBREMM0K', '0U9UIBREMM0K-228112021121442.mp4', 'mp4', '2021-11-28'),
+	(151, '0F3FR4J8FCDP', '0F3FR4J8FCDP-028112021123533.mp4', 'mp4', '2021-11-28'),
+	(152, '0F3FR4J8FCDP', '0F3FR4J8FCDP-128112021123533.jpg', 'jpg', '2021-11-28'),
+	(153, '0F3FR4J8FCDP', '0F3FR4J8FCDP-228112021123534.jpg', 'jpg', '2021-11-28'),
+	(154, '0F3FR4J8FCDP', '0F3FR4J8FCDP-328112021123535.jpg', 'jpg', '2021-11-28'),
+	(155, '0F3FR4J8FCDP', '0F3FR4J8FCDP-428112021123537.mp4', 'mp4', '2021-11-28');
 
 -- membuang struktur untuk table perparkiran.d_selesai
 CREATE TABLE IF NOT EXISTS `d_selesai` (
@@ -207,9 +217,9 @@ CREATE TABLE IF NOT EXISTS `d_selesai` (
   `x_sel` char(10) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id_d_sel`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
--- Membuang data untuk tabel perparkiran.d_selesai: ~12 rows (lebih kurang)
+-- Membuang data untuk tabel perparkiran.d_selesai: ~11 rows (lebih kurang)
 INSERT INTO `d_selesai` (`id_d_sel`, `id_sel`, `n_d_sel`, `x_sel`, `created_at`) VALUES
 	(1, 'ZJQQNDBWOIY3', 'ZJQQNDBWOIY3-009092021014647.jpg', 'jpg', '2021-09-08 18:46:47'),
 	(2, 'ZJQQNDBWOIY3', 'ZJQQNDBWOIY3-109092021014647.jpg', 'jpg', '2021-09-08 18:46:48'),
@@ -222,7 +232,11 @@ INSERT INTO `d_selesai` (`id_d_sel`, `id_sel`, `n_d_sel`, `x_sel`, `created_at`)
 	(9, 'XRKI5PDCNAJ7', 'XRKI5PDCNAJ7-011092021092223.jpg', 'jpg', '2021-09-11 02:22:23'),
 	(10, 'XRKI5PDCNAJ7', 'XRKI5PDCNAJ7-111092021092224.jpg', 'jpg', '2021-09-11 02:22:24'),
 	(11, 'XNM468EHK3ZX', 'XNM468EHK3ZX-011092021092434.jpg', 'jpg', '2021-09-11 02:24:34'),
-	(12, 'SJSQJ15DNG7L', 'SJSQJ15DNG7L-011092021134731.jpg', 'jpg', '2021-09-11 06:47:31');
+	(12, 'SJSQJ15DNG7L', 'SJSQJ15DNG7L-011092021134731.jpg', 'jpg', '2021-09-11 06:47:31'),
+	(13, 'ARZOGVZBN4IG', 'ARZOGVZBN4IG-028112021134715.jpg', 'jpg', '2021-11-28 06:47:15'),
+	(14, 'ARZOGVZBN4IG', 'ARZOGVZBN4IG-128112021134715.png', 'png', '2021-11-28 06:47:15'),
+	(15, 'ARZOGVZBN4IG', 'ARZOGVZBN4IG-228112021134715.png', 'png', '2021-11-28 06:47:15'),
+	(16, 'ARZOGVZBN4IG', 'ARZOGVZBN4IG-328112021134715.mp4', 'mp4', '2021-11-28 06:47:15');
 
 -- membuang struktur untuk table perparkiran.giat
 CREATE TABLE IF NOT EXISTS `giat` (
@@ -239,7 +253,7 @@ CREATE TABLE IF NOT EXISTS `giat` (
   PRIMARY KEY (`id_giat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Membuang data untuk tabel perparkiran.giat: ~5 rows (lebih kurang)
+-- Membuang data untuk tabel perparkiran.giat: ~4 rows (lebih kurang)
 INSERT INTO `giat` (`id_giat`, `no_giat`, `tgl_giat`, `regu`, `kegiatan`, `ket_giat`, `adm_giat`, `created_at`, `updated_at`, `deleted_at`) VALUES
 	('45-penertiban-parkir-fdg-dg', '06.719/Keg-Par/DP-KP/PRK/IX/2021', '2021-09-09 15:43:00', 'REGU-87851', 'Penertiban parkir fdg dg', '<p>dfgfdgsdfg dfs gsdfg sd df gsdf</p>', 'USR-99999', '2021-09-09 15:43:22', '2021-09-09 15:43:22', NULL),
 	('65-pengecekan-atribut-jukir-dsfdsf-dsf-dsf', '06.863/Keg-Par/DP-KP/PRK/IX/2021', '2021-09-09 15:50:00', 'REGU-62216', 'Pengecekan atribut jukir dsfdsf dsf dsf', '<p>sdf sdaf asdf asdfasdf</p>', 'USR-12496', '2021-09-09 15:51:06', '2021-09-09 15:51:06', NULL),
@@ -283,9 +297,11 @@ CREATE TABLE IF NOT EXISTS `pengaduan` (
   UNIQUE KEY `slug` (`slug`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Membuang data untuk tabel perparkiran.pengaduan: ~12 rows (lebih kurang)
+-- Membuang data untuk tabel perparkiran.pengaduan: ~10 rows (lebih kurang)
 INSERT INTO `pengaduan` (`id_peng`, `nama_p`, `email_p`, `no_hp_p`, `j_peng`, `slug`, `peng`, `status`, `sifat`, `regu`, `adm_peng`, `tgl_peng`, `ket_peng`, `tgl_teruskan`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	('0F3FR4J8FCDP', 'Radevanka Albiansyah Rahmadi', 'rahmad.rizki.adi@students.uin-suska.ac.id', '', 'Perparkiran Samping Mall Meresahkan bro', '72-perparkiran-samping-mall-meresahkan-bro', '<p>Parkir dibelakang mall ska meresahkan<br>dfsfdsf..</p>', 'S', 'TR', 'REGU-62216', 'USR-95579', '2021-11-28 05:35:43', 'telah diproses dan ditindak lanjuti oleh Regu Bravo', '2021-11-28 06:29:56', '2021-11-28 05:35:43', '2021-11-28 06:47:23', NULL),
 	('0Q68HF9Z62M7', 'Rahmad Riskiadi', 'rahmad.looker@gmail.com', '082284487674', 'Parkir liar di daerah panam sebelah amora.', '14-parkir-liar-di-daerah-panam-sebelah-amora', '<p>asdhuiahsg diuahsiudhasiudhas uhdaisuhdiuasd sdas asdasdasdhkashd ashdiuhasd</p>', 'S', 'TR', 'REGU-62216', 'USR-99999', '2021-09-08 07:16:42', NULL, '2021-09-08 15:36:36', '2021-09-08 07:16:42', '2021-09-08 18:52:29', NULL),
+	('0U9UIBREMM0K', 'Radevanka Albiansyah Rahmadi', 'rahmad.rizki.adi@students.uin-suska.ac.id', '', 'Perparkiran Samping Mall Meresahkan', '20-perparkiran-samping-mall-meresahkan', '<ol><li>asdsakdposakdpo</li><li>asdsadsadsad</li><li>asdasdsad</li><li>sdasd</li></ol><p>sdwwerpwelrpwlrp mpfosd</p>', 'P', 'TR', 'NULL', 'USR-95579', '2021-11-28 05:14:49', 'Sedang diverifikasi', NULL, '2021-11-28 05:14:49', '2021-11-28 05:14:49', NULL),
 	('10ZMD2TXVC9P', 'Nadine Khairunisa', 'emi.ngasirun@gmail.com', '085156199556', 'Parkira Meresahkan', '19-parkira-meresahkan', '<p>asdas asd asd as dasd asdasd asd</p>', 'X', 'TR', 'NULL', 'USR-12496', '2021-09-09 15:32:27', '<p>Bukti laporan tidak terlampir, Silahkan lengkapi laporan beserta bukti yang jelas (ex: Foto/Video)</p>', NULL, '2021-09-09 15:32:27', '2021-09-11 02:56:46', NULL),
 	('3IQH7Q6JAG85', 'Radevanka Albiansyah Rahmadi', 'rahmad.rizki.adi@students.uin-suska.ac.id', '', 'Juru Parkir meminta tarif lebih dari 2000 hfhgfh', '12-juru-parkir-meminta-tarif-lebih-dari-2000-hfhgfh', '<p>oigoidjfogijdfog fodigjod</p>', 'P', 'TR', 'NULL', 'USR-95579', '2021-11-19 04:54:11', 'Sedang diverifikasi', NULL, '2021-11-19 04:54:11', '2021-11-19 04:54:11', NULL),
 	('4AUTD8SI8F2B', 'Nadine Khairunisa', 'emi.ngasirun@gmail.com', '085156199556', 'Parkira Meresahkan asd asd a', '43-parkira-meresahkan-asd-asd-a', '<ol><li>asd asd</li><li>asdsad</li><li>asdasd</li></ol>', 'S', 'TR', 'REGU-87851', 'USR-12496', '2021-09-11 02:11:43', 'telah diproses dan ditindak lanjuti oleh Regu Raider', '2021-09-11 02:16:01', '2021-09-11 02:11:43', '2021-09-11 02:24:38', NULL),
@@ -302,9 +318,10 @@ CREATE TABLE IF NOT EXISTS `privacy_policy` (
   `privacy` longtext
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Membuang data untuk tabel perparkiran.privacy_policy: ~1 rows (lebih kurang)
+-- Membuang data untuk tabel perparkiran.privacy_policy: ~0 rows (lebih kurang)
 INSERT INTO `privacy_policy` (`id`, `privacy`) VALUES
-	(1, '<h1>Kebijakan Privasi untuk Website SiParkir Kota Pekanbaru</h1>\r\n\r\n<p>SiParkir Kota Pekanbaru, dapat diakses dari https://lapor.dishub.pekanbaru.go.id/perparkiran, salah satu prioritas utama kami adalah privasi pengunjung kami. Dokumen Kebijakan Privasi ini berisi jenis informasi yang dikumpulkan dan dicatat oleh SiParkir Kota Pekanbaru dan bagaimana kami menggunakannya.</p>\r\n\r\n<p>Jika Anda memiliki pertanyaan tambahan atau memerlukan informasi lebih lanjut tentang Kebijakan Privasi kami, jangan ragu untuk menghubungi kami.</p>\r\n\r\n<h2>Log Files</h2>\r\n\r\n<p>SiParkir Kota Pekanbaru mengikuti prosedur standar menggunakan file log. File-file ini mencatat pengunjung ketika mereka mengunjungi situs web. Semua perusahaan hosting melakukan ini dan merupakan bagian dari analisis layanan hosting. Informasi yang dikumpulkan oleh file log termasuk alamat protokol internet (IP), jenis browser, Penyedia Layanan Internet (ISP), cap tanggal dan waktu, halaman rujukan/keluar, dan mungkin jumlah klik. Ini tidak terkait dengan informasi apa pun yang dapat diidentifikasi secara pribadi. Tujuan dari informasi ini adalah untuk menganalisis tren, mengelola situs, melacak pergerakan pengguna di situs web, dan mengumpulkan informasi demografis. Kebijakan Privasi kami dibuat dengan bantuan dari <a href="https://www.privacypolicyonline.com/privacy-policy-generator/">Privacy Policy Generator</a>.</p>\r\n\r\n<h2>Cookie dan Web Beacon</h2>\r\n\r\n<p>Seperti situs web lainnya, SiParkir Kota Pekanbaru menggunakan \'cookies\'. Cookie ini digunakan untuk menyimpan informasi termasuk preferensi pengunjung, dan halaman di situs web yang diakses atau dikunjungi pengunjung. Informasi tersebut digunakan untuk mengoptimalkan pengalaman pengguna dengan menyesuaikan konten halaman web kami berdasarkan jenis browser pengunjung dan/atau informasi lainnya.</p>\r\n\r\n<p>Untuk informasi lebih umum tentang cookie, silakan baca<a href="https://www.generateprivacypolicy.com/#cookies">"Cookies" article from the Privacy Policy Generator</a>.</p>\r\n\r\n<h2>Cookie Google DoubleClick DART</h2>\r\n\r\n<p>Google adalah salah satu vendor pihak ketiga di situs kami. Ini juga menggunakan cookie, yang dikenal sebagai cookie DART, untuk menayangkan iklan kepada pengunjung situs kami berdasarkan kunjungan mereka ke www.website.com dan situs lain di internet. Namun, pengunjung dapat memilih untuk menolak penggunaan cookie DART dengan mengunjungi Kebijakan Privasi jaringan iklan dan konten Google di URL berikut  <a href="https://policies.google.com/technologies/ads">https://policies.google.com/technologies/ads</a></p>\r\n\r\n\r\n<h2>Kebijakan Privasi</h2>\r\n\r\n<P>Anda dapat berkonsultasi dengan daftar ini untuk menemukan Kebijakan Privasi masing-masing mitra periklanan SiParkir Kota Pekanbaru.</p>\r\n\r\n<p>Server iklan atau jaringan iklan pihak ketiga menggunakan teknologi seperti cookie, JavaScript, atau Web Beacon yang digunakan di masing-masing iklan dan tautan yang muncul di SiParkir Kota Pekanbaru, yang dikirim langsung ke browser pengguna. Mereka secara otomatis menerima alamat IP Anda ketika ini terjadi. Teknologi ini digunakan untuk mengukur efektivitas kampanye iklan mereka dan/atau untuk mempersonalisasi konten iklan yang Anda lihat di situs web yang Anda kunjungi.</p>\r\n\r\n<p>Perhatikan bahwa SiParkir Kota Pekanbaru tidak memiliki akses atau kontrol terhadap cookie ini yang digunakan oleh pengiklan pihak ketiga.</p>\r\n\r\n<h2>Kebijakan Privasi Pihak Ketiga</h2>\r\n\r\n<p>Kebijakan Privasi Pihak Ketiga Oleh karena itu, kami menyarankan Anda untuk berkonsultasi dengan Kebijakan Privasi masing-masing dari server iklan pihak ketiga ini untuk informasi lebih rinci. Ini mungkin termasuk praktik dan instruksi mereka tentang cara memilih keluar dari opsi tertentu. </p>\r\n\r\n<p>Anda dapat memilih untuk menonaktifkan cookie melalui opsi browser individual Anda. Untuk mengetahui informasi lebih rinci tentang manajemen cookie dengan browser web tertentu, dapat ditemukan di situs web masing-masing browser. Apa Itu Cookie?</p>');
+	(1, '<h1>Kebijakan Privasi untuk Website SiParkir Kota Pekanbaru</h1>\r\n\r\n<p>SiParkir Kota Pekanbaru, dapat diakses dari https://lapor.dishub.pekanbaru.go.id/perparkiran, salah satu prioritas utama kami adalah privasi pengunjung kami. Dokumen Kebijakan Privasi ini berisi jenis informasi yang dikumpulkan dan dicatat oleh SiParkir Kota Pekanbaru dan bagaimana kami menggunakannya.</p>\r\n\r\n<p>Jika Anda memiliki pertanyaan tambahan atau memerlukan informasi lebih lanjut tentang Kebijakan Privasi kami, jangan ragu untuk menghubungi kami.</p>\r\n\r\n<h2>Log Files</h2>\r\n\r\n<p>SiParkir Kota Pekanbaru mengikuti prosedur standar menggunakan file log. File-file ini mencatat pengunjung ketika mereka mengunjungi situs web. Semua perusahaan hosting melakukan ini dan merupakan bagian dari analisis layanan hosting. Informasi yang dikumpulkan oleh file log termasuk alamat protokol internet (IP), jenis browser, Penyedia Layanan Internet (ISP), cap tanggal dan waktu, halaman rujukan/keluar, dan mungkin jumlah klik. Ini tidak terkait dengan informasi apa pun yang dapat diidentifikasi secara pribadi. Tujuan dari informasi ini adalah untuk menganalisis tren, mengelola situs, melacak pergerakan pengguna di situs web, dan mengumpulkan informasi demografis. Kebijakan Privasi kami dibuat dengan bantuan dari <a href="https://www.privacypolicyonline.com/privacy-policy-generator/">Privacy Policy Generator</a>.</p>\r\n\r\n<h2>Cookie dan Web Beacon</h2>\r\n\r\n<p>Seperti situs web lainnya, SiParkir Kota Pekanbaru menggunakan \'cookies\'. Cookie ini digunakan untuk menyimpan informasi termasuk preferensi pengunjung, dan halaman di situs web yang diakses atau dikunjungi pengunjung. Informasi tersebut digunakan untuk mengoptimalkan pengalaman pengguna dengan menyesuaikan konten halaman web kami berdasarkan jenis browser pengunjung dan/atau informasi lainnya.</p>\r\n\r\n<p>Untuk informasi lebih umum tentang cookie, silakan baca<a href="https://www.generateprivacypolicy.com/#cookies">"Cookies" article from the Privacy Policy Generator</a>.</p>\r\n\r\n<h2>Cookie Google DoubleClick DART</h2>\r\n\r\n<p>Google adalah salah satu vendor pihak ketiga di situs kami. Ini juga menggunakan cookie, yang dikenal sebagai cookie DART, untuk menayangkan iklan kepada pengunjung situs kami berdasarkan kunjungan mereka ke www.website.com dan situs lain di internet. Namun, pengunjung dapat memilih untuk menolak penggunaan cookie DART dengan mengunjungi Kebijakan Privasi jaringan iklan dan konten Google di URL berikut  <a href="https://policies.google.com/technologies/ads">https://policies.google.com/technologies/ads</a></p>\r\n\r\n\r\n<h2>Kebijakan Privasi</h2>\r\n\r\n<P>Anda dapat berkonsultasi dengan daftar ini untuk menemukan Kebijakan Privasi masing-masing mitra periklanan SiParkir Kota Pekanbaru.</p>\r\n\r\n<p>Server iklan atau jaringan iklan pihak ketiga menggunakan teknologi seperti cookie, JavaScript, atau Web Beacon yang digunakan di masing-masing iklan dan tautan yang muncul di SiParkir Kota Pekanbaru, yang dikirim langsung ke browser pengguna. Mereka secara otomatis menerima alamat IP Anda ketika ini terjadi. Teknologi ini digunakan untuk mengukur efektivitas kampanye iklan mereka dan/atau untuk mempersonalisasi konten iklan yang Anda lihat di situs web yang Anda kunjungi.</p>\r\n\r\n<p>Perhatikan bahwa SiParkir Kota Pekanbaru tidak memiliki akses atau kontrol terhadap cookie ini yang digunakan oleh pengiklan pihak ketiga.</p>\r\n\r\n<h2>Kebijakan Privasi Pihak Ketiga</h2>\r\n\r\n<p>Kebijakan Privasi Pihak Ketiga Oleh karena itu, kami menyarankan Anda untuk berkonsultasi dengan Kebijakan Privasi masing-masing dari server iklan pihak ketiga ini untuk informasi lebih rinci. Ini mungkin termasuk praktik dan instruksi mereka tentang cara memilih keluar dari opsi tertentu. </p>\r\n\r\n<p>Anda dapat memilih untuk menonaktifkan cookie melalui opsi browser individual Anda. Untuk mengetahui informasi lebih rinci tentang manajemen cookie dengan browser web tertentu, dapat ditemukan di situs web masing-masing browser. Apa Itu Cookie?</p>'),
+	(2, '<h3>Kebijakan Privasi untuk Website SiParkir Kota Pekanbaru</h3>\r\n\r\n<p>SiParkir Kota Pekanbaru, dapat diakses dari https://lapor.dishub.pekanbaru.go.id/perparkiran, salah satu prioritas utama kami adalah privasi pengunjung kami. Dokumen Kebijakan Privasi ini berisi jenis informasi yang dikumpulkan dan dicatat oleh SiParkir Kota Pekanbaru dan bagaimana kami menggunakannya.</p>\r\n\r\n<p>Jika Anda memiliki pertanyaan tambahan atau memerlukan informasi lebih lanjut tentang Kebijakan Privasi kami, jangan ragu untuk menghubungi kami.</p>\r\n\r\n<h4>Log Files</h4>\r\n\r\n<p>SiParkir Kota Pekanbaru mengikuti prosedur standar menggunakan file log. File-file ini mencatat pengunjung ketika mereka mengunjungi situs web. Semua perusahaan hosting melakukan ini dan merupakan bagian dari analisis layanan hosting. Informasi yang dikumpulkan oleh file log termasuk alamat protokol internet (IP), jenis browser, Penyedia Layanan Internet (ISP), cap tanggal dan waktu, halaman rujukan/keluar, dan mungkin jumlah klik. Ini tidak terkait dengan informasi apa pun yang dapat diidentifikasi secara pribadi. Tujuan dari informasi ini adalah untuk menganalisis tren, mengelola situs, melacak pergerakan pengguna di situs web, dan mengumpulkan informasi demografis. Kebijakan Privasi kami dibuat dengan bantuan dari <a href="https://www.privacypolicyonline.com/privacy-policy-generator/">Privacy Policy Generator</a>.</p>\r\n\r\n<h4>Cookie dan Web Beacon</h4>\r\n\r\n<p>Seperti situs web lainnya, SiParkir Kota Pekanbaru menggunakan \'cookies\'. Cookie ini digunakan untuk menyimpan informasi termasuk preferensi pengunjung, dan halaman di situs web yang diakses atau dikunjungi pengunjung. Informasi tersebut digunakan untuk mengoptimalkan pengalaman pengguna dengan menyesuaikan konten halaman web kami berdasarkan jenis browser pengunjung dan/atau informasi lainnya.</p>\r\n\r\n<p>Untuk informasi lebih umum tentang cookie, silakan baca<a href="https://www.generateprivacypolicy.com/#cookies">"Cookies" article from the Privacy Policy Generator</a>.</p>\r\n\r\n<h4>Cookie Google DoubleClick DART</h4>\r\n\r\n<p>Google adalah salah satu vendor pihak ketiga di situs kami. Ini juga menggunakan cookie, yang dikenal sebagai cookie DART, untuk menayangkan iklan kepada pengunjung situs kami berdasarkan kunjungan mereka ke www.website.com dan situs lain di internet. Namun, pengunjung dapat memilih untuk menolak penggunaan cookie DART dengan mengunjungi Kebijakan Privasi jaringan iklan dan konten Google di URL berikut  <a href="https://policies.google.com/technologies/ads">https://policies.google.com/technologies/ads</a></p>\r\n\r\n\r\n<h4>Kebijakan Privasi</h4>\r\n\r\n<P>Anda dapat berkonsultasi dengan daftar ini untuk menemukan Kebijakan Privasi masing-masing mitra periklanan SiParkir Kota Pekanbaru.</p>\r\n\r\n<p>Server iklan atau jaringan iklan pihak ketiga menggunakan teknologi seperti cookie, JavaScript, atau Web Beacon yang digunakan di masing-masing iklan dan tautan yang muncul di SiParkir Kota Pekanbaru, yang dikirim langsung ke browser pengguna. Mereka secara otomatis menerima alamat IP Anda ketika ini terjadi. Teknologi ini digunakan untuk mengukur efektivitas kampanye iklan mereka dan/atau untuk mempersonalisasi konten iklan yang Anda lihat di situs web yang Anda kunjungi.</p>\r\n\r\n<p>Perhatikan bahwa SiParkir Kota Pekanbaru tidak memiliki akses atau kontrol terhadap cookie ini yang digunakan oleh pengiklan pihak ketiga.</p>\r\n\r\n<h4>Kebijakan Privasi Pihak Ketiga</h4>\r\n\r\n<p>Kebijakan Privasi Pihak Ketiga Oleh karena itu, kami menyarankan Anda untuk berkonsultasi dengan Kebijakan Privasi masing-masing dari server iklan pihak ketiga ini untuk informasi lebih rinci. Ini mungkin termasuk praktik dan instruksi mereka tentang cara memilih keluar dari opsi tertentu. </p>\r\n\r\n<p>Anda dapat memilih untuk menonaktifkan cookie melalui opsi browser individual Anda. Untuk mengetahui informasi lebih rinci tentang manajemen cookie dengan browser web tertentu, dapat ditemukan di situs web masing-masing browser. Apa Itu Cookie?</p>');
 
 -- membuang struktur untuk table perparkiran.profile
 CREATE TABLE IF NOT EXISTS `profile` (
@@ -347,6 +364,7 @@ CREATE TABLE IF NOT EXISTS `rate_pengaduan` (
   `id_rate_peng` int(11) NOT NULL AUTO_INCREMENT,
   `id_peng` varchar(255) DEFAULT NULL,
   `rate_peng` double DEFAULT NULL,
+  `komen` text,
   `create_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id_rate_peng`),
@@ -354,10 +372,10 @@ CREATE TABLE IF NOT EXISTS `rate_pengaduan` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- Membuang data untuk tabel perparkiran.rate_pengaduan: ~3 rows (lebih kurang)
-INSERT INTO `rate_pengaduan` (`id_rate_peng`, `id_peng`, `rate_peng`, `create_at`, `updated_at`) VALUES
-	(1, '0Q68HF9Z62M7', 5, '2021-10-02 08:54:55', '2021-10-02 08:54:57'),
-	(2, '4AUTD8SI8F2B', 4.5, '2021-10-02 09:16:24', '2021-10-02 09:16:25'),
-	(3, 'O4MQZGMM6FCX', 4, '2021-10-02 09:17:12', '2021-10-02 09:17:12');
+INSERT INTO `rate_pengaduan` (`id_rate_peng`, `id_peng`, `rate_peng`, `komen`, `create_at`, `updated_at`) VALUES
+	(1, '0Q68HF9Z62M7', 5, NULL, '2021-10-02 08:54:55', '2021-10-02 08:54:57'),
+	(2, '4AUTD8SI8F2B', 4.5, NULL, '2021-10-02 09:16:24', '2021-10-02 09:16:25'),
+	(3, 'O4MQZGMM6FCX', 4, 'Sangat Cepat dalam membuat keputusan', '2021-10-02 09:17:12', '2021-10-02 09:17:12');
 
 -- membuang struktur untuk table perparkiran.regu
 CREATE TABLE IF NOT EXISTS `regu` (
@@ -371,7 +389,7 @@ CREATE TABLE IF NOT EXISTS `regu` (
   PRIMARY KEY (`id_regu`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Membuang data untuk tabel perparkiran.regu: ~3 rows (lebih kurang)
+-- Membuang data untuk tabel perparkiran.regu: ~2 rows (lebih kurang)
 INSERT INTO `regu` (`id_regu`, `nm_regu`, `karu`, `f_regu`, `created_at`, `updated_at`, `deleted_at`) VALUES
 	('REGU-19932', 'Ranger', 'USR-79955', '', '2021-11-13 07:26:48', '2021-11-13 07:27:34', NULL),
 	('REGU-62216', 'Bravo', 'USR-91697', 'Bravo_13072021230950.jpg', '2021-07-13 15:33:34', '2021-07-13 16:09:51', NULL),
@@ -392,6 +410,7 @@ CREATE TABLE IF NOT EXISTS `selesai` (
 
 -- Membuang data untuk tabel perparkiran.selesai: ~3 rows (lebih kurang)
 INSERT INTO `selesai` (`id_sel`, `id_peng`, `ket_sel`, `adm_sel`, `tgl_sel`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	('ARZOGVZBN4IG', '0F3FR4J8FCDP', '<ol><li>sdfplsdopfdosoksdoffssfs</li><li>sdfdsfsdfdsf</li></ol><p>sdfdsf<br>sfdfdsfdfdfdsfdsf dfojsdfoij sdf jsdiofjsdoijf dosijiods</p>', 'USR-06782', '2021-11-28 06:47:23', '2021-11-28 06:47:23', NULL, NULL),
 	('RML3KY8HCCN4', '0Q68HF9Z62M7', '<p>jukir sudah diperingati dan berjanji tidak akan mengulangi lagi kesalahan yang sama, jukir meminta maaf atas perilakunya.</p>', 'USR-06782', '2021-09-08 18:52:29', '2021-09-08 18:52:29', NULL, NULL),
 	('SJSQJ15DNG7L', 'O4MQZGMM6FCX', '<p>Sudah diproses, jukir berjanji tidak mengulanginya dan sudah membuat surat perjanjian.</p>', 'USR-06782', '2021-09-11 06:47:36', '2021-09-11 06:47:36', NULL, NULL),
 	('XNM468EHK3ZX', '4AUTD8SI8F2B', '<p>aasdasdasd</p><ol><li>asdasdas</li><li>dasd</li><li>asd</li></ol>', 'USR-32229', '2021-09-11 02:24:38', '2021-09-11 02:24:38', NULL, NULL);
@@ -406,11 +425,9 @@ CREATE TABLE IF NOT EXISTS `session` (
   `created_at` longtext
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Membuang data untuk tabel perparkiran.session: ~3 rows (lebih kurang)
+-- Membuang data untuk tabel perparkiran.session: ~1 rows (lebih kurang)
 INSERT INTO `session` (`username`, `ip`, `os`, `br`, `token`, `created_at`) VALUES
-	('hilham', '192.168.100.138', 'Linux', 'Google Chrome v.92.0.4515.159', 'AezoD8c5ljW0N6eKF2Z+laUmLJUEvcTfRUIuoVB0oe8=', '2021-09-21 11:29:04'),
-	('bangameck', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', 'exbt2DrO4VeEyr6IfkfnZD7yjtO9J/MG1soRlSHzgYw=', '2021-11-22 11:28:39'),
-	('albian', '192.168.123.17', 'Linux', 'Google Chrome v.96.0.4664.45', 'C9Yg6ziIWKsbxjj1voqJJ4pvkQ9vBgWmWUrMQYVVtJ0=', '2021-11-22 12:09:27');
+	('hilham', '192.168.100.138', 'Linux', 'Google Chrome v.92.0.4515.159', 'AezoD8c5ljW0N6eKF2Z+laUmLJUEvcTfRUIuoVB0oe8=', '2021-09-21 11:29:04');
 
 -- membuang struktur untuk table perparkiran.session_log
 CREATE TABLE IF NOT EXISTS `session_log` (
@@ -421,7 +438,7 @@ CREATE TABLE IF NOT EXISTS `session_log` (
   `time` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Membuang data untuk tabel perparkiran.session_log: ~49 rows (lebih kurang)
+-- Membuang data untuk tabel perparkiran.session_log: ~56 rows (lebih kurang)
 INSERT INTO `session_log` (`username`, `ip`, `os`, `browser`, `time`) VALUES
 	('bangameck', '127.0.0.1', 'Windows 10', 'Google Chrome v.94.0.4606.71', '2021-10-10 16:34:40'),
 	('bangameck', '::1', 'Windows 10', 'Google Chrome v.95.0.4638.54', '2021-10-25 10:23:59'),
@@ -471,7 +488,26 @@ INSERT INTO `session_log` (`username`, `ip`, `os`, `browser`, `time`) VALUES
 	('bangameck', '127.0.0.1', 'Windows 10', 'Google Chrome v.95.0.4638.69', '2021-11-22 02:53:30'),
 	('bangameck', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-22 04:27:33'),
 	('bangameck', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-22 04:28:39'),
-	('albian', '192.168.123.17', 'Linux', 'Google Chrome v.96.0.4664.45', '2021-11-22 05:09:27');
+	('albian', '192.168.123.17', 'Linux', 'Google Chrome v.96.0.4664.45', '2021-11-22 05:09:27'),
+	('bangameck', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-24 15:37:34'),
+	('bangameck', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-26 07:27:01'),
+	('albian', '192.168.123.141', 'Linux', 'Google Chrome v.96.0.4664.45', '2021-11-26 09:11:41'),
+	('albian', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-26 09:13:17'),
+	('bangameck', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-26 09:38:00'),
+	('albian', '192.168.123.141', 'Linux', 'Google Chrome v.96.0.4664.45', '2021-11-26 09:45:55'),
+	('bangameck', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-26 10:36:32'),
+	('albian', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-26 11:32:44'),
+	('albian', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-27 10:43:19'),
+	('albian', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-27 11:27:35'),
+	('albian', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 03:16:02'),
+	('bangameck', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 03:25:46'),
+	('bangameck', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 03:30:50'),
+	('albian', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 03:31:16'),
+	('bangameck', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 03:50:56'),
+	('bangameck', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 05:03:08'),
+	('albian', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 05:13:08'),
+	('bangameck', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 06:20:50'),
+	('anonymeck', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:45:45');
 
 -- membuang struktur untuk table perparkiran.session_view_blog
 CREATE TABLE IF NOT EXISTS `session_view_blog` (
@@ -482,7 +518,7 @@ CREATE TABLE IF NOT EXISTS `session_view_blog` (
   `time` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Membuang data untuk tabel perparkiran.session_view_blog: ~159 rows (lebih kurang)
+-- Membuang data untuk tabel perparkiran.session_view_blog: ~132 rows (lebih kurang)
 INSERT INTO `session_view_blog` (`id_blog`, `ip`, `os`, `browser`, `time`) VALUES
 	('86803484694911984167', '127.0.0.1', 'Windows 10', 'Google Chrome v.94.0.4606.81', '2021-10-19 07:49:56'),
 	('98653079279646273606', '127.0.0.1', 'Windows 10', 'Google Chrome v.94.0.4606.81', '2021-10-19 07:50:00'),
@@ -642,7 +678,18 @@ INSERT INTO `session_view_blog` (`id_blog`, `ip`, `os`, `browser`, `time`) VALUE
 	('98653079279646273606', '114.125.6.142', 'Linux', 'Google Chrome v.95.0.4638.69', '2021-11-18 15:41:45'),
 	('98653079279646273606', '114.125.6.142', 'Linux', 'Google Chrome v.95.0.4638.69', '2021-11-18 15:44:11'),
 	('66251029841392860537', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-19 03:56:56'),
-	('21606794114970369940', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-22 05:34:03');
+	('21606794114970369940', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-22 05:34:03'),
+	('86803484694911984167', '192.168.123.17', 'Linux', 'Google Chrome v.96.0.4664.45', '2021-11-22 08:11:02'),
+	('43888224593692599076', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-24 13:32:53'),
+	('66251029841392860537', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-24 13:35:33'),
+	('66251029841392860537', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-24 13:53:23'),
+	('00998428351696011609', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-26 09:21:41'),
+	('00998428351696011609', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-26 09:24:28'),
+	('00998428351696011609', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-26 09:28:42'),
+	('00998428351696011609', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-26 09:29:05'),
+	('', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 03:45:44'),
+	('98653079279646273606', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 03:46:50'),
+	('86803484694911984167', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 03:49:34');
 
 -- membuang struktur untuk table perparkiran.session_view_dokumen
 CREATE TABLE IF NOT EXISTS `session_view_dokumen` (
@@ -686,7 +733,162 @@ CREATE TABLE IF NOT EXISTS `session_view_pengaduan` (
   `time` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Membuang data untuk tabel perparkiran.session_view_pengaduan: ~0 rows (lebih kurang)
+-- Membuang data untuk tabel perparkiran.session_view_pengaduan: ~46 rows (lebih kurang)
+INSERT INTO `session_view_pengaduan` (`id_peng`, `ip`, `os`, `browser`, `time`) VALUES
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 03:49:48'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 03:50:12'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 03:51:15'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 03:55:14'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 03:56:06'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 03:56:49'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 03:58:45'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 03:59:50'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:00:57'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:01:48'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:02:20'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:03:24'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:03:34'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:04:12'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:04:21'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:04:37'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:06:05'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:06:16'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:06:34'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:07:43'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:08:09'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:09:04'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:10:03'),
+	('FKO06S0GIANC', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:10:28'),
+	('3IQH7Q6JAG85', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:10:40'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:11:45'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:14:07'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:14:25'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:14:58'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:15:33'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:16:45'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:17:47'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:18:38'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:18:50'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:21:25'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:21:46'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:23:02'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:23:20'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:23:29'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:23:40'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:24:11'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:24:48'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:25:00'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:26:28'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:27:52'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:28:14'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:32:53'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:33:32'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:34:53'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:35:21'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:35:50'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:36:21'),
+	('O4MQZGMM6FCX', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:36:31'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:36:37'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:37:34'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:38:37'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:42:18'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:42:30'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:43:47'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:44:43'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:45:13'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:45:28'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:45:47'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:46:17'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:47:51'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:48:00'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:48:07'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:55:02'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:55:30'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:57:38'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:57:42'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:57:47'),
+	('FKO06S0GIANC', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:58:19'),
+	('FKO06S0GIANC', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:58:53'),
+	('FKO06S0GIANC', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 04:59:19'),
+	('FKO06S0GIANC', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 05:00:50'),
+	('FKO06S0GIANC', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 05:02:26'),
+	('FKO06S0GIANC', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 05:02:29'),
+	('FKO06S0GIANC', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 05:05:15'),
+	('FKO06S0GIANC', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 05:05:35'),
+	('FKO06S0GIANC', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 05:05:44'),
+	('FKO06S0GIANC', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 05:07:57'),
+	('0U9UIBREMM0K', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 05:16:01'),
+	('FKO06S0GIANC', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 05:18:33'),
+	('FKO06S0GIANC', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 05:18:42'),
+	('FKO06S0GIANC', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 05:19:37'),
+	('4AUTD8SI8F2B', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 05:19:51'),
+	('4AUTD8SI8F2B', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 05:22:09'),
+	('3IQH7Q6JAG85', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 05:23:00'),
+	('0U9UIBREMM0K', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 05:23:08'),
+	('0U9UIBREMM0K', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 05:25:01'),
+	('0U9UIBREMM0K', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 05:28:06'),
+	('0U9UIBREMM0K', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 05:30:52'),
+	('0U9UIBREMM0K', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 05:31:24'),
+	('0U9UIBREMM0K', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 05:31:55'),
+	('0U9UIBREMM0K', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 05:32:03'),
+	('0U9UIBREMM0K', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 05:32:16'),
+	('0U9UIBREMM0K', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 05:32:27'),
+	('0U9UIBREMM0K', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 05:34:25'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 05:35:47'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 05:40:07'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 05:46:48'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 05:46:58'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 05:47:15'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 05:51:10'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 05:51:12'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 05:51:40'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 05:51:48'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 05:52:32'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 05:53:53'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 05:54:04'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 05:54:17'),
+	('4AUTD8SI8F2B', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 05:55:42'),
+	('4AUTD8SI8F2B', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 05:57:52'),
+	('4AUTD8SI8F2B', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 05:58:24'),
+	('4AUTD8SI8F2B', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 05:59:28'),
+	('4AUTD8SI8F2B', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:01:32'),
+	('4AUTD8SI8F2B', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:02:24'),
+	('4AUTD8SI8F2B', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:02:45'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:02:52'),
+	('4AUTD8SI8F2B', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:04:06'),
+	('4AUTD8SI8F2B', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:05:03'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:05:14'),
+	('4AUTD8SI8F2B', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:05:41'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:05:47'),
+	('4AUTD8SI8F2B', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:05:59'),
+	('4AUTD8SI8F2B', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:06:13'),
+	('4AUTD8SI8F2B', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:06:32'),
+	('4AUTD8SI8F2B', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:08:55'),
+	('4AUTD8SI8F2B', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:09:38'),
+	('4AUTD8SI8F2B', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:10:00'),
+	('4AUTD8SI8F2B', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:11:59'),
+	('4AUTD8SI8F2B', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:12:22'),
+	('4AUTD8SI8F2B', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:15:31'),
+	('4AUTD8SI8F2B', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:17:22'),
+	('4AUTD8SI8F2B', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:17:51'),
+	('4AUTD8SI8F2B', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:19:51'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:28:12'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:28:22'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:28:46'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:28:50'),
+	('4AUTD8SI8F2B', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:29:00'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:30:03'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:36:59'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:39:48'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:39:50'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:43:03'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:44:34'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:47:31'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:49:57'),
+	('0Q68HF9Z62M7', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 06:52:31'),
+	('YE8IKT4VERLA', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.45', '2021-11-28 06:54:48'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 07:16:43'),
+	('0F3FR4J8FCDP', '127.0.0.1', 'Windows 10', 'Google Chrome v.96.0.4664.55', '2021-11-28 07:24:25');
 
 -- membuang struktur untuk table perparkiran.tags
 CREATE TABLE IF NOT EXISTS `tags` (
@@ -763,7 +965,7 @@ CREATE TABLE IF NOT EXISTS `trems` (
   `trems` longtext
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Membuang data untuk tabel perparkiran.trems: ~1 rows (lebih kurang)
+-- Membuang data untuk tabel perparkiran.trems: ~0 rows (lebih kurang)
 INSERT INTO `trems` (`id`, `trems`) VALUES
 	(1, '<h2><strong>Persyaratan dan Ketentuan</strong></h2>\r\n\r\n<p>Selamat datang di Website SiParkir Kota Pekanbaru!</p>\r\n\r\n<p>Syarat dan ketentuan ini menguraikan aturan dan ketentuan penggunaan Situs Web SiParkir Kota Pekanbaru yang beralamat di https://lapor.dishub.pekanbaru.go.id/perparkiran.</p>\r\n\r\n<p>Dengan mengakses situs web ini, kami menganggap Anda menerima syarat dan ketentuan ini. Jangan melanjutkan penggunaan SiParkir Kota Pekanbaru jika Anda tidak setuju untuk mengikuti semua syarat dan ketentuan yang tertera di halaman ini.</p>\r\n\r\n<p>Terminologi berikut berlaku untuk Syarat dan Ketentuan ini, Pernyataan Privasi dan Pemberitahuan Penafian dan semua Perjanjian: "Klien", "Anda" dan "Anda" mengacu pada Anda, orang yang masuk ke situs web ini dan mematuhi persyaratan dan kondisi. "Perusahaan", "Kami Sendiri", "Kami", "Kami" dan "Kami", mengacu pada Perusahaan kami. "Pihak", "Para Pihak", atau "Kami", mengacu pada Klien dan kami sendiri. Semua istilah mengacu pada penawaran, penerimaan, dan pertimbangan pembayaran yang diperlukan untuk melakukan proses bantuan kami kepada Klien dengan cara yang paling tepat untuk tujuan yang jelas dalam memenuhi kebutuhan Klien sehubungan dengan penyediaan layanan yang dinyatakan Perusahaan, sesuai dengan dan tunduk pada, hukum yang berlaku di Belanda. Setiap penggunaan terminologi di atas atau kata-kata lain dalam bentuk tunggal, jamak, huruf besar dan/atau dia, dianggap dapat dipertukarkan dan oleh karena itu mengacu pada yang sama. Persyaratan dan Ketentuan kami dibuat dengan bantuan <a href="https://www.privacypolicyonline.com/terms-conditions-generator/">Pembuat Persyaratan & Ketentuan</a>.</p>\r\n\r\n<h3><strong>Cookie</strong></h3>\r\n\r\n<p>Kami menerapkan penggunaan cookie. Dengan mengakses SiParkir Kota Pekanbaru, Anda setuju untuk menggunakan cookie sesuai dengan Kebijakan Privasi SiParkir Kota Pekanbaru.</p>\r\n\r\n<p>Sebagian besar situs web interaktif menggunakan cookie untuk memungkinkan kami mengambil detail pengguna untuk setiap kunjungan. Cookie digunakan oleh situs web kami untuk mengaktifkan fungsionalitas area tertentu untuk memudahkan orang mengunjungi situs web kami. Beberapa mitra afiliasi/iklan kami juga dapat menggunakan cookie.</p>\r\n\r\n<h3><strong>Lisensi</strong></h3>\r\n\r\n<p>Kecuali dinyatakan lain, SiParkir Kota Pekanbaru dan/atau pemberi lisensinya memiliki hak kekayaan intelektual untuk semua materi di SiParkir Kota Pekanbaru. Semua hak kekayaan intelektual dilindungi. Anda dapat mengakses ini dari SiParkir Kota Pekanbaru untuk penggunaan pribadi Anda dengan batasan yang diatur dalam syarat dan ketentuan ini.</p>\r\n\r\n<p>Anda tidak boleh:</p>\r\n<ul>\r\n    <li>Menerbitkan ulang materi dari SiParkir Kota Pekanbaru</li>\r\n    <li>Menjual, menyewakan, atau mensublisensikan materi dari SiParkir Kota Pekanbaru</li>\r\n    <li>Mereproduksi, menggandakan, atau menyalin materi dari SiParkir Kota Pekanbaru</li>\r\n    <li>Mendistribusikan ulang konten dari SiParkir Kota Pekanbaru</li>\r\n</ul>\r\n\r\n<p>Perjanjian ini akan dimulai pada tanggal perjanjian ini.</p>\r\n\r\n<p>Bagian dari situs web ini menawarkan kesempatan bagi pengguna untuk memposting dan bertukar pendapat dan informasi di area tertentu dari situs web. SiParkir Kota Pekanbaru tidak memfilter, mengedit, menerbitkan, atau meninjau Komentar sebelum kehadirannya di situs web. Komentar tidak mencerminkan pandangan dan pendapat SiParkir Kota Pekanbaru, agen dan/atau afiliasinya. Komentar mencerminkan pandangan dan pendapat orang yang memposting pandangan dan pendapat mereka. Sejauh diizinkan oleh undang-undang yang berlaku, SiParkir Kota Pekanbaru tidak bertanggung jawab atas Komentar atau kewajiban, kerusakan atau pengeluaran yang disebabkan dan/atau diderita sebagai akibat dari penggunaan dan/atau posting dan/atau tampilan Komentar di situs web ini.</p>\r\n\r\n<p>SiParkir Kota Pekanbaru berhak untuk memantau semua Komentar dan menghapus Komentar yang dianggap tidak pantas, menyinggung, atau menyebabkan pelanggaran terhadap Syarat dan Ketentuan ini.</p>\r\n\r\n<p>Anda menjamin dan menyatakan bahwa:</p>\r\n\r\n<ul>\r\n    <li>Anda berhak memposting Komentar di situs web kami dan memiliki semua lisensi dan persetujuan yang diperlukan untuk melakukannya;</li>\r\n    <li>Komentar tidak melanggar hak kekayaan intelektual apa pun, termasuk namun tidak terbatas pada hak cipta, paten, atau merek dagang pihak ketiga mana pun;</li>\r\n    <li>Komentar tidak mengandung materi yang memfitnah, memfitnah, menyinggung, tidak senonoh, atau melanggar hukum yang merupakan pelanggaran privasi</li>\r\n    <li>Komentar tidak akan digunakan untuk meminta atau mempromosikan bisnis atau kebiasaan atau menyajikan aktivitas komersial atau aktivitas yang melanggar hukum.</li>\r\n</ul>\r\n\r\n<p>Dengan ini Anda memberi SiParkir Kota Pekanbaru lisensi non-eksklusif untuk menggunakan, mereproduksi, mengedit, dan mengizinkan orang lain untuk menggunakan, mereproduksi, dan mengedit Komentar Anda dalam segala bentuk, format, atau media.</p>\r\n\r\n<h3><strong>Hyperlink ke Konten kami</strong></h3>\r\n\r\n<p>Organisasi berikut dapat menautkan ke Situs Web kami tanpa persetujuan tertulis sebelumnya:</p>\r\n\r\n<ul>\r\n    <li>Instansi pemerintah;</li>\r\n    <li>Mesin telusur;</li>\r\n    <li>Organisasi berita;</li>\r\n    <li>Distributor direktori online dapat menautkan ke Situs Web kami dengan cara yang sama seperti mereka melakukan hyperlink ke Situs Web bisnis lain yang terdaftar; dan</li>\r\n    <li>Bisnis Terakreditasi di seluruh sistem kecuali meminta organisasi nirlaba, pusat perbelanjaan amal, dan kelompok penggalangan dana amal yang mungkin tidak hyperlink ke situs Web kami.</li>\r\n</ul>\r\n\r\n<p>Organisasi-organisasi ini dapat menautkan ke beranda kami, ke publikasi, atau ke informasi Situs Web lainnya selama tautan tersebut: (a) sama sekali tidak menipu; (b) tidak secara keliru menyiratkan sponsor, dukungan atau persetujuan dari pihak yang menghubungkan dan produk dan/atau layanannya; dan (c) sesuai dengan konteks situs pihak yang menautkan.</p>\r\n\r\n<p>Kami dapat mempertimbangkan dan menyetujui permintaan tautan lain dari jenis organisasi berikut:</p>\r\n\r\n<ul>\r\n    <li>sumber informasi konsumen dan/atau bisnis yang umum dikenal;</li>\r\n    <li>situs komunitas dot.com;</li>\r\n    <li>asosiasi atau kelompok lain yang mewakili badan amal;</li>\r\n    <li>distributor direktori online;</li>\r\n    <li>portal internet;</li>\r\n    <li>perusahaan akuntansi, hukum dan konsultan; dan</li>\r\n    <li>lembaga pendidikan dan asosiasi perdagangan.</li>\r\n</ul>\r\n\r\n<p>Kami akan menyetujui permintaan tautan dari organisasi-organisasi ini jika kami memutuskan bahwa: (a) tautan tersebut tidak akan membuat kami terlihat buruk bagi diri kami sendiri atau bisnis terakreditasi kami; (b) organisasi tidak memiliki catatan negatif apapun dengan kami; (c) manfaat bagi kami dari visibilitas hyperlink mengkompensasi ketiadaan SiParkir Kota Pekanbaru; dan (d) tautannya berada dalam konteks informasi sumber daya umum.</p>\r\n\r\n<p>Organisasi ini dapat menautkan ke beranda kami selama tautan tersebut: (a) sama sekali tidak menipu; (b) tidak secara keliru menyiratkan sponsorship, dukungan atau persetujuan dari pihak yang menghubungkan dan produk atau layanannya; dan (c) sesuai dengan konteks situs pihak yang menautkan.</p>\r\n\r\n<p>Jika Anda salah satu organisasi yang tercantum dalam paragraf 2 di atas dan tertarik untuk menautkan ke situs web kami, Anda harus memberi tahu kami dengan mengirimkan email ke SiParkir Kota Pekanbaru. Harap sertakan nama Anda, nama organisasi Anda, informasi kontak serta URL situs Anda, daftar URL apa pun yang ingin Anda tautkan ke Situs Web kami, dan daftar URL di situs kami yang ingin Anda tuju tautan. Tunggu 2-3 minggu untuk tanggapan.</p>\r\n\r\n<p>Organisasi yang disetujui dapat membuat hyperlink ke Situs Web kami sebagai berikut:</p>\r\n\r\n<ul>\r\n    <li>Dengan menggunakan nama perusahaan kami; atau</li>\r\n    <li>Dengan menggunakan pencari sumber daya seragam yang ditautkan ke; atau</li>\r\n    <li>Dengan menggunakan deskripsi lain dari Situs Web kami yang ditautkan, yang masuk akal dalam konteks dan format konten di situs pihak yang menautkan.</li>\r\n</ul>\r\n\r\n<p>Tidak ada penggunaan logo SiParkir Kota Pekanbaru atau karya seni lainnya yang diizinkan untuk menghubungkan jika tidak ada perjanjian lisensi merek dagang.</p>\r\n\r\n<h3><strong>iFrames</strong></h3>\r\n\r\n<p>Tanpa persetujuan dan izin tertulis sebelumnya, Anda tidak boleh membuat bingkai di sekitar Halaman Web kami yang mengubah presentasi visual atau tampilan Situs Web kami dengan cara apa pun.</p>\r\n\r\n<h3><strong>Kewajiban Konten</strong></h3>\r\n\r\n<p>Kami tidak bertanggung jawab atas konten apa pun yang muncul di Situs Web Anda. Anda setuju untuk melindungi dan membela kami dari semua klaim yang muncul di Situs Web Anda. Tautan tidak boleh muncul di Situs Web mana pun yang dapat ditafsirkan sebagai fitnah, cabul, atau kriminal, atau yang melanggar, jika tidak, melanggar, atau mendukung pelanggaran atau pelanggaran lain terhadap, hak pihak ketiga mana pun.</p>\r\n\r\n<h3><strong>Reservasi Hak</strong></h3>\r\n\r\n<p>Kami berhak meminta Anda menghapus semua tautan atau tautan tertentu ke Situs Web kami. Anda menyetujui untuk segera menghapus semua tautan ke Situs Web kami berdasarkan permintaan. Kami juga berhak untuk mengubah syarat dan ketentuan ini dan kebijakan tautannya kapan saja. Dengan terus menautkan ke Situs Web kami, Anda setuju untuk terikat dan mengikuti syarat dan ketentuan penautan ini.</p>\r\n\r\n<h3><strong>Penghapusan tautan dari situs web kami</strong></h3>\r\n\r\n<p>Jika Anda menemukan tautan apa pun di Situs Web kami yang menyinggung karena alasan apa pun, Anda bebas untuk menghubungi dan memberi tahu kami kapan saja. Kami akan mempertimbangkan permintaan untuk menghapus tautan tetapi kami tidak berkewajiban untuk atau lebih atau untuk menanggapi Anda secara langsung.</p>\r\n\r\n<p>Kami tidak memastikan bahwa informasi di situs web ini benar, kami tidak menjamin kelengkapan atau keakuratannya; kami juga tidak berjanji untuk memastikan bahwa situs web tetap tersedia atau materi di situs web selalu diperbarui.</p>\r\n\r\n<h3><strong>Penafian</strong></h3>\r\n\r\n<p>Sejauh yang diizinkan oleh hukum yang berlaku, kami mengecualikan semua pernyataan, jaminan, dan ketentuan yang berkaitan dengan situs web kami dan penggunaan situs web ini. Tidak ada dalam penafian ini yang akan:</p>\r\n\r\n<ul>\r\n    <li>membatasi atau mengecualikan tanggung jawab kami atau Anda atas kematian atau cedera pribadi;</li>\r\n    <li>membatasi atau mengecualikan tanggung jawab kami atau Anda atas penipuan atau pernyataan keliru yang menipu;</li>\r\n    <li>membatasi kewajiban kami atau Anda dengan cara apa pun yang tidak diizinkan menurut hukum yang berlaku; atau</li>\r\n    <li>mengecualikan salah satu kewajiban kami atau Anda yang mungkin tidak dikecualikan menurut hukum yang berlaku.</li>\r\n</ul>\r\n\r\n<p>Batasan dan larangan tanggung jawab yang diatur dalam Bagian ini dan di tempat lain dalam penafian ini: (a) tunduk pada paragraf sebelumnya; dan (b) mengatur semua kewajiban yang timbul berdasarkan penafian, termasuk kewajiban yang timbul dalam kontrak, dalam gugatan, dan untuk pelanggaran kewajiban hukum.</p>\r\n\r\n<p>Selama situs web dan informasi serta layanan di situs web disediakan secara gratis, kami tidak akan bertanggung jawab atas kehilangan atau kerusakan apa pun.</p>');
 
@@ -795,16 +997,29 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Membuang data untuk tabel perparkiran.users: ~8 rows (lebih kurang)
+-- Membuang data untuk tabel perparkiran.users: ~6 rows (lebih kurang)
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `no_hp`, `nama`, `pendidikan`, `alamat`, `t_lahir`, `tgl_lahir`, `jk`, `level`, `regu`, `bio`, `f_usr`, `token`, `batas_waktu`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-	('USR-06782', 'anonymeck', '$2y$10$R2i9S0lwaM0bXPcor1fFw.fXIrwNrnNPuhA7W5A8FwHLZGsACMQq.', 'anonymeckrra@gmail.com', '08098888', 'Mamad', 'S-1 SEDERAJAT', '  ', 'Pekanbaru', '1995-03-30 17:00:00', 'M', 2, 'REGU-62216', NULL, 'USR-06782_05072021102552.jpg', '9VrwDszTtmP4PHZhpqbsLby26/H1LqPKYsk9cwqnkGs=', '2021-07-12 03:25:52', 'Y', '2021-07-05 03:25:57', '2021-07-13 15:35:02', NULL),
+	('USR-06782', 'anonymeck', '$2y$10$R2i9S0lwaM0bXPcor1fFw.fXIrwNrnNPuhA7W5A8FwHLZGsACMQq.', 'anonymeckrra@gmail.com', '08098888', 'Mamad', 'S-1 SEDERAJAT', '  ', 'Pekanbaru', '1995-03-30 17:00:00', 'M', 2, 'REGU-62216', NULL, 'USR-06782_05072021102552.jpg', 'uuysGQzCgGXRmlJDpIBKUhTGkaoIl3avyW/dJONdQ1Y=', '2021-07-12 03:25:52', 'Y', '2021-07-05 03:25:57', '2021-07-13 15:35:02', NULL),
 	('USR-12496', 'aprina_suryandari', '$2y$10$/NKyy2Bj2dtzlYj8NjlKtO.1ncfDuTzxex3dUg6L5gYorzePYQgIK', 'aprina.uryandari@gmail.com', '082284487674', 'Aprina Suryandari', 'S-1 TEKNIK INFORMATIKA', ' ', 'Kp. Godang', '1994-03-31 17:00:00', 'W', 2, 'REGU-62216', NULL, 'USR-12496_05072021102639.jpg', 'DyGzJEBwkEAYlDD16XjVtqrIwk/fYsXFwbyRUE6SN0g=', '2021-07-11 15:49:49', 'Y', '2021-07-04 15:49:56', '2021-07-28 14:58:29', '2021-07-05 02:00:14'),
 	('USR-32229', 'affan', '$2y$10$LKb3ZGc9fi/GVU71QwbbouP5CMPG1caR1HwUPXzuYe86ZDeIDYEg.', 'm.affan.r.putra@gmail.com', '082288445265', 'Muhammad Affan Rasya Putra', 'S-1 SEDERAJAT', '        Jl. Sudimoro Harapan Raya, Pekanbaru, Riau', 'Pekanbaru', '1999-12-31 17:00:00', 'M', 2, 'REGU-87851', NULL, 'USR-32229_08072021215544.jpg', 'k7ISKO3zPsKgpI5ZLyWTBqJIDZ09D6hfs/eld80k0R4=', '2021-07-12 07:28:37', 'Y', '2021-07-05 07:28:41', '2021-09-11 02:20:21', NULL),
+	('USR-40829', 'rafi', '$2y$10$Lo7Sj2m.aZ8Y87BiZibvS.kjflME79HyqiJkDyb5geNcbh23bP9CC', 'arisandimuhamad4@gmail.com', '', 'M. Rafi Arsiandi', '', '', '', '0000-00-00 00:00:00', '', 7, '', '', '', '40hwwERFzDYh8wSpIWWs1NMAc9dVzaO8VoMLFRVvMV9EELOqktZOuXXMW9Gg4I8gkyQ8ux4edQFZjGUM83a2KbIOtZAyxwlodgvGVYAzOP958iQb80l7HkCYSEMfPzPrg2jDdTLj6qExOozegtb4Ky', '2021-12-03 07:24:59', 'N', '2021-11-26 07:25:05', '2021-11-26 07:25:05', NULL),
 	('USR-57899', 'hilham', '$2y$10$g25qMpiHC5XtVWWNr28yPOCi1nOl/Ac2R49BSEU7odz.T1HBWArG.', 'oranggilajuga@gmail.com', '085213369345', 'Hilham', 'S-1 ADMINISTRASI NEGARA', '    ', 'Pekanbaru', '1993-08-13 17:00:00', 'M', 3, 'REGU-87851', NULL, 'USR-57899_05072021111415.jpg', 'AezoD8c5ljW0N6eKF2Z+laUmLJUEvcTfRUIuoVB0oe8=', '2021-07-12 04:14:15', 'Y', '2021-07-05 04:14:20', '2021-08-08 12:04:14', '2021-07-05 04:14:20'),
 	('USR-79955', 'sutor_risman', '$2y$10$Dd5NyqbgU35gvc4AVgo6be2W8Qh.m..dbceEL/sLJG88CR.0v9tW.', 'emi.ngasirun@gmail.com', '', 'Sutor Risman', '', '', '', '0000-00-00 00:00:00', '', 3, 'REGU-19932', '', '', 'jbzvhqR6mdphPXx4dCgyPh750YuyYgmltqvKyWexeiKolcEVkF9nz0eaw3dCGQSInkAtEGGn4eeFJNN3ewqY7Q20u8s4oda2pdPfo4SVWcSPrGfmWsXIhdRkuyvAZjX0KETulb3E4mR8uUlM24ebmZ', '2021-11-02 07:01:03', 'Y', '2021-10-26 07:01:08', '2021-10-26 07:02:41', NULL),
 	('USR-91697', 'alfisyahrin', '$2y$10$00yZz8ghdVtwNtsqT.g70ObfkpvMvYi4.ZFmQ9qyhtUo0RCvQxl1u', 'alfisyahrin@gmail.com', '081206102013', 'Alfi Syahrin Tambunan', 'S-1 ILMU KOMUNIKASI', ' Jl. Sonokeling', 'Langsa', '1991-03-29 17:00:00', 'M', 3, 'REGU-62216', NULL, 'USR-91697_13072021212039.jpg', 'NUh22P2tiLI63TTMPaPrcN78oRlL9xDT8Dt7ZbSeXI8mc9eDzlqU9MPCbKL6XQcvUXMtOHhA8BH', '2021-07-20 14:20:39', 'Y', '2021-07-13 14:20:45', '2021-07-13 15:33:04', NULL),
-	('USR-95579', 'albian', '$2y$10$d9BV/RnWNMibVwn1rdQI6.1.wC6YyHDignP3zCNZs34PYx2aX6s3y', 'rahmad.rizki.adi@students.uin-suska.ac.id', '', 'Radevanka Albiansyah Rahmadi', '', '', '', '0000-00-00 00:00:00', '', 7, '', '', '', 'C9Yg6ziIWKsbxjj1voqJJ4pvkQ9vBgWmWUrMQYVVtJ0=', '2021-11-20 16:57:02', 'Y', '2021-11-13 16:57:09', '2021-11-13 16:58:22', NULL),
-	('USR-99999', 'bangameck', '$2y$10$5gaemdHEQtAJewgE.Wonp.R96wYuxQKqD2EGMpOpTUD8KBwctVAz2', 'rahmad.looker@gmail.com', '08316969993', 'Rahmad Riskiadi', 'S-1 TEKNIK INFORMATIKA', ' Jalan Soedimoro', 'Pekanbaroe', '1995-03-30 17:00:00', 'M', 1, '', NULL, NULL, 'exbt2DrO4VeEyr6IfkfnZD7yjtO9J/MG1soRlSHzgYw=', NULL, 'Y', NULL, '2021-07-08 17:23:50', '2021-07-04 13:35:01');
+	('USR-95579', 'albian', '$2y$10$d9BV/RnWNMibVwn1rdQI6.1.wC6YyHDignP3zCNZs34PYx2aX6s3y', 'rahmad.rizki.adi@students.uin-suska.ac.id', '', 'Radevanka Albiansyah Rahmadi', '', '', '', '0000-00-00 00:00:00', '', 7, '', '', '', 'kpDL2uc68Hg0+rk+50moIPK/0Z98l51QQoCaWFRDcwg=', '2021-11-20 16:57:02', 'Y', '2021-11-13 16:57:09', '2021-11-13 16:58:22', NULL),
+	('USR-99999', 'bangameck', '$2y$10$5gaemdHEQtAJewgE.Wonp.R96wYuxQKqD2EGMpOpTUD8KBwctVAz2', 'rahmad.looker@gmail.com', '08316969993', 'Rahmad Riskiadi', 'S-1 TEKNIK INFORMATIKA', ' Jalan Soedimoro', 'Pekanbaroe', '1995-03-30 17:00:00', 'M', 1, '', NULL, NULL, 'ZI0GDWflgEVBI1a/WxU+Ei+XdaXbch3e3KgcJ9Orkt0=', NULL, 'Y', NULL, '2021-07-08 17:23:50', '2021-07-04 13:35:01');
+
+-- membuang struktur untuk table perparkiran.users_sosmed
+CREATE TABLE IF NOT EXISTS `users_sosmed` (
+  `id_sosmed` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usr` varchar(255) DEFAULT NULL,
+  `fb` varchar(100) DEFAULT NULL,
+  `tw` varchar(100) DEFAULT NULL,
+  `ig` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id_sosmed`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Membuang data untuk tabel perparkiran.users_sosmed: ~0 rows (lebih kurang)
 
 -- membuang struktur untuk table perparkiran.views_blog
 CREATE TABLE IF NOT EXISTS `views_blog` (
@@ -813,7 +1028,7 @@ CREATE TABLE IF NOT EXISTS `views_blog` (
   `jumlah` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Membuang data untuk tabel perparkiran.views_blog: ~37 rows (lebih kurang)
+-- Membuang data untuk tabel perparkiran.views_blog: ~29 rows (lebih kurang)
 INSERT INTO `views_blog` (`id_blog`, `time`, `jumlah`) VALUES
 	('86803484694911984167', '2021-10-19', 4),
 	('98653079279646273606', '2021-10-19', 17),
@@ -851,7 +1066,14 @@ INSERT INTO `views_blog` (`id_blog`, `time`, `jumlah`) VALUES
 	('73704880695227223843', '2021-11-13', 1),
 	('98653079279646273606', '2021-11-18', 2),
 	('66251029841392860537', '2021-11-19', 1),
-	('21606794114970369940', '2021-11-22', 1);
+	('21606794114970369940', '2021-11-22', 1),
+	('86803484694911984167', '2021-11-22', 1),
+	('43888224593692599076', '2021-11-24', 1),
+	('66251029841392860537', '2021-11-24', 2),
+	('00998428351696011609', '2021-11-26', 4),
+	('', '2021-11-28', 1),
+	('98653079279646273606', '2021-11-28', 1),
+	('86803484694911984167', '2021-11-28', 1);
 
 -- membuang struktur untuk table perparkiran.views_dokumen
 CREATE TABLE IF NOT EXISTS `views_dokumen` (
@@ -887,7 +1109,16 @@ CREATE TABLE IF NOT EXISTS `views_pengaduan` (
   `jumlah` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Membuang data untuk tabel perparkiran.views_pengaduan: ~0 rows (lebih kurang)
+-- Membuang data untuk tabel perparkiran.views_pengaduan: ~4 rows (lebih kurang)
+INSERT INTO `views_pengaduan` (`id_peng`, `time`, `jumlah`) VALUES
+	('0Q68HF9Z62M7', '2021-11-28', 43),
+	('FKO06S0GIANC', '2021-11-28', 14),
+	('3IQH7Q6JAG85', '2021-11-28', 2),
+	('O4MQZGMM6FCX', '2021-11-28', 28),
+	('0U9UIBREMM0K', '2021-11-28', 11),
+	('4AUTD8SI8F2B', '2021-11-28', 25),
+	('0F3FR4J8FCDP', '2021-11-28', 30),
+	('YE8IKT4VERLA', '2021-11-28', 1);
 
 -- membuang struktur untuk table perparkiran.views_site
 CREATE TABLE IF NOT EXISTS `views_site` (
@@ -895,7 +1126,7 @@ CREATE TABLE IF NOT EXISTS `views_site` (
   `jumlah` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Membuang data untuk tabel perparkiran.views_site: ~20 rows (lebih kurang)
+-- Membuang data untuk tabel perparkiran.views_site: ~9 rows (lebih kurang)
 INSERT INTO `views_site` (`time`, `jumlah`) VALUES
 	('2021-10-11', 1),
 	('2021-10-12', 7),
@@ -916,7 +1147,11 @@ INSERT INTO `views_site` (`time`, `jumlah`) VALUES
 	('2021-11-18', 90),
 	('2021-11-19', 577),
 	('2021-11-21', 848),
-	('2021-11-22', 871);
+	('2021-11-22', 889),
+	('2021-11-24', 264),
+	('2021-11-26', 929),
+	('2021-11-27', 202),
+	('2021-11-28', 1324);
 
 -- membuang struktur untuk table perparkiran.w_instagram
 CREATE TABLE IF NOT EXISTS `w_instagram` (
@@ -924,9 +1159,9 @@ CREATE TABLE IF NOT EXISTS `w_instagram` (
   `embed` longtext
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Membuang data untuk tabel perparkiran.w_instagram: ~1 rows (lebih kurang)
+-- Membuang data untuk tabel perparkiran.w_instagram: ~0 rows (lebih kurang)
 INSERT INTO `w_instagram` (`id`, `embed`) VALUES
-	(1, '<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/CUwGaRyvofc/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/CUwGaRyvofc/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/CUwGaRyvofc/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by DISHUB KOTA PEKANBARU (@upt.perparkiranpku)</a></p></div></blockquote> <script async src="//www.instagram.com/embed.js"></script>');
+	(1, '<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/tv/CVzTY9vAbk9/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/tv/CVzTY9vAbk9/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/tv/CVzTY9vAbk9/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by DISHUB KOTA PEKANBARU (@upt.perparkiranpku)</a></p></div></blockquote> <script async src="//www.instagram.com/embed.js"></script>');
 
 -- membuang struktur untuk table perparkiran.w_twitter
 CREATE TABLE IF NOT EXISTS `w_twitter` (
@@ -935,19 +1170,20 @@ CREATE TABLE IF NOT EXISTS `w_twitter` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Membuang data untuk tabel perparkiran.w_twitter: ~1 rows (lebih kurang)
+-- Membuang data untuk tabel perparkiran.w_twitter: ~0 rows (lebih kurang)
 INSERT INTO `w_twitter` (`id`, `embed`) VALUES
-	(1, '<blockquote class="twitter-tweet"><p lang="in" dir="ltr">INI SIAPA YG BIKIN??? ??? <a href="https://t.co/bK8nv3Vxna">pic.twitter.com/bK8nv3Vxna</a></p>&mdash; cap übermensch (@fajartujuhbelas) <a href="https://twitter.com/fajartujuhbelas/status/1450173208208961541?ref_src=twsrc%5Etfw">October 18, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>');
+	(1, '<blockquote class="twitter-tweet"><p lang="in" dir="ltr">Kepala Dinas Perhubungan (Dishub) Kota Pekanbaru, Yuliarso menegaskan saat ini, perparkiran di Kota Pekanbaru sudah beralih menjadi jasa layanan parkir. <br><br>Sumber: <a href="https://t.co/A41gzO0U1E">https://t.co/A41gzO0U1E</a><a href="https://twitter.com/hashtag/infoPKU?src=hash&amp;ref_src=twsrc%5Etfw">#infoPKU</a> <a href="https://twitter.com/hashtag/Pekanbaru?src=hash&amp;ref_src=twsrc%5Etfw">#Pekanbaru</a> <a href="https://twitter.com/hashtag/parkirpekanbaru?src=hash&amp;ref_src=twsrc%5Etfw">#parkirpekanbaru</a> <a href="https://t.co/VrwsLO7RtL">pic.twitter.com/VrwsLO7RtL</a></p>&mdash; Informasi Pekanbaru (@infoPKU) <a href="https://twitter.com/infoPKU/status/1461682055725522949?ref_src=twsrc%5Etfw">November 19, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>');
 
 -- membuang struktur untuk table perparkiran.w_youtube
 CREATE TABLE IF NOT EXISTS `w_youtube` (
-  `id` int(11) DEFAULT NULL,
-  `embed` longtext
+  `id` int(11) NOT NULL,
+  `embed` longtext,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Membuang data untuk tabel perparkiran.w_youtube: ~1 rows (lebih kurang)
+-- Membuang data untuk tabel perparkiran.w_youtube: ~0 rows (lebih kurang)
 INSERT INTO `w_youtube` (`id`, `embed`) VALUES
-	(1, '<iframe width="853" height="480" src="https://www.youtube.com/embed/BNPSCcx637E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+	(1, '<iframe width="720" height="480" src="https://www.youtube.com/embed/HpWwmb8gi8M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

@@ -208,6 +208,7 @@ if(empty($_SESSION['username']) && empty($_SESSION['password'])){
                                 $_SESSION['password']     = $r['password'];
                                 $_SESSION['nama']  	      = $r['nama'];
                                 $_SESSION['level']        = $r['level'];
+                                $_SESSION['email']        = $r['email'];
                                 $_SESSION['id_usr']  	  = $r['id'];
                                 $_SESSION['foto']  	      = $r['f_usr'];
                                 $_SESSION['regu']  	      = $r['regu'];
@@ -216,7 +217,7 @@ if(empty($_SESSION['username']) && empty($_SESSION['password'])){
                                 if ($_SESSION['level']!='7') {
                                     sweetAlert('dashboard','sukses','Login Sukses...','Halo '.$_SESSION['nama'].', Selamat datang di '.$title.'');
                                 } else {
-                                    sweetAlert('','sukses','Login Sukses...','Halo '.$_SESSION['nama'].', Selamat datang di '.$title.'');
+                                    sweetAlert('p/users/profile','sukses','Login Sukses...','Halo '.$_SESSION['nama'].', Selamat datang di '.$title.'');
                                 }
                             } else {
                                 sweetAlert('login-for-users','error','Login Error !','Maaf akun anda sudah tidak mendapat akses (diblokir) atau belum terverifikasi silahkan cek email anda untuk memverifikasi akun. <br> silahkan menghubungi admin untuk info lebih lanjut.');

@@ -31,6 +31,8 @@
 <script src="<?= base_url(); ?>assets/adm/js/jquery-idle/src/jquery.idletimer.js"></script>
 	<!-- CKEditor5 -->
 <script src="<?= base_url(); ?>vendor/ckeditor5/build/ckeditor.js"></script>
+<!-- Bootstrap Data Table Plugin -->
+<script src="<?= base_url(); ?>assets/web/js/components/bs-datatable.js"></script>
 <script>
 ClassicEditor
     .create(document.querySelector('.editor'), {
@@ -364,4 +366,9 @@ $(document).ready(function() {
 //     } // End if
 //   });
 // });
+
+$(document).ready(function() {
+			$('#datatable1').dataTable();
+			$('#datatable2').dataTable();
+		});
 </script>

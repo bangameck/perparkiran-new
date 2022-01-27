@@ -142,6 +142,7 @@ RewriteRule ^p/out$ .rest_apl.php?f=web_page&m=out [L]
 
 #error 403
 RewriteRule ^authenticationError$ 403.php [L]
+RewriteRule ^NotFound$ 404.php [L]
 
 
 #----------------------Batas User Akses----------------------------#

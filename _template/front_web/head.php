@@ -49,6 +49,7 @@
 <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/web/include/rs-plugin/css/settings.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/web/include/rs-plugin/css/layers.css">
 <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/web/include/rs-plugin/css/navigation.css">
+<link rel="stylesheet" href="<?= base_url(); ?>assets/web/css/components/bs-datatable.css" type="text/css" />
 <style type="text/css">
     #idletimeout {
         background: #FFF;

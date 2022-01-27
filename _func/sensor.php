@@ -1,6 +1,11 @@
 <?php 
 function r_nohp($nohp) {
-    $phone=$nohp;
+    if (empty($nohp)) {
+        $nope = '08123456789';
+    } else {
+        $nope = $nohp;
+    }
+    $phone=$nope;
     $jumlah_sensor=8;
     $setelah_angka_ke=2;
     

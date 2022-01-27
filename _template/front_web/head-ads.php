@@ -7,7 +7,7 @@
 					</div> -->
     <!-- #logo end -->
 
-    <div class="header-misc mb-4 mb-lg-0 d-none d-lg-flex">
+    <div class="header-misc d-none d-lg-flex">
 
         <div class="top-advert">
             <img src="<?= base_url() ?>assets/web/images/magazine/ad.jpg" alt="Ad">

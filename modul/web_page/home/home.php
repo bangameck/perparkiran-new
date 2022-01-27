@@ -269,7 +269,7 @@ $date=date('Y-m-d');
                             ?>
                         </div>
 
-                        <div class="col-12">
+                        <!--<div class="col-12">
                             <div class="fancy-title title-border">
                                 <h3 id="pacifico"><i class="icon-camera3"></i> Galeri Kegiatan</h3>
                             </div>
@@ -277,7 +277,7 @@ $date=date('Y-m-d');
                             <div class="masonry-thumbs grid-container grid-6" data-big="5" data-lightbox="gallery">
 
                                 <?php 
-									$gal = $db->query("SELECT * FROM d_giat WHERE x_giat!='mp4' ORDER BY RAND() LIMIT 20");
+									$gal = $db->query("SELECT * FROM d_giat WHERE x_giat!='mp4' ORDER BY RAND() LIMIT 5");
 									while ($g=$gal->fetch_assoc()) :
 								?>
                                 <a class="grid-item" href="<?= base_url() ?>_uploads/f_giat/<?= $g['n_d_giat']; ?>"
@@ -295,7 +295,7 @@ $date=date('Y-m-d');
                                 </a>
                                 <?php endwhile; ?>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="col-12">
                             <div class="fancy-title title-border">
@@ -485,10 +485,10 @@ $date=date('Y-m-d');
                             ?>
                         </div>
 
-                        <div class="widget clearfix">
+                        <!-- <div class="widget clearfix">
                             <img class="aligncenter" src="<?= base_url() ?>assets/web/images/magazine/ad.png"
                                 alt="Image">
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

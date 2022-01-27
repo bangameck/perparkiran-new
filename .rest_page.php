@@ -14,7 +14,9 @@ require 'vendor/PHPMailer/src/PHPMailer.php';
 require 'vendor/PHPMailer/src/POP3.php';
 require 'vendor/PHPMailer/src/SMTP.php';
 require 'vendor/autoload.php';
-
+if ($_SESSION['level']=='7') {
+    echo '<script>window.location.replace("'.base_url().'NotFound")</script>';
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
