@@ -22,6 +22,7 @@ if($_SESSION['level']=='1') {
                 </ul>
             </li>
             <li><a href="'.base_url().'regu">Regu</a></li>
+            <li><a href="'.base_url().'korlap">Korlap</a></li>
             </ul>
             </li>';
 } else {

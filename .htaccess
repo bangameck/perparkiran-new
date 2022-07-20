@@ -64,6 +64,14 @@ RewriteRule ^regu/delete$ .rest_page.php?f=adm_page&m=regu&a=delete [L]
 RewriteRule ^regu/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=regu&a=detail&id=$1 [L]
 RewriteRule ^regu/detail/([a-zA-Z0-9_-]+)/page/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=regu&a=detail&id=$1&page=$2 [L]
 
+#korlap
+RewriteRule ^korlap$ .rest_page.php?f=adm_page&m=korlap [L]
+RewriteRule ^korlap/add$ .rest_page.php?f=adm_page&m=korlap&a=add [L]
+RewriteRule ^korlap/edit/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=korlap&a=edit&id=$1 [L]
+RewriteRule ^korlap/delete$ .rest_page.php?f=adm_page&m=korlap&a=delete [L]
+RewriteRule ^korlap/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=korlap&a=detail&id=$1 [L]
+RewriteRule ^korlap/detail/([a-zA-Z0-9_-]+)/page/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=korlap&a=detail&id=$1&page=$2 [L]
+
 #giat
 RewriteRule ^giat$ .rest_page.php?f=adm_page&m=giat [L]
 RewriteRule ^giat/add$ .rest_page.php?f=adm_page&m=giat&a=add [L]

@@ -7,6 +7,7 @@
 * @desc [description]
 */
 
+
 //Acak Angka
 function uid($jml_kar)
 {
