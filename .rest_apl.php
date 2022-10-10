@@ -6,7 +6,6 @@ require 'vendor/PHPMailer/src/PHPMailer.php';
 require 'vendor/PHPMailer/src/POP3.php';
 require 'vendor/PHPMailer/src/SMTP.php';
 // require 'vendor/autoload.php';
-
 $time = date('Y-m-d');
 $cek = $db->query("SELECT * FROM views_site WHERE time='$time'");
 $jml = $cek->num_rows;
@@ -141,7 +140,7 @@ if ($jml == '0') {
 
         <?php modul('web_page',$_GET['m']) ?>
         <!-- #content end -->
-        <div class="section lazy mt-5 mb-0 p-0 min-vh-75" data-bg="<?= base_url(); ?>assets/web/images/parkirderek.png"
+        <div class="section lazy mt-5 mb-0 p-0 min-vh-75" data-bg="https://lh4.googleusercontent.com/trZiteGgCBkaNY0_LRuDtWnGujIhJsDbITYPBongJhXpWwSEFqHtvTWszqn0FbAEwpZ_gCptKDsXxsvphaagzBE=w16383"
             style="background-position: center center; background-repeat: no-repeat; background-size: cover;">
             <div class="shape-divider" data-shape="cliff" data-height="150" data-flip-vertical="true"></div>
         </div>

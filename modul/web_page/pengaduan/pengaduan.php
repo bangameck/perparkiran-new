@@ -865,7 +865,7 @@ $pic5 = $db->query("SELECT * FROM d_pengaduan WHERE id_peng='$dt5[id_peng]' ORDE
             <div id="oc-portfolio" class="owl-carousel portfolio-carousel carousel-widget" data-pagi="false"
                 data-items-xs="1" data-items-sm="2" data-items-md="3" data-items-lg="4">
                 <?php
-                            $gambar = $db->query("SELECT * FROM selesai a, d_selesai b, pengaduan c WHERE a.id_sel=b.id_sel AND a.id_peng=c.id_peng ORDER BY RAND() LIMIT 10");
+                            $gambar = $db->query("SELECT * FROM selesai a, d_selesai b WHERE a.id_sel=b.id_sel ORDER BY RAND() LIMIT 10");
                             while ($g=$gambar->fetch_assoc()) :
                             ?>
                 <div class="portfolio-item">

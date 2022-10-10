@@ -3,11 +3,6 @@ include '_func/identity.php';
 $a=$_GET['a'];
 switch ($a) {
     default:
-	if (empty($_SESSION['username'])){
-		echo '<script>window.location.replace("'.base_url().'authenticationError")</script>';
-	} else if ($_SESSION['level']!='7') {
-		echo '<script>window.location.replace("'.base_url().'profile/'.$_SESSION['username'].'")</script>';
-	}
 	$d=$db->query("SELECT * FROM users WHERE id='$_SESSION[id_usr]'")->fetch_assoc();
 	if (empty($d['foto'])) {
 		$ft='default.png';
@@ -40,99 +35,150 @@ switch ($a) {
 									<div class="tabs tabs-alt clearfix" id="tabs-profile">
 
 										<ul class="tab-nav clearfix">
-											<li><a href="#tab-posts"><i class="icon-pencil2"></i> Pengaduan</a></li>
+											<li><a href="#tab-feeds"><i class="icon-rss2"></i> Feeds</a></li>
+											<li><a href="#tab-posts"><i class="icon-pencil2"></i> Posts</a></li>
 											<li><a href="#tab-replies"><i class="icon-reply"></i> Replies</a></li>
 											<li><a href="#tab-connections"><i class="icon-users"></i> Connections</a></li>
-											<li><a href="#tab-feeds"><i class="icon-rss2"></i> Session Login</a></li>
 										</ul>
 
 										<div class="tab-container">
 
 											<div class="tab-content clearfix" id="tab-feeds">
 
-												<p></p>
-											<div class="table-responsive">
-											<table id="datatable1" class="table table-striped table-bordered" cellspacing="0">
+												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium harum ea quo! Nulla fugiat earum, sed corporis amet iste non, id facilis dolorum, suscipit, deleniti ea. Nobis, temporibus magnam doloribus. Reprehenderit necessitatibus esse dolor tempora ea unde, itaque odit. Quos.</p>
+
+												<table class="table table-bordered table-striped">
 												  <thead>
 													<tr>
 													  <th>Time</th>
-													  <th>Operation System</th>
-													  <th>Browser</th>
-													  <th>IP Address</th>
+													  <th>Activity</th>
 													</tr>
 												  </thead>
 												  <tbody>
-													  <?php 
-													 	$datprof = $db->query("SELECT * FROM session_log WHERE username='$_SESSION[username]' ORDER BY 'time' DESC");
-													 	while($dp=$datprof->fetch_assoc()) : 
-													  ?>
 													<tr>
 													  <td>
-														<?= $dp['time'] ?>
+														<code>5/23/2021</code>
 													  </td>
-													  <td><?= $dp['os']; ?></td>
-													  <td><?= $dp['browser']; ?></td>
-													  <td><code><?= $dp['ip']; ?></code></td>
+													  <td>Payment for VPS2 completed</td>
 													</tr>
-													<?php endwhile; ?>
-													
+													<tr>
+													  <td>
+														<code>5/23/2021</code>
+													  </td>
+													  <td>Logged in to the Account at 16:33:01</td>
+													</tr>
+													<tr>
+													  <td>
+														<code>5/22/2021</code>
+													  </td>
+													  <td>Logged in to the Account at 09:41:58</td>
+													</tr>
+													<tr>
+													  <td>
+														<code>5/21/2021</code>
+													  </td>
+													  <td>Logged in to the Account at 17:16:32</td>
+													</tr>
+													<tr>
+													  <td>
+														<code>5/18/2021</code>
+													  </td>
+													  <td>Logged in to the Account at 22:53:41</td>
+													</tr>
 												  </tbody>
 												</table>
-											</div>
+
 											</div>
 											<div class="tab-content clearfix" id="tab-posts">
 
 												<!-- Posts
 												============================================= -->
-												<p></p>
-												<div class="table-responsive">
-											<table id="datatable2" class="table table-bordered" cellspacing="0">
-													<thead>
-														<tr>
-															<th class="text-center">No</th>
-															<th class="text-center">Pengaduan</th>
-															<th class="text-center">Time</th>
-															<th class="text-center">Status</th>
-															<th class="text-center">Details</th>
-														</tr>
-													</thead>
-													<tbody>
-														<?php 
-															$pengprof = $db->query("SELECT * FROM pengaduan WHERE email_p='$_SESSION[email]' ORDER BY created_at DESC");
-															$no=1;
-															while($pp=$pengprof->fetch_assoc()) : 
-																if ($pp['status']=='P') {
-																	$st 	=	'<div class="badge alert-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Status Pengaduan">Proses Pengecekan Oleh Admin</div>';
-																	
-																} else if ($pp['status']=='T') {
-																	$regu 	= $db->query("SELECT * FROM pengaduan a, regu b WHERE a.regu=b.id_regu AND a.id_peng='$pp[id_peng]'")->fetch_assoc();
-																	
-																	$st 	=	'<div class="badge alert-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Status Pengaduan">Diteruskan</div>';
-																	
-																} else if ($pp['status']=='S') {
-																	$regu 	= $db->query("SELECT * FROM pengaduan a, regu b WHERE a.regu=b.id_regu AND a.id_peng='$pp[id_peng]'")->fetch_assoc();
-																	$sel	= $db->query("SELECT * FROM pengaduan a, selesai b WHERE a.id_peng=b.id_peng AND a.id_peng='$pp[id_peng]'")->fetch_assoc();
-																	
-																	$st 	=	'<div class="badge alert-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Status Pengaduan">Selesai</div>';
-																	
-																} else  {
-																	$st 	=	'<div class="badge alert-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Status Pengaduan">Ditolak</div>';
-																}
-														?>
-														<tr>
-															<td>
-																<?= $no++; ?>
-															</td>
-															<td><?= $pp['j_peng']; ?></td>
-															<td><?= $pp['created_at']; ?></td>
-															<td class="text-center"><?= $st; ?></td>
-															<td><a href="<?= base_url(); ?>p/pengaduan/<?= $pp['slug']; ?>" class="badge alert-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Klik untuk melihat detail"><i class="icon-line2-info"></i> Detail</a></td>
-														</tr>
-														<?php endwhile; ?>
-														
-													</tbody>
-													</table>
-											</div>
+												<div class="row gutter-40 posts-md mt-4">
+
+													<div class="entry col-12">
+														<div class="grid-inner row align-items-center g-0">
+															<div class="col-md-4">
+																<a class="entry-image" href="images/blog/full/17.jpg" data-lightbox="image"><img src="images/blog/small/17.jpg" alt="Standard Post with Image"></a>
+															</div>
+															<div class="col-md-8 ps-md-4">
+																<div class="entry-title title-sm">
+																	<h3><a href="blog-single.html">This is a Standard post with a Preview Image</a></h2>
+																</div>
+																<div class="entry-meta">
+																	<ul>
+																		<li><i class="icon-calendar3"></i> 10th Feb 2021</li>
+																		<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
+																		<li><a href="#"><i class="icon-camera-retro"></i></a></li>
+																	</ul>
+																</div>
+																<div class="entry-content">
+																	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+																	<a href="blog-single.html" class="more-link">Read More</a>
+																</div>
+															</div>
+														</div>
+													</div>
+
+													<div class="entry col-12">
+												   		<div class="grid-inner row align-items-center g-0">
+															<div class="col-md-4">
+																<div class="entry-image">
+																	<iframe src="https://player.vimeo.com/video/87701971" width="500" height="281" allow="autoplay; fullscreen" allowfullscreen></iframe>
+																</div>
+															</div>
+															<div class="col-md-8 ps-md-4">
+																<div class="entry-title title-sm">
+																	<h3><a href="blog-single-full.html">This is a Standard post with an Embedded Video</a></h2>
+																</div>
+																<div class="entry-meta">
+																	<ul>
+																		<li><i class="icon-calendar3"></i> 16th Feb 2021</li>
+																		<li><a href="blog-single-full.html#comments"><i class="icon-comments"></i> 19</a></li>
+																		<li><a href="#"><i class="icon-film"></i></a></li>
+																	</ul>
+																</div>
+																<div class="entry-content">
+																	<p>Asperiores, tenetur, blanditiis, quaerat odit ex exercitationem.</p>
+																	<a href="blog-single-full.html" class="more-link">Read More</a>
+																</div>
+															</div>
+														</div>
+													</div>
+
+													<div class="entry col-12">
+														<div class="grid-inner row align-items-center g-0">
+															<div class="col-md-4">
+																<div class="entry-image">
+																	<div class="fslider" data-arrows="false" data-lightbox="gallery">
+																		<div class="flexslider">
+																			<div class="slider-wrap">
+																				<div class="slide"><a href="images/blog/full/10.jpg" data-lightbox="gallery-item"><img src="images/blog/small/10.jpg" alt="Standard Post with Gallery"></a></div>
+																				<div class="slide"><a href="images/blog/full/20.jpg" data-lightbox="gallery-item"><img src="images/blog/small/20.jpg" alt="Standard Post with Gallery"></a></div>
+																				<div class="slide"><a href="images/blog/full/21.jpg" data-lightbox="gallery-item"><img src="images/blog/small/21.jpg" alt="Standard Post with Gallery"></a></div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-8 ps-md-4">
+																<div class="entry-title title-sm">
+																	<h3><a href="blog-single-small.html">This is a Standard post with a Slider Gallery</a></h3>
+																</div>
+																<div class="entry-meta">
+																	<ul>
+																		<li><i class="icon-calendar3"></i> 24th Feb 2021</li>
+																		<li><a href="blog-single-small.html#comments"><i class="icon-comments"></i> 21</a></li>
+																		<li><a href="#"><i class="icon-picture"></i></a></li>
+																	</ul>
+																</div>
+																<div class="entry-content">
+																	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+																	<a href="blog-single-small.html" class="more-link">Read More</a>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
 
 											</div>
 											<div class="tab-content clearfix" id="tab-replies">

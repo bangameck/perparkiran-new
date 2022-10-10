@@ -46,7 +46,7 @@ $host   = 'smtp.gmail.com';
 $port   = 587;
 $secure = 'tls';
 $email_ = 'rra.code@gmail.com';
-$pmail  = 'njapzbafumunxpfq';
+$pmail  = '@m3ck1nd4h20122020';
 $logo   = 'assets/adm/images/logo/logo.png';
 
 // footer;

@@ -1,11 +1,12 @@
-<?php 
+<?php
+
 /**
-* @author [bangameck.rra]
-* @email [rahmad.looker@gmail.com]
-* @create date 2021-06-11 14:40:39
-* @modify date 2021-06-11 14:40:39
-* @desc [description]
-*/
+ * @author [bangameck.rra]
+ * @email [rahmad.looker@gmail.com]
+ * @create date 2021-06-11 14:40:39
+ * @modify date 2021-06-11 14:40:39
+ * @desc [description]
+ */
 
 include '_func/func.php';
 require 'vendor/PHPMailer/src/Exception.php';
@@ -14,8 +15,8 @@ require 'vendor/PHPMailer/src/PHPMailer.php';
 require 'vendor/PHPMailer/src/POP3.php';
 require 'vendor/PHPMailer/src/SMTP.php';
 require 'vendor/autoload.php';
-if ($_SESSION['level']=='7') {
-    echo '<script>window.location.replace("'.base_url().'NotFound")</script>';
+if ($_SESSION['level'] == '7') {
+    echo '<script>window.location.replace("' . base_url() . 'NotFound")</script>';
 }
 ?>
 <!DOCTYPE html>
@@ -23,60 +24,59 @@ if ($_SESSION['level']=='7') {
 <?= template('head'); ?>
 
 <body onload="startTime()">
-    <?php 
+    <?php
     if (isset($_SESSION['username'])) {
         echo '<div id="idletimeout">
         Kami memantau tidak adanya aktifitas dalam 20 menit, anda akan otomatis logout dalam
         <span><!-- countdown place holder --></span>&nbsp;detik.
         <a id="idletimeout-resume" href="">klik disini untuk memperpanjang waktu session</a
       >.
-    </div>' ;
+    </div>';
     }
     ?>
     <!-- preloader -->
-    <!-- <div class="preloader">
+    <div class="preloader">
         <div class="loading">
             <img src="<?= base_url(); ?>assets/adm/images/logoparkir.gif" width="80">
             <script language="JavaScript">
-            var text = "Please Wait...";
-            var delay = 100;
-            var currentChar = 1;
-            var destination = "[none]";
+                var text = "Please Wait...";
+                var delay = 100;
+                var currentChar = 1;
+                var destination = "[none]";
 
-            function type() {
-                //if (document.all)
-                {
-                    var dest = document.getElementById(destination);
-                    if (dest) // && dest.innerHTML)
+                function type() {
+                    //if (document.all)
                     {
-                        dest.innerHTML = text.substr(0, currentChar) + "<blink>_</blink>";
-                        currentChar++;
-                        if (currentChar > text.length) {
-                            currentChar = 1;
-                            setTimeout("type()", 500);
-                        } else {
-                            setTimeout("type()", delay);
+                        var dest = document.getElementById(destination);
+                        if (dest) // && dest.innerHTML)
+                        {
+                            dest.innerHTML = text.substr(0, currentChar) + "<blink>_</blink>";
+                            currentChar++;
+                            if (currentChar > text.length) {
+                                currentChar = 1;
+                                setTimeout("type()", 500);
+                            } else {
+                                setTimeout("type()", delay);
+                            }
                         }
                     }
                 }
-            }
 
-            function startTyping(textParam, delayParam, destinationParam) {
-                text = textParam;
-                delay = delayParam;
-                currentChar = 1;
-                destination = destinationParam;
-                type();
-            }
+                function startTyping(textParam, delayParam, destinationParam) {
+                    text = textParam;
+                    delay = delayParam;
+                    currentChar = 1;
+                    destination = destinationParam;
+                    type();
+                }
             </script> <b>
-                <div 0px="" 12px="" arial="" color:="" ff0000="" font:="" id="textDestination" margin:=""
-                    style="background-color: none;"></div>
+                <div 0px="" 12px="" arial="" color:="" ff0000="" font:="" id="textDestination" margin:="" style="background-color: none;"></div>
             </b>
             <script language="JavaScript">
-            javascript: startTyping(text, 10, "textDestination");
+                javascript: startTyping(text, 10, "textDestination");
             </script>
         </div>
-    </div> -->
+    </div>
     <!-- <div class="loader-wrapper">
         <div class="loader-index"><span></span></div>
         <svg>
@@ -119,12 +119,11 @@ if ($_SESSION['level']=='7') {
                             <div class="mode"><i class="fa fa-moon-o"></i></div>
                         </li>
                         <li>
-                          <a href="<?= base_url(); ?>"><i data-feather="globe"></i></a>
+                            <a href="<?= base_url(); ?>"><i data-feather="globe"></i></a>
                         </li>
                         <!-- notif 3  -->
                         <!-- notif 4  -->
-                        <li class="maximize"><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i
-                                    data-feather="maximize"></i></a>
+                        <li class="maximize"><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a>
                         </li>
                         <!-- user profile menu  -->
                         <?= template('user-profile-menu'); ?>
@@ -157,7 +156,7 @@ if ($_SESSION['level']=='7') {
                     <?= template('menu'); ?>
                 </div>
                 <!-- Page Sidebar Ends-->
-                <?php modul('adm_page',$_GET['m']); ?>
+                <?php modul('adm_page', $_GET['m']); ?>
                 <!-- footer start-->
                 <?= template('footer'); ?>
             </div>
