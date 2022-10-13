@@ -65,7 +65,7 @@ function aut($level = array())
     global $base_url;
     if (!in_array($_SESSION['level'], $level)) {
         echo "<script>
-				window.location='" . $base_url . "authenticationError';</script>";
+				window.location='" . $base_url . "403-Errors';</script>";
         exit;
     }
 }
@@ -91,7 +91,7 @@ function aut($level = array())
 // }
 
 //modul
-function modul($f,$m)
+function modul($f, $m)
 {
     global $db;
     global $base_url;
@@ -101,5 +101,3 @@ function modul($f,$m)
         return include "modul/$f/$m/$m.php";
     }
 }
-
-?>

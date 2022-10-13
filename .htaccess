@@ -67,6 +67,8 @@ RewriteRule ^regu/detail/([a-zA-Z0-9_-]+)/page/([a-zA-Z0-9_-]+)$ .rest_page.php?
 #korlap
 RewriteRule ^korlap$ .rest_page.php?f=adm_page&m=korlap [L]
 RewriteRule ^korlap/add$ .rest_page.php?f=adm_page&m=korlap&a=add [L]
+RewriteRule ^korlap/add-ktp$ .rest_page.php?f=adm_page&m=korlap&a=add-ktp [L]
+RewriteRule ^check_korlap$ modul/adm_page/korlap/cek_nik_korlap.php [L]
 RewriteRule ^korlap/edit/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=korlap&a=edit&id=$1 [L]
 RewriteRule ^korlap/delete$ .rest_page.php?f=adm_page&m=korlap&a=delete [L]
 RewriteRule ^korlap/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=korlap&a=detail&id=$1 [L]
@@ -149,8 +151,13 @@ RewriteRule ^p/users/profile$ .rest_apl.php?f=web_page&m=profile [L]
 RewriteRule ^p/out$ .rest_apl.php?f=web_page&m=out [L]
 
 #error 403
-RewriteRule ^authenticationError$ 403.php [L]
-RewriteRule ^NotFound$ 404.php [L]
+
+RewriteRule ^400-Errors$ 400.php [L]
+RewriteRule ^401-Errors$ 401.php [L]
+RewriteRule ^403-Errors$ 403.php [L]
+RewriteRule ^404-Errors$ 404.php [L]
+RewriteRule ^500-Errors$ 500.php [L]
+RewriteRule ^503-Errors$ 503.php [L]
 
 
 #----------------------Batas User Akses----------------------------#

@@ -1,4 +1,4 @@
-<?php 
+<?php
 include '_func/func.php';
 ?>
 <!DOCTYPE html>
@@ -9,17 +9,14 @@ include '_func/func.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Sistem Informasi Perparkiran Dinas Perhubungan Kota Pekanbaru">
-    <meta name="keywords"
-        content="Sistem Informasi Perparkiran Kota Pekanbaru, Parkir Pekanbaru, UPT Parkir Pekanbaru, UPT Perparkiran Pekanbaru, UPTD Parkir Pekanbaru, Dinas Perhubungan Kota Pekanbaru, Dishub Pku, Jumlah Jukir Pekanbaru, Jukir Pekanbaru">
+    <meta name="keywords" content="Sistem Informasi Perparkiran Kota Pekanbaru, Parkir Pekanbaru, UPT Parkir Pekanbaru, UPT Perparkiran Pekanbaru, UPTD Parkir Pekanbaru, Dinas Perhubungan Kota Pekanbaru, Dishub Pku, Jumlah Jukir Pekanbaru, Jukir Pekanbaru">
     <meta name="author" content="uptperparkiranpekanbaru">
     <link rel="icon" href="<?= base_url(); ?>assets/adm/images/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="<?= base_url(); ?>assets/adm/images/favicon.png" type="image/x-icon">
     <title>Error 401 | Sistem Informasi Perparkian</title>
     <!-- Google font-->
-    <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/adm/css/font-awesome.css">
     <!-- ico-font-->
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/adm/css/vendors/icofont.css">
@@ -48,15 +45,14 @@ include '_func/func.php';
     <div class="page-wrapper compact-wrapper" id="pageWrapper">
         <!-- error-401 start-->
         <div class="error-wrapper">
-            <div class="container"><img class="img-100" src="<?= base_url(); ?>assets/adm/images/other-images/sad.png"
-                    alt="">
+            <div class="container"><img class="img-100" src="<?= base_url(); ?>assets/adm/images/other-images/sad.png" alt="">
                 <div class="error-heading">
                     <h2 class="headline font-warning">401</h2>
                 </div>
                 <div class="col-md-8 offset-md-2">
                     <p class="sub-content"> <b>AUTHORIZATION REQUIRED</b> <br> "Browser tak bisa memberikan bukti kewenangan yang sah." <br><b><i>UPT Perparkiran Dinas Perhubungan Kota Pekanbaru</i></b></p>
                 </div>
-                <div><a class="btn btn-warning-gradien btn-lg" onclick="history.back()">KEMBALI</div>
+                <div><a class="btn btn-warning-gradien btn-lg" onclick="history.back()">KEMBALI</a></div>
             </div>
         </div>
         <!-- error-401 end-->

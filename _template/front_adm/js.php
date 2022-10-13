@@ -112,335 +112,369 @@
 <!-- CKEditor5 -->
 <script src="<?= base_url(); ?>vendor/ckeditor5/build/ckeditor.js"></script>
 <script>
-ClassicEditor
-    .create(document.querySelector('.editor'), {
+    ClassicEditor
+        .create(document.querySelector('.editor'), {
 
-        toolbar: {
-            items: [
-                '|',
-                'bold',
-                'italic',
-                'underline',
-                'link',
-                'fontFamily',
-                'fontSize',
-                'fontColor',
-                'heading',
-                'alignment',
-                'bulletedList',
-                'numberedList',
-                '|',
-                'outdent',
-                'indent',
-                '|',
-                'specialCharacters',
-                'blockQuote',
-                'undo',
-                'redo'
-            ]
+            toolbar: {
+                items: [
+                    '|',
+                    'bold',
+                    'italic',
+                    'underline',
+                    'link',
+                    'fontFamily',
+                    'fontSize',
+                    'fontColor',
+                    'heading',
+                    'alignment',
+                    'bulletedList',
+                    'numberedList',
+                    '|',
+                    'outdent',
+                    'indent',
+                    '|',
+                    'specialCharacters',
+                    'blockQuote',
+                    'undo',
+                    'redo'
+                ]
+            },
+            language: 'id',
+            licenseKey: '',
+        })
+        .then(editor => {
+            window.editor = editor;
+        })
+        .catch(error => {
+            console.error('Oops, something went wrong!');
+            console.error(
+                'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:'
+            );
+            console.warn('Build id: 4niq24h1ezm1-1jtyozutymab');
+            console.error(error);
+        });
+</script>
+<script>
+    //IdleTime
+    $.idleTimeout("#idletimeout", "#idletimeout a", {
+        idleAfter: 1200,
+        pollingInterval: 2,
+        keepAliveURL: "<?= base_url(); ?>",
+        serverResponseEquals: "OK",
+        onTimeout: function() {
+            $(this).slideUp();
+            window.location = "<?= base_url(); ?>out";
         },
-        language: 'id',
-        licenseKey: '',
-    })
-    .then(editor => {
-        window.editor = editor;
-    })
-    .catch(error => {
-        console.error('Oops, something went wrong!');
-        console.error(
-            'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:'
-            );
-        console.warn('Build id: 4niq24h1ezm1-1jtyozutymab');
-        console.error(error);
+        onIdle: function() {
+            $(this).slideDown(); // show the warning bar
+        },
+        onCountdown: function(counter) {
+            $(this).find("span").html(counter); // update the counter
+        },
+        onResume: function() {
+            $(this).slideUp(); // hide the warning bar
+        },
     });
-</script>
-<script>
-//IdleTime
-$.idleTimeout("#idletimeout", "#idletimeout a", {
-    idleAfter: 1200,
-    pollingInterval: 2,
-    keepAliveURL: "<?= base_url(); ?>",
-    serverResponseEquals: "OK",
-    onTimeout: function() {
-        $(this).slideUp();
-        window.location = "<?= base_url(); ?>out";
-    },
-    onIdle: function() {
-        $(this).slideDown(); // show the warning bar
-    },
-    onCountdown: function(counter) {
-        $(this).find("span").html(counter); // update the counter
-    },
-    onResume: function() {
-        $(this).slideUp(); // hide the warning bar
-    },
-});
 
-//hanya angka
-function hanyaAngka(evt) {
-    var charCode = (evt.which) ? evt.which : event.keyCode
-    if (charCode > 31 && (charCode < 48 || charCode > 57))
+    //hanya angka
+    function hanyaAngka(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
 
-        return false;
-    return true;
-}
-
-//username huruf kecil tanpa space
-$("#username").on({
-    keydown: function(e) {
-        if (e.which === 32)
             return false;
-    },
-    keyup: function() {
-        this.value = this.value.toLowerCase();
-    },
-    change: function() {
-        this.value = this.value.replace(/\s/g, "");
-
+        return true;
     }
-});
 
-//Lihat Password
-$(document).ready(function() {
-    $('.view_pass').click(function() {
+    //username huruf kecil tanpa space
+    $("#username").on({
+        keydown: function(e) {
+            if (e.which === 32)
+                return false;
+        },
+        keyup: function() {
+            this.value = this.value.toLowerCase();
+        },
+        change: function() {
+            this.value = this.value.replace(/\s/g, "");
+
+        }
+    });
+
+    //Lihat Password
+    $(document).ready(function() {
+        $('.view_pass').click(function() {
+            if ($(this).is(':checked')) {
+                $('.password').attr('type', 'text');
+            } else {
+                $('.password').attr('type', 'password');
+            }
+        });
+    });
+
+    //Cek Username ke Database
+    $(document).ready(function() {
+        $("#username").change(function() {
+            $("#message").html(
+                "<li><i class='fa fa-spinner text-success fa-spin' ></i> check username...</li>");
+
+            var username = $("#username").val();
+
+            $.ajax({
+                type: "post",
+                url: "<?= base_url(); ?>check_users",
+                data: "username=" + username,
+                success: function(data) {
+                    if (data == 0) {
+                        $("#message").html(
+                            "<i class='fa fa-check text-success'></i> Username Tersedia.");
+                    } else {
+                        $("#message").html(
+                            "<i class='fa fa-times text-danger'></i> Username Tidak Tersedia."
+                        );
+                    }
+                }
+            });
+
+        });
+
+    });
+
+    //cek email
+    $(document).ready(function() {
+        $("#email").change(function() {
+            $("#message_email").html(
+                "<li><i class='fa fa-spinner text-success fa-spin' ></i> check Email...</li>");
+
+            var email = $("#email").val();
+
+            $.ajax({
+                type: "post",
+                url: "<?= base_url(); ?>check_email",
+                data: "email=" + email,
+                success: function(data) {
+                    if (data == 0) {
+                        $("#message_email").html(
+                            "<i class='fa fa-check text-success'></i> Email Tersedia.");
+                    } else {
+                        $("#message_email").html(
+                            "<i class='fa fa-times text-danger'></i> Email Tidak Tersedia."
+                        );
+                    }
+                }
+            });
+        });
+    });
+
+    //cek nik korlap
+    $(document).ready(function() {
+        $("#nik_korlap").change(function() {
+            $("#message_korlap").html(
+                "<li><i class='fa fa-spinner text-success fa-spin' ></i> Check NIK Korlap...</li>");
+
+            var nik_korlap = $("#nik_korlap").val();
+
+            $.ajax({
+                type: "post",
+                url: "<?= base_url(); ?>check_korlap",
+                data: "nik_korlap=" + nik_korlap,
+                success: function(data) {
+                    if (data == 0) {
+                        $("#message_korlap").html(
+                            "<i class='fa fa-check text-success'></i> NIK ini tersedia (belum pernah mendaftar Korlap).");
+                    } else {
+                        $("#message_korlap").html(
+                            "<i class='fa fa-times text-danger'></i> NIK Korlap sudah terdaftar didalam database.!"
+                        );
+                    }
+                }
+            });
+
+        });
+
+    });
+
+    //autofocus form
+    function SetFocus() {
+        var input = document.getElementById("theFieldID");
+        input.focus();
+    }
+
+    //Dropify
+    $('.dropify').dropify({
+        messages: {
+            'default': 'Seret dan letakkan file atau klik disini',
+            'replace': 'Seret dan letakkan file atau klik untuk mengubah',
+            'error': 'Ooops, sesuatu yang salah terjadi.'
+        },
+        error: {
+            'fileSize': 'Ukuran file terlalu besar ({{ value }} max).',
+            'minWidth': 'The image width is too small ({{ value }}}px min).',
+            'maxWidth': 'The image width is too big ({{ value }}}px max).',
+            'minHeight': 'The image height is too small ({{ value }}}px min).',
+            'maxHeight': 'The image height is too big ({{ value }}px max).',
+            'imageFormat': 'Format gambar tidak sesuai ({{ value }} only).'
+        }
+    });
+
+    //Preview Gambar
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#imgPreview').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#imgUpload").change(function() {
+        readURL(this);
+    });
+
+
+    //
+    function hapustemp() {
+        event.preventDefault();
+        var form = event.target.form;
+        Swal.fire({
+            title: 'Apakah kamu yakin?',
+            text: 'Data yang sudah blokir tidak akan bisa login kembali.!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'Tidak',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Berhasil diblokir!',
+                    'Data Berhasil diblokir. hanya admin yang dapat mengubah status pemblokiran.',
+                    'success'
+                );
+                window.setTimeout(function() {
+                    form.submit();
+                }, 2000)
+            }
+        });
+    }
+
+    function hapus() {
+        event.preventDefault();
+        var form = event.target.form;
+        Swal.fire({
+            title: 'Apakah kamu yakin?',
+            text: 'Menghapus data secara permanent berarti menghapus seluruh data ini, dan data tidak akan pernah kembali !',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'Tidak',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Terhapus!',
+                    'Data Berhasil dihapus.!',
+                    'success'
+                );
+                window.setTimeout(function() {
+                    form.submit();
+                }, 2000)
+            }
+        })
+    }
+
+    function hapus_dokumentasi() {
+        event.preventDefault();
+        var form = event.target.form;
+        Swal.fire({
+            title: 'Apakah kamu yakin?',
+            text: 'Jika Dokumentasi dihapus, dokumentasi ini tidak akan perah dapat dilihat lagi, dan terhapus secara permanent.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'Tidak',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Terhapus!',
+                    'Dokumentasi Berhasil dihapus.!',
+                    'success'
+                );
+                window.setTimeout(function() {
+                    form.submit();
+                }, 2000)
+            }
+        })
+    }
+
+    function aktif() {
+        event.preventDefault();
+        var form = event.target.form;
+        Swal.fire({
+            title: 'Apakah kamu yakin?',
+            text: 'Apakah anda yakin untuk mengaktifkan akun ini kembali ?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'Tidak',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Berhasil!',
+                    'User kembali aktif dan dapat mengakses aplikasi.',
+                    'success'
+                );
+                window.setTimeout(function() {
+                    form.submit();
+                }, 2000)
+            }
+        })
+    }
+
+    function non() {
+        event.preventDefault();
+        var form = event.target.form;
+        Swal.fire({
+            title: 'Apakah kamu yakin?',
+            text: 'Apakah anda yakin untuk memblokir akun ini ? jika akun ini di blokir, ia tidak akan dapat mengkases aplikasi.!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'Tidak',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Berhasil!',
+                    'User berhasil diblokir, kamu dapat membuka blokir kapan saja, selama akun tidak dihapus permanen.',
+                    'success'
+                );
+                window.setTimeout(function() {
+                    form.submit();
+                }, 2000)
+            }
+        })
+    }
+
+    $('#checkbox1_terms_and_conditions').click(function() {
+        //If the checkbox is checked.
         if ($(this).is(':checked')) {
-            $('.password').attr('type', 'text');
+            //Enable the submit button.
+            $('#submit_button').attr("disabled", false);
         } else {
-            $('.password').attr('type', 'password');
+            //If it is not checked, disable the button.
+            $('#submit_button').attr("disabled", true);
         }
     });
-});
-
-//Cek Username ke Database
-$(document).ready(function() {
-    $("#username").change(function() {
-        $("#message").html(
-            "<li><i class='fa fa-spinner text-success fa-spin' ></i> check username...</li>");
-
-        var username = $("#username").val();
-
-        $.ajax({
-            type: "post",
-            url: "<?= base_url(); ?>check_users",
-            data: "username=" + username,
-            success: function(data) {
-                if (data == 0) {
-                    $("#message").html(
-                        "<i class='fa fa-check text-success'></i> Username Tersedia.");
-                } else {
-                    $("#message").html(
-                        "<i class='fa fa-times text-danger'></i> Username Tidak Tersedia."
-                    );
-                }
-            }
-        });
-
-    });
-
-});
-
-//cek email
-$(document).ready(function() {
-    $("#email").change(function() {
-        $("#message_email").html(
-            "<li><i class='fa fa-spinner text-success fa-spin' ></i> check Email...</li>");
-
-        var email = $("#email").val();
-
-        $.ajax({
-            type: "post",
-            url: "<?= base_url(); ?>check_email",
-            data: "email=" + email,
-            success: function(data) {
-                if (data == 0) {
-                    $("#message_email").html(
-                        "<i class='fa fa-check text-success'></i> Email Tersedia.");
-                } else {
-                    $("#message_email").html(
-                        "<i class='fa fa-times text-danger'></i> Email Tidak Tersedia."
-                    );
-                }
-            }
-        });
-    });
-});
-
-//Dropify
-$('.dropify').dropify({
-    messages: {
-        'default': 'Seret dan letakkan file atau klik disini',
-        'replace': 'Seret dan letakkan file atau klik untuk mengubah',
-        'error': 'Ooops, sesuatu yang salah terjadi.'
-    },
-    error: {
-        'fileSize': 'Ukuran file terlalu besar ({{ value }} max).',
-        'minWidth': 'The image width is too small ({{ value }}}px min).',
-        'maxWidth': 'The image width is too big ({{ value }}}px max).',
-        'minHeight': 'The image height is too small ({{ value }}}px min).',
-        'maxHeight': 'The image height is too big ({{ value }}px max).',
-        'imageFormat': 'Format gambar tidak sesuai ({{ value }} only).'
-    }
-});
-
-//Preview Gambar
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            $('#imgPreview').attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-$("#imgUpload").change(function() {
-    readURL(this);
-});
-
-
-//
-function hapustemp() {
-    event.preventDefault();
-    var form = event.target.form;
-    Swal.fire({
-        title: 'Apakah kamu yakin?',
-        text: 'Data yang sudah blokir tidak akan  bisa login kembali.!',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Ya',
-        cancelButtonText: 'Tidak',
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire(
-                'Berhasil diblokir!',
-                'Data Berhasil diblokir. hanya admin yang dapat mengubah status pemblokiran.',
-                'success'
-            );
-            window.setTimeout(function() {
-                form.submit();
-            }, 2000)
-        }
-    });
-}
-
-function hapus() {
-    event.preventDefault();
-    var form = event.target.form;
-    Swal.fire({
-        title: 'Apakah kamu yakin?',
-        text: 'Menghapus data secara permanent berarti menghapus seluruh data ini, dan data tidak akan pernah kembali !',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Ya',
-        cancelButtonText: 'Tidak',
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire(
-                'Terhapus!',
-                'Data Berhasil dihapus.!',
-                'success'
-            );
-            window.setTimeout(function() {
-                form.submit();
-            }, 2000)
-        }
-    })
-}
-
-function hapus_dokumentasi() {
-    event.preventDefault();
-    var form = event.target.form;
-    Swal.fire({
-        title: 'Apakah kamu yakin?',
-        text: 'Jika Dokumentasi dihapus, dokumentasi ini tidak akan perah dapat dilihat lagi, dan terhapus secara permanent.',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Ya',
-        cancelButtonText: 'Tidak',
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire(
-                'Terhapus!',
-                'Dokumentasi Berhasil dihapus.!',
-                'success'
-            );
-            window.setTimeout(function() {
-                form.submit();
-            }, 2000)
-        }
-    })
-}
-
-function aktif() {
-    event.preventDefault();
-    var form = event.target.form;
-    Swal.fire({
-        title: 'Apakah kamu yakin?',
-        text: 'Apakah anda yakin untuk mengaktifkan akun ini kembali ?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Ya',
-        cancelButtonText: 'Tidak',
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire(
-                'Berhasil!',
-                'User kembali aktif dan dapat mengakses aplikasi.',
-                'success'
-            );
-            window.setTimeout(function() {
-                form.submit();
-            }, 2000)
-        }
-    })
-}
-
-function non() {
-    event.preventDefault();
-    var form = event.target.form;
-    Swal.fire({
-        title: 'Apakah kamu yakin?',
-        text: 'Apakah anda yakin untuk memblokir akun ini ? jika akun ini di blokir, ia tidak akan dapat mengkases aplikasi.!',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Ya',
-        cancelButtonText: 'Tidak',
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire(
-                'Berhasil!',
-                'User berhasil diblokir, kamu dapat membuka blokir kapan saja, selama akun tidak dihapus permanen.',
-                'success'
-            );
-            window.setTimeout(function() {
-                form.submit();
-            }, 2000)
-        }
-    })
-}
-
-$('#checkbox1_terms_and_conditions').click(function() {
-    //If the checkbox is checked.
-    if ($(this).is(':checked')) {
-        //Enable the submit button.
-        $('#submit_button').attr("disabled", false);
-    } else {
-        //If it is not checked, disable the button.
-        $('#submit_button').attr("disabled", true);
-    }
-});
 </script>
 <script>
-$(document).ready(function() {
-    $(".preloader").fadeOut('slow');
-})
+    $(document).ready(function() {
+        $(".preloader").fadeOut('slow');
+    })
 </script>
