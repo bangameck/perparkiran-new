@@ -17,7 +17,9 @@
 
 <br>
 
-<img align="center" src="https://github-readme-stats.vercel.app/api?username=bangameck&include_all_commits=true&count_private=true&show_icons=true&line_height=20&title_color=7A7ADB&icon_color=2234AE&text_color=D3D3D3&bg_color=0,000000,130F40" alt="bangameck's Github Stats">
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/bangameck/perparkiran-new?label=Code%20size&logo=files&style=flat-square)
+![GitHub repo file count](https://img.shields.io/github/directory-file-count/bangameck/perparkiran-new?label=Files&logo=google%20sheets&style=flat-square)
+![GitHub](https://img.shields.io/github/license/bangameck/perparkian-new?label=License&logo=Bitwarden&style=flat-square)
 
 </br>
 
@@ -31,4 +33,4 @@
 &nbsp; <a href="mailto:rahmad.looker@gmail.com" target="_blank" rel="noopener noreferrer"><img src="https://img.icons8.com/plasticine/100/000000/gmail.png"  width="50" /></a>
 </p>
 
-👽 From bangameck](https://github.com/bangameck)
+👽 From [bangameck](https://github.com/bangameck)
