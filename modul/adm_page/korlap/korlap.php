@@ -88,7 +88,7 @@ if ($csrf == false) {
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="avatar"><img class="b-r-8 img-40" src="_uploads/f_ktp_korlap/<?= $ft_ktp; ?>" alt="#">
+                                                        <div class="avatar"><a href="<?= base_url(); ?>korlap/ktp/<?= $u['id_korlap']; ?>" data-container="body" data-bs-toggle="tooltip" data-bs-placement="top" title="Klik untuk mengubah KTP"><img class="b-r-8 img-40" src="_uploads/f_ktp_korlap/<?= $ft_ktp; ?>" alt="#"></a>
                                                         </div>
                                                     </td>
                                                     <td>
@@ -403,7 +403,7 @@ if ($csrf == false) {
                                                                     a_korlap='$a_korlap',
                                                                     t_lahir_korlap='$t_lahir_korlap',
                                                                     tgl_lahir_korlap='$tgl_lahir_korlap',
-                                                                    f_korlap='$foto,
+                                                                    f_korlap='$foto',
                                                                     updated_at=NOW()
                                                                WHERE id_korlap='$_GET[id]'");
                                     //menghapus foto lama
@@ -413,6 +413,136 @@ if ($csrf == false) {
                                     sweetAlert('korlap/add', 'error', 'Error Ekstensi !', 'Inputan Foto - Hanya File JPG, PNG, JPEG yang diperbolehkan.');
                                     // sweetAlert('korlap/add', 'error', '', ' ');
                                 }
+                            }
+                            // } else {
+                            //     sweetAlert('korlap/add', 'error', 'Error Ekstensi !', ' NIK <i>(' . $nik_korlap . ')</i> sudah terdaftar didalam database.!');
+                            // }
+                            //cek username dalam database
+                        } ?>
+                    </div>
+                </div>
+            </div>
+            <?php break; ?>
+        <?php
+        case 'ktp':
+            $d = $db->query("SELECT * FROM korlap WHERE id_korlap='$_GET[id]'")->fetch_assoc();
+        ?>
+            <title>KTP Koordinator Lapangan | <?= $title; ?></title>
+            <div class="page-body">
+                <div class="container-fluid">
+                    <div class="page-title">
+                        <div class="row">
+                            <div class="col-6">
+                                <h3>KTP Koordinator Lapangan</h3>
+                            </div>
+                            <div class="col-6">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="<?= base_url(); ?>"> <i data-feather="git-pull-request"></i></a>
+                                    </li>
+                                    <li class="breadcrumb-item">Data Master</li>
+                                    <li class="breadcrumb-item">Korlap </li>
+                                    <li class="breadcrumb-item active">KTP Korlap</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <form class="row g-3 needs-validation form theme-form" novalidate="" action="" method="POST" enctype="multipart/form-data">
+                            <div class="row g-2">
+
+                            </div>
+                            <div class="row g-2">
+                                <div class="col-lg-6 col-md-12">
+                                    <label>NIK :</label>
+                                    <input type="text" class="form-control" onkeypress="return hanyaAngka(event)" value="<?= $d['nik_korlap']; ?>" maxlength="16" disabled>
+
+                                    <div class="valid-feedback">
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Nik tidak boleh kosong.
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <label>Nama Lengkap :</label>
+                                    <input type="text" class="form-control" value="<?= $d['nm_korlap']; ?>" disabled>
+                                    <div class="valid-feedback">
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Nama Lengkap tidak boleh kosong.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-2">
+
+                                <div class="col-lg-2 col-md-6">
+                                    <label>Foto Korlap :</label>
+                                    <!-- gambar  -->
+                                    <div class="avatar"><img class="b-r-8 img-100" src="<?= base_url(); ?>_uploads/f_korlap/<?= $d['f_korlap']; ?>" alt="Image Korlap Preview">
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-6">
+                                    <label>Foto KTP Korlap :</label>
+
+                                    <?php
+                                    if (empty($d['f_ktp_korlap'])) {
+                                        $ft = 'default.png';
+                                    } else {
+                                        $ft = $d['f_ktp_korlap'];
+                                    }
+                                    ?>
+                                    <div class="avatar"><img class="b-r-8 img-100" src="<?= base_url(); ?>_uploads/f_ktp_korlap/<?= $ft; ?>" id="imgPreview" alt="Image Preview">
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-12">
+                                    <label>Pilih berkas Foto KTP Korlap :</label>
+
+                                    <input class="form-control" id="imgUpload" name="foto" type="file" accept=".png, .jpeg, .jpg" required>
+                                    <small style="color: red;">Format File : png, jpg, jpeg</small>
+                                    <div class="valid-feedback">
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Foto KTP tidak boleh kosong.
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="d-grid gap-2 col-lg-3 col-md-12 mx-auto">
+                                <button class="btn btn-primary-gradien" name="simpan" type="submit">Simpan
+                                    Data</button>
+                            </div>
+                        </form>
+                        <?php
+                        if (isset($_POST['simpan'])) {
+                            
+                            $file_tmp = $_FILES['foto']['tmp_name'];
+
+                            $ext_valid = array('png', 'jpg', 'jpeg', 'gif');
+                            $name_tmp  = $_FILES['foto']['name'];
+                            $x         = explode('.', $name_tmp);
+                            $extend    = strtolower(end($x));
+                            $time      = date('dmYHis');
+                            $foto      = $d['nm_korlap'] . '_' . $time . '.' . $extend;
+                            $path      = '_uploads/f_ktp_korlap/';
+
+                            //cek ekstensi
+                            if (in_array($extend, $ext_valid) === true) {
+
+                                //Compress Image
+                                fotoCompressResize($foto, $file_tmp, $path);
+                                //inster ke database
+                                $q  = $db->query("UPDATE korlap SET f_ktp_korlap='$foto',
+                                                                    updated_at=NOW()
+                                                               WHERE id_korlap='$_GET[id]'");
+                                if (!empty($d['f_ktp_korlap'])) {
+                                    unlink('_uploads/f_ktp_korlap/' . $d['f_ktp_korlap']);
+                                }
+                                //menghapus foto lama
+                                sweetAlert('korlap', 'sukses', 'Berhasil !', 'Data Koordinator Lapangan berhasil di update');
+                            } else {
+                                sweetAlert('korlap/ktp', 'error', 'Error Ekstensi !', 'Inputan Foto - Hanya File JPG, PNG, JPEG yang diperbolehkan.');
+                                // sweetAlert('korlap/add', 'error', '', ' ');
                             }
                             // } else {
                             //     sweetAlert('korlap/add', 'error', 'Error Ekstensi !', ' NIK <i>(' . $nik_korlap . ')</i> sudah terdaftar didalam database.!');

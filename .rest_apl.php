@@ -1,4 +1,4 @@
-<?php 
+<?php
 include '_func/func.php';
 require 'vendor/PHPMailer/src/Exception.php';
 require 'vendor/PHPMailer/src/OAuth.php';
@@ -23,14 +23,14 @@ if ($jml == '0') {
 </head>
 
 <body class="stretched">
-    <?php 
+    <?php
     if (isset($_SESSION['username'])) {
         echo '<div id="idletimeout">
         Kami memantau tidak adanya aktifitas dalam 20 menit, anda akan otomatis logout dalam
         <span><!-- countdown place holder --></span>&nbsp;detik.
         <a id="idletimeout-resume" href="">klik disini untuk memperpanjang waktu session</a
       >.
-    </div>' ;
+    </div>';
     }
     ?>
     <!-- loader -->
@@ -38,42 +38,41 @@ if ($jml == '0') {
         <div class="loading">
             <img src="<?= base_url(); ?>assets/adm/images/logoparkir.gif" width="80">
             <script language="JavaScript">
-            var text = "Please Wait...";
-            var delay = 100;
-            var currentChar = 1;
-            var destination = "[none]";
+                var text = "Please Wait...";
+                var delay = 100;
+                var currentChar = 1;
+                var destination = "[none]";
 
-            function type() {
-                //if (document.all)
-                {
-                    var dest = document.getElementById(destination);
-                    if (dest) // && dest.innerHTML)
+                function type() {
+                    //if (document.all)
                     {
-                        dest.innerHTML = text.substr(0, currentChar) + "<blink>_</blink>";
-                        currentChar++;
-                        if (currentChar > text.length) {
-                            currentChar = 1;
-                            setTimeout("type()", 500);
-                        } else {
-                            setTimeout("type()", delay);
+                        var dest = document.getElementById(destination);
+                        if (dest) // && dest.innerHTML)
+                        {
+                            dest.innerHTML = text.substr(0, currentChar) + "<blink>_</blink>";
+                            currentChar++;
+                            if (currentChar > text.length) {
+                                currentChar = 1;
+                                setTimeout("type()", 500);
+                            } else {
+                                setTimeout("type()", delay);
+                            }
                         }
                     }
                 }
-            }
 
-            function startTyping(textParam, delayParam, destinationParam) {
-                text = textParam;
-                delay = delayParam;
-                currentChar = 1;
-                destination = destinationParam;
-                type();
-            }
+                function startTyping(textParam, delayParam, destinationParam) {
+                    text = textParam;
+                    delay = delayParam;
+                    currentChar = 1;
+                    destination = destinationParam;
+                    type();
+                }
             </script> <b>
-                <div 0px="" 12px="" arial="" color:="" ff0000="" font:="" id="textDestination" margin:=""
-                    style="background-color: none;"></div>
+                <div 0px="" 12px="" arial="" color:="" ff0000="" font:="" id="textDestination" margin:="" style="background-color: none;"></div>
             </b>
             <script language="JavaScript">
-            javascript: startTyping(text, 10, "textDestination");
+                javascript: startTyping(text, 10, "textDestination");
             </script>
         </div>
     </div>
@@ -110,12 +109,10 @@ if ($jml == '0') {
 
                         <div id="primary-menu-trigger">
                             <svg class="svg-trigger" viewBox="0 0 100 100">
-                                <path
-                                    d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20">
+                                <path d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20">
                                 </path>
                                 <path d="m 30,50 h 40"></path>
-                                <path
-                                    d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20">
+                                <path d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20">
                                 </path>
                             </svg>
                         </div>
@@ -138,10 +135,9 @@ if ($jml == '0') {
         <!-- Content
 		============================================= -->
 
-        <?php modul('web_page',$_GET['m']) ?>
+        <?php modul('web_page', $_GET['m']) ?>
         <!-- #content end -->
-        <div class="section lazy mt-5 mb-0 p-0 min-vh-75" data-bg="https://lh4.googleusercontent.com/trZiteGgCBkaNY0_LRuDtWnGujIhJsDbITYPBongJhXpWwSEFqHtvTWszqn0FbAEwpZ_gCptKDsXxsvphaagzBE=w16383"
-            style="background-position: center center; background-repeat: no-repeat; background-size: cover;">
+        <div class="section lazy mt-5 mb-0 p-0 min-vh-75" data-bg="https://lh4.googleusercontent.com/trZiteGgCBkaNY0_LRuDtWnGujIhJsDbITYPBongJhXpWwSEFqHtvTWszqn0FbAEwpZ_gCptKDsXxsvphaagzBE=w16383" style="background-position: center center; background-repeat: no-repeat; background-size: cover;">
             <div class="shape-divider" data-shape="cliff" data-height="150" data-flip-vertical="true"></div>
         </div>
         <!-- Footer

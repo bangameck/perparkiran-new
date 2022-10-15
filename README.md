@@ -3,7 +3,7 @@
 <h3> 👨🏻‍💻 About Me </h3>
 
 - 🔭 &nbsp; I’m currently learning Laravel and Flutter Application Development.
-- 🤔 &nbsp; Learn whatever I want, learn programming languages ​​especially Laravel and Flutter and other programming languages.
+- 🤔 &nbsp; Learn whatever I want, learn programming languages ​​especially Laravel and Flutter and other programming.
 - 🎓 &nbsp; Bachelor of Informatics Engineering, Sultan Syarif Kasim State University, Riau.
 - 💼 &nbsp; Full Stack web developer.
 - 🌱 &nbsp; Very enthusiastic about programming.
@@ -12,7 +12,7 @@
 <h3>🛠 Tech Stack in This Project</h3>
 
 - 💻 &nbsp; PHP | HTML | CSS | JavaScript | Bootstrap
-- 🛢 &nbsp; HeidiSQL | Laragon
+- 🛢 &nbsp; HeidiSQL | Apache | Laragon
 - 🔧 &nbsp; Visual Studio code | Git
 
 <br>
