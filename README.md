@@ -17,7 +17,8 @@
 
 <br>
 
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/bangameck/perparkiran-new?label=Code%20size&logo=files&style=flat-square)
+![GitHub repo size](https://img.shields.io/github/repo-size/bangameck/perparkiran-new?label=Repo%20Size&logo=Files&style=flat-square)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/bangameck/perparkiran-new?label=Code%20size&logo=sharp&style=flat-square)
 ![GitHub repo file count](https://img.shields.io/github/directory-file-count/bangameck/perparkiran-new?label=Files&logo=google%20sheets&style=flat-square)
 ![GitHub](https://img.shields.io/github/license/bangameck/perparkian-new?label=License&logo=Bitwarden&style=flat-square)
 
