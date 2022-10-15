@@ -9,12 +9,11 @@
 - 🌱 &nbsp; Very enthusiastic about programming.
 - ☕ &nbsp; I believe success starts with an error code. let's drink coffee with me. 😅
 
-<h3>🛠 Tech Stack</h3>
+<h3>🛠 Tech Stack in This Project</h3>
 
-- 💻 &nbsp; PHP | Dart | Java | C++
-- 🌐 &nbsp; Android | flutter | HTML | CSS | JavaScript | Bootstrap
-- 🛢 &nbsp; MySQL | Firebase | Laragon
-- 🔧 &nbsp; Android Studio | Visual Studio code | Git
+- 💻 &nbsp; PHP | HTML | CSS | JavaScript | Bootstrap
+- 🛢 &nbsp; HeidiSQL | Laragon
+- 🔧 &nbsp; Visual Studio code | Git
 
 <br>
 
@@ -22,7 +21,7 @@
 
 </br>
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=bangameck&layout=compact&text_color=daf7dc&bg_color=151515)](https://github.com/bangameck/perparkiran-new.git)
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=bangameck&layout=compact&text_color=daf7dc&bg_color=151515)](https://github.com/bangameck/perparkiran-new)
 
 <h3> 🤝🏻 Connect with Me </h3>
 
