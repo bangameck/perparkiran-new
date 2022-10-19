@@ -379,7 +379,7 @@
                 );
                 window.setTimeout(function() {
                     form.submit();
-                }, 2000)
+                }, 1000)
             }
         })
     }

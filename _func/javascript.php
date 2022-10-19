@@ -1,13 +1,14 @@
-<?php 
-/**
-* @author [bangameck.rra]
-* @email [rahmad.looker@gmail.com]
-* @create date 2021-06-11 14:32:29
-* @modify date 2021-06-11 14:34:09
-* @desc [description]
-*/
+<?php
 
-function sweetAlert($m, $t, $j, $p ='')
+/**
+ * @author [bangameck.rra]
+ * @email [rahmad.looker@gmail.com]
+ * @create date 2021-06-11 14:32:29
+ * @modify date 2021-06-11 14:34:09
+ * @desc [description]
+ */
+
+function sweetAlert($m, $t, $j, $p = '')
 {
 	global $base_url;
 	if ($t == 'sukses') {
@@ -141,32 +142,32 @@ function sweetAlert($m, $t, $j, $p ='')
 
 function javascript($m, $t, $pesan = '')
 { //$t=redirect,alert,confirm
-    global $base_url;
-    if ($t == 'redirect') {
-        echo "<script>window.location='" . $base_url . "$m';</script>";
-    } elseif ($t == 'alert-error') {
-        echo '<br>
+	global $base_url;
+	if ($t == 'redirect') {
+		echo "<script>window.location='" . $base_url . "$m';</script>";
+	} elseif ($t == 'alert-error') {
+		echo '<br>
 		<div class="alert alert-danger dark alert-dismissible fade show" role="alert">
-		<strong>Error !</strong>'.$pesan.' 
+		<strong>Error !</strong>' . $pesan . ' 
 		<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
 	  </div> ';
-    } elseif ($t == 'alert-sukses-2') {
-        echo '<br>
+	} elseif ($t == 'alert-sukses-2') {
+		echo '<br>
 		<div class="alert alert-success dark alert-dismissible fade show" role="alert">
-		<strong>Selamat !</strong>'.$pesan.' <a class="alert-link" href="'.base_url().$m.'">Silahkan klik disini</a>
+		<strong>Selamat !</strong>' . $pesan . ' <a class="alert-link" href="' . base_url() . $m . '">Silahkan klik disini</a>
 		<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
 	  </div> ';
-    } elseif ($t == 'alert-sukses-3') {
-        echo '<br>
+	} elseif ($t == 'alert-sukses-3') {
+		echo '<br>
 		<div class="alert alert-success dark alert-dismissible fade show" role="alert">
-		<strong>Selamat !</strong>'.$pesan.' <a class="alert-link" href="'.base_url().'out">Silahkan klik disini</a>
+		<strong>Selamat !</strong>' . $pesan . ' <a class="alert-link" href="' . base_url() . 'out">Silahkan klik disini</a>
 		<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
 	  </div> ';
-    } elseif ($t == 'alert-sukses') {
-        echo "<script>alert('$pesan');
+	} elseif ($t == 'alert-sukses') {
+		echo "<script>alert('$pesan');
 				window.location='" . $base_url . "$m';</script>";
-    } elseif ($t == 'confirm') {
-        echo "			<script language='JavaScript'>
+	} elseif ($t == 'confirm') {
+		echo "			<script language='JavaScript'>
 			function non()
 			{
 			tanya = confirm('Anda Yakin Untuk Menon-Aktifkan Akun Ini ?');
@@ -232,5 +233,5 @@ function javascript($m, $t, $pesan = '')
 			else return false;
 			}
 			</script>";
-    }
+	}
 }

@@ -92,16 +92,16 @@ if ($csrf == false) {
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="btn-group">
-                                                            <a href="<?= base_url(); ?>korlap/edit/<?= $u['id_korlap']; ?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                                                            <a href="<?= base_url(); ?>korlap/detail/<?= $u['id_korlap']; ?>" class="btn btn-primary"><i class="fa fa-info-circle"></i></a>
+                                                        <a href="<?= base_url(); ?>korlap/edit/<?= $u['id_korlap']; ?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                                                        <a href="<?= base_url(); ?>korlap/detail/<?= $u['id_korlap']; ?>" class="btn btn-primary"><i class="fa fa-info-circle"></i></a>
 
-                                                            <form action="<?= base_url(); ?>korlap/delete" method="POST">
-                                                                <input type="hidden" name="id_korlap" value="<?= $u['id_korlap']; ?>">
-                                                                <input type="hidden" name="f_korlap" value="<?= $u['f_korlap']; ?>">
-                                                                <button class="btn btn-danger" onclick="return hapus()"><i class="fa fa-trash"></i></button>
-                                                            </form>
-                                                        </div>
+                                                        <form action="<?= base_url(); ?>korlap/delete" method="POST" class="d-inline">
+                                                            <input type="hidden" name="id_korlap" value="<?= $u['id_korlap']; ?>">
+                                                            <input type="hidden" name="nm_korlap" value="<?= $u['nm_korlap']; ?>">
+                                                            <input type="hidden" name="f_korlap" value="<?= $u['f_korlap']; ?>">
+                                                            <input type="hidden" name="f_ktp_korlap" value="<?= $u['f_ktp_korlap']; ?>">
+                                                            <button class="btn btn-danger border-1" onclick="return hapus()"><i class="fa fa-trash"></i></button>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                             <?php endwhile; ?>
@@ -215,32 +215,30 @@ if ($csrf == false) {
                         </form>
                         <?php
                         if (isset($_POST['simpan'])) {
-                            $post = $_POST;
 
-                            $id               = $db->real_escape_string($post['id']);
-                            $nik_korlap       = $db->real_escape_string($post['nik_korlap']);
-                            $nm_korlap        = $db->real_escape_string($post['nm_korlap']);
-                            $a_korlap         = $db->real_escape_string($post['a_korlap']);
-                            $t_lahir_korlap   = $db->real_escape_string($post['t_lahir_korlap']);
+                            $id               = $db->real_escape_string($_POST['id']);
+                            $nik_korlap       = $db->real_escape_string($_POST['nik_korlap']);
+                            $nm_korlap        = $db->real_escape_string($_POST['nm_korlap']);
+                            $a_korlap         = $db->real_escape_string($_POST['a_korlap']);
+                            $t_lahir_korlap   = $db->real_escape_string($_POST['t_lahir_korlap']);
                             $tgl_lahir_korlap = date('Y-m-d', strtotime($db->real_escape_string($post['tgl_lahir_korlap'])));
                             // $slug     = slug($nopol_bus);
                             $cek_korlap = $db->query("SELECT nik_korlap FROM korlap WHERE nik_korlap='$nik_korlap'");
                             //jika username tidak ada didalam database
                             if ($cek_korlap->num_rows == 0) {
-                                $_SESSION = $post;
 
                                 //file gambar
                                 $file_tmp = $_FILES['foto']['tmp_name'];
                                 if (empty($file_tmp)) {
                                     $q  = $db->query("INSERT INTO korlap VALUES ('$id','$nik_korlap','$nm_korlap','$a_korlap','$t_lahir_korlap','$tgl_lahir_korlap','','',NOW(),NOW(),NULL,'$_SESSION[id_usr]')");
-                                    sweetAlert('korlap', 'sukses', 'Berhasil !', 'Data Koordinator Lapangan berhasil diinput');
+                                    sweetAlert('korlap', 'sukses', 'Sukses !', 'Korlap atas nama (' . $nm_korlap . ') berhasil diinput');
                                 } else {
                                     $ext_valid = array('png', 'jpg', 'jpeg', 'gif');
                                     $name_tmp  = $_FILES['foto']['name'];
                                     $x         = explode('.', $name_tmp);
                                     $extend    = strtolower(end($x));
                                     $time      = date('dmYHis');
-                                    $foto      = $nm_korlap . '_' . $time . '.' . $extend;
+                                    $foto      = $id . '_' . $time . '.' . $extend;
                                     $path      = '_uploads/f_korlap/';
 
                                     //cek ekstensi
@@ -249,7 +247,7 @@ if ($csrf == false) {
                                         fotoCompressResize($foto, $file_tmp, $path);
                                         //inster ke database
                                         $q  = $db->query("INSERT INTO korlap VALUES ('$id','$nik_korlap','$nm_korlap','$a_korlap','$t_lahir_korlap','$tgl_lahir_korlap','$foto','',NOW(),NOW(),NULL,'$_SESSION[id_usr]')");
-                                        sweetAlert('korlap', 'sukses', 'Berhasil !', 'Data Koordinator Lapangan berhasil diinput');
+                                        sweetAlert('korlap', 'sukses', 'Sukses !', 'Korlap atas nama (' . $nm_korlap . ') berhasil diinput');
                                     } else {
                                         sweetAlert('korlap/add', 'error', 'Error Ekstensi !', 'Inputan Foto - Hanya File JPG, PNG, JPEG yang diperbolehkan.');
                                         // sweetAlert('korlap/add', 'error', '', ' ');
@@ -390,7 +388,7 @@ if ($csrf == false) {
                                 $x         = explode('.', $name_tmp);
                                 $extend    = strtolower(end($x));
                                 $time      = date('dmYHis');
-                                $foto      = $nm_korlap . '_' . $time . '.' . $extend;
+                                $foto      = $_GET['id'] . '_' . $time . '.' . $extend;
                                 $path      = '_uploads/f_korlap/';
 
                                 //cek ekstensi
@@ -478,8 +476,15 @@ if ($csrf == false) {
 
                                 <div class="col-lg-2 col-md-6">
                                     <label>Foto Korlap :</label>
+                                    <?php
+                                    if (empty($d['f_korlap'])) {
+                                        $ft = 'default.png';
+                                    } else {
+                                        $ft = $d['f_korlap'];
+                                    }
+                                    ?>
                                     <!-- gambar  -->
-                                    <div class="avatar"><img class="b-r-8 img-100" src="<?= base_url(); ?>_uploads/f_korlap/<?= $d['f_korlap']; ?>" alt="Image Korlap Preview">
+                                    <div class="avatar"><img class="b-r-8 img-100" src="<?= base_url(); ?>_uploads/f_korlap/<?= $ft; ?>" alt="Image Korlap Preview">
                                     </div>
                                 </div>
                                 <div class="col-lg-2 col-md-6">
@@ -515,7 +520,7 @@ if ($csrf == false) {
                         </form>
                         <?php
                         if (isset($_POST['simpan'])) {
-                            
+
                             $file_tmp = $_FILES['foto']['tmp_name'];
 
                             $ext_valid = array('png', 'jpg', 'jpeg', 'gif');
@@ -523,7 +528,7 @@ if ($csrf == false) {
                             $x         = explode('.', $name_tmp);
                             $extend    = strtolower(end($x));
                             $time      = date('dmYHis');
-                            $foto      = $d['nm_korlap'] . '_' . $time . '.' . $extend;
+                            $foto      = $_GET['id'] . '_' . $time . '.' . $extend;
                             $path      = '_uploads/f_ktp_korlap/';
 
                             //cek ekstensi
@@ -553,6 +558,33 @@ if ($csrf == false) {
                 </div>
             </div>
             <?php break; ?>
+        <?php
+        case 'delete':
+            $id_korlap = $db->real_escape_string($_POST['id_korlap']);
+            $nm_korlap = $db->real_escape_string($_POST['nm_korlap']);
+            $f_korlap = $db->real_escape_string($_POST['f_korlap']);
+            $f_ktp_korlap = $db->real_escape_string($_POST['f_ktp_korlap']);
+            $cek_f_korlap = $db->query("SELECT f_korlap FROM korlap WHERE id_korlap='$id_korlap'");
+            $cek_f_ktp_korlap = $db->query("SELECT f_ktp_korlap FROM korlap WHERE id_korlap='$id_korlap'");
+
+            if ($cek_f_korlap->num_rows >= 0 and $cek_f_ktp_korlap == 0) {
+                unlink('_uploads/f_korlap/' . $f_korlap);
+                $db->query("DELETE FROM korlap WHERE id_korlap='$id_korlap'");
+                sweetAlert('korlap', 'sukses', 'Data berhasil dihapus.!', 'Data Koordinator Lapangan ( ' . $nm_korlap . ' ) Berhasil dihapus.');
+            } elseif ($cek_f_korlap->num_rows == 0 and $cek_f_ktp_korlap >= 0) {
+                unlink('_uploads/f_ktp_korlap/' . $f_ktp_korlap);
+                $db->query("DELETE FROM korlap WHERE id_korlap='$id_korlap'");
+                sweetAlert('korlap', 'sukses', 'Data berhasil dihapus.!', 'Data Koordinator Lapangan ( ' . $nm_korlap . ' ) Berhasil dihapus.');
+            } elseif ($cek_f_korlap->num_rows >= 0 and $cek_f_ktp_korlap >= 0) {
+                unlink('_uploads/f_korlap/' . $f_korlap);
+                unlink('_uploads/f_ktp_korlap/' . $f_ktp_korlap);
+                $db->query("DELETE FROM korlap WHERE id_korlap='$id_korlap'");
+                sweetAlert('korlap', 'sukses', 'Data berhasil dihapus.!', 'Data Koordinator Lapangan ( ' . $nm_korlap . ' ) Berhasil dihapus.');
+            } else {
+                $db->query("DELETE FROM korlap WHERE id_korlap='$id_korlap'");
+                sweetAlert('korlap', 'sukses', 'Data berhasil dihapus.!', 'Data Koordinator Lapangan ( ' . $nm_korlap . ' ) Berhasil dihapus.');
+            }
+        ?>
 <?php
     }
 } ?>

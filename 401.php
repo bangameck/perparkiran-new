@@ -52,7 +52,7 @@ include '_func/func.php';
                 <div class="col-md-8 offset-md-2">
                     <p class="sub-content"> <b>AUTHORIZATION REQUIRED</b> <br> "Browser tak bisa memberikan bukti kewenangan yang sah." <br><b><i>UPT Perparkiran Dinas Perhubungan Kota Pekanbaru</i></b></p>
                 </div>
-                <div><a class="btn btn-warning-gradien btn-lg" onclick="history.back()">KEMBALI</a></div>
+                <div><a class="btn btn-warning-gradien btn-lg" href="<?= base_url(); ?>">KEMBALI</a></div>
             </div>
         </div>
         <!-- error-401 end-->

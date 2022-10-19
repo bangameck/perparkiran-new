@@ -71,6 +71,7 @@ RewriteRule ^korlap/ktp/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=korlap&a=k
 RewriteRule ^check_korlap$ modul/adm_page/korlap/cek_nik_korlap.php [L]
 RewriteRule ^korlap/edit/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=korlap&a=edit&id=$1 [L]
 RewriteRule ^korlap/delete$ .rest_page.php?f=adm_page&m=korlap&a=delete [L]
+RewriteRule ^korlap/delete/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=korlap&a=delete&id=$1 [L]
 RewriteRule ^korlap/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=korlap&a=detail&id=$1 [L]
 RewriteRule ^korlap/detail/([a-zA-Z0-9_-]+)/page/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=korlap&a=detail&id=$1&page=$2 [L]
 

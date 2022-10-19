@@ -1,4 +1,4 @@
-<?php 
+<?php
 include 'database.php';
 
 //ambil data profil
@@ -46,9 +46,8 @@ $host   = 'smtp.gmail.com';
 $port   = 587;
 $secure = 'tls';
 $email_ = 'rra.code@gmail.com';
-$pmail  = '@m3ck1nd4h20122020';
+$pmail  = 'jcqrwesdxkbjicaz';
 $logo   = 'assets/adm/images/logo/logo.png';
 
 // footer;
-$footer = "Copyright " . date('Y') . " ©  <a href='" . $ig . "' target='_blank'>Dikembangakan Oleh Team IT " . $nm_upt . "</a>"; 
-
+$footer = "Copyright " . date('Y') . " ©  <a href='" . $ig . "' target='_blank'>Dikembangakan Oleh Team IT " . $nm_upt . "</a>";
