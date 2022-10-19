@@ -1,17 +1,17 @@
-<?php 
-include '_func/identity.php';
-$a=$_GET['a'];
+<?php
+include '_func/.identity.php';
+$a = $_GET['a'];
 switch ($a) {
-    default:
-	$d=$db->query("SELECT * FROM users WHERE id='$_SESSION[id_usr]'")->fetch_assoc();
-	if (empty($d['foto'])) {
-		$ft='default.png';
-	} else {
-		$ft=$d['foto'];
-	}
-    ?>
-	<title>Profile | <?= $title; ?></title>
-    <section id="content">
+	default:
+		$d = $db->query("SELECT * FROM users WHERE id='$_SESSION[id_usr]'")->fetch_assoc();
+		if (empty($d['foto'])) {
+			$ft = 'default.png';
+		} else {
+			$ft = $d['foto'];
+		}
+?>
+		<title>Profile | <?= $title; ?></title>
+		<section id="content">
 			<div class="content-wrap">
 				<div class="container clearfix">
 
@@ -48,44 +48,44 @@ switch ($a) {
 												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium harum ea quo! Nulla fugiat earum, sed corporis amet iste non, id facilis dolorum, suscipit, deleniti ea. Nobis, temporibus magnam doloribus. Reprehenderit necessitatibus esse dolor tempora ea unde, itaque odit. Quos.</p>
 
 												<table class="table table-bordered table-striped">
-												  <thead>
-													<tr>
-													  <th>Time</th>
-													  <th>Activity</th>
-													</tr>
-												  </thead>
-												  <tbody>
-													<tr>
-													  <td>
-														<code>5/23/2021</code>
-													  </td>
-													  <td>Payment for VPS2 completed</td>
-													</tr>
-													<tr>
-													  <td>
-														<code>5/23/2021</code>
-													  </td>
-													  <td>Logged in to the Account at 16:33:01</td>
-													</tr>
-													<tr>
-													  <td>
-														<code>5/22/2021</code>
-													  </td>
-													  <td>Logged in to the Account at 09:41:58</td>
-													</tr>
-													<tr>
-													  <td>
-														<code>5/21/2021</code>
-													  </td>
-													  <td>Logged in to the Account at 17:16:32</td>
-													</tr>
-													<tr>
-													  <td>
-														<code>5/18/2021</code>
-													  </td>
-													  <td>Logged in to the Account at 22:53:41</td>
-													</tr>
-												  </tbody>
+													<thead>
+														<tr>
+															<th>Time</th>
+															<th>Activity</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>
+																<code>5/23/2021</code>
+															</td>
+															<td>Payment for VPS2 completed</td>
+														</tr>
+														<tr>
+															<td>
+																<code>5/23/2021</code>
+															</td>
+															<td>Logged in to the Account at 16:33:01</td>
+														</tr>
+														<tr>
+															<td>
+																<code>5/22/2021</code>
+															</td>
+															<td>Logged in to the Account at 09:41:58</td>
+														</tr>
+														<tr>
+															<td>
+																<code>5/21/2021</code>
+															</td>
+															<td>Logged in to the Account at 17:16:32</td>
+														</tr>
+														<tr>
+															<td>
+																<code>5/18/2021</code>
+															</td>
+															<td>Logged in to the Account at 22:53:41</td>
+														</tr>
+													</tbody>
 												</table>
 
 											</div>
@@ -120,7 +120,7 @@ switch ($a) {
 													</div>
 
 													<div class="entry col-12">
-												   		<div class="grid-inner row align-items-center g-0">
+														<div class="grid-inner row align-items-center g-0">
 															<div class="col-md-4">
 																<div class="entry-image">
 																	<iframe src="https://player.vimeo.com/video/87701971" width="500" height="281" allow="autoplay; fullscreen" allowfullscreen></iframe>
@@ -190,7 +190,7 @@ switch ($a) {
 															<div class="comment-meta">
 																<div class="comment-author vcard">
 																	<span class="comment-avatar clearfix">
-																	<img alt='Image' src='https://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=60' class='avatar avatar-60 photo avatar-default' height='60' width='60' /></span>
+																		<img alt='Image' src='https://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=60' class='avatar avatar-60 photo avatar-default' height='60' width='60' /></span>
 																</div>
 															</div>
 															<div class="comment-content clearfix">
@@ -207,7 +207,7 @@ switch ($a) {
 																		<div class="comment-author vcard">
 
 																			<span class="comment-avatar clearfix">
-																			<img alt='Image' src='https://1.gravatar.com/avatar/30110f1f3a4238c619bcceb10f4c4484?s=40&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D40&amp;r=G' class='avatar avatar-40 photo' height='40' width='40' /></span>
+																				<img alt='Image' src='https://1.gravatar.com/avatar/30110f1f3a4238c619bcceb10f4c4484?s=40&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D40&amp;r=G' class='avatar avatar-40 photo' height='40' width='40' /></span>
 
 																		</div>
 																	</div>
@@ -229,7 +229,7 @@ switch ($a) {
 															<div class="comment-meta">
 																<div class="comment-author vcard">
 																	<span class="comment-avatar clearfix">
-																	<img alt='Image' src='https://1.gravatar.com/avatar/30110f1f3a4238c619bcceb10f4c4484?s=60&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D60&amp;r=G' class='avatar avatar-60 photo' height='60' width='60' /></span>
+																		<img alt='Image' src='https://1.gravatar.com/avatar/30110f1f3a4238c619bcceb10f4c4484?s=60&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D60&amp;r=G' class='avatar avatar-60 photo' height='60' width='60' /></span>
 																</div>
 															</div>
 															<div class="comment-content clearfix">
@@ -256,7 +256,9 @@ switch ($a) {
 																<img src="images/team/3.jpg" alt="John Doe">
 															</div>
 															<div class="team-desc">
-																<div class="team-title"><h4>John Doe</h4><span>CEO</span></div>
+																<div class="team-title">
+																	<h4>John Doe</h4><span>CEO</span>
+																</div>
 																<a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
 																	<i class="icon-facebook"></i>
 																	<i class="icon-facebook"></i>
@@ -281,7 +283,9 @@ switch ($a) {
 																<img src="images/team/2.jpg" alt="Josh Clark">
 															</div>
 															<div class="team-desc">
-																<div class="team-title"><h4>Josh Clark</h4><span>Co-Founder</span></div>
+																<div class="team-title">
+																	<h4>Josh Clark</h4><span>Co-Founder</span>
+																</div>
 																<a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
 																	<i class="icon-facebook"></i>
 																	<i class="icon-facebook"></i>
@@ -306,7 +310,9 @@ switch ($a) {
 																<img src="images/team/8.jpg" alt="Mary Jane">
 															</div>
 															<div class="team-desc">
-																<div class="team-title"><h4>Mary Jane</h4><span>Sales</span></div>
+																<div class="team-title">
+																	<h4>Mary Jane</h4><span>Sales</span>
+																</div>
 																<a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
 																	<i class="icon-facebook"></i>
 																	<i class="icon-facebook"></i>
@@ -331,7 +337,9 @@ switch ($a) {
 																<img src="images/team/4.jpg" alt="Nix Maxwell">
 															</div>
 															<div class="team-desc">
-																<div class="team-title"><h4>Nix Maxwell</h4><span>Support</span></div>
+																<div class="team-title">
+																	<h4>Nix Maxwell</h4><span>Support</span>
+																</div>
 																<a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
 																	<i class="icon-facebook"></i>
 																	<i class="icon-facebook"></i>
@@ -367,12 +375,24 @@ switch ($a) {
 						<div class="col-md-3">
 
 							<div class="list-group">
-								<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between"><div>Profile</div><i class="icon-user"></i></a>
-								<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between"><div>Servers</div><i class="icon-laptop2"></i></a>
-								<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between"><div>Messages</div><i class="icon-envelope2"></i></a>
-								<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between"><div>Billing</div><i class="icon-credit-cards"></i></a>
-								<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between"><div>Settings</div><i class="icon-cog"></i></a>
-								<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between"><div>Logout</div><i class="icon-line2-logout"></i></a>
+								<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between">
+									<div>Profile</div><i class="icon-user"></i>
+								</a>
+								<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between">
+									<div>Servers</div><i class="icon-laptop2"></i>
+								</a>
+								<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between">
+									<div>Messages</div><i class="icon-envelope2"></i>
+								</a>
+								<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between">
+									<div>Billing</div><i class="icon-credit-cards"></i>
+								</a>
+								<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between">
+									<div>Settings</div><i class="icon-cog"></i>
+								</a>
+								<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between">
+									<div>Logout</div><i class="icon-line2-logout"></i>
+								</a>
 							</div>
 
 							<div class="fancy-title topmargin title-border">
@@ -422,4 +442,4 @@ switch ($a) {
 				</div>
 			</div>
 		</section><!-- #content end -->
-    <?php } ?>
+<?php } ?>

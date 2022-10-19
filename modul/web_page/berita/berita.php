@@ -1,5 +1,5 @@
 <?php
-include '_func/identity.php';
+include '_func/.identity.php';
 $a = $_GET['a'];
 switch ($a) {
     default:

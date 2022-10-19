@@ -20,7 +20,9 @@ include 'csrf.php';
 //database
 include 'database.php';
 //identitas web
-include 'identity.php';
+include '.identity.php';
+//Mail
+include '.mail.php';
 //javascript
 include 'javascript.php';
 //karakteracak

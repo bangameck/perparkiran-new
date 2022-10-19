@@ -1,5 +1,5 @@
-<?php 
-include '_func/identity.php';
+<?php
+include '_func/.identity.php';
 ?>
 <title>Privacy Policy | <?= $title; ?></title>
 <section id="content">
@@ -19,9 +19,9 @@ include '_func/identity.php';
                     <!-- Entry Content
 							============================================= -->
                     <div class="entry-content mt-0 container">
-                        <?php 
-                            $trems = $db->query("SELECT * FROM trems WHERE id='1'")->fetch_assoc();
-                            echo $trems['trems'];
+                        <?php
+                        $trems = $db->query("SELECT * FROM trems WHERE id='1'")->fetch_assoc();
+                        echo $trems['trems'];
                         ?>
                     </div><!-- .entry end -->
                 </div>

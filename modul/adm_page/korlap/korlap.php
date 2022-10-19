@@ -8,7 +8,7 @@
  * @desc [description]
  */
 
-include '_func/identity.php';
+include '_func/.identity.php';
 // include_once '/vendor/owasp/csrf-protector-php/libs/csrf/csrfprotector.php';
 // include '_func/database.php';
 
@@ -59,6 +59,7 @@ if ($csrf == false) {
                                                 <th>Alamat</th>
                                                 <th>Foto</th>
                                                 <th>KTP</th>
+                                                <th>Pengawas</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -77,6 +78,12 @@ if ($csrf == false) {
                                                 } else {
                                                     $ft_ktp = $u['f_ktp_korlap'];
                                                 }
+                                                $p = $db->query("SELECT * FROM users a, korlap b WHERE a.id=b.pengawas AND id_korlap='$u[id_korlap]'")->fetch_assoc();
+                                                if (empty($p['f_usr'])) {
+                                                    $ft_p = 'default.png';
+                                                } else {
+                                                    $ft_p = $p['f_usr'];
+                                                }
                                             ?>
                                                 <tr>
                                                     <td><?= $no++; ?></td>
@@ -89,6 +96,11 @@ if ($csrf == false) {
                                                     </td>
                                                     <td>
                                                         <div class="avatar"><a href="<?= base_url(); ?>korlap/ktp/<?= $u['id_korlap']; ?>" data-container="body" data-bs-toggle="tooltip" data-bs-placement="top" title="Klik untuk mengubah KTP"><img class="b-r-8 img-40" src="_uploads/f_ktp_korlap/<?= $ft_ktp; ?>" alt="#"></a>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="avatar"><a href="<?= base_url(); ?>korlap/pengawas-korlap/<?= $u['id_korlap']; ?>" data-container="body" data-bs-toggle="tooltip" data-bs-placement="top" title="Pengawas : <?= $p['nama']; ?> [Klik untuk mengubah pengawas]"><img class=" b-r-8 img-40" src="_uploads/f_usr/<?= $ft_p; ?>" alt="#"></a><br>
+                                                            <small><?= $p['nama']; ?></small>
                                                         </div>
                                                     </td>
                                                     <td>
@@ -230,7 +242,7 @@ if ($csrf == false) {
                                 //file gambar
                                 $file_tmp = $_FILES['foto']['tmp_name'];
                                 if (empty($file_tmp)) {
-                                    $q  = $db->query("INSERT INTO korlap VALUES ('$id','$nik_korlap','$nm_korlap','$a_korlap','$t_lahir_korlap','$tgl_lahir_korlap','','',NOW(),NOW(),NULL,'$_SESSION[id_usr]')");
+                                    $q  = $db->query("INSERT INTO korlap VALUES ('$id','$nik_korlap','$nm_korlap','$a_korlap','$t_lahir_korlap','$tgl_lahir_korlap','','','',NOW(),NOW(),NULL,'$_SESSION[id_usr]')");
                                     sweetAlert('korlap', 'sukses', 'Sukses !', 'Korlap atas nama (' . $nm_korlap . ') berhasil diinput');
                                 } else {
                                     $ext_valid = array('png', 'jpg', 'jpeg', 'gif');
@@ -246,7 +258,7 @@ if ($csrf == false) {
                                         //Compress Image
                                         fotoCompressResize($foto, $file_tmp, $path);
                                         //inster ke database
-                                        $q  = $db->query("INSERT INTO korlap VALUES ('$id','$nik_korlap','$nm_korlap','$a_korlap','$t_lahir_korlap','$tgl_lahir_korlap','$foto','',NOW(),NOW(),NULL,'$_SESSION[id_usr]')");
+                                        $q  = $db->query("INSERT INTO korlap VALUES ('$id','$nik_korlap','$nm_korlap','$a_korlap','$t_lahir_korlap','$tgl_lahir_korlap','$foto','','',NOW(),NOW(),NULL,'$_SESSION[id_usr]')");
                                         sweetAlert('korlap', 'sukses', 'Sukses !', 'Korlap atas nama (' . $nm_korlap . ') berhasil diinput');
                                     } else {
                                         sweetAlert('korlap/add', 'error', 'Error Ekstensi !', 'Inputan Foto - Hanya File JPG, PNG, JPEG yang diperbolehkan.');
@@ -402,7 +414,7 @@ if ($csrf == false) {
                                                                     t_lahir_korlap='$t_lahir_korlap',
                                                                     tgl_lahir_korlap='$tgl_lahir_korlap',
                                                                     f_korlap='$foto',
-                                                                    updated_at=NOW()
+                                                                     updated_at=NOW()
                                                                WHERE id_korlap='$_GET[id]'");
                                     //menghapus foto lama
                                     unlink('_uploads/f_korlap/' . $d['f_korlap']);
@@ -411,6 +423,104 @@ if ($csrf == false) {
                                     sweetAlert('korlap/add', 'error', 'Error Ekstensi !', 'Inputan Foto - Hanya File JPG, PNG, JPEG yang diperbolehkan.');
                                     // sweetAlert('korlap/add', 'error', '', ' ');
                                 }
+                            }
+                            // } else {
+                            //     sweetAlert('korlap/add', 'error', 'Error Ekstensi !', ' NIK <i>(' . $nik_korlap . ')</i> sudah terdaftar didalam database.!');
+                            // }
+                            //cek username dalam database
+                        } ?>
+                    </div>
+                </div>
+            </div>
+            <?php break; ?>
+        <?php
+        case 'pengawas-korlap':
+            $data = $db->query("SELECT * FROM korlap WHERE id_korlap='$_GET[id]'")->fetch_assoc();
+            if (empty($data['pengawas'])) {
+                $d = $db->query("SELECT * FROM korlap WHERE id_korlap='$_GET[id]'")->fetch_assoc();
+                $opt = '<option>-- Pilih Pengasawas --</option>';
+            } else {
+                $d = $db->query("SELECT * FROM korlap a, users b WHERE a.pengawas=b.id AND b.level='2' OR b.level='3' AND a.id_korlap='$_GET[id]'")->fetch_assoc();
+                $opt = '<option value="' . $d['id'] . '">' . $d['nama'] . '</option>';
+            }
+        ?>
+            <title>Pengawas Koordinator Lapangan | <?= $title; ?></title>
+            <div class="page-body">
+                <div class="container-fluid">
+                    <div class="page-title">
+                        <div class="row">
+                            <div class="col-6">
+                                <h3>Pengawas Koordinator Lapangan</h3>
+                            </div>
+                            <div class="col-6">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="<?= base_url(); ?>"> <i data-feather="git-pull-request"></i></a>
+                                    </li>
+                                    <li class="breadcrumb-item">Data Master</li>
+                                    <li class="breadcrumb-item">Korlap </li>
+                                    <li class="breadcrumb-item active">Pengawas Korlap</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <form class="row g-3 needs-validation form theme-form" novalidate="" action="" method="POST" enctype="multipart/form-data">
+                            <div class="row g-2">
+
+                            </div>
+                            <div class="row g-2">
+                                <div class="col-lg-4 col-md-12">
+                                    <label>NIK :</label>
+                                    <input type="text" class="form-control" onkeypress="return hanyaAngka(event)" value="<?= $d['nik_korlap']; ?>" maxlength="16" disabled>
+
+                                    <div class="valid-feedback">
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Nik tidak boleh kosong.
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-12">
+                                    <label>Nama Lengkap :</label>
+                                    <input type="text" class="form-control" value="<?= $d['nm_korlap']; ?>" disabled>
+                                    <div class="valid-feedback">
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Nama Lengkap tidak boleh kosong.
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-12">
+                                    <label>Pengawas :</label>
+                                    <select class="form-select js-example-basic-single" name="pengawas" id="floatingSelect" aria-label="Pilih Level">
+                                        <?= $opt; ?>
+                                        <?php
+                                        $pengawas = $db->query("SELECT * FROM users WHERE level='2' OR level='3' ORDER BY nama ASC");
+                                        while ($p = $pengawas->fetch_assoc()) :
+                                        ?>
+                                            <option value="<?= $p['id']; ?>"><?= $p['nama']; ?></option>
+                                        <?php endwhile; ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="d-grid gap-2 col-lg-3 col-md-12 mx-auto">
+                                <button class="btn btn-primary-gradien" name="simpan" type="submit">Simpan
+                                    Data</button>
+                            </div>
+                        </form>
+                        <?php
+                        if (isset($_POST['simpan'])) {
+                            $pengawas = $db->real_escape_string($_POST['pengawas']);
+
+                            $q  = $db->query("UPDATE korlap SET pengawas='$pengawas',
+                                                                    updated_at=NOW()
+                                                               WHERE id_korlap='$_GET[id]'");
+                            if ($q) {
+                                sweetAlert('korlap', 'sukses', 'Berhasil !', 'Data Koordinator Lapangan berhasil di update');
+                            } else {
+                                sweetAlert('korlap/pengawas-korlap', 'error', 'Error Ekstensi !', 'Inputan Foto - Hanya File JPG, PNG, JPEG yang diperbolehkan.');
+                                // sweetAlert('korlap/add', 'error', '', ' ');
                             }
                             // } else {
                             //     sweetAlert('korlap/add', 'error', 'Error Ekstensi !', ' NIK <i>(' . $nik_korlap . ')</i> sudah terdaftar didalam database.!');

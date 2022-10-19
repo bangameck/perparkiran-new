@@ -68,6 +68,7 @@ RewriteRule ^regu/detail/([a-zA-Z0-9_-]+)/page/([a-zA-Z0-9_-]+)$ .rest_page.php?
 RewriteRule ^korlap$ .rest_page.php?f=adm_page&m=korlap [L]
 RewriteRule ^korlap/add$ .rest_page.php?f=adm_page&m=korlap&a=add [L]
 RewriteRule ^korlap/ktp/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=korlap&a=ktp&id=$1 [L]
+RewriteRule ^korlap/pengawas-korlap/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=korlap&a=pengawas-korlap&id=$1 [L]
 RewriteRule ^check_korlap$ modul/adm_page/korlap/cek_nik_korlap.php [L]
 RewriteRule ^korlap/edit/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=korlap&a=edit&id=$1 [L]
 RewriteRule ^korlap/delete$ .rest_page.php?f=adm_page&m=korlap&a=delete [L]

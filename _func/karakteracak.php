@@ -1,11 +1,12 @@
 <?php
+
 /**
-* @author [bangameck.rra]
-* @email [rahmad.looker@gmail.com]
-* @create date 2021-06-11 14:32:29
-* @modify date 2021-06-11 14:34:09
-* @desc [description]
-*/
+ * @author [bangameck.rra]
+ * @email [rahmad.looker@gmail.com]
+ * @create date 2021-06-11 14:32:29
+ * @modify date 2021-06-11 14:34:09
+ * @desc [description]
+ */
 
 //Acak Angka
 function uid($jml_kar)
@@ -108,29 +109,34 @@ function verify()
 
 function singkat_kata($text, $length, $mode = 2)
 {
-	if ($mode != 1)
-	{
-		$char = $text[$length - 1];
-		switch($mode)
-		{
-			case 2: 
-				while($char != ' ') {
-					$char = $text[--$length];
-				}
-			case 3:
-				while($char != ' ') {
-					$char = $text[++$length];
-				}
-		}
-	}
-	return substr($text, 0, $length) . '...';
+    if ($mode != 1) {
+        $char = $text[$length - 1];
+        switch ($mode) {
+            case 2:
+                while ($char != ' ') {
+                    $char = $text[--$length];
+                }
+            case 3:
+                while ($char != ' ') {
+                    $char = $text[++$length];
+                }
+        }
+    }
+    return substr($text, 0, $length) . '...';
 }
 
 function judul($text, $length)
 {
     $char = $text[$length - 1];
-    while($char != ' ') {
+    while ($char != ' ') {
         $char = $text[--$length];
     }
     echo substr($text, 0, $length) . '...';
+}
+
+function createToken()
+{
+    $token = base64_encode(openssl_random_pseudo_bytes(32));
+    $_SESSION['csrfvalue'] = $token;
+    return $token;
 }

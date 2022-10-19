@@ -1,15 +1,16 @@
-<?php 
+<?php
+
 /**
-* @author [bangameck.rra]
-* @email [rahmad.looker@gmail.com]
-* @create date 2021-06-11 14:39:57
-* @modify date 2021-06-11 14:39:57
-* @desc [description]
-*/
+ * @author [bangameck.rra]
+ * @email [rahmad.looker@gmail.com]
+ * @create date 2021-06-11 14:39:57
+ * @modify date 2021-06-11 14:39:57
+ * @desc [description]
+ */
 // include_once '../../_func/func.php'; 
-include '_func/identity.php';
-aut(array(1,2,3,4,5,6));
-if (empty($_SESSION['username']) && empty($_SESSION['password'])){
+include '_func/.identity.php';
+aut(array(1, 2, 3, 4, 5, 6));
+if (empty($_SESSION['username']) && empty($_SESSION['password'])) {
     $hid = 'hidden';
 } else {
     $hid = '';
@@ -93,7 +94,7 @@ if (empty($_SESSION['foto'])) {
                                     alt="" width="118"></div>
                             <h4 class="f-w-600"><span id="greeting">Good Morning</span> <span class="right-circle"><i
                                         class="fa fa-check-circle f-14 middle"></i></span></h4>
-                            <p><span>Hai <span style="color: yellow;"><?= $_SESSION['nama'];?></span>, Selamat datang dihalaman Sistem Pendataan Bus
+                            <p><span>Hai <span style="color: yellow;"><?= $_SESSION['nama']; ?></span>, Selamat datang dihalaman Sistem Pendataan Bus
                                     Vaksinasi Dinas Perhubungan Kota Pekanbaru, Silahkan Inputkan Data
                                     Vaksinasi...</span></p>
                             <div class="whatsnew-btn"><a href="<?= base_url(); ?>layanan/add" class="btn btn-primary">Inputkan Data.</a></div>
@@ -108,14 +109,10 @@ if (empty($_SESSION['foto'])) {
                         <h5>Alert State</h5>
                     </div>
                     <div class="card-body btn-showcase">
-                        <button class="btn btn-success sweet-8" type="button"
-                            onclick="_gaq.push(['_trackEvent', 'example', 'try', 'sweet-8']);">Success</button>
-                        <button class="btn btn-danger sweet-7" type="button"
-                            onclick="_gaq.push(['_trackEvent', 'example', 'try', 'sweet-7']);">Danger</button>
-                        <button class="btn btn-info sweet-9" type="button"
-                            onclick="_gaq.push(['_trackEvent', 'example', 'try', 'sweet-9']);">Information</button>
-                        <button class="btn btn-warning sweet-6" type="button"
-                            onclick="_gaq.push(['_trackEvent', 'example', 'try', 'sweet-6']);">Warning</button>
+                        <button class="btn btn-success sweet-8" type="button" onclick="_gaq.push(['_trackEvent', 'example', 'try', 'sweet-8']);">Success</button>
+                        <button class="btn btn-danger sweet-7" type="button" onclick="_gaq.push(['_trackEvent', 'example', 'try', 'sweet-7']);">Danger</button>
+                        <button class="btn btn-info sweet-9" type="button" onclick="_gaq.push(['_trackEvent', 'example', 'try', 'sweet-9']);">Information</button>
+                        <button class="btn btn-warning sweet-6" type="button" onclick="_gaq.push(['_trackEvent', 'example', 'try', 'sweet-6']);">Warning</button>
                         <button class="third">Title, Text and Icon</button>
                     </div>
                 </div>

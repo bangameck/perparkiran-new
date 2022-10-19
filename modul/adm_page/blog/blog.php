@@ -7,7 +7,7 @@
  * @desc [description]
  */
 
-include '_func/identity.php';
+include '_func/.identity.php';
 $csrf     = $db->query("SELECT b.token FROM users a, session b WHERE a.token=b.token AND a.username='$_SESSION[username]' AND b.token='$_SESSION[token]'")->fetch_assoc();
     if ($csrf==false) {
         sweetAlert('out', 'error', 'Error Session !', 'Session telah berakhir atau akun anda sudah login diperangkat lain, silahkan login ulang');

@@ -1,5 +1,5 @@
 <?php
-include '_func/identity.php';
+include '_func/.identity.php';
 $date = date('Y-m-d');
 ?>
 <title><?= $title; ?></title>
