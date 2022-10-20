@@ -255,39 +255,20 @@ if ($csrf == false) {
                     <div class="card-body">
                         <form class="needs-validation" novalidate="" action="" method="POST" enctype="multipart/form-data">
                             <div class="row g-2">
-                                <div class="col-md-12">
-                                    <label">Username :</label>
-                                        <input type="text" class="form-control" name="username" id="username" required>
-                                        <div class="media">
-                                            <div class="text-end">
-                                                <label id="message"></label>
-                                            </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <label>Username :</label>
+                                    <input type="text" class="form-control" name="username" id="username" required>
+                                    <div class="media">
+                                        <div class="text-end">
+                                            <label id="message"></label>
                                         </div>
-                                        <div class="valid-feedback">
-                                        </div>
-                                        <div class="invalid-feedback">
-                                            Username tidak boleh kosong.
-                                        </div>
+                                    </div>
+                                    <div class="valid-feedback">
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Username tidak boleh kosong.
+                                    </div>
                                 </div>
-                                <!-- <div class="col-lg-6 col-md-12">
-                    <label>Password :</label>
-                        <input type="password" class="form-control password" name="password" required>
-                        <div class="media">
-                            <div class="text-end switch-sm switch-outline">
-                                <label class="switch">
-                                    <input type="checkbox" class="view_pass"><span class="switch-state"
-                                        data-container="body" data-bs-toggle="tooltip" data-bs-placement="right"
-                                        title="Lihat Password"></span>
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div class="invalid-feedback">
-                            Password tidak boleh kosong.
-                        </div>
-                    </div> -->
-                            </div>
-                            <div class="row g-2">
                                 <div class="col-lg-6 col-md-12">
                                     <label>Email :</label>
                                     <input type="email" class="form-control" name="email" id="email" required>
@@ -302,15 +283,6 @@ if ($csrf == false) {
                                         Email tidak boleh kosong.
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-12">
-                                    <label>Nomor Handphone</label>
-                                    <input type="text" class="form-control" onkeypress="return hanyaAngka(event)" name="no_hp" required>
-
-                                    <!-- <div class="show-hide"><span id="view_pass"></span></div> -->
-                                    <div class="invalid-feedback">
-                                        Nomor Handphone tidak boleh kosong.
-                                    </div>
-                                </div>
                             </div>
                             <div class="row g-2">
                                 <div class="col-lg-6 col-md-12">
@@ -322,12 +294,37 @@ if ($csrf == false) {
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
-                                    <label for="floatingInput">Pendidikan Terakhir :</label>
-                                    <input type="text" class="form-control" name="pendidikan">
+                                    <label>NIK :</label>
+                                    <input type="text" class="form-control" onkeypress="return hanyaAngka(event)" name="nik" min="16" max="16" id="nik" required>
+                                    <div class="media">
+                                        <div class="text-end">
+                                            <label id="message_nik"></label>
+                                        </div>
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        NIK tidak boleh kosong.
+                                    </div>
                                 </div>
                             </div>
                             <div class="row g-2">
-                                <div class="col-lg-12 col-md-12">
+                                <div class="col-lg-6 col-md-12">
+                                    <label>Nomor Handphone :</label>
+                                    <input type="text" class="form-control" onkeypress="return hanyaAngka(event)" name="no_hp" required>
+
+                                    <!-- <div class="show-hide"><span id="view_pass"></span></div> -->
+                                    <div class="invalid-feedback">
+                                        Nomor Handphone tidak boleh kosong.
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <label for="floatingInput">Pendidikan Terakhir :</label>
+                                    <input type="text" class="form-control" name="pendidikan">
+                                    <div class="valid-feedback">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-2">
+                                <div class="col-lg-12 col-md-12 mb-3 mt-3">
                                     <label for="floatingInput">Alamat :</label>
                                     <textarea name="alamat" class="form-control"></textarea>
                                 </div>
@@ -338,13 +335,14 @@ if ($csrf == false) {
                                     <input type="text" class="form-control" name="t_lahir">
                                 </div>
                                 <div class="col-lg-6 col-md-12">
-                                    <label for="floatingInput">Tanggal Lahir : Tanggal Lahir :</label><small style="color: orange;">
+                                    <label>Tanggal Lahir : Tanggal Lahir :</label><small style="color: orange;">
                                         Format : bulan/tanggal/tahun</small></label>
                                     <input type="text" class="datepicker-here form-control digits" data-language="en" name="tgl_lahir">
                                 </div>
                             </div>
                             <div class="row g-2">
-                                <div class="col-lg-4 col-md-12">
+                                <div class="col-lg-4 col-md-12 mt-3">
+                                    <!-- <label for="floatingInput">Jenis Kelamin :</label> -->
                                     <select class="form-select js-example-basic-single" name="jk" id="floatingSelect" aria-label="Pilih Level">
                                         <option value="">Jenis Kelamin</option>
                                         <option value="M">Pria</option>
@@ -354,7 +352,8 @@ if ($csrf == false) {
                                 <div class="invalid-feedback">
                                     Jenis Kelamin tidak boleh kosong.
                                 </div>
-                                <div class="col-lg-4 col-md-12">
+                                <div class="col-lg-4 col-md-12 mt-3">
+                                    <!-- <label for="floatingInput">Level :</label> -->
                                     <select class="form-select js-example-basic-single" name="level" id="floatingSelect" aria-label="Pilih Level" required>
                                         <option value="">Level</option>
                                         <!-- <option value="1">Admin Super</option> -->
@@ -369,8 +368,9 @@ if ($csrf == false) {
                                         Level tidak boleh kosong.
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <select class="form-select js-example-basic-single" name="regu" id="floatingSelect" aria-label="Pilih Level">
+                                <div class="col-lg-4 col-md-12 mt-3">
+                                    <!-- <label for="floatingInput">Alamat :</label> -->
+                                    <select class="form-select js-example-basic-single form-control" name="regu" id="floatingSelect" aria-label="Pilih Level">
                                         <option value="">Regu</option>
                                         <?php
                                         $regu = $db->query("SELECT * FROM regu ORDER BY nm_regu ASC");
@@ -384,7 +384,9 @@ if ($csrf == false) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="row g-2">
+                            <div class="row g-2 mt-3">
+                                <label>Foto :</label>
+
                                 <div class="col-lg-3 col-md-6">
                                     <!-- gambar  -->
                                     <div class="avatar"><img class="img-100 rounded-circle" src="<?= base_url(); ?>_uploads/f_usr/default.png" id="imgPreview" alt="Image Preview">
@@ -409,6 +411,7 @@ if ($csrf == false) {
                             $password   = password_hash('12345678', PASSWORD_DEFAULT);
                             $email      = $db->real_escape_string($_POST['email']);
                             $no_hp      = $db->real_escape_string($_POST['no_hp']);
+                            $nik        = $db->real_escape_string($_POST['nik']);
                             $nama       = $db->real_escape_string($_POST['nama']);
                             $pendidikan = strtoupper($db->real_escape_string($_POST['pendidikan']));
                             $alamat     = $db->real_escape_string($_POST['alamat']);
@@ -551,7 +554,7 @@ if ($csrf == false) {
                                             sweetAlert($m, 'error', 'Mailer Error: ', $mail->ErrorInfo);
                                         } else {
                                             // echo "Message has been sent successfully";
-                                            $db->query("INSERT INTO users VALUES ('$id','$username','$password','$email','$no_hp','$nama','$pendidikan','$alamat','$t_lahir','$tgl_lahir','$jk','$level','$regu','','','$token','$batas_waktu','N',NOW(),NOW(),NULL)");
+                                            $db->query("INSERT INTO users VALUES ('$id','$username','$password','$email','$no_hp', '$nik','$nama','$pendidikan','$alamat','$t_lahir','$tgl_lahir','$jk','$level','$regu','','','$token','$batas_waktu','N',NOW(),NOW(),NULL)");
                                             sweetAlert('users', 'sukses', 'Sukses !', 'Data dengan username (' . $username . ') berhasil diinput');
                                         }
                                         // if ($q) {
@@ -690,7 +693,7 @@ if ($csrf == false) {
                                                 sweetAlert($m, 'error', 'Mailer Error: ', $mail->ErrorInfo);
                                             } else {
                                                 // echo "Message has been sent successfully";
-                                                $db->query("INSERT INTO users VALUES ('$id','$username','$password','$email','$no_hp','$nama','$pendidikan','$alamat','$t_lahir','$tgl_lahir','$jk','$level','$regu','','$foto','$token','$batas_waktu','N',NOW(),NOW(),NULL)");
+                                                $db->query("INSERT INTO users VALUES ('$id','$username','$password','$email','$no_hp', '$nik','$nama','$pendidikan','$alamat','$t_lahir','$tgl_lahir','$jk','$level','$regu','','$foto','$token','$batas_waktu','N',NOW(),NOW(),NULL)");
                                                 sweetAlert('users', 'sukses', 'Sukses !', 'Data dengan username (' . $username . ') berhasil diinput');
                                             }
                                             // javascript('users','alert-sukses','Data User dan Foto berhasil diupload');
@@ -781,9 +784,9 @@ if ($csrf == false) {
                                                             <div class="media">
                                                                 <img class="img-70 rounded-circle" alt="" src="<?= base_url(); ?>_uploads/f_usr/<?= $ft; ?>" id="imgPreview" alt="Image Preview">
                                                                 <!-- <div class="media-body">
-                                      <h5 class="mb-1"><?= $d['nama']; ?></h5>
-                                      <p><?= $desc; ?></p>
-                                    </div> -->
+                                                                <h5 class="mb-1"><?= $d['nama']; ?></h5>
+                                                                <p><?= $desc; ?></p>
+                                                                </div> -->
                                                             </div>
                                                         </div>
                                                     </div>
@@ -863,7 +866,21 @@ if ($csrf == false) {
                                         <div class="card-body">
                                             <div class="row">
 
-                                                <div class="col-md-12">
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">NIK</label>
+                                                        <input class="form-control" type="text" name="nik" id="nik" value="<?= $d['nik']; ?>" required>
+                                                        <div class="media">
+                                                            <div class="text-end">
+                                                                <label id="message_nik"></label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="invalid-feedback">
+                                                            NIK tidak boleh kosong.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label">Nama</label>
                                                         <input class="form-control" type="text" name="nama" value="<?= $d['nama']; ?>" required>
@@ -1031,6 +1048,7 @@ if ($csrf == false) {
                     if (isset($_POST['update_profil'])) {
                         $email      = $db->real_escape_string($_POST['email']);
                         $no_hp      = $db->real_escape_string($_POST['no_hp']);
+                        $nik        = $db->real_escape_string($_POST['nik']);
                         $nama       = $db->real_escape_string($_POST['nama']);
                         $pendidikan = strtoupper($db->real_escape_string($_POST['pendidikan']));
                         $alamat     = $db->real_escape_string($_POST['alamat']);
@@ -1047,11 +1065,11 @@ if ($csrf == false) {
                         }
                         if ($cek_email->num_rows == 0) {
                             if ($level == 3) {
-                                $db->query("UPDATE users SET email='$email', no_hp='$no_hp', nama='$nama', pendidikan='$pendidikan', alamat='$alamat', t_lahir='$t_lahir', tgl_lahir='$tgl_lahir', jk='$jk', level='$level',regu='$regu',updated_at=NOW() WHERE id='$id'");
+                                $db->query("UPDATE users SET email='$email', no_hp='$no_hp', nik='$nik', nama='$nama', pendidikan='$pendidikan', alamat='$alamat', t_lahir='$t_lahir', tgl_lahir='$tgl_lahir', jk='$jk', level='$level',regu='$regu',updated_at=NOW() WHERE id='$id'");
                                 $db->query("UPDATE regu SET karu='$id' WHERE id_regu='$regu'");
                                 sweetAlert('users/edit/' . $id, 'sukses', 'Berhasil !', 'Data User berhasil diupdate');
                             } else {
-                                $db->query("UPDATE users SET email='$email', no_hp='$no_hp', nama='$nama', pendidikan='$pendidikan', alamat='$alamat', t_lahir='$t_lahir', tgl_lahir='$tgl_lahir', jk='$jk', level='$level',regu='$regu',updated_at=NOW() WHERE id='$id'");
+                                $db->query("UPDATE users SET email='$email', no_hp='$no_hp', nik='$nik', nama='$nama', pendidikan='$pendidikan', alamat='$alamat', t_lahir='$t_lahir', tgl_lahir='$tgl_lahir', jk='$jk', level='$level',regu='$regu',updated_at=NOW() WHERE id='$id'");
                                 sweetAlert('users/edit/' . $id, 'sukses', 'Berhasil !', 'Data User berhasil diupdate');
                             }
                         } else {
@@ -1278,10 +1296,18 @@ if ($csrf == false) {
                                         </div>
                                         <div class="card-body">
                                             <div class="row">
-
-                                                <div class="col-md-12">
+                                                <div class="col-md-6">
                                                     <div class="mb-3">
-                                                        <label class="form-label">Nama</label>
+                                                        <label class="form-label" data-bs-toggle="tooltip" data-bs-placement="right" title="untuk mengubah nik silahkan menghubungi admin">NIK <i class="fa fa-info-circle"></i></label>
+                                                        <input class="form-control" type="text" value="<?= $d['nik']; ?>" readonly>
+                                                        <div class="invalid-feedback">
+                                                            Nama tidak boleh kosong.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label"> Nama</label>
                                                         <input class="form-control" type="text" name="nama" value="<?= $d['nama']; ?>" required>
                                                         <div class="invalid-feedback">
                                                             Nama tidak boleh kosong.

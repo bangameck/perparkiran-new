@@ -293,6 +293,34 @@
 
     });
 
+    //cek nik users
+    $(document).ready(function() {
+        $("#nik").change(function() {
+            $("#message_nik").html(
+                "<li><i class='fa fa-spinner text-success fa-spin' ></i> Check NIK Users...</li>");
+
+            var nik = $("#nik").val();
+
+            $.ajax({
+                type: "post",
+                url: "<?= base_url(); ?>check_nik",
+                data: "nik=" + nik,
+                success: function(data) {
+                    if (data == 0) {
+                        $("#message_nik").html(
+                            "<i class='fa fa-check text-success'></i> NIK ini tersedia (belum pernah mendaftar Users).");
+                    } else {
+                        $("#message_nik").html(
+                            "<i class='fa fa-times text-danger'></i> NIK sudah terdaftar didalam database.!"
+                        );
+                    }
+                }
+            });
+
+        });
+
+    });
+
     //autofocus form
     function SetFocus() {
         var input = document.getElementById("theFieldID");

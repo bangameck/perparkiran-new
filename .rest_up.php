@@ -287,7 +287,7 @@ require 'vendor/PHPMailer/src/SMTP.php';
                                                                         <tbody>
                                                                             <tr>
                                                                             <td style="padding: 30px"> 
-                                                                                <h6 style="font-weight: 600">Verifikasi Akun ' . $nama . ' (' . $username . ')</h6>
+                                                                                <h5 style="font-weight: 600">Verifikasi Akun ' . $nama . ' (' . $username . ')</h5>
                                                                                 <p>Selamat bergabung <b>' . $nama . '</b> di ' . $title . '.</p>
                                                                                 <p>Silahkan klik tombol dibawah ini untuk memverifikasi akun anda.</p>
                                                                                 <p>Batas Waktu Verifikasi Sampai Dengan <b>' . tgl_indo(date('Y-m-d', strtotime($batas_waktu))) . ' ' . date('H:i:s', strtotime($batas_waktu)) . ' WIB</b>.</p>
@@ -321,7 +321,7 @@ require 'vendor/PHPMailer/src/SMTP.php';
                                             sweetAlert('register-for-new-users', 'error', 'Mailer Error: ', $mail->ErrorInfo);
                                         } else {
                                             // echo "Message has been sent successfully";
-                                            $db->query("INSERT INTO users VALUES ('$id','$username','$password','$email','','$nama','','','','','','7','','','','$token','$batas_waktu','N',NOW(),NOW(),NULL)");
+                                            $db->query("INSERT INTO users VALUES ('$id','$username','$password','$email','','','$nama','','','','','','7','','','','$token','$batas_waktu','N',NOW(),NOW(),NULL)");
                                             sweetAlert('login-for-users', 'sukses', 'Sukses !', 'Silahkan cek email : ' . $email . ' untuk memverifikasi akun. Setelah memverifikasi silahkan login ');
                                         }
                                     }

@@ -27,11 +27,11 @@ if ($_SESSION['level'] == '1') {
             <li class="sidebar-list" ><a class="sidebar-link sidebar-title" href="#"><i
                 data-feather="clipboard"></i><span>Data Administrasi</span></a>
             <ul class="sidebar-submenu">
-            <li><a class="submenu-title" href="#">Data Pemilik<span class="sub-arrow"><i class="fa fa-angle-right"></i></span></a>
+            <li><a href="' . base_url() . 'korlap">Data Korlap</a></li>
+            <li><a class="submenu-title" href="#">Data Lokasi<span class="sub-arrow"><i class="fa fa-angle-right"></i></span></a>
                 <ul class="nav-sub-childmenu submenu-content">
-                    <li><a href="' . base_url() . 'korlap">Korlap</a></li>
-                    <li><a href="' . base_url() . 'lokasi">Lokasi</a></li>
-                    <li><a href="' . base_url() . 'jukir">Jukir</a></li>
+                    <li><a href="' . base_url() . 'lokasi">Per Korlap</a></li>  
+                    <li><a href="' . base_url() . 'lokasi/all">Seluruh Jalan</a></li>
                 </ul>
             </li>
             <li><a class="submenu-title" href="#">Perjanjian Kerjasama<span class="sub-arrow"><i class="fa fa-angle-right"></i></span></a>

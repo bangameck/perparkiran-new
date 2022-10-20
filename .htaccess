@@ -39,6 +39,7 @@ RewriteRule ^users-blok$ .rest_page.php?f=adm_page&m=users&a=users-blok [L]
 RewriteRule ^users/aktif$ .rest_page.php?f=adm_page&m=users&a=aktif [L]
 RewriteRule ^users/blokir$ .rest_page.php?f=adm_page&m=users&a=blokir [L]
 RewriteRule ^check_users$ modul/adm_page/users/c_users.php [L]
+RewriteRule ^check_nik$ modul/adm_page/users/cek_nik.php [L]
 RewriteRule ^check_email$ modul/adm_page/users/c_email.php [L]
 RewriteRule ^users/add$ .rest_page.php?f=adm_page&m=users&a=add [L]
 RewriteRule ^users/edit$ .rest_page.php?f=adm_page&m=users&a=edit [L]
@@ -48,7 +49,7 @@ RewriteRule ^users/delete-temp$ .rest_page.php?f=adm_page&m=users&a=delete-temp 
 #RewriteRule ^users/delete-temp/([a-zA-Z0-9_-]+)$ .rest_page.php?m=users&a=delete-temp&id=$1 [L]
 RewriteRule ^users/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=users&a=detail&id=$1 [L]
 
-#regu
+#tags
 RewriteRule ^tags$ .rest_page.php?f=adm_page&m=tags [L]
 RewriteRule ^tags/add$ .rest_page.php?f=adm_page&m=tags&a=add [L]
 RewriteRule ^tags/edit/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=tags&a=edit&id=$1 [L]
@@ -75,6 +76,17 @@ RewriteRule ^korlap/delete$ .rest_page.php?f=adm_page&m=korlap&a=delete [L]
 RewriteRule ^korlap/delete/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=korlap&a=delete&id=$1 [L]
 RewriteRule ^korlap/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=korlap&a=detail&id=$1 [L]
 RewriteRule ^korlap/detail/([a-zA-Z0-9_-]+)/page/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=korlap&a=detail&id=$1&page=$2 [L]
+
+#lokasi
+RewriteRule ^lokasi$ .rest_page.php?f=adm_page&m=lokasi [L]
+RewriteRule ^lokasi/all$ .rest_page.php?f=adm_page&m=lokasi&a=all [L]
+RewriteRule ^lokasi/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=lokasi&a=detail&id=$1 [L]
+RewriteRule ^lokasi/add/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=lokasi&a=add&id=$1 [L]
+RewriteRule ^lokasi/info/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=lokasi&a=info&id=$1 [L]
+RewriteRule ^lokasi/delete$ .rest_page.php?f=adm_page&m=lokasi&a=delete [L]
+RewriteRule ^lokasi/delete/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=lokasi&a=delete&id=$1 [L]
+RewriteRule ^lokasi/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=lokasi&a=detail&id=$1 [L]
+RewriteRule ^lokasi/detail/([a-zA-Z0-9_-]+)/page/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=lokasi&a=detail&id=$1&page=$2 [L]
 
 #giat
 RewriteRule ^giat$ .rest_page.php?f=adm_page&m=giat [L]

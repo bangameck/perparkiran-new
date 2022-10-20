@@ -104,16 +104,18 @@ if ($csrf == false) {
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <a href="<?= base_url(); ?>korlap/edit/<?= $u['id_korlap']; ?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                                                        <a href="<?= base_url(); ?>korlap/detail/<?= $u['id_korlap']; ?>" class="btn btn-primary"><i class="fa fa-info-circle"></i></a>
+                                                        <div class="btn-group">
+                                                            <a href="<?= base_url(); ?>korlap/detail/<?= $u['id_korlap']; ?>" class="btn btn-primary btn-sm"><i class="fa fa-info-circle"></i> Details</a>
+                                                            <a href="<?= base_url(); ?>korlap/edit/<?= $u['id_korlap']; ?>" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i> Edit</a>
 
-                                                        <form action="<?= base_url(); ?>korlap/delete" method="POST" class="d-inline">
-                                                            <input type="hidden" name="id_korlap" value="<?= $u['id_korlap']; ?>">
-                                                            <input type="hidden" name="nm_korlap" value="<?= $u['nm_korlap']; ?>">
-                                                            <input type="hidden" name="f_korlap" value="<?= $u['f_korlap']; ?>">
-                                                            <input type="hidden" name="f_ktp_korlap" value="<?= $u['f_ktp_korlap']; ?>">
-                                                            <button class="btn btn-danger border-1" onclick="return hapus()"><i class="fa fa-trash"></i></button>
-                                                        </form>
+                                                            <form action="<?= base_url(); ?>korlap/delete" method="POST" class="d-inline">
+                                                                <input type="hidden" name="id_korlap" value="<?= $u['id_korlap']; ?>">
+                                                                <input type="hidden" name="nm_korlap" value="<?= $u['nm_korlap']; ?>">
+                                                                <input type="hidden" name="f_korlap" value="<?= $u['f_korlap']; ?>">
+                                                                <input type="hidden" name="f_ktp_korlap" value="<?= $u['f_ktp_korlap']; ?>">
+                                                                <button class="btn btn-danger btn-sm border-1" onclick="return hapus()"><i class="fa fa-trash"></i> Delete</button>
+                                                            </form>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             <?php endwhile; ?>
@@ -153,15 +155,9 @@ if ($csrf == false) {
                     <div class="card-body">
                         <form class="row g-3 needs-validation form theme-form" novalidate="" action="" method="POST" enctype="multipart/form-data">
                             <div class="row g-2">
+                                <input type="hidden" class="form-control" name="id" value="<?= verify(); ?>" required>
+
                                 <div class="col-lg-6 col-md-12">
-                                    <input type="hidden" class="form-control" name="id" value="<?= verify(); ?>" required>
-                                    <div class="valid-feedback">
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Nik tidak boleh kosong.
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 col-md-12">
                                     <label>NIK :</label>
                                     <input type="text" class="form-control" onkeypress="return hanyaAngka(event)" name="nik_korlap" id="nik_korlap" maxlength="16" required autofocus>
                                     <div class="media">
@@ -175,8 +171,6 @@ if ($csrf == false) {
                                         Nik tidak boleh kosong.
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row g-2">
                                 <div class="col-lg-6 col-md-12">
                                     <label>Nama Lengkap :</label>
                                     <input type="text" class="form-control" name="nm_korlap" required>
@@ -186,6 +180,8 @@ if ($csrf == false) {
                                         Nama Lengkap tidak boleh kosong.
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row g-2">
                                 <div class="col-lg-6 col-md-12">
                                     <label>Alamat :</label>
                                     <textarea class="form-control" name="a_korlap" required></textarea>
@@ -194,6 +190,15 @@ if ($csrf == false) {
                                         Alamat tidak boleh kosong.
                                     </div>
                                 </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <label>Perjanjian :</label>
+                                    <select class="form-select js-example-basic-single" name="perjanjian" id="floatingSelect" aria-label="Pilih Level">
+                                        <option>-- Pilih Jenis Perjanjian --</option>
+                                        <option value="SPT">SPT</option>
+                                        <option value="PKS">PKS</option>
+
+                                    </select>
+                                </div>
                             </div>
                             <div class="row g-2">
                                 <div class="col-lg-6 col-md-12">
@@ -201,7 +206,7 @@ if ($csrf == false) {
                                     <input type="text" class="form-control" name="t_lahir_korlap">
                                 </div>
                                 <div class="col-lg-6 col-md-12">
-                                    <label for="floatingInput">Tanggal Lahir : Tanggal Lahir :</label><small style="color: orange;">
+                                    <label for="floatingInput"> Tanggal Lahir :</label><small style="color: orange;">
                                         Format : bulan/tanggal/tahun</small></label>
                                     <input type="text" class="datepicker-here form-control digits" data-language="en" name="tgl_lahir_korlap">
                                 </div>
@@ -232,8 +237,9 @@ if ($csrf == false) {
                             $nik_korlap       = $db->real_escape_string($_POST['nik_korlap']);
                             $nm_korlap        = $db->real_escape_string($_POST['nm_korlap']);
                             $a_korlap         = $db->real_escape_string($_POST['a_korlap']);
+                            $perjanjian       = $db->real_escape_string($_POST['perjanjian']);
                             $t_lahir_korlap   = $db->real_escape_string($_POST['t_lahir_korlap']);
-                            $tgl_lahir_korlap = date('Y-m-d', strtotime($db->real_escape_string($post['tgl_lahir_korlap'])));
+                            $tgl_lahir_korlap = date('Y-m-d', strtotime($db->real_escape_string($_POST['tgl_lahir_korlap'])));
                             // $slug     = slug($nopol_bus);
                             $cek_korlap = $db->query("SELECT nik_korlap FROM korlap WHERE nik_korlap='$nik_korlap'");
                             //jika username tidak ada didalam database
@@ -242,7 +248,7 @@ if ($csrf == false) {
                                 //file gambar
                                 $file_tmp = $_FILES['foto']['tmp_name'];
                                 if (empty($file_tmp)) {
-                                    $q  = $db->query("INSERT INTO korlap VALUES ('$id','$nik_korlap','$nm_korlap','$a_korlap','$t_lahir_korlap','$tgl_lahir_korlap','','','',NOW(),NOW(),NULL,'$_SESSION[id_usr]')");
+                                    $q  = $db->query("INSERT INTO korlap VALUES ('$id','$nik_korlap','$nm_korlap','$a_korlap','$t_lahir_korlap','$tgl_lahir_korlap','','','','',NOW(),NOW(),NULL,'$_SESSION[id_usr]')");
                                     sweetAlert('korlap', 'sukses', 'Sukses !', 'Korlap atas nama (' . $nm_korlap . ') berhasil diinput');
                                 } else {
                                     $ext_valid = array('png', 'jpg', 'jpeg', 'gif');
@@ -258,7 +264,7 @@ if ($csrf == false) {
                                         //Compress Image
                                         fotoCompressResize($foto, $file_tmp, $path);
                                         //inster ke database
-                                        $q  = $db->query("INSERT INTO korlap VALUES ('$id','$nik_korlap','$nm_korlap','$a_korlap','$t_lahir_korlap','$tgl_lahir_korlap','$foto','','',NOW(),NOW(),NULL,'$_SESSION[id_usr]')");
+                                        $q  = $db->query("INSERT INTO korlap VALUES ('$id','$nik_korlap','$nm_korlap','$a_korlap','$t_lahir_korlap','$tgl_lahir_korlap','$foto','','','',NOW(),NOW(),NULL,'$_SESSION[id_usr]')");
                                         sweetAlert('korlap', 'sukses', 'Sukses !', 'Korlap atas nama (' . $nm_korlap . ') berhasil diinput');
                                     } else {
                                         sweetAlert('korlap/add', 'error', 'Error Ekstensi !', 'Inputan Foto - Hanya File JPG, PNG, JPEG yang diperbolehkan.');
@@ -303,7 +309,7 @@ if ($csrf == false) {
                     <div class="card-body">
                         <form class="row g-3 needs-validation form theme-form" novalidate="" action="" method="POST" enctype="multipart/form-data">
                             <div class="row g-2">
-                                <div class="col-lg-12 col-md-12">
+                                <div class="col-lg-6 col-md-12">
                                     <label>NIK :</label>
                                     <input type="text" class="form-control" onkeypress="return hanyaAngka(event)" value="<?= $d['nik_korlap']; ?>" maxlength="16" disabled>
 
@@ -313,8 +319,6 @@ if ($csrf == false) {
                                         Nik tidak boleh kosong.
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row g-2">
                                 <div class="col-lg-6 col-md-12">
                                     <label>Nama Lengkap :</label>
                                     <input type="text" class="form-control" name="nm_korlap" value="<?= $d['nm_korlap']; ?>" required>
@@ -324,6 +328,8 @@ if ($csrf == false) {
                                         Nama Lengkap tidak boleh kosong.
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row g-2">
                                 <div class="col-lg-6 col-md-12">
                                     <label>Alamat :</label>
                                     <textarea class="form-control" name="a_korlap"><?= $d['a_korlap']; ?></textarea>
@@ -332,6 +338,15 @@ if ($csrf == false) {
                                         Alamat tidak boleh kosong.
                                     </div>
                                 </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <label>Perjanjian :</label>
+                                    <select class="form-select js-example-basic-single" name="perjanjian" id="floatingSelect" aria-label="Pilih Level">
+                                        <option value="<?= $d['perjanjian']; ?>"><?= $d['perjanjian']; ?></option>
+                                        <option value="SPT">SPT</option>
+                                        <option value="PKS">PKS</option>
+
+                                    </select>
+                                </div>
                             </div>
                             <div class="row g-2">
                                 <div class="col-lg-6 col-md-12">
@@ -339,7 +354,7 @@ if ($csrf == false) {
                                     <input type="text" class="form-control" name="t_lahir_korlap" value="<?= $d['t_lahir_korlap']; ?>">
                                 </div>
                                 <div class="col-lg-6 col-md-12">
-                                    <label for="floatingInput">Tanggal Lahir : Tanggal Lahir :</label><small style="color: orange;">
+                                    <label for="floatingInput">Tanggal Lahir :</label><small style="color: orange;">
                                         Format : bulan/tanggal/tahun</small></label>
                                     <input type="text" class="datepicker-here form-control digits" data-language="en" name="tgl_lahir_korlap" value="<?= date('m/d/Y', strtotime($d['tgl_lahir_korlap'])); ?>">
                                 </div>
@@ -377,6 +392,7 @@ if ($csrf == false) {
                             $nik_korlap       = $db->real_escape_string($_POST['nik_korlap']);
                             $nm_korlap        = $db->real_escape_string($_POST['nm_korlap']);
                             $a_korlap         = $db->real_escape_string($_POST['a_korlap']);
+                            $perjanjian       = $db->real_escape_string($_POST['perjanjian']);
                             $t_lahir_korlap   = $db->real_escape_string($_POST['t_lahir_korlap']);
                             $tgl_lahir_korlap = date('Y-m-d', strtotime($db->real_escape_string($_POST['tgl_lahir_korlap'])));
                             // $slug     = slug($nopol_bus);
@@ -391,6 +407,7 @@ if ($csrf == false) {
                                                                     a_korlap='$a_korlap',
                                                                     t_lahir_korlap='$t_lahir_korlap',
                                                                     tgl_lahir_korlap='$tgl_lahir_korlap',
+                                                                    perjanjian='$perjanjian',
                                                                     updated_at=NOW()
                                                                WHERE id_korlap='$_GET[id]'");
                                 sweetAlert('korlap', 'sukses', 'Berhasil !', 'Data Koordinator Lapangan berhasil di update');
@@ -414,6 +431,7 @@ if ($csrf == false) {
                                                                     t_lahir_korlap='$t_lahir_korlap',
                                                                     tgl_lahir_korlap='$tgl_lahir_korlap',
                                                                     f_korlap='$foto',
+                                                                    perjanjian='$perjanjian',
                                                                      updated_at=NOW()
                                                                WHERE id_korlap='$_GET[id]'");
                                     //menghapus foto lama
