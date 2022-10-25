@@ -321,6 +321,60 @@
 
     });
 
+    //cek nik jukir
+    $(document).ready(function() {
+        $("#nik_jukir").change(function() {
+            $("#message_nik_jukir").html(
+                "<li><i class='fa fa-spinner text-success fa-spin' ></i> Check NIK Jukir...</li>");
+
+            var nik_jukir = $("#nik_jukir").val();
+
+            $.ajax({
+                type: "post",
+                url: "<?= base_url(); ?>check_nik_jukir",
+                data: "nik_jukir=" + nik_jukir,
+                success: function(data) {
+                    if (data == 0) {
+                        $("#message_nik_jukir").html(
+                            "<i class='fa fa-check text-success'></i> NIK ini tersedia (belum pernah mendaftar Juru Parkir).");
+                    } else {
+                        $("#message_nik_jukir").html(
+                            "<i class='fa fa-times text-danger'></i> NIK sudah terdaftar didalam database.!"
+                        );
+                    }
+                }
+            });
+
+        });
+
+    });
+
+    //cek nik jukir
+    $(document).ready(function() {
+        $("#id_jukir").change(function() {
+            $("#message_id_jukir").html(
+                "<li><i class='fa fa-spinner text-success fa-spin' ></i> Check ID Jukir...</li>");
+
+            var id_jukir = $("#id_jukir").val();
+
+            $.ajax({
+                type: "post",
+                url: "<?= base_url(); ?>check_id_jukir",
+                data: "id_jukir=" + id_jukir,
+                success: function(data) {
+                    if (data == 0) {
+                        $("#message_id_jukir").html(
+                            "<i class='fa fa-check text-success'></i> ID ini tersedia.");
+                    } else {
+                        $("#message_id_jukir").html(
+                            "<i class='fa fa-times text-danger'></i> ID sudah terdaftar didalam database.!"
+                        );
+                    }
+                }
+            });
+        });
+    });
+
     //autofocus form
     function SetFocus() {
         var input = document.getElementById("theFieldID");
@@ -489,6 +543,33 @@
             }
         })
     }
+
+    //jukir korlap
+    $(document).ready(function() {
+        $.ajax({
+            type: 'POST',
+            url: "<?= base_url(); ?>cari_korlap",
+            cache: false,
+            success: function(msg) {
+                $("#korlap").html(msg);
+            }
+        });
+
+        $("#korlap").change(function() {
+            var korlap = $("#korlap").val();
+            $.ajax({
+                type: 'POST',
+                url: "<?= base_url(); ?>cari_lokasi",
+                data: {
+                    korlap: korlap
+                },
+                cache: false,
+                success: function(msg) {
+                    $("#lokasi").html(msg);
+                }
+            });
+        });
+    });
 
     $('#checkbox1_terms_and_conditions').click(function() {
         //If the checkbox is checked.

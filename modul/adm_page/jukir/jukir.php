@@ -21,20 +21,20 @@ if ($csrf == false) {
         default:
             aut(array(1));
 ?>
-            <title>Koordinator Lapangan | <?= $title; ?></title>
+            <title>Juru Parkir | <?= $title; ?></title>
             <div class="page-body">
                 <div class="container-fluid">
                     <div class="page-title">
                         <div class="row">
                             <div class="col-6">
-                                <h3>Data Koordinator Lapangan</h3>
+                                <h3>Data Juru Parkir</h3>
                             </div>
                             <div class="col-6">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="<?= base_url(); ?>"> <i data-feather="git-pull-request"></i></a>
                                     </li>
                                     <li class="breadcrumb-item">Data Master</li>
-                                    <li class="breadcrumb-item active">Korlap </li>
+                                    <li class="breadcrumb-item active">Jukir </li>
                                 </ol>
                             </div>
                         </div>
@@ -46,73 +46,82 @@ if ($csrf == false) {
                             <div class="card-body">
                                 <div class="dt-ext table-responsive">
                                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                        <a href="<?= base_url(); ?>korlap/add" class="btn btn-primary-gradien" type="button">Tambah
+                                        <a href="<?= base_url(); ?>jukir/add" class="btn btn-primary-gradien" type="button">Tambah
                                             Data</a>
                                     </div>
                                     <br>
                                     <table class="display" id="export-button">
                                         <thead>
                                             <tr>
-                                                <th>No.</th>
-                                                <th>NIK</th>
+                                                <!-- <th>No.</th> -->
+                                                <th>ID</th>
                                                 <th>Nama</th>
-                                                <th>Perjanjian</th>
+                                                <th>Korlap</th>
+                                                <th>Titik Lokasi</th>
                                                 <th>Foto</th>
                                                 <th>KTP</th>
-                                                <th>Pengawas</th>
+                                                <th>KTA</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $us = $db->query("SELECT * FROM korlap ORDER BY nm_korlap ASC");
+                                            $us = $db->query("SELECT * FROM jukir a, korlap b, lokasi c WHERE a.korlap=b.id_korlap AND a.a_tilok=c.id_lokasi ORDER BY a.nm_jukir ASC");
                                             $no = 1;
                                             while ($u = $us->fetch_assoc()) :
-                                                if (empty($u['f_korlap'])) {
+                                                if (empty($u['f_jukir'])) {
                                                     $ft = 'default.png';
                                                 } else {
-                                                    $ft = $u['f_korlap'];
+                                                    $ft = $u['f_jukir'];
                                                 }
-                                                if (empty($u['f_ktp_korlap'])) {
+                                                if (empty($u['f_ktp_jukir'])) {
                                                     $ft_ktp = 'default.png';
                                                 } else {
-                                                    $ft_ktp = $u['f_ktp_korlap'];
+                                                    $ft_ktp = $u['f_ktp_jukir'];
                                                 }
-                                                $p = $db->query("SELECT * FROM users a, korlap b WHERE a.id=b.pengawas AND id_korlap='$u[id_korlap]'")->fetch_assoc();
-                                                if (empty($p['f_usr'])) {
-                                                    $ft_p = 'default.png';
+                                                if (empty($u['f_kta_jukir'])) {
+                                                    $ft_kta = 'default.png';
                                                 } else {
-                                                    $ft_p = $p['f_usr'];
+                                                    $ft_kta = $u['f_kta_jukir'];
+                                                }
+                                                if (date('m-Y', strtotime($u['kta_sd'])) <= date('m-Y')) {
+                                                    $sd = 'disabled';
+                                                    $style = '';
+                                                } else {
+                                                    $sd = '';
+                                                    $style = 'class="text-danger"';
                                                 }
                                             ?>
-                                                <tr>
-                                                    <td><?= $no++; ?></td>
-                                                    <td><?= $u['nik_korlap']; ?></td>
+                                                <tr <?= $style; ?>>
+                                                    <!-- <td><?= $no++; ?></td> -->
+                                                    <td><?= $u['id_jukir2']; ?></td>
+                                                    <td><?= $u['nm_jukir']; ?></td>
                                                     <td><?= $u['nm_korlap']; ?></td>
-                                                    <td><?= $u['perjanjian']; ?></td>
+                                                    <td><?= $u['nm_jalan']; ?></td>
                                                     <td>
-                                                        <div class="avatar"><img class="b-r-8 img-40" src="_uploads/f_korlap/<?= $ft; ?>" alt="#">
+                                                        <div class="avatar"><img class="b-r-8 img-40" src="_uploads/f_jukir/<?= $ft; ?>" alt="#">
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="avatar"><a href="<?= base_url(); ?>korlap/ktp/<?= $u['id_korlap']; ?>" data-container="body" data-bs-toggle="tooltip" data-bs-placement="top" title="Klik untuk mengubah KTP"><img class="b-r-8 img-40" src="_uploads/f_ktp_korlap/<?= $ft_ktp; ?>" alt="#"></a>
+                                                        <div class="avatar"><a href="<?= base_url(); ?>jukir/ktp/<?= $u['id_jukir']; ?>" data-container="body" data-bs-toggle="tooltip" data-bs-placement="top" title="Klik untuk mengubah KTP"><img class="b-r-8 img-40" src="_uploads/f_ktp_jukir/<?= $ft_ktp; ?>" alt="#"></a>
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="avatar"><a href="<?= base_url(); ?>korlap/pengawas-korlap/<?= $u['id_korlap']; ?>" data-container="body" data-bs-toggle="tooltip" data-bs-placement="top" title="Pengawas : <?= $p['nama']; ?> [Klik untuk mengubah pengawas]"><img class=" b-r-8 img-40" src="_uploads/f_usr/<?= $ft_p; ?>" alt="#"></a><br>
-                                                            <small><?= $p['nama']; ?></small>
+                                                        <div class="avatar"><a href="<?= base_url(); ?>jukir/kta/<?= $u['id_jukir']; ?>" data-container="body" data-bs-toggle="tooltip" data-bs-placement="top" title="Klik untuk mengubah KTA jukir"><img class=" b-r-8 img-40" src="_uploads/f_kta_jukir/<?= $ft_kta; ?>" alt="#"></a><br>
+                                                            <!-- <small><?= $p['nama']; ?></small> -->
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="btn-group">
-                                                            <a href="<?= base_url(); ?>korlap/detail/<?= $u['id_korlap']; ?>" class="btn btn-primary btn-sm"><i class="fa fa-info-circle"></i> Details</a>
-                                                            <a href="<?= base_url(); ?>korlap/edit/<?= $u['id_korlap']; ?>" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i> Edit</a>
+                                                            <a href="<?= base_url() ?>jukir/perpanjangan/<?= $u['id_jukir'] ?>" class="btn btn-success btn-sm <?= $sd; ?>" data-container="body" data-bs-toggle="tooltip" data-bs-placement="top" title="KTA Sudah kadaluwarsa"><i class="fa fa-calendar"></i> Perpanjang</a>
+                                                            <a href="<?= base_url(); ?>jukir/detail/<?= $u['id_jukir']; ?>" class="btn btn-primary btn-sm"><i class="fa fa-info-circle"></i> Details</a>
+                                                            <a href="<?= base_url(); ?>jukir/edit/<?= $u['id_jukir']; ?>" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i> Edit</a>
 
                                                             <form action="<?= base_url(); ?>korlap/delete" method="POST" class="d-inline">
-                                                                <input type="hidden" name="id_korlap" value="<?= $u['id_korlap']; ?>">
-                                                                <input type="hidden" name="nm_korlap" value="<?= $u['nm_korlap']; ?>">
-                                                                <input type="hidden" name="f_korlap" value="<?= $u['f_korlap']; ?>">
-                                                                <input type="hidden" name="f_ktp_korlap" value="<?= $u['f_ktp_korlap']; ?>">
+                                                                <input type="hidden" name="id_jukir" value="<?= $u['id_jukir']; ?>">
+                                                                <input type="hidden" name="nm_jukir" value="<?= $u['nm_jukir']; ?>">
+                                                                <input type="hidden" name="f_jukir" value="<?= $u['f_jukir']; ?>">
+                                                                <input type="hidden" name="f_ktp_jukir" value="<?= $u['f_ktp_jukir']; ?>">
                                                                 <button class="btn btn-danger btn-sm border-1" onclick="return hapus()"><i class="fa fa-trash"></i> Delete</button>
                                                             </form>
                                                         </div>
@@ -131,21 +140,21 @@ if ($csrf == false) {
         <?php
         case 'add':
         ?>
-            <title>Tambah Koordinator Lapangan | <?= $title; ?></title>
+            <title>Tambah Juru Parkir | <?= $title; ?></title>
             <div class="page-body">
                 <div class="container-fluid">
                     <div class="page-title">
                         <div class="row">
                             <div class="col-6">
-                                <h3>Tambah Koordinator Lapangan</h3>
+                                <h3>Tambah Juru Parkir</h3>
                             </div>
                             <div class="col-6">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="<?= base_url(); ?>"> <i data-feather="git-pull-request"></i></a>
                                     </li>
                                     <li class="breadcrumb-item">Data Master</li>
-                                    <li class="breadcrumb-item">Korlap </li>
-                                    <li class="breadcrumb-item active">Tambah Korlap</li>
+                                    <li class="breadcrumb-item">Jukir </li>
+                                    <li class="breadcrumb-item active">Tambah Jukir</li>
                                 </ol>
                             </div>
                         </div>
@@ -155,14 +164,66 @@ if ($csrf == false) {
                     <div class="card-body">
                         <form class="row g-3 needs-validation form theme-form" novalidate="" action="" method="POST" enctype="multipart/form-data">
                             <div class="row g-2">
+                                <div class="col-lg-6 col-md-6">
+                                    <label>ID : <small class="text-success"> min & max 4 angka</small></label>
+                                    <input type="text" class="form-control" onkeypress="return hanyaAngka(event)" name="id_jukir" id="id_jukir" minlength="4" maxlength="4" required autofocus>
+                                    <div class="media">
+                                        <div class="text-end">
+                                            <label id="message_id_jukir"></label>
+                                        </div>
+                                    </div>
+                                    <div class="valid-feedback">
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        ID tidak boleh kosong.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-2">
                                 <input type="hidden" class="form-control" name="id" value="<?= verify(); ?>" required>
 
                                 <div class="col-lg-6 col-md-12">
+                                    <label>Koordinator Lapangan :</label>
+                                    <select class="form-select js-example-basic-single" name="korlap" id="korlap" aria-label="Pilih Level" required>
+                                        <option value="">-- Pilih Korlap --</option>
+                                    </select>
+                                    <div class="valid-feedback">
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Korlap tidak boleh kosong.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-2">
+                                <div class="col-lg-6 col-md-12">
+                                    <label>Alamat Lokasi Perparkiran :</label>
+                                    <select class="form-select js-example-basic-single" name="a_lokasi" id="lokasi" aria-label="Pilih Level" required>
+                                        <option value=""></option>
+                                    </select>
+                                    <div class="valid-feedback">
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Alamat Lokasi tidak boleh kosong.
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <label>Titik Lokasi :</label>
+                                    <input type="text" class="form-control" name="tilok" required>
+                                    <div class="valid-feedback">
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Titik Lokasi tidak boleh kosong.
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row g-2">
+                                <div class="col-lg-6 col-md-6">
                                     <label>NIK :</label>
-                                    <input type="text" class="form-control" onkeypress="return hanyaAngka(event)" name="nik_korlap" id="nik_korlap" maxlength="16" required autofocus>
+                                    <input type="text" class="form-control" onkeypress="return hanyaAngka(event)" name="nik_jukir" id="nik_jukir" minlength="16" maxlength="16" required autofocus>
                                     <div class="media">
                                         <div class="text-end">
-                                            <label id="message_korlap"></label>
+                                            <label id="message_nik_jukir"></label>
                                         </div>
                                     </div>
                                     <div class="valid-feedback">
@@ -172,32 +233,13 @@ if ($csrf == false) {
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
-                                    <label>Nama Lengkap :</label>
-                                    <input type="text" class="form-control" name="nm_korlap" required>
+                                    <label>Nama Jukir :</label>
+                                    <input type="text" class="form-control" name="nm_jukir">
                                     <div class="valid-feedback">
                                     </div>
                                     <div class="invalid-feedback">
-                                        Nama Lengkap tidak boleh kosong.
+                                        Nama Jukir tidak boleh kosong.
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row g-2">
-                                <div class="col-lg-6 col-md-12">
-                                    <label>Alamat :</label>
-                                    <textarea class="form-control" name="a_korlap" required></textarea>
-                                    <div class="valid-feedback"></div>
-                                    <div class="invalid-feedback">
-                                        Alamat tidak boleh kosong.
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-12">
-                                    <label>Perjanjian :</label>
-                                    <select class="form-select js-example-basic-single" name="perjanjian" id="floatingSelect" aria-label="Pilih Level">
-                                        <option>-- Pilih Jenis Perjanjian --</option>
-                                        <option value="SPT">SPT</option>
-                                        <option value="PKS">PKS</option>
-
-                                    </select>
                                 </div>
                             </div>
                             <div class="row g-2">
@@ -208,11 +250,23 @@ if ($csrf == false) {
                                 <div class="col-lg-6 col-md-12">
                                     <label for="floatingInput"> Tanggal Lahir :</label><small style="color: orange;">
                                         Format : bulan/tanggal/tahun</small></label>
-                                    <input type="text" class="datepicker-here form-control digits" data-language="en" name="tgl_lahir_korlap">
+                                    <input type="text" class="datepicker-here form-control digits" data-language="en" data-position="bottom right" name="tgl_lahir_korlap">
                                 </div>
                             </div>
                             <div class="row g-2">
-                                <label>Foto Korlap :</label>
+                                <div class="col-lg-6 col-md-6">
+                                    <label for="floatingInput"> Masa Berlaku KTA :</label><small style="color: orange;">
+                                        Format : bulan/tahun</small></label>
+                                    <input type="text" class="datepicker-here form-control digits" data-language="en" data-min-view="months" data-view="months" data-date-format="MM yyyy" data-position="bottom right" name="kta_sd" required>
+                                    <div class="valid-feedback">
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Masa Berlaku tidak boleh kosong.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-2">
+                                <label>Foto Jukir :</label>
                                 <div class="col-lg-2 col-md-6">
                                     <!-- gambar  -->
                                     <div class="avatar"><img class="b-r-8 img-100" src="<?= base_url(); ?>_uploads/f_korlap/default.png" id="imgPreview" alt="Image Preview">

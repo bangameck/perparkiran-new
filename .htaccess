@@ -88,6 +88,21 @@ RewriteRule ^lokasi/delete/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=lokasi&
 RewriteRule ^lokasi/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=lokasi&a=detail&id=$1 [L]
 RewriteRule ^lokasi/detail/([a-zA-Z0-9_-]+)/page/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=lokasi&a=detail&id=$1&page=$2 [L]
 
+#jukir
+RewriteRule ^jukir$ .rest_page.php?f=adm_page&m=jukir [L]
+RewriteRule ^jukir/add$ .rest_page.php?f=adm_page&m=jukir&a=add [L]
+RewriteRule ^jukir/ktp/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=jukir&a=ktp&id=$1 [L]
+RewriteRule ^jukir/pengawas-jukir/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=korlap&a=pengawas-korlap&id=$1 [L]
+RewriteRule ^check_id_jukir$ modul/adm_page/jukir/cek_id_jukir.php [L]
+RewriteRule ^check_nik_jukir$ modul/adm_page/jukir/cek_nik_jukir.php [L]
+RewriteRule ^cari_korlap$ modul/adm_page/jukir/cari_korlap.php [L]
+RewriteRule ^cari_lokasi$ modul/adm_page/jukir/cari_lokasi.php [L]
+RewriteRule ^jukir/edit/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=jukir&a=edit&id=$1 [L]
+RewriteRule ^jukir/delete$ .rest_page.php?f=adm_page&m=jukir&a=delete [L]
+RewriteRule ^jukir/delete/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=jukir&a=delete&id=$1 [L]
+RewriteRule ^jukir/detail/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=jukir&a=detail&id=$1 [L]
+RewriteRule ^jukir/detail/([a-zA-Z0-9_-]+)/page/([a-zA-Z0-9_-]+)$ .rest_page.php?f=adm_page&m=jukir&a=detail&id=$1&page=$2 [L]
+
 #giat
 RewriteRule ^giat$ .rest_page.php?f=adm_page&m=giat [L]
 RewriteRule ^giat/add$ .rest_page.php?f=adm_page&m=giat&a=add [L]
