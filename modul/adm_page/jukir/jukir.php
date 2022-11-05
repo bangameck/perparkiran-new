@@ -339,7 +339,7 @@ if ($csrf == false) {
                                     $file_tmp = $_FILES['foto']['tmp_name'];
                                     if (empty($file_tmp)) {
                                         $q  = $db->query("INSERT INTO jukir VALUES ('$id','$id_jukir2','$nik_jukir','$nm_jukir','$t_lahir_jukir','$tgl_lahir_jukir','$a_jukir','$korlap','$a_tilok','$tilok','$kta_sd','','','','$_SESSION[id_usr]',NOW(),NOW(),NULL)");
-                                        $db->query("INSERT INTO jukir_kta VALUES ('','$id',NOW(),'$kta_sd')");
+                                        $db->query("INSERT INTO jukir_kta VALUES ('','$id','$korlap','$a_tilok','$tilok',NOW(),'$kta_sd','')");
                                         sweetAlert('jukir', 'sukses', 'Sukses !', 'Juru Parkir atas nama (' . $nm_jukir . ') berhasil diinput');
                                     } else {
                                         $ext_valid = array('png', 'jpg', 'jpeg', 'gif');
@@ -356,7 +356,7 @@ if ($csrf == false) {
                                             fotoCompressResize($foto, $file_tmp, $path);
                                             //inster ke database
                                             $q  = $db->query("INSERT INTO jukir VALUES ('$id','$id_jukir2','$nik_jukir','$nm_jukir','$t_lahir_jukir','$tgl_lahir_jukir','$a_jukir','$korlap','$a_tilok','$tilok','$kta_sd','$foto','','','$_SESSION[id_usr]',NOW(),NOW(),NULL)");
-                                            $db->query("INSERT INTO jukir_kta VALUES ('','$id',NOW(),'$kta_sd')");
+                                            $db->query("INSERT INTO jukir_kta VALUES ('','$id','$korlap','$a_tilok','$tilok',NOW(),'$kta_sd','')");
                                             sweetAlert('jukir', 'sukses', 'Sukses !', 'Juru Parkir atas nama (' . $nm_jukir . ') berhasil diinput');
                                         } else {
                                             sweetAlert('korlap/add', 'error', 'Error Ekstensi !', 'Inputan Foto - Hanya File JPG, PNG, JPEG yang diperbolehkan.');
@@ -894,6 +894,7 @@ if ($csrf == false) {
             $qrname = $id_jukir2 . '_' . strtoupper($nm_jukir) . '_QRCODE_' . $time . '.png';
 
             //ambil logo
+            // $logopath = base_url() . '_uploads/f_jukir/' . $ft;
             $logopath = base_url() . '_uploads/f_jukir/' . $ft;
 
 

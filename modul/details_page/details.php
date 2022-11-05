@@ -9,7 +9,8 @@ Author URI: https://themeforest.net/user/ashishmaraviya
 include '../../_func/func.php';
 include '../../_func/.identity.php';
 
-$d = $db->query("SELECT * FROM jukir a, korlap b, lokasi c WHERE a.korlap=b.id_korlap AND a.a_tilok=c.id_lokasi AND a.id_jukir='$_GET[id]'")->fetch_assoc();
+$d = $db->query("SELECT *, a.created_at as tgl_gabung FROM jukir a, korlap b, lokasi c WHERE a.korlap=b.id_korlap AND a.a_tilok=c.id_lokasi AND a.id_jukir='$_GET[id]'")->fetch_assoc();
+$tgl_aktif = $db->query("SELECT * FROM jukir_kta WHERE id_jukir='$_GET[id]'  ORDER BY tgl_kadaluarsa DESC LIMIT 1")->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,13 +20,14 @@ $d = $db->query("SELECT * FROM jukir a, korlap b, lokasi c WHERE a.korlap=b.id_k
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
-    <title>Details Juru Parkir | <?= $title; ?></title>
-    <meta name="keywords" content="personal portfolio, cv, resume, agency, bootstrap, clean, cv, designer, developer, freelancer, modern, one page portfolio, onepage, personal portfolio, responsive, resume, vcard" />
-    <meta name="description" content="Best personal portfolio modern html template.">
-    <meta name="author" content="ashishmaraviya">
+    <title>Juru Parkir <?= $d['nm_jukir']; ?> | <?= $title; ?></title>
+    <meta name="description" content="Sistem Informasi Perparkiran Dinas Perhubungan Kota Pekanbaru">
+    <meta name="keywords" content="Sistem Informasi Perparkiran Kota Pekanbaru, Parkir Pekanbaru, UPT Parkir Pekanbaru, UPT Perparkiran Pekanbaru, UPTD Parkir Pekanbaru, Dinas Perhubungan Kota Pekanbaru, Dishub Pku, Jumlah Jukir Pekanbaru, Jukir Pekanbaru">
+    <meta name="author" content="uptperparkiranpekanbaru">
 
     <!-- site Favicon -->
-    <link rel="icon" href="<?= base_url(); ?>../../assets/dtl/assets/dtl/img/favicon/favicon.png" sizes="32x32" />
+    <link rel="icon" href="<?= base_url(); ?>../../assets/adm/images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="<?= base_url(); ?>../../assets/adm/images/favicon.png" type="image/x-icon">
 
     <!-- css All Plugins Files -->
     <link rel="stylesheet" href="<?= base_url(); ?>../../assets/dtl/css/plugins/animate.css" />
@@ -37,16 +39,95 @@ $d = $db->query("SELECT * FROM jukir a, korlap b, lokasi c WHERE a.korlap=b.id_k
     <link rel="stylesheet" id="main_style" href="<?= base_url(); ?>../../assets/dtl/css/style.css" />
     <link rel="stylesheet" href="<?= base_url(); ?>../../assets/dtl/css/responsive.css" />
     <link rel="stylesheet" class="dark-mode" href="<?= base_url(); ?>../../assets/dtl/css/dark.css">
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    <style type="text/css">
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background-color: #FFF;
+        }
 
+        .preloader .loading {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Pacifico', cursive;
+        }
+    </style>
+    <script type="text/javascript">
+        //script preloader
+        (function($) {
+            $(window).on('load', function() {
+                $('#preloader').fadeOut('2000', function() {
+                    $(this).hide();
+                });
+            });
+
+        })(jQuery);
+
+        //slow bisa diganti dengan angka misal 2000 
+    </script>
 </head>
 
 <body class="body-bg">
 
     <!-- On change section animation -->
     <div id="overlay_shine"></div>
+    <!-- preloader -->
+    <div class="preloader">
+        <div class="loading">
+            <img src="<?= base_url(); ?>../../assets/adm/images/logoparkir.gif" width="80">
+            <script language="JavaScript">
+                var text = "Please Wait...";
+                var delay = 100;
+                var currentChar = 1;
+                var destination = "[none]";
 
+                function type() {
+                    //if (document.all)
+                    {
+                        var dest = document.getElementById(destination);
+                        if (dest) // && dest.innerHTML)
+                        {
+                            dest.innerHTML = text.substr(0, currentChar) + "<blink>_</blink>";
+                            currentChar++;
+                            if (currentChar > text.length) {
+                                currentChar = 1;
+                                setTimeout("type()", 500);
+                            } else {
+                                setTimeout("type()", delay);
+                            }
+                        }
+                    }
+                }
+
+                function startTyping(textParam, delayParam, destinationParam) {
+                    text = textParam;
+                    delay = delayParam;
+                    currentChar = 1;
+                    destination = destinationParam;
+                    type();
+                }
+            </script> <b>
+                <div 0px="" 12px="" arial="" color:="" ff0000="" font:="" id="textDestination" margin:="" style="background-color: none;"></div>
+            </b>
+            <script language="JavaScript">
+                javascript: startTyping(text, 10, "textDestination");
+            </script>
+        </div>
+    </div>
     <!-- Loader -->
-    <div id="ms-overlay">
+    <!-- <div id="ms-overlay">
         <div class="ms-roller">
             <div></div>
             <div></div>
@@ -57,7 +138,7 @@ $d = $db->query("SELECT * FROM jukir a, korlap b, lokasi c WHERE a.korlap=b.id_k
             <div></div>
             <div></div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Header navigation section -->
     <header>
@@ -70,10 +151,7 @@ $d = $db->query("SELECT * FROM jukir a, korlap b, lokasi c WHERE a.korlap=b.id_k
                 <ul>
                     <li><a href="javascript:void(0)" class="navs-link nav-home" data-section="ms-home"><i class="fa fa-home"></i><span>Home</span></a><span class="noty"><span>Home</span></span></li>
                     <li><a href="javascript:void(0)" class="navs-link nav-about" data-section="ms-about-section"><i class="fa fa-user"></i><span>About</span></a><span class="noty"><span>About</span></span></li>
-                    <li><a href="javascript:void(0)" class="navs-link nav-experience" data-section="ms-experience-section"><i class="fa fa-briefcase"></i><span>Experience</span></a><span class="noty"><span>Experience</span></span></li>
-                    <li><a href="javascript:void(0)" class="navs-link nav-portfolio" data-section="ms-portfolio-section"><i class="fas fa-folder-open"></i><span>Portfolio</span></a><span class="noty"><span>Portfolio</span></span></li>
-                    <li><a href="javascript:void(0)" class="navs-link nav-news" data-section="ms-news-section"><i class="fas fa-newspaper"></i><span>News</span></a><span class="noty"><span>News</span></span></li>
-                    <li><a href="javascript:void(0)" class="navs-link nav-contact" data-section="ms-contact-section"><i class="fa fa-envelope"></i><span>Contact</span></a><span class="noty"><span>Contact</span></span></li>
+                    <li><a href="javascript:void(0)" class="navs-link nav-news" data-section="ms-news-section"><i class="fas fa-newspaper"></i><span>Jukir</span></a><span class="noty"><span>Jukir</span></span></li>
                 </ul>
             </div>
         </nav>
@@ -95,12 +173,24 @@ $d = $db->query("SELECT * FROM jukir a, korlap b, lokasi c WHERE a.korlap=b.id_k
                 <div class="col-lg-6 col-md-12 border-content">
                     <div class="profile-img main-bg-black" id="particles-js">
                         <div class="profile-detail">
-                            <img src="<?= base_url(); ?>../../assets/dtl/img/profile.jpg" alt="profile" data-tilt>
+                            <?php
+                            if (empty($d['f_jukir'])) {
+                                $ft = 'default.png';
+                            } else {
+                                $ft = $d['f_jukir'];
+                            }
+                            if (empty($d['f_kta_jukir'])) {
+                                $ft_kta = 'default.png';
+                            } else {
+                                $ft_kta = $d['f_kta_jukir'];
+                            }
+                            ?>
+                            <img src="<?= base_url(); ?>../../_uploads/f_jukir/<?= $ft; ?>" alt="profile" data-tilt>
                             <ul class="ms-social">
-                                <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                <li><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                <li><a href="#" target="_blank"><i class="fa fa-camera" aria-hidden="true"></i> <b class="text-white">Armansyah</b></a></li>
+                                <!-- <li><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                                 <li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                <li><a href="https://linkedin.com/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                <li><a href="https://linkedin.com/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li> -->
                             </ul>
                         </div>
                     </div>
@@ -108,11 +198,26 @@ $d = $db->query("SELECT * FROM jukir a, korlap b, lokasi c WHERE a.korlap=b.id_k
                 <div class="col-lg-6 col-md-12 border-content-color">
                     <div class="ms-detail">
                         <div class="info">
-                            <h1>My Self <span>Maria Ilvor</span></h1>
-                            <h2><span>-</span>I'm a Web Developer</h2>
-                            <p>The goal isn't to build a website. The goal is to build your business. With Creative, flexible and affordable website design and development.</p>
-                            <a class="custom-btn ms-btn m-r-5px" href="javascript:void(0)">Download CV</a>
-                            <a class="custom-btn ms-btn-1 nav-about" href="javascript:void(0)">More Info</a>
+                            <?php
+                            if (date('m-Y', strtotime($d['kta_sd'])) >= date('m-Y')) {
+                                $icon = 'fa fa-check-circle-o';
+                                $text = 'text-success';
+                                $totip = 'KTA Juru Parkir Aktif';
+                                $kta_sd = 'KTA Juru Parkir Aktif Sampai dengan <b class="text-success">' . tgl_indo(date('Y-m-d', strtotime($d['kta_sd']))) . '</b>.';
+                                $kta_st = 'Aktif Sampai dengan ' . tgl_indo(date('Y-m-d', strtotime($d['kta_sd']))) . '.';
+                            } else {
+                                $icon = 'fa fa-times-circle-o';
+                                $text = 'text-danger';
+                                $totip = 'KTA Juru Parkir Expired';
+                                $kta_sd = 'KTA Juru Parkir Expired Sejak <b class="text-danger">' . tgl_indo(date('Y-m-d', strtotime($d['kta_sd']))) . '</b>.';
+                                $kta_st = 'Expired Sejak ' . tgl_indo(date('Y-m-d', strtotime($d['kta_sd']))) . '.';
+                            }
+                            ?>
+                            <h1><i class="<?= $text; ?> <?= $icon; ?>" data-container="body" data-bs-toggle="tooltip" data-bs-placement="top" title="<?= $totip; ?>"></i> <span><?= $d['nm_jukir']; ?></span></h1>
+                            <h2>NIK - <?= r_nik($d['nik_jukir']); ?></h2>
+                            <p>Juru Parkir dengan ID registrasi <b><?= $d['id_jukir2']; ?></b> ini bekerja menjaga Perparkiran dilokasi <b><?= strtoupper($d['tilok']); ?> (<?= strtoupper($d['nm_jalan']); ?>)</b>. Dibawah naungan pengelola <b><?= strtoupper($d['nm_korlap']); ?></b>. Terdaftar didalam database perparkiran Sejak <b><?= tgl_indo(date('Y-m-d', strtotime($d['tgl_gabung']))); ?></b>. <br><br> <?= $kta_sd; ?></p>
+                            <!-- <a class="custom-btn ms-btn m-r-5px" href="javascript:void(0)">Download CV</a>
+                            <a class="custom-btn ms-btn-1 nav-about" href="javascript:void(0)">More Info</a> -->
                         </div>
                     </div>
                 </div>
@@ -122,605 +227,169 @@ $d = $db->query("SELECT * FROM jukir a, korlap b, lokasi c WHERE a.korlap=b.id_k
     <!-- Home section End -->
 
     <!-- About section -->
-    <section class="ms-about-section ms-slide padding-tb-80 body-bg">
+    <section class="ms-about-section ms-experience-section ms-slide padding-tb-80 body-bg">
         <div class="container">
             <div class="row">
                 <div class="section-title">
-                    <h2>About<span> Me</span></h2>
+                    <h2>Tentang<span> <?= $d['nm_jukir']; ?></span></h2>
                     <span class="ligh-title">About</span>
                 </div>
                 <div class="col-lg-6">
                     <div class="ms-about-detail">
-                        <h4>Creativity bleeds from the pen of inspiration.</h4>
-                        <p class="ms-text">I am your Brand Consultant having <b>8+ years</b> of experience in this field provides complete range of marketing materials and branding solution to any industry as well as corporate clients maintaining their reputation and increasing the brand awareness using PR & other print media & online marketing activities.</p>
+                        <h4>Biodata Singkat <?= $d['nm_jukir']; ?>.</h4>
+                        <p class="ms-text"><?= $d['nm_jukir']; ?> adalah seorang juru parkir yang lahir di <b><?= $d['t_lahir_jukir']; ?></b>, <?= $d['nm_jukir']; ?> kini berusia<b> <?= usia(date('Y', strtotime($d['tgl_lahir_jukir']))); ?></b>, saat ini ia bekerja memberikan pelayanan perparkiran dilokasi <b><?= strtoupper($d['tilok']); ?> (<?= strtoupper($d['nm_jalan']); ?>)</b>. Beliau terdaftar didalam database perparkiran Sejak <b><?= tgl_indo(date('Y-m-d', strtotime($d['tgl_gabung']))); ?></b>. <br><br> Berikut biodata singkat dari <?= $d['nm_jukir']; ?> :</p>
                         <div class="ms-about-info">
                             <ul class="m-r-30">
-                                <li><span class="title">Full Name<b>:</b></span>Maria Martin Ilvor</li>
-                                <li><span class="title">Age<b>:</b></span>30 Years</li>
-                                <li><span class="title">Language<b>:</b></span>English, Hindi, Gujarati</li>
-                                <li><span class="title">Phone No<b>:</b></span>+00 9876543210</li>
-                                <li><span class="title">Email<b>:</b></span>mail.example@gmail.com</li>
-                                <li><span class="title">Address<b>:</b></span><span>Ruami Mello Moraes, - Salvador - MA, 40352, Brazil.</span></li>
+                                <li><span class="title">ID Reg <b>:</b></span><?= $d['id_jukir2']; ?></li>
+                                <li><span class="title">NIK <b>:</b></span><?= r_nik($d['nik_jukir']); ?></li>
+                                <li><span class="title">Nama <b>:</b></span><?= $d['nm_jukir']; ?></li>
+                                <li><span class="title">TTL<b>:</b></span><?= $d['t_lahir_jukir']; ?>, <?= tgl_indo(date('Y-m-d', strtotime($d['tgl_lahir_jukir']))) ?></li>
+                                <li><span class="title">Usia<b>:</b></span><?= usia(date('Y-m-d', strtotime($d['tgl_lahir_jukir']))); ?></li>
+                                <li><span class="title">Alamat<b>:</b></span><?= $d['a_jukir']; ?></li>
+                                <hr>
+                                <li><span class="title">Titik<b>:</b></span><?= $d['tilok']; ?> (<?= $d['nm_jalan']; ?>)</li>
+                                <li><span class="title">Korlap<b>:</b></span><?= $d['nm_korlap']; ?></li>
+                                <li><span class="title">Status KTA<b>:</b></span><span><?= $kta_st; ?></span></li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="ms-skill-progress">
-                        <h5>PHP</h5>
-                        <div class="progress" data-percent="90%">
-                            <div class="progress-done progress-done-php" role="progressbar">
-                                <span>90%</span>
-                            </div>
-                        </div>
-                        <h5>JAVASCRIPT</h5>
-                        <div class="progress" data-percent="50%">
-                            <div class="progress-done progress-done-js" role="progressbar">
-                                <span>50%</span>
-                            </div>
-                        </div>
-                        <h5>HTML</h5>
-                        <div class="progress" data-percent="98%">
-                            <div class="progress-done progress-done-html" role="progressbar">
-                                <span>98%</span>
-                            </div>
-                        </div>
-                        <h5>CSS</h5>
-                        <div class="progress" data-percent="92%">
-                            <div class="progress-done progress-done-css" role="progressbar">
-                                <span>92%</span>
-                            </div>
-                        </div>
-                        <h5>SCSS</h5>
-                        <div class="progress" data-percent="70%">
-                            <div class="progress-done progress-done-scss" role="progressbar">
-                                <span>70%</span>
-                            </div>
-                        </div>
-                        <h5>Photoshop</h5>
-                        <div class="progress" data-percent="65%">
-                            <div class="progress-done progress-done-ps" role="progressbar">
-                                <span>65%</span>
-                            </div>
-                        </div>
+                    <div class="education">
+                        <h4>Riwayat Perpanjangan KTA</h4>
+                        <ul class="timeline">
+                            <?php
+                            $jukir_kta = $db->query("SELECT *,a.tgl_update as tgl_kta FROM jukir_kta a, korlap b, lokasi c WHERE a.korlap=b.id_korlap AND a.a_tilok=c.id_lokasi AND a.id_jukir='$_GET[id]' ORDER BY tgl_update DESC");
+                            while ($jk = $jukir_kta->fetch_assoc()) :
+                                if (empty($jk['ket_kta'])) {
+                                    $ket_kta = 'Pembuatan KTA baru.';
+                                } else {
+                                    $ket_kta = $jk['ket_kta'];
+                                }
+                            ?>
+                                <li class="timeline-item">
+                                    <div class="timeline-block">
+                                        <div class="timeline-info">
+                                            <span><?= tgl_indo(date('Y-m-d', strtotime($jk['tgl_kta']))); ?> - <?= tgl_indo(date('Y-m-d', strtotime($jk['tgl_kadaluarsa']))); ?></span>
+                                        </div>
+                                        <div class="timeline-marker"></div>
+                                        <div class="timeline-content">
+                                            <h5 class="timeline-title"><?= $jk['tilok']; ?><span class="sub">- <?= $jk['nm_jalan']; ?> - <?= $jk['nm_korlap']; ?></span></h5>
+                                            <p><?= $ket_kta; ?></p>
+                                        </div>
+                                    </div>
+                                </li>
+                            <?php endwhile; ?>
+                            <div class="timeline-period-end"></div>
+                        </ul>
+
                     </div>
                 </div>
             </div>
 
             <!-- Service Block start -->
             <div class="row service-box p-t-80 m-tb-minus-12">
-                <div class="col-lg-3 col-md-6 col-xs-12">
-                    <div class="flipper">
-                        <div class="main-box">
-                            <div class="box-front height-300 white-bg">
-                                <img class="bg-img svg_img" src="assets/img/service/1.svg" alt="Graphics Design"></img>
-                                <div class="content-wrap">
-                                    <img class="icofont icofont-headphone-alt font-40px dark-color svg_img" src="assets/img/service/1.svg" alt="Graphics Design"></img>
-                                    <h3>Graphics Design</h3>
-                                    <p>Develop the Visual Identity of Your Business</p>
+                <div class="portfolio-content-items">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-xs-12">
+                            <div class="hovereffect">
+                                <div class="portfolio-img">
+                                    <img src="<?= base_url(); ?>../../_uploads/f_jukir/<?= $ft; ?>" alt="Foto Profile">
+                                    <h3><span>Foto</span></h3>
+                                </div>
+                                <div class="overlay">
+                                    <div class="overlay-info">
+                                        <a class="info" data-fancybox="gallery" href="<?= base_url(); ?>../../_uploads/f_jukir/<?= $ft; ?>"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="box-back height-300 gradient-bg">
-                                <div class="content-wrap">
-                                    <h3>Graphics Design</h3>
-                                    <p>Develop the Visual Identity of Your Business</p>
-                                    <a href="#" class="btn">Read more</a>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-xs-12">
+                            <div class="hovereffect">
+                                <div class="portfolio-img">
+                                    <img src="<?= base_url(); ?>../../_uploads/f_kta_jukir/<?= $ft_kta; ?>" alt="KTA">
+                                    <h3><span>KTA</span></h3>
+                                </div>
+                                <div class="overlay">
+                                    <div class="overlay-info">
+                                        <a class="info" data-fancybox="gallery" href="<?= base_url(); ?>../../_uploads/f_kta_jukir/<?= $ft_kta; ?>"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-xs-12">
+                            <?php
+                            $qrcode = $db->query("SELECT * FROM jukir_qrcode WHERE id_jukir='$_GET[id]'")->fetch_assoc();
+                            if (empty($qrcode['nm_qr'])) {
+                                $qr = 'default.png';
+                            } else {
+                                $qr = $qrcode['nm_qr'];
+                            }
+                            ?>
+                            <div class="hovereffect">
+                                <div class="portfolio-img">
+                                    <img src="<?= base_url(); ?>../../_uploads/qrcode_jukir/<?= $qr; ?>" alt="KTA">
+                                    <h3><span>QR Code</span></h3>
+                                </div>
+                                <div class="overlay">
+                                    <div class="overlay-info">
+                                        <a class="info" data-fancybox="gallery" href="<?= base_url(); ?>../../_uploads/qrcode_jukir/<?= $qr; ?>"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-xs-12">
-                    <div class="flipper">
-                        <div class="main-box">
-                            <div class="box-front height-300 white-bg">
-                                <img class="bg-img svg_img" src="assets/img/service/2.svg" alt="Graphics Design"></img>
-                                <div class="content-wrap">
-                                    <img class="icofont icofont-headphone-alt font-40px dark-color svg_img" src="assets/img/service/2.svg" alt="web design"></img>
-                                    <h3>Web Design</h3>
-                                    <p>Connect With Your Users, Not Just Your Business.</p>
-                                </div>
-                            </div>
-                            <div class="box-back height-300 gradient-bg">
-                                <div class="content-wrap">
-                                    <h3>Web Design</h3>
-                                    <p>Connect With Your Users, Not Just Your Business.</p>
-                                    <a href="#" class="btn">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-xs-12">
-                    <div class="flipper">
-                        <div class="main-box">
-                            <div class="box-front height-300 white-bg">
-                                <img class="bg-img svg_img" src="assets/img/service/3.svg" alt="Graphics Design"></img>
-                                <div class="content-wrap">
-                                    <img class="icofont icofont-headphone-alt font-40px dark-color svg_img" src="assets/img/service/3.svg" alt="development"></img>
-                                    <h3>Development</h3>
-                                    <p>We Develop the Visual Identity of Your Business.</p>
-                                </div>
-                            </div>
-                            <div class="box-back height-300 gradient-bg">
-                                <div class="content-wrap">
-                                    <h3>Development</h3>
-                                    <p>We Develop the Visual Identity of Your Business.</p>
-                                    <a href="#" class="btn">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-xs-12">
-                    <div class="flipper">
-                        <div class="main-box">
-                            <div class="box-front height-300 white-bg">
-                                <img class="bg-img svg_img" src="assets/img/service/4.svg" alt="Graphics Design"></img>
-                                <div class="content-wrap">
-                                    <img class="icofont icofont-headphone-alt font-40px dark-color svg_img" src="assets/img/service/4.svg" alt="seo friendly"></img>
-                                    <h3>Seo Friendly</h3>
-                                    <p>Taking your site at the top of Google's ranking.</p>
-                                </div>
-                            </div>
-                            <div class="box-back height-300 gradient-bg">
-                                <div class="content-wrap">
-                                    <h3>Seo Friendly</h3>
-                                    <p>Taking your site at the top of Google's ranking.</p>
-                                    <a href="#" class="btn">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </section>
-    <!-- About section End -->
 
-    <!-- Start Experience & Education section -->
-    <section class="ms-experience-section ms-slide padding-tb-80 body-bg">
-        <div class="container">
-            <div class="row">
-                <div class="section-title">
-                    <h2>My <span>Achievements</span></h2>
-                    <span class="ligh-title">Achievements</span>
-                </div>
-                <div class="col-lg-6 col-md-12 col-sm-12">
-                    <div class="education">
-                        <h4>Education</h4>
-                        <ul class="timeline">
-                            <li class="timeline-item">
-                                <div class="timeline-block">
-                                    <div class="timeline-info">
-                                        <span>June 15, 2013 - 2016</span>
-                                    </div>
-                                    <div class="timeline-marker"></div>
-                                    <div class="timeline-content">
-                                        <h5 class="timeline-title">Master in Computer Engineering<span class="sub">- First Class</span></h5>
-                                        <p>Lorem Ipsum Commodo Dolor Sit Amet, Consectetur Adipisicing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua. Ut Enim Ad Minim Veniam</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="timeline-item">
-                                <div class="timeline-block">
-                                    <div class="timeline-info">
-                                        <span>June 12, 2010 - 2013</span>
-                                    </div>
-                                    <div class="timeline-marker"></div>
-                                    <div class="timeline-content">
-                                        <h5 class="timeline-title">Bachelor in Computer Engineering<span class="sub">- First Class</span></h5>
-                                        <p>Lorem Ipsum Commodo Dolor Sit Amet, Consectetur Adipisicing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua. Ut Enim Ad Minim Veniam</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="timeline-item">
-                                <div class="timeline-block">
-                                    <div class="timeline-info">
-                                        <span>June 1, 2009 - 2010</span>
-                                    </div>
-                                    <div class="timeline-marker"></div>
-                                    <div class="timeline-content">
-                                        <h5 class="timeline-title">Higher Secondary<span class="sub">- (A+)</span></h5>
-                                        <p>Lorem Ipsum Commodo Dolor Sit Amet, Consectetur Adipisicing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua. Ut Enim Ad Minim Veniam</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <div class="timeline-period-end"></div>
-                        </ul>
-
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12 col-sm-12">
-                    <div class="experiense">
-                        <h4>Experiense</h4>
-                        <ul class="timeline">
-                            <li class="timeline-item">
-                                <div class="timeline-block">
-                                    <div class="timeline-info">
-                                        <span>March 12, 2020</span>
-                                    </div>
-                                    <div class="timeline-marker"></div>
-                                    <div class="timeline-content">
-                                        <h5 class="timeline-title">Envato<span class="sub">- Team Leader</span></h5>
-                                        <p>Lorem Ipsum Commodo Dolor Sit Amet, Consectetur Adipisicing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua. Ut Enim Ad Minim Veniam</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="timeline-item">
-                                <div class="timeline-block">
-                                    <div class="timeline-info">
-                                        <span>January 23, 2018 - 2020</span>
-                                    </div>
-                                    <div class="timeline-marker"></div>
-                                    <div class="timeline-content">
-                                        <h5 class="timeline-title">Facebook Company<span class="sub">- Sr. Developer</span></h5>
-                                        <p>Lorem Ipsum Commodo Dolor Sit Amet, Consectetur Adipisicing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua. Ut Enim Ad Minim Veniam</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="timeline-item">
-                                <div class="timeline-block">
-                                    <div class="timeline-info">
-                                        <span>July 23, 2016 - 2018</span>
-                                    </div>
-                                    <div class="timeline-marker"></div>
-                                    <div class="timeline-content">
-                                        <h5 class="timeline-title">Twitter Company<span class="sub">- Jr. Developer</span></h5>
-                                        <p>Lorem Ipsum Commodo Dolor Sit Amet, Consectetur Adipisicing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua. Ut Enim Ad Minim Veniam</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <div class="timeline-period-end"></div>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="row p-t-80 m-tb-minus-12 space-2 achive" id="counter">
-                <div class="col-lg-3 col-md-6 col-6 p-tp-12">
-                    <div class="count_block" data-tilt>
-                        <h3><span class="counter counter-value" data-count="459">459</span>+</h3>
-                        <p>Projects</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-6 p-tp-12" data-tilt>
-                    <div class="count_block">
-                        <h3><span class="counter counter-value" data-count="241">241</span>+</h3>
-                        <p>Clients</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-6 p-tp-12" data-tilt>
-                    <div class="count_block">
-                        <h3 class="active-num"><span class="counter counter-value" data-count="56">56</span>+</h3>
-                        <p>Countries</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-6 p-tp-12" data-tilt>
-                    <div class="count_block">
-                        <h3><span class="counter counter-value" data-count="15">15</span>+</h3>
-                        <p>Awords</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Experience & Education Section -->
-
-    <!-- Start Portfolio Section -->
-    <section class="ms-portfolio-section ms-slide portfolio padding-tb-80 body-bg">
-        <div class="container">
-            <div class="section-title p-b-30">
-                <h2>My <span>Portfolio</span></h2>
-                <span class="ligh-title">Portfolio</span>
-            </div>
-            <div class="row m-b-minus-24px">
-                <div class="portfolio-content">
-                    <div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="portfolio-tabs">
-                                    <ul>
-                                        <li class="filter" data-filter="all">ALL</li>
-                                        <li class="filter" data-filter=".design">DESIGN</li>
-                                        <li class="filter" data-filter=".development">DEVELOPMENT</li>
-                                        <li class="filter" data-filter=".graphics">GRAPHICS</li>
-                                        <li class="filter" data-filter=".templates">Templates</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-sm-12">
-                                <div class="portfolio-content-items">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-6 col-xs-12 mix graphics templates">
-                                            <div class="hovereffect">
-                                                <div class="portfolio-img">
-                                                    <img src="assets/img/portfolio/11.jpg" alt="graphics">
-                                                    <h3><span>3D Graphics</span><span>Templates</span></h3>
-                                                </div>
-                                                <div class="overlay">
-                                                    <div class="overlay-info">
-                                                        <a class="info" href="#"><i class="fa fa-link" aria-hidden="true"></i></a>
-                                                        <a class="info" data-fancybox="gallery" href="assets/img/portfolio/1.jpg"><i class="fa fa-search" aria-hidden="true"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 col-xs-12 mix design">
-                                            <div class="hovereffect">
-                                                <div class="portfolio-img">
-                                                    <img src="assets/img/portfolio/22.jpg" alt="design">
-                                                    <h3><span>Web Design</span></h3>
-                                                </div>
-                                                <div class="overlay">
-                                                    <div class="overlay-info">
-                                                        <a class="info" href="#"><i class="fa fa-link" aria-hidden="true"></i></a>
-                                                        <a class="info" data-fancybox="gallery" href="assets/img/portfolio/2.jpg"><i class="fa fa-search" aria-hidden="true"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 col-xs-12 mix design">
-                                            <div class="hovereffect">
-                                                <div class="portfolio-img">
-                                                    <img src="assets/img/portfolio/33.jpg" alt="design">
-                                                    <h3><span>Web Design</span></h3>
-                                                </div>
-                                                <div class="overlay">
-                                                    <div class="overlay-info">
-                                                        <a class="info" href="#"><i class="fa fa-link" aria-hidden="true"></i></a>
-                                                        <a class="info" data-fancybox="gallery" href="assets/img/portfolio/3.jpg"><i class="fa fa-search" aria-hidden="true"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 col-xs-12 mix development">
-                                            <div class="hovereffect">
-                                                <div class="portfolio-img">
-                                                    <img src="assets/img/portfolio/44.jpg" alt="development">
-                                                    <h3><span>Development</span></h3>
-                                                </div>
-                                                <div class="overlay">
-                                                    <div class="overlay-info">
-                                                        <a class="info" href="#"><i class="fa fa-link" aria-hidden="true"></i></a>
-                                                        <a class="info" data-fancybox="gallery" href="assets/img/portfolio/4.jpg"><i class="fa fa-search" aria-hidden="true"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 col-xs-12 mix templates design">
-                                            <div class="hovereffect">
-                                                <div class="portfolio-img">
-                                                    <img src="assets/img/portfolio/55.jpg" alt="templates">
-                                                    <h3><span>Templates</span><span>Web Design</span></h3>
-                                                </div>
-                                                <div class="overlay">
-                                                    <div class="overlay-info">
-                                                        <a class="info" href="#"><i class="fa fa-link" aria-hidden="true"></i></a>
-                                                        <a class="info" data-fancybox="gallery" href="assets/img/portfolio/5.jpg"><i class="fa fa-search" aria-hidden="true"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 col-xs-12 mix development graphics">
-                                            <div class="hovereffect">
-                                                <div class="portfolio-img">
-                                                    <img src="assets/img/portfolio/66.jpg" alt="development">
-                                                    <h3><span>Development</span><span>3D Graphics</span></h3>
-                                                </div>
-                                                <div class="overlay">
-                                                    <div class="overlay-info">
-                                                        <a class="info" href="#"><i class="fa fa-link" aria-hidden="true"></i></a>
-                                                        <a class="info" data-fancybox="gallery" href="assets/img/portfolio/6.jpg"><i class="fa fa-search" aria-hidden="true"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     <!-- End Portfolio Section -->
 
     <!-- Start News Section -->
     <section class="ms-news-section ms-slide padding-tb-80 body-bg">
         <div class="container">
             <div class="section-title">
-                <h2>Latest <span>News</span></h2>
-                <span class="ligh-title">News</span>
+                <h2>Jukir <span>Lainnya</span></h2>
+                <span class="ligh-title">Jukir</span>
             </div>
-            <div class="row m-b-minus-24px">
-                <div class="col-lg-4 col-md-6">
-                    <div class="news-info">
-                        <figure class="news-img"><a href="#"><img src="assets/img/news/1.jpg" alt="news imag"></a>
-                        </figure>
-                        <div class="detail">
-                            <label>July 30,2019 - <a href="#">Marketing</a></label>
-                            <h3><a href="#">Marketing Guide: 5 Steps to Success.</a></h3>
-                            <p class="text-length">"Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                            <div class="more-info">
-                                <a href="#">Read More<span></span></a>
+            <div class="row service-box p-t-80 m-tb-minus-12">
+                <?php
+                $jukir = $db->query("SELECT * FROM jukir WHERE id_jukir2 ORDER BY RAND()");
+                while ($j = $jukir->fetch_assoc()) :
+                    if (empty($j['f_jukir'])) {
+                        $f_jkr = 'default.png';
+                    } else {
+                        $f_jkr = $j['f_jukir'];
+                    }
+                ?>
+                    <div class="col-lg-3 col-md-6 col-xs-12">
+                        <div class="flipper">
+                            <div class="main-box">
+                                <div class="box-front height-300 white-bg">
+                                    <img class="bg-img svg_img" src="<?= base_url(); ?>../../_uploads/f_jukir/<?= $f_jkr; ?>" alt="Graphics Design"></img>
+                                    <div class="content-wrap">
+                                        <img class="icofont icofont-headphone-alt font-40px dark-color svg_img" src="<?= base_url(); ?>../../_uploads/f_jukir/<?= $f_jkr; ?>" alt="Graphics Design"></img>
+                                        <h3><?= $j['nm_jukir']; ?></h3>
+                                        <p>Develop the Visual Identity of Your Business</p>
+                                    </div>
+                                </div>
+                                <div class="box-back height-300 gradient-bg">
+                                    <div class="content-wrap">
+                                        <h3><?= $j['nm_jukir']; ?></h3>
+                                        <p>Develop the Visual Identity of Your Business</p>
+                                        <a href="<?= base_url(); ?>../../jukir/detail/<?= $j['id_jukir']; ?>" class="btn">Read more</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="news-info">
-                        <figure class="news-img"><a href="#"><img src="assets/img/news/2.jpg" alt="news imag"></a>
-                        </figure>
-                        <div class="detail">
-                            <label>July 30,2019 - <a href="#">Business</a></label>
-                            <h3><a href="#">Best way to solve business deal issue.</a></h3>
-                            <p class="text-length">"Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                            <div class="more-info">
-                                <a href="#">Read More<span></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="news-info">
-                        <figure class="news-img"><a href="#"><img src="assets/img/news/3.jpg" alt="news imag"></a>
-                        </figure>
-                        <div class="detail">
-                            <label>July 30,2019 - <a href="#">Knowledge</a></label>
-                            <h3><a href="#">31 customer service stats know in 2019.</a></h3>
-                            <p class="text-length">"Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                            <div class="more-info">
-                                <a href="#">Read More<span></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="news-info">
-                        <figure class="news-img"><a href="#"><img src="assets/img/news/4.jpg" alt="news imag"></a>
-                        </figure>
-                        <div class="detail">
-                            <label>July 30,2019 - <a href="#">Business</a></label>
-                            <h3><a href="#">Business ideas to grow your business.</a></h3>
-                            <p class="text-length">"Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                            <div class="more-info">
-                                <a href="#">Read More<span></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="news-info">
-                        <figure class="news-img"><a href="#"><img src="assets/img/news/5.jpg" alt="news imag"></a>
-                        </figure>
-                        <div class="detail">
-                            <label>July 30,2019 - <a href="#">Marketing</a></label>
-                            <h3><a href="#">Marketing Guide: 5 Steps to Success.</a></h3>
-                            <p class="text-length">"Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                            <div class="more-info">
-                                <a href="#">Read More<span></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="news-info">
-                        <figure class="news-img"><a href="#"><img src="assets/img/news/6.jpg" alt="news imag"></a>
-                        </figure>
-                        <div class="detail">
-                            <label>July 30,2019 - <a href="#">Knowledge</a></label>
-                            <h3><a href="#">31 customer service stats know in 2019.</a></h3>
-                            <p class="text-length">"Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                            <div class="more-info">
-                                <a href="#">Read More<span></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="ms-pagination">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                            <li><a href="#" class="active">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li class="dots">...</li>
-                            <li><a href="#">9</a></li>
-                            <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
-                    </div>
-                </div>
+                <?php endwhile; ?>
             </div>
         </div>
     </section>
     <!-- End News Section -->
-
-    <!-- Start Contact Section -->
-    <section class="ms-contact-section ms-slide padding-tb-80 body-bg">
-        <div class="container d-block">
-            <div class="section-title">
-                <h2>Get in <span>Touch</span></h2>
-                <span class="ligh-title">Contact</span>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <iframe src="//maps.google.com/maps?q=-12.942227,-38.480291&z=15&output=embed" allowfullscreen=""></iframe>
-                </div>
-                <div class="col-md-6">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="fname" placeholder="Full Name">
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="umail" placeholder="Email">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="phone" placeholder="Phone">
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Message"></textarea>
-                        </div>
-                        <button type="submit" class="custom-btn ms-btn-1">Submit</button>
-                    </form>
-                </div>
-            </div>
-            <div class="row p-t-80 ms-contact-detail m-tb-minus-12">
-                <div class="col-xs-12 col-sm-6 col-lg-4 p-tp-12">
-                    <div class="ms-box">
-                        <div class="detail">
-                            <div class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
-                            <div class="info">
-                                <h3 class="title">Mail & Website</h3>
-                                <p>
-                                    <i class="fa fa-envelope" aria-hidden="true"></i> &nbsp mail.example@gmail.com
-                                </p>
-                                <p>
-                                    <i class="fa fa-globe" aria-hidden="true"></i> &nbsp www.yourdomain.com
-                                </p>
-                            </div>
-                        </div>
-                        <div class="space"></div>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-6 col-lg-4 p-tp-12">
-                    <div class="ms-box">
-                        <div class="detail">
-                            <div class="icon"><i class="fa fa-mobile" aria-hidden="true"></i></div>
-                            <div class="info">
-                                <h3 class="title">Contact</h3>
-                                <p>
-                                    <i class="fa fa-mobile" aria-hidden="true"></i> &nbsp (+91)-9876XXXXX
-                                </p>
-                                <p>
-                                    <i class="fa fa-mobile" aria-hidden="true"></i> &nbsp (+91)-987654XXXX
-                                </p>
-                            </div>
-                        </div>
-                        <div class="space"></div>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-6 col-lg-4 p-tp-12 m-auto">
-                    <div class="ms-box">
-                        <div class="detail">
-                            <div class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
-                            <div class="info">
-                                <h3 class="title">Address</h3>
-                                <p>
-                                    <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp Ruami Mello Moraes Filho, 987 - Salvador - MA, 40352, Brazil.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="space"></div>
-                    </div>
-                </div>
-                <!-- /Boxes de Acoes -->
-            </div>
-        </div>
-    </section>
-    <!-- End Contact Section -->
-
     <!-- Theme Custom Cursors -->
     <div class="ms-cursor"></div>
     <div class="ms-cursor-2"></div>
@@ -738,6 +407,15 @@ $d = $db->query("SELECT * FROM jukir a, korlap b, lokasi c WHERE a.korlap=b.id_k
     <!-- Main Js -->
     <script src="<?= base_url(); ?>../../assets/dtl/js/ms-tools.js"></script>
     <script src="<?= base_url(); ?>../../assets/dtl/js/main.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".preloader").fadeOut('slow');
+        })
+
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
 </body>
 
 </html>
