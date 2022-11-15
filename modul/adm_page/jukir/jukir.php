@@ -276,7 +276,7 @@ if ($csrf == false) {
                             <div class="row g-2">
                                 <div class="col-lg-6 col-md-12">
                                     <label>Alamat Rumah :</label>
-                                    <input type="text" class="form-control" name="a_jukir">
+                                    <textarea class="form-control" name="a_jukir"></textarea>
                                     <div class="valid-feedback">
                                     </div>
                                     <div class="invalid-feedback">
@@ -285,7 +285,7 @@ if ($csrf == false) {
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <label for="floatingInput"> Masa Berlaku KTA :</label><small style="color: orange;">
-                                        Format : bulan/tahun</small></label>
+                                        Format : bulan/tanggal/tahun</small></label>
                                     <input type="text" class="datepicker-here form-control digits" data-language="en" id="minMaxExample" data-position="bottom right" name="kta_sd" required>
                                     <div class="valid-feedback">
                                     </div>
@@ -347,7 +347,7 @@ if ($csrf == false) {
                                         $x         = explode('.', $name_tmp);
                                         $extend    = strtolower(end($x));
                                         $time      = date('dmYHis');
-                                        $foto      = $id_jukir2 . '_' . strtoupper($nm_jukir) . '_FOTO_' . $time . '.' . $extend;
+                                        $foto      = $id_jukir2 . '_' . strtoupper(slug($nm_jukir)) . '_FOTO_' . $time . '.' . $extend;
                                         $path      = '_uploads/f_jukir/';
 
                                         //cek ekstensi
@@ -359,7 +359,7 @@ if ($csrf == false) {
                                             $db->query("INSERT INTO jukir_kta VALUES ('','$id','$korlap','$a_tilok','$tilok',NOW(),'$kta_sd','')");
                                             sweetAlert('jukir', 'sukses', 'Sukses !', 'Juru Parkir atas nama (' . $nm_jukir . ') berhasil diinput');
                                         } else {
-                                            sweetAlert('korlap/add', 'error', 'Error Ekstensi !', 'Inputan Foto - Hanya File JPG, PNG, JPEG yang diperbolehkan.');
+                                            sweetAlert('jukir/add', 'error', 'Error Ekstensi !', 'Inputan Foto - Hanya File JPG, PNG, JPEG yang diperbolehkan.');
                                             // sweetAlert('korlap/add', 'error', '', ' ');
                                         }
                                     }
@@ -378,175 +378,356 @@ if ($csrf == false) {
             <?php break; ?>
         <?php
         case 'edit':
-            $d = $db->query("SELECT * FROM korlap WHERE id_korlap='$_GET[id]'")->fetch_assoc();
+            $d = $db->query("SELECT * FROM jukir a, korlap b, lokasi c WHERE a.korlap=b.id_korlap AND a.a_tilok=c.id_lokasi AND a.id_jukir='$_GET[id]'")->fetch_assoc();
+            if (empty($d['f_jukir'])) {
+                $ft = 'default.png';
+            } else {
+                $ft = $d['f_jukir'];
+            }
             if (empty($d['id_jukir'])) {
                 sweetAlert('jukir', 'error', 'Error !', 'Data Juru Parkir Tidak ditemukan.!');
             }
         ?>
-            <title>Edit Koordinator Lapangan | <?= $title; ?></title>
+            <title>Edit Juru Parkir | <?= $title; ?></title>
             <div class="page-body">
                 <div class="container-fluid">
                     <div class="page-title">
                         <div class="row">
                             <div class="col-6">
-                                <h3>Edit Koordinator Lapangan</h3>
+                                <h3>Edit Juru Parkir</h3>
                             </div>
                             <div class="col-6">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="<?= base_url(); ?>"> <i data-feather="git-pull-request"></i></a>
                                     </li>
                                     <li class="breadcrumb-item">Data Master</li>
-                                    <li class="breadcrumb-item">Korlap </li>
-                                    <li class="breadcrumb-item active">Edit Korlap</li>
+                                    <li class="breadcrumb-item">Jukir </li>
+                                    <li class="breadcrumb-item active">Edit Jukir</li>
                                 </ol>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-body">
-                        <form class="row g-3 needs-validation form theme-form" novalidate="" action="" method="POST" enctype="multipart/form-data">
-                            <div class="row g-2">
-                                <div class="col-lg-6 col-md-12">
-                                    <label>NIK :</label>
-                                    <input type="text" class="form-control" onkeypress="return hanyaAngka(event)" value="<?= $d['nik_korlap']; ?>" maxlength="16" disabled>
+                <div class="container-fluid">
+                    <div class="card">
+                        <div class="card-body">
 
-                                    <div class="valid-feedback">
+                            <form class="row g-3 needs-validation form theme-form" novalidate="" action="" method="POST" enctype="multipart/form-data">
+                                <div class="row g-2">
+                                    <div class="col-lg-6 col-md-6">
+                                        <label>NIK : <i class="fa fa-info-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="NIK tidak dapat diubah."></i></label>
+                                        <input type="text" class="form-control" value="<?= $d['nik_jukir']; ?>" readonly>
+                                        <div class="media">
+                                            <div class="text-end">
+                                                <label id="message_nik_jukir"></label>
+                                            </div>
+                                        </div>
+                                        <div class="valid-feedback">
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Nik tidak boleh kosong.
+                                        </div>
                                     </div>
-                                    <div class="invalid-feedback">
-                                        Nik tidak boleh kosong.
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-12">
-                                    <label>Nama Lengkap :</label>
-                                    <input type="text" class="form-control" name="nm_korlap" value="<?= $d['nm_korlap']; ?>" required>
-                                    <div class="valid-feedback">
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Nama Lengkap tidak boleh kosong.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row g-2">
-                                <div class="col-lg-6 col-md-12">
-                                    <label>Alamat :</label>
-                                    <textarea class="form-control" name="a_korlap"><?= $d['a_korlap']; ?></textarea>
-                                    <div class="valid-feedback"></div>
-                                    <div class="invalid-feedback">
-                                        Alamat tidak boleh kosong.
+                                    <div class="col-lg-6 col-md-12">
+                                        <label>Nama Jukir :</label>
+                                        <input type="text" class="form-control" name="nm_jukir" value="<?= $d['nm_jukir']; ?>" required>
+                                        <div class="valid-feedback">
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Nama Jukir tidak boleh kosong.
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-12">
-                                    <label>Perjanjian :</label>
-                                    <select class="form-select js-example-basic-single" name="perjanjian" id="floatingSelect" aria-label="Pilih Level">
-                                        <option value="<?= $d['perjanjian']; ?>"><?= $d['perjanjian']; ?></option>
-                                        <option value="SPT">SPT</option>
-                                        <option value="PKS">PKS</option>
-
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row g-2">
-                                <div class="col-lg-6 col-md-12">
-                                    <label>Tempat Lahir :</label>
-                                    <input type="text" class="form-control" name="t_lahir_korlap" value="<?= $d['t_lahir_korlap']; ?>">
-                                </div>
-                                <div class="col-lg-6 col-md-12">
-                                    <label for="floatingInput">Tanggal Lahir :</label><small style="color: orange;">
-                                        Format : bulan/tanggal/tahun</small></label>
-                                    <input type="text" class="datepicker-here form-control digits" data-language="en" name="tgl_lahir_korlap" value="<?= date('m/d/Y', strtotime($d['tgl_lahir_korlap'])); ?>">
-                                </div>
-                            </div>
-                            <div class="row g-2">
-                                <label>Foto Korlap :</label>
-                                <div class="col-lg-2 col-md-6">
-                                    <!-- gambar  -->
-                                    <?php
-                                    if (empty($d['f_korlap'])) {
-                                        $ft = 'default.png';
-                                    } else {
-                                        $ft = $d['f_korlap'];
-                                    }
-                                    ?>
-                                    <div class="avatar"><img class="b-r-8 img-100" src="<?= base_url(); ?>_uploads/f_korlap/<?= $ft; ?>" id="imgPreview" alt="Image Preview">
+                                <div class="row g-2">
+                                    <div class="col-lg-6 col-md-12">
+                                        <label>Tempat Lahir :</label>
+                                        <input type="text" class="form-control" name="t_lahir_jukir" value="<?= $d['t_lahir_jukir']; ?>" required>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <label for="floatingInput"> Tanggal Lahir :</label><small style="color: orange;">
+                                            Format : bulan/tanggal/tahun</small></label>
+                                        <input type="text" class="datepicker-here form-control digits" data-language="en" data-position="bottom right" name="tgl_lahir_jukir" value="<?= date('m/d/Y', strtotime($d['tgl_lahir_jukir'])); ?>" required>
                                     </div>
                                 </div>
-                                <div class="col-lg-10 col-md-12">
-                                    <input class="form-control" id="imgUpload" name="foto" type="file" accept=".png, .jpeg, .jpg">
-                                    <small style="color: red;">Format File : png, jpg, jpeg</small>
-
+                                <div class="row g-2">
+                                    <div class="col-lg-12 col-md-12">
+                                        <label>Alamat Rumah :</label>
+                                        <textarea class="form-control" name="a_jukir"><?= $d['a_jukir']; ?></textarea>
+                                        <div class="valid-feedback">
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Alamat Rumah tidak boleh kosong.
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <hr>
-                            <div class="d-grid gap-2 col-lg-3 col-md-12 mx-auto">
-                                <button class="btn btn-primary-gradien" name="simpan" type="submit">Simpan
-                                    Data</button>
-                            </div>
-                        </form>
-                        <?php
-                        if (isset($_POST['simpan'])) {
+                                <div class="row g-2">
+                                    <label>Foto Jukir :</label>
+                                    <div class="col-lg-2 col-md-6">
+                                        <!-- gambar  -->
+                                        <div class="avatar"><img class="b-r-8 img-100" src="<?= base_url(); ?>_uploads/f_jukir/<?= $ft; ?>" id="imgPreview" alt="Image Preview">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10 col-md-12">
+                                        <input class="form-control" id="imgUpload" name="foto" type="file" accept=".png, .jpeg, .jpg">
+                                        <small style="color: red;">Format File : png, jpg, jpeg</small>
 
-                            $id               = $db->real_escape_string($_POST['id']);
-                            $nik_korlap       = $db->real_escape_string($_POST['nik_korlap']);
-                            $nm_korlap        = $db->real_escape_string($_POST['nm_korlap']);
-                            $a_korlap         = $db->real_escape_string($_POST['a_korlap']);
-                            $perjanjian       = $db->real_escape_string($_POST['perjanjian']);
-                            $t_lahir_korlap   = $db->real_escape_string($_POST['t_lahir_korlap']);
-                            $tgl_lahir_korlap = date('Y-m-d', strtotime($db->real_escape_string($_POST['tgl_lahir_korlap'])));
-                            // $slug     = slug($nopol_bus);
-                            // $cek_korlap = $db->query("SELECT nik_korlap FROM korlap WHERE nik_korlap='$nik_korlap'");
-                            //jika username tidak ada didalam database
-                            // if ($cek_korlap->num_rows == 0) {
-
-                            //file gambar
-                            $file_tmp = $_FILES['foto']['tmp_name'];
-                            if (empty($file_tmp)) {
-                                $q  = $db->query("UPDATE korlap SET nm_korlap='$nm_korlap',
-                                                                    a_korlap='$a_korlap',
-                                                                    t_lahir_korlap='$t_lahir_korlap',
-                                                                    tgl_lahir_korlap='$tgl_lahir_korlap',
-                                                                    perjanjian='$perjanjian',
-                                                                    updated_at=NOW()
-                                                               WHERE id_korlap='$_GET[id]'");
-                                sweetAlert('korlap', 'sukses', 'Berhasil !', 'Data Koordinator Lapangan berhasil di update');
-                            } else {
-                                $ext_valid = array('png', 'jpg', 'jpeg', 'gif');
-                                $name_tmp  = $_FILES['foto']['name'];
-                                $x         = explode('.', $name_tmp);
-                                $extend    = strtolower(end($x));
-                                $time      = date('dmYHis');
-                                $foto      = $_GET['id'] . '_' . $time . '.' . $extend;
-                                $path      = '_uploads/f_korlap/';
-
-                                //cek ekstensi
-                                if (in_array($extend, $ext_valid) === true) {
-
-                                    //Compress Image
-                                    fotoCompressResize($foto, $file_tmp, $path);
-                                    //inster ke database
-                                    $q  = $db->query("UPDATE korlap SET nm_korlap='$nm_korlap',
-                                                                    a_korlap='$a_korlap',
-                                                                    t_lahir_korlap='$t_lahir_korlap',
-                                                                    tgl_lahir_korlap='$tgl_lahir_korlap',
-                                                                    f_korlap='$foto',
-                                                                    perjanjian='$perjanjian',
-                                                                     updated_at=NOW()
-                                                               WHERE id_korlap='$_GET[id]'");
-                                    //menghapus foto lama
-                                    unlink('_uploads/f_korlap/' . $d['f_korlap']);
-                                    sweetAlert('korlap', 'sukses', 'Berhasil !', 'Data Koordinator Lapangan berhasil di update');
-                                } else {
-                                    sweetAlert('korlap/add', 'error', 'Error Ekstensi !', 'Inputan Foto - Hanya File JPG, PNG, JPEG yang diperbolehkan.');
-                                    // sweetAlert('korlap/add', 'error', '', ' ');
-                                }
-                            }
-                            // } else {
-                            //     sweetAlert('korlap/add', 'error', 'Error Ekstensi !', ' NIK <i>(' . $nik_korlap . ')</i> sudah terdaftar didalam database.!');
-                            // }
-                            //cek username dalam database
-                        } ?>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="d-grid gap-2 col-lg-3 col-md-12 mx-auto">
+                                    <button class="btn btn-primary-gradien" name="data_diri" type="submit">Simpan
+                                        Data</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
+            </div>
+
+            <?php
+            if (isset($_POST['data_diri'])) {
+
+                // $id              = $db->real_escape_string($_POST['id']);
+                // $id_jukir2       = $db->real_escape_string($_POST['id_jukir']);
+                // $nik_jukir       = $db->real_escape_string($_POST['nik_jukir']);
+                $nm_jukir        = $db->real_escape_string($_POST['nm_jukir']);
+                $t_lahir_jukir   = $db->real_escape_string($_POST['t_lahir_jukir']);
+                $tgl_lahir_jukir = date('Y-m-d', strtotime($db->real_escape_string($_POST['tgl_lahir_jukir'])));
+                $a_jukir         = $db->real_escape_string($_POST['a_jukir']);
+                // $korlap          = $db->real_escape_string($_POST['korlap']);
+                // $a_tilok         = $db->real_escape_string($_POST['a_tilok']);
+                // $tilok           = $db->real_escape_string($_POST['tilok']);
+                // $cek_id_jukir = $db->query("SELECT id_jukir2 FROM jukir WHERE id_jukir2='$id_jukir2'");
+                $file_tmp = $_FILES['foto']['tmp_name'];
+                if (empty($file_tmp)) {
+                    $q = $db->query("UPDATE jukir SET nm_jukir='$nm_jukir',t_lahir_jukir='$t_lahir_jukir',tgl_lahir_jukir='$tgl_lahir_jukir',a_jukir='$a_jukir', updated_at=NOW() WHERE id_jukir='$_GET[id]'");
+                    #  $q  = $db->query("INSERT INTO jukir VALUES ('$id','$id_jukir2','$nik_jukir','$nm_jukir','$t_lahir_jukir','$tgl_lahir_jukir','$a_jukir','$korlap','$a_tilok','$tilok','$kta_sd','','','','$_SESSION[id_usr]',NOW(),NOW(),NULL)");
+                    sweetAlert('jukir', 'sukses', 'Sukses !', 'Juru Parkir atas nama (' . $nm_jukir . ') berhasil diinput');
+                } else {
+                    $ext_valid = array('png', 'jpg', 'jpeg', 'gif');
+                    $name_tmp  = $_FILES['foto']['name'];
+                    $x         = explode('.', $name_tmp);
+                    $extend    = strtolower(end($x));
+                    $time      = date('dmYHis');
+                    $foto      = $d['id_jukir2'] . '_' . strtoupper(slug($nm_jukir)) . '_FOTO_' . $time . '.' . $extend;
+                    $path      = '_uploads/f_jukir/';
+
+                    //cek ekstensi
+                    if (in_array($extend, $ext_valid) === true) {
+                        //Compress Image
+                        fotoCompressResize($foto, $file_tmp, $path);
+                        //inster ke database
+                        $q = $db->query("UPDATE jukir SET nm_jukir='$nm_jukir',t_lahir_jukir='$t_lahir_jukir',tgl_lahir_jukir='$tgl_lahir_jukir',a_jukir='$a_jukir', f_jukir='$foto', updated_at=NOW() WHERE id_jukir='$_GET[id]'");
+                        unlink('_uploads/f_jukir/' . $d['f_jukir']);
+                        sweetAlert('jukir', 'sukses', 'Sukses !', 'Juru Parkir atas nama (' . $nm_jukir . ') berhasil diinput');
+                    } else {
+                        sweetAlert('jukir/edit/' . $_GET['id'], 'error', 'Error Ekstensi !', 'I]nputan Foto - Hanya File JPG, PNG, JPEG yang diperbolehkan.');
+                        // sweetAlert('korlap/add', 'error', '', ' ');
+                    }
+                }
+                //cek username dalam database
+            }
+
+            ?>
+            <?php break; ?>
+        <?php
+        case 'perpanjangan':
+            $d = $db->query("SELECT * FROM jukir a, korlap b, lokasi c WHERE a.korlap=b.id_korlap AND a.a_tilok=c.id_lokasi AND a.id_jukir='$_GET[id]'")->fetch_assoc();
+            if (empty($d['f_jukir'])) {
+                $ft = 'default.png';
+            } else {
+                $ft = $d['f_jukir'];
+            }
+            if (empty($d['id_jukir'])) {
+                sweetAlert('jukir', 'error', 'Error !', 'Data Juru Parkir Tidak ditemukan.!');
+            }
+            if (date('m-Y', strtotime($d['kta_sd'])) >= date('m-Y')) {
+                $but = 'disabled';
+                sweetAlert('jukir', 'error', 'Error !', 'Tidak bisa memperpanjang KTA, dikarenakan KTA Jukir masih aktif.!');
+            }
+        ?>
+            <title>Perpanjangan KTA Juru Parkir | <?= $title; ?></title>
+            <div class="page-body">
+                <div class="container-fluid">
+                    <div class="page-title">
+                        <div class="row">
+                            <div class="col-6">
+                                <h3>Perpanjangan KTA Jukir</h3>
+                            </div>
+                            <div class="col-6">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="<?= base_url(); ?>"> <i data-feather="git-pull-request"></i></a>
+                                    </li>
+                                    <li class="breadcrumb-item">Data Master</li>
+                                    <li class="breadcrumb-item">Jukir </li>
+                                    <li class="breadcrumb-item active">Perpanjangan KTA</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <form class="row g-3 needs-validation form theme-form" novalidate="" action="" method="POST" enctype="multipart/form-data">
+                        <div class="row g-2">
+                            <div class="col-lg-5 col-md-12">
+                                <div class="card card-absolute">
+                                    <div class="card-header bg-secondary">
+                                        <h5 class="text-white">Data saat ini</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <?php
+                                        if (date('m-Y', strtotime($d['kta_sd'])) >= date('m-Y')) {
+                                            $kta_sd = '<b class="text-success">' . tgl_indo(date('Y-m-d', strtotime($d['kta_sd']))) . '</b>';
+                                        } else {
+                                            $kta_sd = '<b class="text-danger">' . tgl_indo(date('Y-m-d', strtotime($d['kta_sd']))) . '</b>';
+                                        }
+                                        ?>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th width="130px"></th>
+                                                    <th width="20px"></th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td valign="top"><b>Nama Jukir</b> </td>
+                                                    <td valign="top"><b>:</b></td>
+                                                    <td valign="top"><?= $d['nm_jukir']; ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td valign="top"><b>ID Registrasi</b> </td>
+                                                    <td valign="top"><b>:</b></td>
+                                                    <td valign="top"><?= $d['id_jukir2']; ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td valign="top"><b>Korlap</b></td>
+                                                    <td valign="top"><b>:</b></td>
+                                                    <td> <?= $d['nm_korlap']; ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td valign="top"><b>Alamat Parkir</b></td>
+                                                    <td valign="top"><b>:</b></td>
+                                                    <td> <?= $d['nm_jalan']; ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td valign="top"><b>Titik Lokasi</b></td>
+                                                    <td valign="top"><b>:</b></td>
+                                                    <td> <?= $d['tilok']; ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td valign="top"><b>Tanggal Expired</b></td>
+                                                    <td valign=""><b>:</b></td>
+                                                    <td> <?= $kta_sd; ?></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-7 col-md-12">
+                                <div class="card card-absolute">
+                                    <div class="card-header bg-secondary">
+                                        <h5 class="text-white">Ubah lokasi jaga <i style="color: pink;" class="fa fa-info-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Jika tidak ada perubahan data korlap, alamat, dan titik lokasi, harap data disamakan dengan kolom yang disebelah kiri (data saat ini)."></i></h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row g-2">
+                                            <!-- <input type="hidden" class="form-control" name="id" value="<?= verify(); ?>" required> -->
+
+                                            <div class="col-md-12">
+                                                <label>Koordinator Lapangan :</label>
+                                                <select class="form-select js-example-basic-single" name="korlap" id="korlap" aria-label="Pilih Level" required>
+                                                    <option value="<?= $d['id_lokasi']; ?>"><?= $d['id_lokasi']; ?></option>
+                                                </select>
+                                                <div class="valid-feedback">
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Korlap tidak boleh kosong.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row g-2">
+                                            <div class="col-md-12">
+                                                <label>Alamat Lokasi Perparkiran :</label>
+                                                <select class="form-select js-example-basic-single" name="a_tilok" id="lokasi" aria-label="Pilih Level" required>
+                                                    <option value=""></option>
+                                                </select>
+                                                <div class="valid-feedback">
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Alamat Lokasi tidak boleh kosong.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row g-2">
+                                            <div class="col-md-12">
+                                                <label>Titik Lokasi :</label>
+                                                <input type="text" class="form-control" name="tilok" required>
+                                                <div class="valid-feedback">
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Titik Lokasi tidak boleh kosong.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row-2">
+                                            <div class="col-md-12">
+                                                <label for="floatingInput"> Masa Berlaku KTA </label> <i class="fa fa-info-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Masa berlaku KTA Max 3 Bulan."></i> : <small style="color: orange;">
+                                                    Format : bulan/tanggal/tahun</small> </label>
+                                                <input type="text" class="datepicker-here form-control digits" data-language="en" id="minMaxExample" data-position="bottom right" name="kta_sd" required>
+                                                <div class="valid-feedback">
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Masa Berlaku tidak boleh kosong.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row g-2">
+                                            <div class="col-md-12">
+                                                <label>Keterangan <i class="fa fa-info-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Kalimat di dalam kolom hanya sebagai contoh."></i> :</label>
+                                                <textarea class="form-control" name="ket_kta" required>Pada tanggal <?= tgl_indo(date('Y-m-d')); ?>, <?= $d['nm_jukir']; ?> memperpanjang KTA Jukir miliknya..</textarea>
+                                                <div class="valid-feedback">
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Titik Lokasi tidak boleh kosong.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="d-grid gap-2 col-lg-6 col-md-12 mx-auto <?= $but; ?>">
+                                            <button class="btn btn-primary-gradien" name="lokasi_jaga" type="submit">Simpan
+                                                Data</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <?php
+                if (isset($_POST['lokasi_jaga'])) {
+                    $korlap   = $db->real_escape_string($_POST['korlap']);
+                    $a_tilok  = $db->real_escape_string($_POST['a_tilok']);
+                    $tilok    = $db->real_escape_string($_POST['tilok']);
+                    $ket_kta  = $db->real_escape_string($_POST['ket_kta']);
+                    $kta_sd   = date('Y-m-d', strtotime($db->real_escape_string($_POST['kta_sd'])));
+                    // var_dump($korlap, $a_tilok, $tilok);
+                    // die();
+                    $q = $db->query("UPDATE jukir SET korlap='$korlap',a_tilok='$a_tilok',tilok='$tilok',kta_sd='$kta_sd',updated_at=NOW() WHERE id_jukir='$_GET[id]'");
+                    if ($q) {
+                        $qq = $db->query("INSERT INTO jukir_kta VALUES ('','$_GET[id]','$korlap','$a_tilok','$tilok',NOW(),'$kta_sd','$ket_kta')");
+                        if ($qq) {
+                            sweetAlert('jukir', 'sukses', 'Sukses !', 'Data berhasil diubah');
+                        } else {
+                            sweetAlert('jukir/edit/' . $_GET['id'], 'error', 'Error !', 'Sepertinya terjadi kesalahan.');
+                        }
+                    } else {
+                        sweetAlert('jukir/edit/' . $_GET['id'], 'error', 'Error !', 'Sepertinya terjadi kesalahan.');
+                        // javascript('', 'alert-error', 'Error - ' . $db->error);
+                    }
+                } ?>
             </div>
             <?php break; ?>
         <?php
@@ -659,7 +840,7 @@ if ($csrf == false) {
                             $x         = explode('.', $name_tmp);
                             $extend    = strtolower(end($x));
                             $time      = date('dmYHis');
-                            $foto      = $d['id_jukir2'] . '_' . strtoupper($d['nm_jukir']) . '_KTP_' . $time . '.' . $extend;
+                            $foto      = $d['id_jukir2'] . '_' . strtoupper(slug($d['nm_jukir'])) . '_KTP_' . $time . '.' . $extend;
                             $path      = '_uploads/f_ktp_jukir/';
 
                             //cek ekstensi
@@ -812,7 +993,7 @@ if ($csrf == false) {
                             $x         = explode('.', $name_tmp);
                             $extend    = strtolower(end($x));
                             $time      = date('dmYHis');
-                            $foto      = $d['id_jukir2'] . '_' . strtoupper($d['nm_jukir']) . '_KTA_' . $time . '.' . $extend;
+                            $foto      = $d['id_jukir2'] . '_' . strtoupper(slug($d['nm_jukir'])) . '_KTA_' . $time . '.' . $extend;
                             $path      = '_uploads/f_kta_jukir/';
 
                             //cek ekstensi
@@ -891,7 +1072,7 @@ if ($csrf == false) {
             if (!file_exists($tempdir)) //Buat folder bername temp
                 mkdir($tempdir);
             $time   = date('dmYHis');
-            $qrname = $id_jukir2 . '_' . strtoupper($nm_jukir) . '_QRCODE_' . $time . '.png';
+            $qrname = $id_jukir2 . '_' . strtoupper(slug($nm_jukir)) . '_QRCODE_' . $time . '.png';
 
             //ambil logo
             // $logopath = base_url() . '_uploads/f_jukir/' . $ft;

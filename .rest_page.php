@@ -38,7 +38,7 @@ if (empty($_SESSION['username']) && empty($_SESSION['password'])) {
     }
     ?>
     <!-- preloader -->
-    <!-- <div class="preloader">
+    <div class="preloader">
         <div class="loading">
             <img src="<?= base_url(); ?>assets/adm/images/logoparkir.gif" width="80">
             <script language="JavaScript">
@@ -79,7 +79,7 @@ if (empty($_SESSION['username']) && empty($_SESSION['password'])) {
                 javascript: startTyping(text, 10, "textDestination");
             </script>
         </div>
-    </div> -->
+    </div>
     <!-- <div class="loader-wrapper">
         <div class="loader-index"><span></span></div>
         <svg>

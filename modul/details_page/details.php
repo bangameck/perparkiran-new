@@ -186,12 +186,12 @@ $tgl_aktif = $db->query("SELECT * FROM jukir_kta WHERE id_jukir='$_GET[id]'  ORD
                             }
                             ?>
                             <img src="<?= base_url(); ?>../../_uploads/f_jukir/<?= $ft; ?>" alt="profile" data-tilt>
-                            <ul class="ms-social">
-                                <li><a href="#" target="_blank"><i class="fa fa-camera" aria-hidden="true"></i> <b class="text-white">Armansyah</b></a></li>
-                                <!-- <li><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            <!-- <ul class="ms-social">
+                                <li><a href="#" target="_blank"><i class="fa fa-camera" aria-hidden="true"></i> <b class="text-white"> <?= $d['nm_jukir']; ?></b></a></li>
+                                <li><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                                 <li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                <li><a href="https://linkedin.com/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li> -->
-                            </ul>
+                                <li><a href="https://linkedin.com/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                            </ul> -->
                         </div>
                     </div>
                 </div>
